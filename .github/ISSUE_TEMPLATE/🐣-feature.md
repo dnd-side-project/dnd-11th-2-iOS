@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: "\U0001F423 FEATURE"
+about: "\b작업 사항을 알려요"
 title: ''
 labels: ''
 assignees: ''
