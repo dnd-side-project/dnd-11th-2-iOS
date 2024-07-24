@@ -12,29 +12,20 @@ struct SplashView: View {
     @State var loadingProgress: CGFloat = 0
     
     var body: some View {
-        VStack(spacing: 10) {
-            Text("SplashView")
-            HStack {
-                Image(systemName: "1.circle")
-                Image(systemName: "2.circle")
-                Image(systemName: "3.circle")
+        GeometryReader { geometry in
+            VStack {
+                Image("SampleImage")  // 추후 변경
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 160, height: 160)
+                    .cornerRadius(20)
+                    .foregroundColor(.white)    // 추후 삭제
             }
-            .mask {
-                GeometryReader { geometry in
-                    Rectangle()
-                        .frame(width: geometry.size.width * loadingProgress, height: geometry.size.height)
-                }
-            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
+        .ignoresSafeArea()
+        .background(Color("BackgroundColor"))
         .onAppear {
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-                withAnimation {
-                    loadingProgress += 0.1
-                }
-                if loadingProgress > 1.5 {
-                    loadingProgress = 0
-                }
-            }
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
                 isLoading = false
             }
