@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  RunUs
 //
-//  Created by 최승용 on 7/23/24.
+//  Created by seungyooooong on 7/23/24.
 //
 
 import SwiftUI

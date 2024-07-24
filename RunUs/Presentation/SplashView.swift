@@ -2,14 +2,13 @@
 //  SplashView.swift
 //  RunUs
 //
-//  Created by 최승용 on 7/22/24.
+//  Created by seungyooooong on 7/22/24.
 //
 
 import SwiftUI
 
 struct SplashView: View {
     @Binding var isLoading: Bool
-    @State var loadingProgress: CGFloat = 0
     
     var body: some View {
         GeometryReader { geometry in

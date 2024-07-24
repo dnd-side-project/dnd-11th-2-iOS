@@ -2,7 +2,7 @@
 //  MainView.swift
 //  RunUs
 //
-//  Created by 최승용 on 7/22/24.
+//  Created by seungyooooong on 7/22/24.
 //
 
 import SwiftUI
