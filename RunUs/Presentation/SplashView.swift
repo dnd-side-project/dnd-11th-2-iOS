@@ -18,7 +18,6 @@ struct SplashView: View {
                     .scaledToFit()
                     .frame(width: 160, height: 160)
                     .cornerRadius(20)
-                    .foregroundColor(.white)    // 추후 삭제
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         }
