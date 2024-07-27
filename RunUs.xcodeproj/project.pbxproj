@@ -10,7 +10,6 @@
 		D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
 		D93A94EC2C4A372700BCCD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EB2C4A372700BCCD00 /* Assets.xcassets */; };
 		D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */; };
-<<<<<<< HEAD
 		D9D0B7182C4F553800D13160 /* RUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7172C4F553800D13160 /* RUError.swift */; };
 		D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7192C4F555500D13160 /* NetworkError.swift */; };
 		D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B71B2C4F566E00D13160 /* NetworkService.swift */; };
@@ -18,12 +17,10 @@
 		D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */; };
 		D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */; };
 		D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */; };
-=======
 		F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88732C4E7FF5008EF2FD /* SplashView.swift */; };
 		F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88752C4E802E008EF2FD /* MainView.swift */; };
 		F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88772C4E839A008EF2FD /* LoginView.swift */; };
 		F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF887C2C4F7E46008EF2FD /* HomeView.swift */; };
->>>>>>> 4b70e5d (feat #2: 초기 화면 구성 및 SpashView 구조 1안)
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +28,6 @@
 		D93A94E72C4A372600BCCD00 /* RunUsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunUsApp.swift; sourceTree = "<group>"; };
 		D93A94EB2C4A372700BCCD00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		D9D0B7172C4F553800D13160 /* RUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUError.swift; sourceTree = "<group>"; };
 		D9D0B7192C4F555500D13160 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		D9D0B71B2C4F566E00D13160 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -39,12 +35,10 @@
 		D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNetwork.swift; sourceTree = "<group>"; };
 		D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEndpoint.swift; sourceTree = "<group>"; };
-=======
 		F6EF88732C4E7FF5008EF2FD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F6EF88752C4E802E008EF2FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F6EF88772C4E839A008EF2FD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F6EF887C2C4F7E46008EF2FD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
->>>>>>> 4b70e5d (feat #2: 초기 화면 구성 및 SpashView 구조 1안)
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,14 +72,11 @@
 			isa = PBXGroup;
 			children = (
 				D93A94E72C4A372600BCCD00 /* RunUsApp.swift */,
-<<<<<<< HEAD
 				D93A94E92C4A372600BCCD00 /* ContentView.swift */,
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
 				D9D0B7212C50BA4300D13160 /* Data */,
 				D9D0B7162C4F549D00D13160 /* Network */,
-=======
 				F6EF88722C4E7FBF008EF2FD /* Presentation */,
->>>>>>> 4b70e5d (feat #2: 초기 화면 구성 및 SpashView 구조 1안)
 				D93A94EB2C4A372700BCCD00 /* Assets.xcassets */,
 				D93A94ED2C4A372700BCCD00 /* Preview Content */,
 			);
@@ -100,7 +91,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		D9D0B7162C4F549D00D13160 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,7 +117,8 @@
 				D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */,
 			);
 			path = Server;
-=======
+			sourceTree = "<group>";
+		};
 		F6EF88722C4E7FBF008EF2FD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +128,6 @@
 				F6EF887C2C4F7E46008EF2FD /* HomeView.swift */,
 			);
 			path = Presentation;
->>>>>>> 4b70e5d (feat #2: 초기 화면 구성 및 SpashView 구조 1안)
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +200,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
 				D93A94EA2C4A372600BCCD00 /* ContentView.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
@@ -220,13 +209,11 @@
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
-=======
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
->>>>>>> 4b70e5d (feat #2: 초기 화면 구성 및 SpashView 구조 1안)
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
