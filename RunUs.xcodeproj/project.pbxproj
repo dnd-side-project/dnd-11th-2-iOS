@@ -72,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				D93A94E72C4A372600BCCD00 /* RunUsApp.swift */,
-				D93A94E92C4A372600BCCD00 /* ContentView.swift */,
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
 				D9D0B7212C50BA4300D13160 /* Data */,
 				D9D0B7162C4F549D00D13160 /* Network */,
@@ -123,9 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				F6EF88732C4E7FF5008EF2FD /* SplashView.swift */,
-				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
 				F6EF88752C4E802E008EF2FD /* MainView.swift */,
 				F6EF887C2C4F7E46008EF2FD /* HomeView.swift */,
+				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -201,7 +200,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
-				D93A94EA2C4A372600BCCD00 /* ContentView.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
 				D9D0B7182C4F553800D13160 /* RUError.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
