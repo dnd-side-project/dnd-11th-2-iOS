@@ -23,6 +23,15 @@
 		F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF887C2C4F7E46008EF2FD /* HomeView.swift */; };
 		F6F085692C58C91200994E34 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085682C58C91200994E34 /* Colors.swift */; };
 		F6F085712C59338B00994E34 /* UserEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085702C59338B00994E34 /* UserEnvironment.swift */; };
+		F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */; };
+		F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */; };
+		F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */; };
+		F64FBE352C566AE10024E920 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2C2C566AE00024E920 /* Pretendard-ExtraLight.otf */; };
+		F64FBE362C566AE10024E920 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2D2C566AE00024E920 /* Pretendard-Medium.otf */; };
+		F64FBE372C566AE10024E920 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2E2C566AE10024E920 /* Pretendard-Thin.otf */; };
+		F64FBE382C566AE10024E920 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */; };
+		F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE302C566AE10024E920 /* Pretendard-Light.otf */; };
+		F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,10 +48,20 @@
 		D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEndpoint.swift; sourceTree = "<group>"; };
 		F6EF88732C4E7FF5008EF2FD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F6EF88752C4E802E008EF2FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		F6EF88772C4E839A008EF2FD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F6EF887C2C4F7E46008EF2FD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F6F085682C58C91200994E34 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F6F085702C59338B00994E34 /* UserEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEnvironment.swift; sourceTree = "<group>"; };
+		F64FBE242C5609690024E920 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		F64FBE2C2C566AE00024E920 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		F64FBE2D2C566AE00024E920 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		F64FBE2E2C566AE10024E920 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		F64FBE302C566AE10024E920 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		F64FBE3B2C566B110024E920 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +94,7 @@
 		D93A94E62C4A372600BCCD00 /* RunUs */ = {
 			isa = PBXGroup;
 			children = (
+				F64FBE3B2C566B110024E920 /* Info.plist */,
 				D93A94E72C4A372600BCCD00 /* RunUsApp.swift */,
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
 				D9D0B7212C50BA4300D13160 /* Data */,
@@ -139,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				F6F085672C58C90A00994E34 /* Colors */,
+				F64FBE272C566AAC0024E920 /* Fonts */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -149,6 +170,30 @@
 				F6F085682C58C91200994E34 /* Colors.swift */,
 			);
 			path = Colors;
+			sourceTree = "<group>";
+		};
+		F64FBE272C566AAC0024E920 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F64FBE282C566AB20024E920 /* Pretendard */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F64FBE282C566AB20024E920 /* Pretendard */ = {
+			isa = PBXGroup;
+			children = (
+				F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */,
+				F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */,
+				F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */,
+				F64FBE2C2C566AE00024E920 /* Pretendard-ExtraLight.otf */,
+				F64FBE302C566AE10024E920 /* Pretendard-Light.otf */,
+				F64FBE2D2C566AE00024E920 /* Pretendard-Medium.otf */,
+				F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */,
+				F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */,
+				F64FBE2E2C566AE10024E920 /* Pretendard-Thin.otf */,
+			);
+			path = Pretendard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +254,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64FBE362C566AE10024E920 /* Pretendard-Medium.otf in Resources */,
+				F64FBE352C566AE10024E920 /* Pretendard-ExtraLight.otf in Resources */,
 				D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */,
+				F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */,
+				F64FBE372C566AE10024E920 /* Pretendard-Thin.otf in Resources */,
+				F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */,
+				F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */,
+				F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */,
+				F64FBE382C566AE10024E920 /* Pretendard-SemiBold.otf in Resources */,
 				D93A94EC2C4A372700BCCD00 /* Assets.xcassets in Resources */,
+				F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +284,7 @@
 				D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */,
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
+				F64FBE252C5609690024E920 /* LoginView.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
@@ -374,6 +429,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PF6QF5WXTK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RunUs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -407,6 +463,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PF6QF5WXTK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RunUs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
