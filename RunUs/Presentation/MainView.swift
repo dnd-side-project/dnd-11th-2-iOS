@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var isLogin: Bool = false
+    @EnvironmentObject var userEnvironment: UserEnvironment
     
     var body: some View {
-        if isLogin { HomeView() }
-        else       { LoginView() }
+        if userEnvironment.isLogin { HomeView() }
+        else                       { LoginView() }
     }
 }
 

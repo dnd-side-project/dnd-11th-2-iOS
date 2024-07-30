@@ -14,7 +14,7 @@ struct RunUsApp: App {
     var body: some Scene {
         WindowGroup {
             if isLoading { SplashView(isLoading: $isLoading) }
-            else         { MainView() } // 추후 네이밍 수정
+            else         { MainView().environmentObject(UserEnvironment()) } // 추후 네이밍 수정
         }
     }
 }
