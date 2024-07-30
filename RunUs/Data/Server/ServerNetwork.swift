@@ -24,7 +24,13 @@ class ServerNetwork {
                     throw NetworkError.parse
                 }
             }
-            .mapError{ _ in NetworkError.unknown }
+            .mapError{ error -> NetworkError in
+                if let networkError = error as? NetworkError {
+                    return networkError
+                } else {
+                    return NetworkError.unknown
+                }
+            }
             .eraseToAnyPublisher()
     }
     
@@ -39,7 +45,13 @@ class ServerNetwork {
                     throw NetworkError.parse
                 }
             }
-            .mapError{ _ in NetworkError.unknown }
+            .mapError{ error -> NetworkError in
+                if let networkError = error as? NetworkError {
+                    return networkError
+                } else {
+                    return NetworkError.unknown
+                }
+            }
             .eraseToAnyPublisher()
     }
 }
