@@ -10,7 +10,7 @@ import Foundation
 enum NetworkError: RUError {
     case request
     case parse
-    case server(code: Int)
+    case server(error: ServerError)
     case unknown
     
     var description: String {

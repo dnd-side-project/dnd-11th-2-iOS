@@ -19,7 +19,7 @@ class ServerNetwork {
                 if let data = response.data, response.success {
                     return data
                 } else if let error = response.error {
-                    throw NetworkError.server(code: error.statusCode)
+                    throw NetworkError.server(error: error)
                 } else {
                     throw NetworkError.parse
                 }
@@ -36,11 +36,11 @@ class ServerNetwork {
     
     func request(_ endpoint: ServerEndpoint) -> AnyPublisher<Void, NetworkError> {
         NetworkService.shared.request(endpoint)
-            .tryMap { (response: ServerResponse<Bool>) in
+            .tryMap { (response: ServerResponse<EmptyData>) in
                 if response.success {
                     return
                 } else if let error = response.error {
-                    throw NetworkError.server(code: error.statusCode)
+                    throw NetworkError.server(error: error)
                 } else {
                     throw NetworkError.parse
                 }
