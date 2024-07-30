@@ -25,12 +25,24 @@ struct LoginView: View {
                 .foregroundStyle(.white)
                 .padding(.top, 160)
                 Spacer()
-                HStack {    // 추후 컴포넌트화하기
-                    Text("test")
-                        .foregroundStyle(.white)
+                Button {
+                    
+                } label: {
+                    Label(  // 추후 컴포넌트화하기
+                        title: {
+                            Text("Apple ID로 시작하기")
+                                .font(.custom("PretendardVariable", size: 16))
+                        },
+                        icon: { Image(systemName: "apple.logo") }
+                    )
                 }
-                .frame(width: 320, height: 48)
-                .background(.red)
+                .foregroundColor(.black)
+                .background {
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 320, height: 48)
+                        .cornerRadius(24)
+                }
                 .padding(.bottom, 75)
             }
             .frame(width: geometry.size.width, height: geometry.size.height)

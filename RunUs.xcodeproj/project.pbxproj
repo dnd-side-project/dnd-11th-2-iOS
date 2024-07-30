@@ -32,6 +32,7 @@
 		F64FBE382C566AE10024E920 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */; };
 		F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE302C566AE10024E920 /* Pretendard-Light.otf */; };
 		F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */; };
+		F6F085652C58C4BE00994E34 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		F64FBE302C566AE10024E920 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		F64FBE3B2C566B110024E920 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */,
 				F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */,
 				F64FBE2E2C566AE10024E920 /* Pretendard-Thin.otf */,
+				F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */,
 			);
 			path = Pretendard;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */,
 				F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */,
 				F64FBE372C566AE10024E920 /* Pretendard-Thin.otf in Resources */,
+				F6F085652C58C4BE00994E34 /* PretendardVariable.ttf in Resources */,
 				F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */,
 				F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */,
 				F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */,
