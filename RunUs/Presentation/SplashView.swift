@@ -22,7 +22,7 @@ struct SplashView: View {
             .frame(width: geometry.size.width, height: geometry.size.height)
         }
         .ignoresSafeArea()
-        .background(Color("BackgroundColor"))
+        .background(Colors.background)
         .onAppear {
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
                 isLoading = false
