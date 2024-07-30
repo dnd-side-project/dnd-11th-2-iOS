@@ -21,7 +21,7 @@ class NetworkService {
         let request = configureRequest(url: url, endpoint)
         
         return URLSession.shared.dataTaskPublisher(for: request)
-            .mapError{ NetworkError.server(code: $0.errorCode) }
+            .mapError { _ in NetworkError.request }
             .map(\.data)
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { _ in NetworkError.parse }
