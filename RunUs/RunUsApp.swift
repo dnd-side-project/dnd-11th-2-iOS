@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct RunUsApp: App {
+    @State var isLoading: Bool = true
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isLoading { SplashView(isLoading: $isLoading) }
+            else         { MainView().environmentObject(UserEnvironment()) } // 추후 네이밍 수정
         }
     }
 }
