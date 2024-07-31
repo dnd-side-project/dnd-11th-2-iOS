@@ -14,9 +14,9 @@ struct LoginView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Run Earth With Runus!")
-                            .font(.custom("Pretendard-Mideum", size: 24))
+                            .font(Fonts.pretendardMedium24)
                         Text("런어스랑 지구한바퀴 뛰어보기")
-                            .font(.custom("Pretendard-ExtraBold", size: 24))
+                            .font(Fonts.pretendardExtraBold24)
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
@@ -31,7 +31,7 @@ struct LoginView: View {
                     Label(  // 추후 컴포넌트화하기
                         title: {
                             Text("Apple ID로 시작하기")
-                                .font(.custom("PretendardVariable", size: 16))
+                                .font(Fonts.pretendardVariable16)
                         },
                         icon: { Image(systemName: "apple.logo") }
                     )
