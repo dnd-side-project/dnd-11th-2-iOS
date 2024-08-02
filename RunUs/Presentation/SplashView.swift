@@ -11,18 +11,13 @@ struct SplashView: View {
     @Binding var isLoading: Bool
     
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Image("SampleImage")  // 추후 변경
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 160, height: 160)
-                    .cornerRadius(20)
-            }
-            .frame(width: geometry.size.width, height: geometry.size.height)
+        VStack {
+            Image("SampleImage")  // 추후 변경
+                .resizable()
+                .scaledToFit()
+                .frame(width: 160, height: 160)
+                .cornerRadius(20)
         }
-        .ignoresSafeArea()
-        .background(Colors.background)
         .onAppear {
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
                 isLoading = false
@@ -33,4 +28,5 @@ struct SplashView: View {
 
 #Preview {
     SplashView(isLoading: .constant(true))
+        .background(Colors.background)
 }
