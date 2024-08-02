@@ -17,12 +17,26 @@
 		D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */; };
 		D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */; };
 		D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */; };
+		F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */; };
+		F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */; };
+		F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */; };
+		F64FBE352C566AE10024E920 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2C2C566AE00024E920 /* Pretendard-ExtraLight.otf */; };
+		F64FBE362C566AE10024E920 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2D2C566AE00024E920 /* Pretendard-Medium.otf */; };
+		F64FBE372C566AE10024E920 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2E2C566AE10024E920 /* Pretendard-Thin.otf */; };
+		F64FBE382C566AE10024E920 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */; };
+		F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE302C566AE10024E920 /* Pretendard-Light.otf */; };
+		F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */; };
+		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
+		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
+		F6AB2E952C5C7C4B0015A1CA /* LoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */; };
 		F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88732C4E7FF5008EF2FD /* SplashView.swift */; };
 		F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88752C4E802E008EF2FD /* MainView.swift */; };
 		F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88772C4E839A008EF2FD /* LoginView.swift */; };
 		F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF887C2C4F7E46008EF2FD /* HomeView.swift */; };
+		F6F085652C58C4BE00994E34 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */; };
 		F6F085692C58C91200994E34 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085682C58C91200994E34 /* Colors.swift */; };
 		F6F085712C59338B00994E34 /* UserEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085702C59338B00994E34 /* UserEnvironment.swift */; };
+		F6F085732C59FAF700994E34 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085722C59FAF700994E34 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,12 +51,27 @@
 		D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNetwork.swift; sourceTree = "<group>"; };
 		D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEndpoint.swift; sourceTree = "<group>"; };
+		F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		F64FBE2C2C566AE00024E920 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		F64FBE2D2C566AE00024E920 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		F64FBE2E2C566AE10024E920 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		F64FBE302C566AE10024E920 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		F64FBE3B2C566B110024E920 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
+		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
+		F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDependency.swift; sourceTree = "<group>"; };
 		F6EF88732C4E7FF5008EF2FD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F6EF88752C4E802E008EF2FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F6EF88772C4E839A008EF2FD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F6EF887C2C4F7E46008EF2FD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
 		F6F085682C58C91200994E34 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F6F085702C59338B00994E34 /* UserEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEnvironment.swift; sourceTree = "<group>"; };
+		F6F085722C59FAF700994E34 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +105,8 @@
 		D93A94E62C4A372600BCCD00 /* RunUs */ = {
 			isa = PBXGroup;
 			children = (
+				F66C5C842C5B30F400EE695A /* RunUs.entitlements */,
+				F64FBE3B2C566B110024E920 /* Info.plist */,
 				D93A94E72C4A372600BCCD00 /* RunUsApp.swift */,
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
 				D9D0B7212C50BA4300D13160 /* Data */,
@@ -123,13 +155,49 @@
 			path = Server;
 			sourceTree = "<group>";
 		};
+		F64FBE272C566AAC0024E920 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F64FBE282C566AB20024E920 /* Pretendard */,
+				F6F085722C59FAF700994E34 /* Fonts.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F64FBE282C566AB20024E920 /* Pretendard */ = {
+			isa = PBXGroup;
+			children = (
+				F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */,
+				F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */,
+				F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */,
+				F64FBE2C2C566AE00024E920 /* Pretendard-ExtraLight.otf */,
+				F64FBE302C566AE10024E920 /* Pretendard-Light.otf */,
+				F64FBE2D2C566AE00024E920 /* Pretendard-Medium.otf */,
+				F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */,
+				F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */,
+				F64FBE2E2C566AE10024E920 /* Pretendard-Thin.otf */,
+				F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */,
+			);
+			path = Pretendard;
+			sourceTree = "<group>";
+		};
+		F66C5C882C5B3C3A00EE695A /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
+				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
+				F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
 		F6EF88722C4E7FBF008EF2FD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				F6EF88732C4E7FF5008EF2FD /* SplashView.swift */,
 				F6EF88752C4E802E008EF2FD /* MainView.swift */,
 				F6EF887C2C4F7E46008EF2FD /* HomeView.swift */,
-				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
+				F66C5C882C5B3C3A00EE695A /* LoginView */,
 				F6F085702C59338B00994E34 /* UserEnvironment.swift */,
 			);
 			path = Presentation;
@@ -139,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				F6F085672C58C90A00994E34 /* Colors */,
+				F64FBE272C566AAC0024E920 /* Fonts */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -167,6 +236,9 @@
 			dependencies = (
 			);
 			name = RunUs;
+			packageProductDependencies = (
+				F66C5C862C5B3C0700EE695A /* ComposableArchitecture */,
+			);
 			productName = RunUs;
 			productReference = D93A94E42C4A372600BCCD00 /* RunUs.app */;
 			productType = "com.apple.product-type.application";
@@ -195,6 +267,9 @@
 				Base,
 			);
 			mainGroup = D93A94DB2C4A372600BCCD00;
+			packageReferences = (
+				F66C5C852C5B3C0700EE695A /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = D93A94E52C4A372600BCCD00 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -209,8 +284,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64FBE362C566AE10024E920 /* Pretendard-Medium.otf in Resources */,
+				F64FBE352C566AE10024E920 /* Pretendard-ExtraLight.otf in Resources */,
 				D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */,
+				F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */,
+				F64FBE372C566AE10024E920 /* Pretendard-Thin.otf in Resources */,
+				F6F085652C58C4BE00994E34 /* PretendardVariable.ttf in Resources */,
+				F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */,
+				F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */,
+				F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */,
+				F64FBE382C566AE10024E920 /* Pretendard-SemiBold.otf in Resources */,
 				D93A94EC2C4A372700BCCD00 /* Assets.xcassets in Resources */,
+				F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */,
 				F6F085712C59338B00994E34 /* UserEnvironment.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
@@ -230,9 +316,11 @@
 				D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */,
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
+				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
+				F6AB2E952C5C7C4B0015A1CA /* LoginDependency.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
@@ -366,6 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RunUs/RunUs.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -374,6 +463,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PF6QF5WXTK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RunUs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -399,6 +489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RunUs/RunUs.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -407,6 +498,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PF6QF5WXTK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RunUs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +541,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F66C5C852C5B3C0700EE695A /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.12.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F66C5C862C5B3C0700EE695A /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F66C5C852C5B3C0700EE695A /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D93A94DC2C4A372600BCCD00 /* Project object */;
 }
