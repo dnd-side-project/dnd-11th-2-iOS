@@ -13,6 +13,8 @@ struct ServerResponse<T: Decodable>: Decodable {
     let error: ServerError?
 }
 
+struct EmptyData: Decodable { }
+
 struct ServerError: Decodable {
     let statusCode: Int
     let code: String
