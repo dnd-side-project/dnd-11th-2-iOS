@@ -30,13 +30,13 @@ struct LoginStore: Reducer {
         case appleLoginResponse(Data)
     }
     
+    @Dependency(\.loginDependency) var loginDependency
+    
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .doAppleLogin:
             return .run { send in
-                let (data, _) = try await URLSession.shared.data(
-                    from: URL(string: "https://api.runus.site/api/v1/examples/data")!
-                )
+                let data = try await loginDependency.fetch()
                 await send(.appleLoginResponse(data))
             }
         case let .appleLoginResponse(data):
