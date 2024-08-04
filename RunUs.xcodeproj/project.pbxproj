@@ -108,10 +108,10 @@
 				F66C5C842C5B30F400EE695A /* RunUs.entitlements */,
 				F64FBE3B2C566B110024E920 /* Info.plist */,
 				D93A94E72C4A372600BCCD00 /* RunUsApp.swift */,
-				D9D0B7172C4F553800D13160 /* RUError.swift */,
-				D9D0B7212C50BA4300D13160 /* Data */,
+				D9D0B7532C5D473E00D13160 /* Core */,
+				D9D0B7502C5D46CA00D13160 /* Login */,
+				D9D0B7522C5D471800D13160 /* Home */,
 				D9D0B7162C4F549D00D13160 /* Network */,
-				F6EF88722C4E7FBF008EF2FD /* Presentation */,
 				F6F085662C58C90200994E34 /* Resource */,
 				D93A94EB2C4A372700BCCD00 /* Assets.xcassets */,
 				D93A94ED2C4A372700BCCD00 /* Preview Content */,
@@ -130,19 +130,12 @@
 		D9D0B7162C4F549D00D13160 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D9D0B7262C50C42400D13160 /* Server */,
 				D9D0B7192C4F555500D13160 /* NetworkError.swift */,
 				D9D0B71B2C4F566E00D13160 /* NetworkService.swift */,
 				D9D0B71D2C4F570000D13160 /* NetworkEndpoint.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		D9D0B7212C50BA4300D13160 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				D9D0B7262C50C42400D13160 /* Server */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		D9D0B7262C50C42400D13160 /* Server */ = {
@@ -153,6 +146,43 @@
 				D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */,
 			);
 			path = Server;
+			sourceTree = "<group>";
+		};
+		D9D0B7502C5D46CA00D13160 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
+				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
+				F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D9D0B7512C5D46F900D13160 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6EF88732C4E7FF5008EF2FD /* SplashView.swift */,
+				F6EF88752C4E802E008EF2FD /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D9D0B7522C5D471800D13160 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F6EF887C2C4F7E46008EF2FD /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D9D0B7532C5D473E00D13160 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D9D0B7172C4F553800D13160 /* RUError.swift */,
+				F6F085702C59338B00994E34 /* UserEnvironment.swift */,
+				D9D0B7512C5D46F900D13160 /* View */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		F64FBE272C566AAC0024E920 /* Fonts */ = {
@@ -179,28 +209,6 @@
 				F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */,
 			);
 			path = Pretendard;
-			sourceTree = "<group>";
-		};
-		F66C5C882C5B3C3A00EE695A /* LoginView */ = {
-			isa = PBXGroup;
-			children = (
-				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
-				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
-				F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */,
-			);
-			path = LoginView;
-			sourceTree = "<group>";
-		};
-		F6EF88722C4E7FBF008EF2FD /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				F6EF88732C4E7FF5008EF2FD /* SplashView.swift */,
-				F6EF88752C4E802E008EF2FD /* MainView.swift */,
-				F6EF887C2C4F7E46008EF2FD /* HomeView.swift */,
-				F66C5C882C5B3C3A00EE695A /* LoginView */,
-				F6F085702C59338B00994E34 /* UserEnvironment.swift */,
-			);
-			path = Presentation;
 			sourceTree = "<group>";
 		};
 		F6F085662C58C90200994E34 /* Resource */ = {
