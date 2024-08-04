@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import ComposableArchitecture
 
 struct LoginStore: Reducer {
@@ -23,10 +24,11 @@ struct LoginStore: Reducer {
                 userEnvironment.isLogin = newValue
             }
         }
+        var appleLoginManager: AppleLoginManager?
     }
     
     enum Action: Equatable {
-        case doAppleLogin
+        case doAppleLogin(UIWindow?)
         case appleLoginResponse(Data)
     }
     
@@ -34,11 +36,14 @@ struct LoginStore: Reducer {
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case .doAppleLogin:
-            return .run { send in
-                let data = try await loginDependency.fetch()
-                await send(.appleLoginResponse(data))
-            }
+        case let .doAppleLogin(window):
+            state.appleLoginManager = AppleLoginManager(window: window)
+            state.appleLoginManager!.doAppleLogin()
+            return .none
+//            return .run { send in
+//                let data = try await loginDependency.fetch()
+//                await send(.appleLoginResponse(data))
+//            }
         case let .appleLoginResponse(data):
             print(String(decoding: data, as: UTF8.self))
             state.isLogin = true
