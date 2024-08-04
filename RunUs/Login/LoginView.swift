@@ -9,6 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 
 struct LoginView: View {
+    @Environment(\.window) var window: UIWindow?
+    @State private var appleLoginManager: AppleLoginManager?
     let store: StoreOf<LoginStore>
     
     var body: some View {
@@ -27,7 +29,9 @@ struct LoginView: View {
             Spacer()
             WithViewStore(store, observe: { $0 }) { viewStore in
                 Button {
-                    viewStore.send(.doAppleLogin)
+//                    viewStore.send(.doAppleLogin)
+                    appleLoginManager = AppleLoginManager(window: window)
+                    appleLoginManager!.doAppleLogin()
                 } label: {
                     Label(  // 추후 컴포넌트화하기
                         title: {
