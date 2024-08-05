@@ -9,7 +9,14 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text("HomeView")
+        //FIXME: 홈화면 디자인 나오면 수정
+        NavigationView{
+            NavigationLink {
+                RunAloneHomeView()
+            } label: {
+                Text("혼자뛰기")
+            }
+        }
     }
 }
 

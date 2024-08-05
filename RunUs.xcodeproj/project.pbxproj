@@ -10,6 +10,7 @@
 		D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
 		D93A94EC2C4A372700BCCD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EB2C4A372700BCCD00 /* Assets.xcassets */; };
 		D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */; };
+		D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D9FE32C6078BD00C663BD /* LocationManager.swift */; };
 		D9D0B7182C4F553800D13160 /* RUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7172C4F553800D13160 /* RUError.swift */; };
 		D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7192C4F555500D13160 /* NetworkError.swift */; };
 		D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B71B2C4F566E00D13160 /* NetworkService.swift */; };
@@ -17,6 +18,11 @@
 		D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */; };
 		D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */; };
 		D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */; };
+		D9F5B8542C608990009CEB19 /* StoreDIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8532C608990009CEB19 /* StoreDIManager.swift */; };
+		D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */; };
+		D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */; };
+		D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */; };
+		D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */; };
 		F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */; };
 		F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */; };
 		F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */; };
@@ -44,6 +50,7 @@
 		D93A94E72C4A372600BCCD00 /* RunUsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunUsApp.swift; sourceTree = "<group>"; };
 		D93A94EB2C4A372700BCCD00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D97D9FE32C6078BD00C663BD /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D9D0B7172C4F553800D13160 /* RUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUError.swift; sourceTree = "<group>"; };
 		D9D0B7192C4F555500D13160 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		D9D0B71B2C4F566E00D13160 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -51,6 +58,11 @@
 		D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNetwork.swift; sourceTree = "<group>"; };
 		D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEndpoint.swift; sourceTree = "<group>"; };
+		D9F5B8532C608990009CEB19 /* StoreDIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDIManager.swift; sourceTree = "<group>"; };
+		D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+extension.swift"; sourceTree = "<group>"; };
+		D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeView.swift; sourceTree = "<group>"; };
+		D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeFeature.swift; sourceTree = "<group>"; };
+		D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneDependency.swift; sourceTree = "<group>"; };
 		F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -109,6 +121,7 @@
 				F64FBE3B2C566B110024E920 /* Info.plist */,
 				D93A94E72C4A372600BCCD00 /* RunUsApp.swift */,
 				D9D0B7532C5D473E00D13160 /* Core */,
+				D9F5B8582C60ED63009CEB19 /* RunAlone */,
 				D9D0B7502C5D46CA00D13160 /* Login */,
 				D9D0B7522C5D471800D13160 /* Home */,
 				D9D0B7162C4F549D00D13160 /* Network */,
@@ -178,11 +191,32 @@
 		D9D0B7532C5D473E00D13160 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				D9F5B8552C60D141009CEB19 /* Extension */,
+				D9D0B7512C5D46F900D13160 /* View */,
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
 				F6F085702C59338B00994E34 /* UserEnvironment.swift */,
-				D9D0B7512C5D46F900D13160 /* View */,
+				D97D9FE32C6078BD00C663BD /* LocationManager.swift */,
+				D9F5B8532C608990009CEB19 /* StoreDIManager.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		D9F5B8552C60D141009CEB19 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D9F5B8582C60ED63009CEB19 /* RunAlone */ = {
+			isa = PBXGroup;
+			children = (
+				D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */,
+				D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */,
+				D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */,
+			);
+			path = RunAlone;
 			sourceTree = "<group>";
 		};
 		F64FBE272C566AAC0024E920 /* Fonts */ = {
@@ -318,6 +352,7 @@
 				F6F085712C59338B00994E34 /* UserEnvironment.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
+				D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */,
 				D9D0B7182C4F553800D13160 /* RUError.swift in Sources */,
 				F6F085692C58C91200994E34 /* Colors.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
@@ -326,11 +361,16 @@
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
+				D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */,
+				D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */,
+				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
+				D9F5B8542C608990009CEB19 /* StoreDIManager.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				F6AB2E952C5C7C4B0015A1CA /* LoginDependency.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
+				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
