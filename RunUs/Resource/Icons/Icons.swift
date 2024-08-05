@@ -8,7 +8,7 @@
 import Foundation
 
 enum Icons {
-    // green icon
+    // tab icon
     static let home = "home"
     static let chart = "chart"
     
