@@ -20,12 +20,10 @@ struct LoginView: View {
                     Text("런어스랑 지구한바퀴 뛰어보기")
                         .font(Fonts.pretendardExtraBold(size: 24))
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
                 Spacer()
             }
             .foregroundStyle(.white)
-            .padding(.top, 160)
+            .padding(.top, 160 + 8)
             Spacer()
             WithViewStore(store, observe: { $0 }) { viewStore in
                 Button {
@@ -45,14 +43,13 @@ struct LoginView: View {
                     Rectangle()
                         .fill(.white)
                         .cornerRadius(24)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .frame(height: 48 + 16)
+                        .frame(height: 48)
                         .frame(maxWidth: .infinity)
                 }
-                .padding(.bottom, 67)
+                .padding(.bottom, 67 + 8)
             }
         }
+        .padding(Paddings.outsideHorizontalPadding)
         .ignoresSafeArea()
     }
 }
