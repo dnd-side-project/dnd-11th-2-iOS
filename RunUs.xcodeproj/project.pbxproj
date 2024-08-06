@@ -18,7 +18,6 @@
 		D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */; };
 		D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */; };
 		D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */; };
-		D9F5B8542C608990009CEB19 /* StoreDIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8532C608990009CEB19 /* StoreDIManager.swift */; };
 		D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */; };
 		D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */; };
 		D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */; };
@@ -58,7 +57,6 @@
 		D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNetwork.swift; sourceTree = "<group>"; };
 		D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEndpoint.swift; sourceTree = "<group>"; };
-		D9F5B8532C608990009CEB19 /* StoreDIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDIManager.swift; sourceTree = "<group>"; };
 		D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+extension.swift"; sourceTree = "<group>"; };
 		D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeView.swift; sourceTree = "<group>"; };
 		D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeFeature.swift; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
 				F6F085702C59338B00994E34 /* UserEnvironment.swift */,
 				D97D9FE32C6078BD00C663BD /* LocationManager.swift */,
-				D9F5B8532C608990009CEB19 /* StoreDIManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -365,7 +362,6 @@
 				D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */,
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
-				D9F5B8542C608990009CEB19 /* StoreDIManager.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				F6AB2E952C5C7C4B0015A1CA /* LoginDependency.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,

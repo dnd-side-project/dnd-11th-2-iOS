@@ -10,7 +10,9 @@ import ComposableArchitecture
 
 struct RunAloneHomeView: View {
     @Environment(\.dismiss) var dismiss
-    let store: StoreOf<RunAloneHomeFeature> = StoreDIManager.runAloneHome
+    let store: StoreOf<RunAloneHomeFeature> = .init(
+        initialState: RunAloneHomeFeature.State(),
+        reducer: { RunAloneHomeFeature() })
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
