@@ -10,14 +10,34 @@ import SwiftUI
 
 enum Fonts {
     // pretendard
-    static let pretendardBlack = "Pretendard-Black"
-    static let pretendardBold = "Pretendard-Bold"
-    static let pretendardExtraBold = "Pretendard-ExtraBold"
-    static let pretendardExtraLight = "Pretendard-ExtraLight"
-    static let pretendardLight = "Pretendard-Light"
-    static let pretendardMedium = "Pretendard-Mideum"
-    static let pretendardRegular = "Pretendard-Regular"
-    static let pretendardSemiBold = "Pretendard-SemiBold"
-    static let pretendardThin = "Pretendard-Thin"
-    static let pretendardVariable = "PretendardVariable"
+    static func pretendardBlack(size: CGFloat) -> Font {
+        return .custom("Pretendard-Black", size: size)
+    }
+    static func pretendardBold(size: CGFloat) -> Font {
+        return .custom("Pretendard-Bold", size: size)
+    }
+    static func pretendardExtraBold(size: CGFloat) -> Font {
+        return .custom("Pretendard-ExtraBold", size: size)
+    }
+    static func pretendardExtraLight(size: CGFloat) -> Font {
+        return .custom("Pretendard-ExtraLight", size: size)
+    }
+    static func pretendardLight(size: CGFloat) -> Font {
+        return .custom("Pretendard-Light", size: size)
+    }
+    static func pretendardMedium(size: CGFloat) -> Font {
+        return .custom("Pretendard-Mideum", size: size)
+    }
+    static func pretendardRegular(size: CGFloat) -> Font {
+        return .custom("Pretendard-Regular", size: size)
+    }
+    static func pretendardSemiBold(size: CGFloat) -> Font {
+        return .custom("Pretendard-SemiBold", size: size)
+    }
+    static func pretendardThin(size: CGFloat) -> Font {
+        return .custom("Pretendard-Thin", size: size)
+    }
+    static func pretendardVariable(size: CGFloat) -> Font {
+        return .custom("PretendardVariable", size: size)
+    }
 }
