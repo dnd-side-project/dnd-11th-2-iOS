@@ -11,13 +11,12 @@ import ComposableArchitecture
 @Reducer
 struct RunAloneHomeFeature {
     
-    @ObservableState
     struct State: Equatable {
-        var showLocationPermissionAlert = false
-        
+        @BindingState var showLocationPermissionAlert: Bool = false
     }
     
-    enum Action: Equatable {
+    enum Action: Equatable, BindableAction {
+        case binding(BindingAction<State>)
         case onAppear
         case requestLocationPermission
         case locationPermissionAlertChanged(Bool)
@@ -26,6 +25,8 @@ struct RunAloneHomeFeature {
     @Dependency(\.locationManager) var locationManager
     
     var body: some Reducer<State, Action> {
+        BindingReducer()
+        
         Reduce { state, action in
             switch action {
             case .onAppear:
@@ -43,6 +44,8 @@ struct RunAloneHomeFeature {
                 return .none
             case .locationPermissionAlertChanged(let alert):
                 state.showLocationPermissionAlert = alert
+                return .none
+            case .binding(_):
                 return .none
             }
         }

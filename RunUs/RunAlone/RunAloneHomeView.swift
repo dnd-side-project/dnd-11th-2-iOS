@@ -14,16 +14,12 @@ struct RunAloneHomeView: View {
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            let showLocationPermissionAlert = viewStore.binding(
-                get: \.showLocationPermissionAlert,
-                send: { .locationPermissionAlertChanged($0) })
-            
             Text("혼자 뛰기 화면")
                 .onAppear {
                     store.send(.onAppear)
                 }
                 .alert(Bundle.main.locationString,
-                       isPresented: showLocationPermissionAlert) {
+                       isPresented: viewStore.$showLocationPermissionAlert) {
                     Button("취소", role: .cancel) {
                         
                     }
