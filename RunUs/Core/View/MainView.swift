@@ -13,7 +13,7 @@ struct MainView: View {
     
     var body: some View {
         if userEnvironment.isLogin { HomeView() }
-        else                       { LoginView() }
+        else                       { LoginView(userEnvironment: userEnvironment) }
     }
 }
 

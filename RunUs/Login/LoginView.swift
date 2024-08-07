@@ -11,11 +11,14 @@ import AuthenticationServices
 
 struct LoginView: View {
     @Environment(\.window) var window: UIWindow?
-    @EnvironmentObject var userEnvironment: UserEnvironment
-    var store: StoreOf<LoginStore> = Store(
-        initialState: LoginStore.State(userEnvironment: UserEnvironment()),
-        reducer: { LoginStore() }
-    )
+    var store: StoreOf<LoginStore>
+    
+    init(userEnvironment: UserEnvironment) {
+        store = Store(
+            initialState: LoginStore.State(userEnvironment: userEnvironment),
+            reducer: { LoginStore() }
+        )
+    }
     
     var body: some View {
         VStack {
@@ -57,9 +60,6 @@ struct LoginView: View {
                 .frame(height: 48)
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 67 + 8)
-                .onAppear {
-                    viewStore.send(.setUserEnvironment(userEnvironment))
-                }
             }
         }
         .padding(Paddings.outsideHorizontalPadding)
@@ -68,12 +68,6 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(
-        store: Store(
-            initialState: LoginStore.State(userEnvironment: UserEnvironment()),
-            reducer: { LoginStore() }
-        )
-    )
-    .background(Colors.background)
-    .environmentObject(UserEnvironment())
+    LoginView(userEnvironment: UserEnvironment())
+        .background(Colors.background)
 }

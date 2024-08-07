@@ -15,7 +15,6 @@ struct LoginStore: Reducer {
     }
     
     enum Action {
-        case setUserEnvironment(UserEnvironment)
         case isLoginChanged(Bool)
         
         case appleLoginRequest(ASAuthorizationAppleIDRequest)
@@ -28,9 +27,6 @@ struct LoginStore: Reducer {
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case let .setUserEnvironment(userEnvironment):
-            state.userEnvironment = userEnvironment
-            return .none
         case let .isLoginChanged(isLogin):
             state.userEnvironment.isLogin = isLogin
             return .none
