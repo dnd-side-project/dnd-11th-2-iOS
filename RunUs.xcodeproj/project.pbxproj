@@ -168,8 +168,8 @@
 		D9D0B7502C5D46CA00D13160 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
 				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
+				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
 				F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */,
 				F66AA1AD2C5FA99400763670 /* AppleLoginManager.swift */,
 			);

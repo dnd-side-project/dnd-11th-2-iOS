@@ -10,7 +10,11 @@ import ComposableArchitecture
 
 struct LoginView: View {
     @Environment(\.window) var window: UIWindow?
-    let store: StoreOf<LoginStore>
+    @EnvironmentObject var userEnvironment: UserEnvironment
+    var store: StoreOf<LoginStore> = Store(
+        initialState: LoginStore.State(userEnvironment: UserEnvironment()),
+        reducer: { LoginStore() }
+    )
     
     var body: some View {
         VStack {
@@ -48,6 +52,9 @@ struct LoginView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .padding(.bottom, 67 + 8)
+                .onAppear {
+                    viewStore.send(.setUserEnvironment(userEnvironment))
+                }
             }
         }
         .padding(Paddings.outsideHorizontalPadding)

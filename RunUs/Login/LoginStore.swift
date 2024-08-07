@@ -11,23 +11,13 @@ import ComposableArchitecture
 
 struct LoginStore: Reducer {
     struct State: Equatable {
-        static func == (lhs: LoginStore.State, rhs: LoginStore.State) -> Bool {
-            return lhs.isLogin == rhs.isLogin
-        }
-        
         var userEnvironment: UserEnvironment
-        var isLogin: Bool {
-            get {
-                return userEnvironment.isLogin
-            }
-            set(newValue) {
-                userEnvironment.isLogin = newValue
-            }
-        }
         var appleLoginManager: AppleLoginManager?
     }
     
     enum Action: Equatable {
+        case setUserEnvironment(UserEnvironment)
+        case isLoginChanged(Bool)
         case doAppleLogin(UIWindow?)
         case appleLoginResponse(Data)
     }
@@ -36,6 +26,12 @@ struct LoginStore: Reducer {
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
+        case let .setUserEnvironment(userEnvironment):
+            state.userEnvironment = userEnvironment
+            return .none
+        case let .isLoginChanged(isLogin):
+            state.userEnvironment.isLogin = isLogin
+            return .none
         case let .doAppleLogin(window):
             state.appleLoginManager = AppleLoginManager(window: window)
             state.appleLoginManager!.doAppleLogin()
@@ -46,9 +42,7 @@ struct LoginStore: Reducer {
 //            }
         case let .appleLoginResponse(data):
             print(String(decoding: data, as: UTF8.self))
-            state.isLogin = true
-            return .none
+            return .send(.isLoginChanged(true))
         }
     }
-
 }

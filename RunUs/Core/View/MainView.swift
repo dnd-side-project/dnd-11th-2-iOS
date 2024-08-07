@@ -13,14 +13,7 @@ struct MainView: View {
     
     var body: some View {
         if userEnvironment.isLogin { HomeView() }
-        else {
-            LoginView(
-                store: Store(
-                    initialState: LoginStore.State(userEnvironment: userEnvironment),
-                    reducer: { LoginStore() }
-                )
-            )
-        }
+        else                       { LoginView() }
     }
 }
 
