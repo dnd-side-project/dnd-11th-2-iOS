@@ -32,12 +32,13 @@
 		F64FBE382C566AE10024E920 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */; };
 		F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE302C566AE10024E920 /* Pretendard-Light.otf */; };
 		F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */; };
-		F66AA1AE2C5FA99400763670 /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AA1AD2C5FA99400763670 /* AppleLoginManager.swift */; };
 		F66AA1B02C5FADCF00763670 /* WindowEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AA1AF2C5FADCF00763670 /* WindowEnvironment.swift */; };
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
-		F6AB2E952C5C7C4B0015A1CA /* LoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */; };
+		F6B9A33C2C63123900743FBE /* AppleLoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33B2C63123900743FBE /* AppleLoginDependency.swift */; };
+		F6B9A33E2C63287400743FBE /* AppleLoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33D2C63287400743FBE /* AppleLoginResponseModel.swift */; };
+		F6E2A8382C607E7B0006CD2E /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2A8372C607E7B0006CD2E /* Icons.swift */; };
 		F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88732C4E7FF5008EF2FD /* SplashView.swift */; };
 		F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88752C4E802E008EF2FD /* MainView.swift */; };
 		F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88772C4E839A008EF2FD /* LoginView.swift */; };
@@ -75,12 +76,13 @@
 		F64FBE302C566AE10024E920 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		F64FBE3B2C566B110024E920 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		F66AA1AD2C5FA99400763670 /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		F66AA1AF2C5FADCF00763670 /* WindowEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowEnvironment.swift; sourceTree = "<group>"; };
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
-		F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDependency.swift; sourceTree = "<group>"; };
+		F6B9A33B2C63123900743FBE /* AppleLoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginDependency.swift; sourceTree = "<group>"; };
+		F6B9A33D2C63287400743FBE /* AppleLoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginResponseModel.swift; sourceTree = "<group>"; };
+		F6E2A8372C607E7B0006CD2E /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		F6EF88732C4E7FF5008EF2FD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F6EF88752C4E802E008EF2FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F6EF88772C4E839A008EF2FD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -170,8 +172,8 @@
 			children = (
 				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
 				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
-				F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */,
-				F66AA1AD2C5FA99400763670 /* AppleLoginManager.swift */,
+				F6B9A33B2C63123900743FBE /* AppleLoginDependency.swift */,
+				F6B9A33D2C63287400743FBE /* AppleLoginResponseModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -352,6 +354,9 @@
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
 				D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */,
 				D9D0B7182C4F553800D13160 /* RUError.swift in Sources */,
+				F6B9A33E2C63287400743FBE /* AppleLoginResponseModel.swift in Sources */,
+				F6F085692C58C91200994E34 /* Colors.swift in Sources */,
+				F6B9A33C2C63123900743FBE /* AppleLoginDependency.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
 				D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */,
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
@@ -364,8 +369,6 @@
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
-				F6AB2E952C5C7C4B0015A1CA /* LoginDependency.swift in Sources */,
-				F66AA1AE2C5FA99400763670 /* AppleLoginManager.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,

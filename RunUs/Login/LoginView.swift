@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import AuthenticationServices
 
 struct LoginView: View {
     @Environment(\.window) var window: UIWindow?
@@ -31,9 +32,15 @@ struct LoginView: View {
             .padding(.top, 160 + 8)
             Spacer()
             WithViewStore(store, observe: { $0 }) { viewStore in
-                Button {
-                    viewStore.send(.doAppleLogin(window))
-                } label: {
+                ZStack {
+                    SignInWithAppleButton(
+                        onRequest: { request in
+                            viewStore.send(.appleLoginRequest(request))
+                        },
+                        onCompletion: { result in
+                            viewStore.send(.appleLoginResult(result))
+                        }
+                    )
                     Label(  // 추후 컴포넌트화하기
                         title: {
                             Text("Apple ID로 시작하기")
@@ -41,16 +48,14 @@ struct LoginView: View {
                         },
                         icon: { Image(systemName: "apple.logo") }
                     )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .foregroundColor(Colors.black)
+                    .background(Colors.white)
+                    .allowsHitTesting(false)
                 }
+                .cornerRadius(24)
+                .frame(height: 48)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.black)
-                .background {
-                    Rectangle()
-                        .fill(.white)
-                        .cornerRadius(24)
-                        .frame(height: 48)
-                        .frame(maxWidth: .infinity)
-                }
                 .padding(.bottom, 67 + 8)
                 .onAppear {
                     viewStore.send(.setUserEnvironment(userEnvironment))
@@ -69,5 +74,6 @@ struct LoginView: View {
             reducer: { LoginStore() }
         )
     )
-    .background(Color.background)
+    .background(Colors.background)
+    .environmentObject(UserEnvironment())
 }
