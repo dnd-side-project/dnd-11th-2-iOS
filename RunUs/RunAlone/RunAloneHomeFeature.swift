@@ -25,6 +25,7 @@ struct RunAloneHomeFeature {
         case locationPermissionAlertChanged(Bool)
         case todayChallengeListChanged([TodayChallenge])
         case selectedChallengeChanged(Int)
+        case startButtonTapped
     }
     
     @Dependency(\.locationManager) var locationManager
@@ -35,29 +36,15 @@ struct RunAloneHomeFeature {
         
         Reduce { state, action in
             switch action {
+            case .binding(_):
+                return .none
             case .onAppear:
-                return .run { send in
-                    let data = try await serverNetwork.getTodayChallenge()
-                    await send(.todayChallengeListChanged(data))
-                    
-                    let status = locationManager.authorizationStatus
-                    switch status {
-                    case .agree:
-                        break
-                    case .disagree:
-                        await send(.locationPermissionAlertChanged(true))
-                    case .notyet:
-                        await send(.requestLocationPermission)
-                    }
-                }
-
+                return onAppearEffect()
             case .requestLocationPermission:
                 locationManager.requestLocationPermission()
                 return .none
             case .locationPermissionAlertChanged(let alert):
                 state.showLocationPermissionAlert = alert
-                return .none
-            case .binding(_):
                 return .none
             case .todayChallengeListChanged(let list):
                 state.todayChallengeList = list
@@ -71,7 +58,39 @@ struct RunAloneHomeFeature {
                           isSelected: id == $0.id)
                 }
                 return .none
+            case .startButtonTapped:
+                return startButtonTappedEffect()
             }
+        }
+    }
+    
+    private func onAppearEffect() -> Effect<Action> {
+        .run { send in
+            let data = try await serverNetwork.getTodayChallenge()
+            await send(.todayChallengeListChanged(data))
+            
+            let status = locationManager.authorizationStatus
+            switch status {
+            case .agree:
+                break
+            case .disagree:
+                await send(.locationPermissionAlertChanged(true))
+            case .notyet:
+                await send(.requestLocationPermission)
+            }
+        }
+    }
+    
+    private func startButtonTappedEffect() -> Effect<Action> {
+        let status = locationManager.authorizationStatus
+        switch status {
+        case .agree:
+            //TODO: 목표 설정 + 시작 화면 구현후 로직 구현
+            return .none
+        case .disagree:
+            return .send(.locationPermissionAlertChanged(true))
+        case .notyet:
+            return .send(.requestLocationPermission)
         }
     }
 }
