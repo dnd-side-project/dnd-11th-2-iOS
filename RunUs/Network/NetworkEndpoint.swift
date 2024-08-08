@@ -13,7 +13,7 @@ protocol NetworkEndpoint {
     var method: NetworkMethod { get }
     var parameters: [URLQueryItem]? { get }
     var header: [String: String]? { get }
-    var body: Data? { get }
+    var body: Encodable? { get }
 }
 
 enum NetworkMethod: String {

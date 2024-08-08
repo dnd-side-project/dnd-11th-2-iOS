@@ -44,5 +44,5 @@ enum ServerEndpoint: NetworkEndpoint {
         }
     }
     var header: [String : String]? { nil }
-    var body: Data? { nil }
+    var body: Encodable? { nil }
 }
