@@ -19,16 +19,19 @@ struct RunAloneHomeView: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ZStack {
                 Map()
-                VStack(spacing: 53) {
+                VStack(spacing: 0) {
                     VStack(spacing: 0) {
                         RUNavigationBar(buttonType: .back,
                                         title: "혼자뛰기")
                         todayChallengeView(isOn: viewStore.$todayChallengeToggle)
                     }
                     if viewStore.todayChallengeToggle {
-                        todayChallengeCardView(viewStore.todayChallengeList)
+                        todayChallengeListView(viewStore.todayChallengeList)
                     }
                     Spacer()
+                    startButton
+                    Spacer()
+                        .frame(height: 95)
                 }
                 
             }
@@ -49,6 +52,23 @@ struct RunAloneHomeView: View {
 }
 
 extension RunAloneHomeView {
+    
+    private var startButton: some View {
+        Button(action: {
+            store.send(.startButtonTapped)
+        }, label: {
+            ZStack {
+                Circle()
+                    .frame(width: 92, height: 92)
+                    .foregroundStyle(Color.mainGreen)
+                    .shadow(color: .black.opacity(0.25), radius: 10, x: 1, y: 1)
+                Text("start")
+                    .font(Fonts.pretendardBold(size: 24))
+                    .foregroundStyle(Color.background)
+            }
+        })
+    }
+    
     private func todayChallengeView(isOn: Binding<Bool>) -> some View {
         HStack {
             Text("오늘의 챌린지")
@@ -63,9 +83,9 @@ extension RunAloneHomeView {
         .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
     }
     
-    private func todayChallengeCardView(_ list: [TodayChallenge]) -> some View {
+    private func todayChallengeListView(_ list: [TodayChallenge]) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
+            HStack(spacing: 12) {
                 ForEach(list.indices, id: \.self) { index in
                     Button(action: {
                         store.send(.selectedChallengeChanged(list[index].id))
@@ -76,6 +96,7 @@ extension RunAloneHomeView {
                     .padding(.trailing, index == list.count-1 ? 47 : 0)
                 }
             }
+            .padding(.vertical, 54)
         }
     }
 }
