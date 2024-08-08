@@ -51,8 +51,8 @@ struct LoginView: View {
                         icon: { Image(systemName: "apple.logo") }
                     )
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .foregroundColor(Colors.black)
-                    .background(Colors.white)
+                    .foregroundColor(.black)
+                    .background(.white)
                     .allowsHitTesting(false)
                 }
                 .cornerRadius(24)
@@ -68,5 +68,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView(userEnvironment: UserEnvironment())
-        .background(Colors.background)
+        .background(Color.background)
 }
