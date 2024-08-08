@@ -54,4 +54,44 @@ class ServerNetwork {
             }
             .eraseToAnyPublisher()
     }
+    
+    func request<T: Decodable>(_ endpoint: ServerEndpoint) async throws -> T {
+        do {
+            let response: ServerResponse<T> = try await NetworkService.shared.request(endpoint)
+            
+            if let data = response.data, response.success {
+                return data
+            } else if let error = response.error {
+                throw NetworkError.server(error: error)
+            } else {
+                throw NetworkError.parse
+            }
+        } catch {
+           throw mapError(error)
+        }
+    }
+    
+    func request(_ endpoint: ServerEndpoint) async throws -> Void {
+        do {
+            let response: ServerResponse<EmptyData> = try await NetworkService.shared.request(endpoint)
+            
+            if response.success {
+                return
+            } else if let error = response.error {
+                throw NetworkError.server(error: error)
+            } else {
+                throw NetworkError.unknown
+            }
+        } catch {
+            throw mapError(error)
+        }
+    }
+    
+    private func mapError(_ error: Error) -> NetworkError {
+        if let networkError = error as? NetworkError {
+            return networkError
+        } else {
+            return NetworkError.unknown
+        }
+    }
 }

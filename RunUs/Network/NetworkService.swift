@@ -54,5 +54,21 @@ class NetworkService {
         
         return request
     }
+    
+    func request<T: Decodable>(_ endpoint: NetworkEndpoint) async throws -> T {
+        guard let url = configureURL(endpoint) else {
+            throw NetworkError.request
+        }
+        
+        let request = configureRequest(url: url, endpoint)
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let decodeData = try JSONDecoder().decode(T.self, from: data)
+            return decodeData
+        } catch {
+            throw NetworkError.parse
+        }
+    }
 }
 
