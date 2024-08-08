@@ -61,5 +61,5 @@ struct LoginView: View {
             reducer: { LoginStore() }
         )
     )
-    .background(Colors.background)
+    .background(Color.background)
 }

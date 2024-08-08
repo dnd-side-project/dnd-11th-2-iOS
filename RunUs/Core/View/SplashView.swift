@@ -28,5 +28,5 @@ struct SplashView: View {
 
 #Preview {
     SplashView(isLoading: .constant(true))
-        .background(Colors.background)
+        .background(Color.background)
 }
