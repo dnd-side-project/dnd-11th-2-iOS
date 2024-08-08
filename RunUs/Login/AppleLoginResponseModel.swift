@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AppleLoginResponseModel: Codable {
+struct AppleLoginResponseModel: Decodable {
     let accessToken: String
     let refreshToken: String
 }

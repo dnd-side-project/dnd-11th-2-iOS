@@ -7,6 +7,7 @@
 
 import Foundation
 import Dependencies
+import AuthenticationServices
 
 extension DependencyValues {
     var appleLoginDependency: AppleLoginDependencyKey {
@@ -16,14 +17,24 @@ extension DependencyValues {
 }
 
 struct AppleLoginDependencyKey {
-    var fetch: (String, String, String) async throws -> ServerResponse<AppleLoginResponseModel>
+    var fetch: (ASAuthorization) async throws -> ServerResponse<AppleLoginResponseModel>?
 }
 
 extension AppleLoginDependencyKey: DependencyKey {
-    static let liveValue = Self { name, email, IdToken in
+    static let liveValue = Self { authorization in
         fetch: do {
-            let serverResponse: ServerResponse<AppleLoginResponseModel> = ServerResponse(success: true, data: nil, error: nil)
-            return serverResponse
+            if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+                let fullName = appleIDCredential.fullName
+                let name =  (fullName?.familyName ?? "") + (fullName?.givenName ?? "")
+                let email = appleIDCredential.email ?? ""
+                let idToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
+                
+                let appleLoginRequest = AppleLoginRequestModel(name: name, email: email, idToken: idToken)
+                let result: AppleLoginResponseModel = try await ServerNetwork.shared.request(.appleLogin(appleLoginRequest: appleLoginRequest))
+                return ServerResponse(success: true, data: result, error: nil)
+            } else {
+                return nil
+            }
         }
     }
 }

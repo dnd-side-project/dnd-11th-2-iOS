@@ -11,6 +11,7 @@ enum ServerEndpoint: NetworkEndpoint {
     case testRequest(string: String)
     case testResponse
     case testError
+    case appleLogin(appleLoginRequest: AppleLoginRequestModel)
     
     var baseURL: URL? { URL(string: "https://api.runus.site") }
     
@@ -26,6 +27,8 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/examples/empty"
         case .testError:
             return APIversion.v1 + "/examples/errors"
+        case .appleLogin:
+            return APIversion.v1 + "/auth/oauth"
         }
     }
     
@@ -33,16 +36,25 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .testRequest, .testResponse, .testError:
             return .get
+        case .appleLogin:
+            return .post
         }
     }
     var parameters: [URLQueryItem]? {
         switch self {
         case .testRequest(let string):
             return [.init(name: "input", value: string)]
-        case .testResponse, .testError:
+        default:
             return nil
         }
     }
     var header: [String : String]? { nil }
-    var body: Encodable? { nil }
+    var body: Encodable? {
+        switch self {
+        case .appleLogin(let appleLoginRequest):
+            return appleLoginRequest
+        default:
+            return nil
+        }
+    }
 }

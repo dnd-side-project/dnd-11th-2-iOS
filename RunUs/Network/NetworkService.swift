@@ -50,6 +50,7 @@ class NetworkService {
         
         if let body = endpoint.body {
             request.httpBody = try? JSONEncoder().encode(body)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         
         return request
