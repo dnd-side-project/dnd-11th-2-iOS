@@ -30,7 +30,7 @@ struct RUNavigationBar: View {
         }
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
         .frame(height: 56)
-        .background(Colors.background)
+        .background(Color.background)
     }
 }
 

@@ -59,7 +59,7 @@ extension RunAloneHomeView {
         }
         .frame(height: 80)
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
-        .background(.background)
+        .background(Color.background)
         .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
     }
     
