@@ -13,6 +13,7 @@ struct HomeView: View {
         NavigationView{
             NavigationLink {
                 RunAloneHomeView()
+                    .navigationBarBackButtonHidden()
             } label: {
                 Text("혼자뛰기")
             }
