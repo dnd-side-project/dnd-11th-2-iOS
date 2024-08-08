@@ -14,7 +14,7 @@ struct RunUsApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                Colors.background.ignoresSafeArea()
+                Color.background.ignoresSafeArea()
                 if isLoading { SplashView(isLoading: $isLoading) }
                 else         { MainView().environmentObject(UserEnvironment()) } // 추후 네이밍 수정
             }
