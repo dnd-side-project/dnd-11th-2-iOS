@@ -10,7 +10,6 @@ import ComposableArchitecture
 import AuthenticationServices
 
 struct LoginView: View {
-    @Environment(\.window) var window: UIWindow?
     var store: StoreOf<LoginStore>
     
     init(userEnvironment: UserEnvironment) {
