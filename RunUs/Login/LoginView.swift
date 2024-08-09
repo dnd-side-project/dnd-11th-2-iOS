@@ -61,7 +61,7 @@ struct LoginView: View {
                 .padding(.bottom, 67 + 8)
             }
         }
-        .padding(Paddings.outsideHorizontalPadding)
+        .padding(.horizontal, Paddings.outsideHorizontalPadding)
         .ignoresSafeArea()
     }
 }
