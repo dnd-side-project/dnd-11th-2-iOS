@@ -9,14 +9,11 @@ import SwiftUI
 
 @main
 struct RunUsApp: App {
-    @State var isLoading: Bool = true
-    
     var body: some Scene {
         WindowGroup {
             ZStack {
                 Color.background.ignoresSafeArea()
-                if isLoading { SplashView(isLoading: $isLoading) }
-                else         { MainView().environmentObject(UserEnvironment()) } // 추후 네이밍 수정
+                RunUs().environmentObject(UserEnvironment())
             }
         }
     }

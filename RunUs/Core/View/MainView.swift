@@ -12,8 +12,10 @@ struct MainView: View {
     @EnvironmentObject var userEnvironment: UserEnvironment
     
     var body: some View {
-        if userEnvironment.isLogin { HomeView() }
-        else                       { LoginView(userEnvironment: userEnvironment) }
+        VStack {
+            if userEnvironment.isLogin { HomeView() }
+            else                       { LoginView(userEnvironment: userEnvironment) }
+        }
     }
 }
 

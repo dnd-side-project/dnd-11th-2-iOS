@@ -36,6 +36,8 @@
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
 		F6AC52DE2C6505AE00654820 /* AppleLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DD2C6505AE00654820 /* AppleLoginRequestModel.swift */; };
+		F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */; };
+		F6AC52E22C66345500654820 /* RunUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52E12C66345500654820 /* RunUs.swift */; };
 		F6B9A33C2C63123900743FBE /* AppleLoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33B2C63123900743FBE /* AppleLoginDependency.swift */; };
 		F6B9A33E2C63287400743FBE /* AppleLoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33D2C63287400743FBE /* AppleLoginResponseModel.swift */; };
 		F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88732C4E7FF5008EF2FD /* SplashView.swift */; };
@@ -79,6 +81,8 @@
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		F6AC52DD2C6505AE00654820 /* AppleLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRequestModel.swift; sourceTree = "<group>"; };
+		F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		F6AC52E12C66345500654820 /* RunUs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunUs.swift; sourceTree = "<group>"; };
 		F6B9A33B2C63123900743FBE /* AppleLoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginDependency.swift; sourceTree = "<group>"; };
 		F6B9A33D2C63287400743FBE /* AppleLoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginResponseModel.swift; sourceTree = "<group>"; };
 		F6EF88732C4E7FF5008EF2FD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 		D9D0B7512C5D46F900D13160 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F6AC52E12C66345500654820 /* RunUs.swift */,
 				F6EF88732C4E7FF5008EF2FD /* SplashView.swift */,
 				F6EF88752C4E802E008EF2FD /* MainView.swift */,
 				D90CDD782C6A623F00197214 /* CountDownView.swift */,
@@ -203,6 +208,7 @@
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
 				F6F085702C59338B00994E34 /* UserEnvironment.swift */,
 				D97D9FE32C6078BD00C663BD /* LocationManager.swift */,
+				F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 				F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */,
 				F6F085712C59338B00994E34 /* UserEnvironment.swift in Sources */,
 				D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */,
+				F6AC52E22C66345500654820 /* RunUs.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
 				D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */,
@@ -369,6 +376,7 @@
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
+				F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
 				F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */,

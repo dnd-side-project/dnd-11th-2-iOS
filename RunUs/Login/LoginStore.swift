@@ -32,8 +32,7 @@ struct LoginStore: Reducer {
             state.userEnvironment.isLogin = isLogin
             return .none
         case .failLogin:
-            // 로그인에 실패했을 때 처리
-            print("Login is Failed")
+            UserDefaultManager.accessToken = nil
             return .none
             
         case let .appleLoginRequest(request):
@@ -64,8 +63,7 @@ struct LoginStore: Reducer {
             guard let responseData: AppleLoginResponseModel = response.data else {
                 return .send(.failLogin)
             }
-            // accessToken를 어딘가에 넣어두고 계속 사용해야 함
-            print("accessToken is \(responseData.accessToken)")
+            UserDefaultManager.accessToken = responseData.accessToken
             return .send(.isLoginChanged(response.success))
         }
     }
