@@ -15,8 +15,7 @@ struct LoginStore: Reducer {
     }
     
     enum Action {
-        case isLoginChanged(Bool)
-        case failLogin
+        case changeLoginStatus(isLogin: Bool, accessToken: String?)
         
         case appleLoginRequest(ASAuthorizationAppleIDRequest)
         case appleLoginResult((Result<ASAuthorization, any Error>))
@@ -28,11 +27,9 @@ struct LoginStore: Reducer {
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case let .isLoginChanged(isLogin):
+        case let .changeLoginStatus(isLogin, accessToken):
             state.userEnvironment.isLogin = isLogin
-            return .none
-        case .failLogin:
-            UserDefaultManager.accessToken = nil
+            UserDefaultManager.accessToken = accessToken
             return .none
             
         case let .appleLoginRequest(request):
@@ -46,25 +43,21 @@ struct LoginStore: Reducer {
                         let response = try await appleLoginDependency.fetch(authorization)
                         await send(.appleLoginResponse(response))
                     } catch {
-                        await send(.failLogin)
+                        await send(.changeLoginStatus(isLogin: false, accessToken: nil))
                     }
                 }
             case .failure(let error):
-                print(error.localizedDescription)
-                return .run { send in
-                    await send(.failLogin)
-                }
+                return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
             }
             
         case let .appleLoginResponse(response):
             guard let response: ServerResponse<AppleLoginResponseModel> = response else {
-                return .send(.failLogin)
+                return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
             }
             guard let responseData: AppleLoginResponseModel = response.data else {
-                return .send(.failLogin)
+                return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
             }
-            UserDefaultManager.accessToken = responseData.accessToken
-            return .send(.isLoginChanged(response.success))
+            return .send(.changeLoginStatus(isLogin: response.success, accessToken: responseData.accessToken))
         }
     }
 }
