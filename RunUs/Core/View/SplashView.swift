@@ -12,11 +12,10 @@ struct SplashView: View {
     
     var body: some View {
         VStack {
-            Image("SampleImage")  // 추후 변경
+            Image(.splash)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 160, height: 160)
-                .cornerRadius(20)
+                .frame(width: 79)
         }
         .onAppear {
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in

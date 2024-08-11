@@ -12,18 +12,27 @@ struct LoginView: View {
     let store: StoreOf<LoginStore>
     
     var body: some View {
-        VStack {
-            HStack {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Run Earth With Runus!")
-                        .font(Fonts.pretendardMedium(size: 24))
-                    Text("런어스랑 지구한바퀴 뛰어보기")
-                        .font(Fonts.pretendardExtraBold(size: 24))
+        VStack(alignment: .leading) {
+            Spacer()
+            Spacer()
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 0) {
+                    Text("Run ")
+                        .foregroundStyle(.white)
+                    Text("Earth ")
+                    Text("With ")
+                        .foregroundStyle(.white)
+                    Text("Runus!")
                 }
-                Spacer()
+                .font(Fonts.pretendardSemiBold(size: 24))
+                Text("런어스랑 지구한바퀴 뛰어보기")
+                    .font(Fonts.pretendardExtraBold(size: 24))
             }
-            .foregroundStyle(.white)
-            .padding(.top, 160 + 8)
+            .foregroundStyle(.mainGreen)
+            .padding(Paddings.outsideHorizontalPadding)
+            Image(.login)
+                .resizable()
+                .scaledToFit()
             Spacer()
             WithViewStore(store, observe: { $0 }) { viewStore in
                 Button {
@@ -46,10 +55,10 @@ struct LoginView: View {
                         .frame(height: 48)
                         .frame(maxWidth: .infinity)
                 }
-                .padding(.bottom, 67 + 8)
+                .padding(Paddings.outsideHorizontalPadding)
             }
+            Spacer()
         }
-        .padding(Paddings.outsideHorizontalPadding)
         .ignoresSafeArea()
     }
 }
