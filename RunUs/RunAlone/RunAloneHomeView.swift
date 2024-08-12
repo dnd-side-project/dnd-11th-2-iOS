@@ -88,7 +88,7 @@ extension RunAloneHomeView {
                     Button(action: {
                         store.send(.selectChallenge(list[index].id))
                     }, label: {
-                        ChallengeCell(challenge: list[index])
+                        TodayChallengeListItemView(challenge: list[index])
                     })
                     .padding(.leading, index == 0 ? 47 : 0)
                     .padding(.trailing, index == list.count-1 ? 47 : 0)

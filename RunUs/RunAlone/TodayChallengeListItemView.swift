@@ -1,5 +1,5 @@
 //
-//  ChallengeCell.swift
+//  TodayChallengeListItemView.swift
 //  RunUs
 //
 //  Created by Ryeong on 8/7/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChallengeCell: View {
+struct TodayChallengeListItemView: View {
     let challenge: TodayChallenge
     
     var body: some View {
@@ -36,5 +36,5 @@ struct ChallengeCell: View {
 }
 
 #Preview {
-    ChallengeCell(challenge: .init(id: 0, imageUrl: "SampleImage", title: "어제보다 더뛰기", estimatedMinute: 10, isSelected: true))
+    TodayChallengeListItemView(challenge: .init(id: 0, imageUrl: "SampleImage", title: "어제보다 더뛰기", estimatedMinute: 10, isSelected: true))
 }

@@ -20,7 +20,7 @@
 		D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */; };
 		D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */; };
 		D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */; };
-		D9E704AE2C649AE900212FF0 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E704AD2C649AE900212FF0 /* ChallengeCell.swift */; };
+		D9E704AE2C649AE900212FF0 /* TodayChallengeListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E704AD2C649AE900212FF0 /* TodayChallengeListItemView.swift */; };
 		D9E704B02C649AFE00212FF0 /* TodayChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E704AF2C649AFE00212FF0 /* TodayChallenge.swift */; };
 		D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */; };
 		D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */; };
@@ -63,7 +63,7 @@
 		D9D0B71F2C4FE67D00D13160 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		D9D0B7222C50BA7400D13160 /* ServerNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNetwork.swift; sourceTree = "<group>"; };
 		D9D0B7242C50BC5800D13160 /* ServerEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEndpoint.swift; sourceTree = "<group>"; };
-		D9E704AD2C649AE900212FF0 /* ChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
+		D9E704AD2C649AE900212FF0 /* TodayChallengeListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayChallengeListItemView.swift; sourceTree = "<group>"; };
 		D9E704AF2C649AFE00212FF0 /* TodayChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayChallenge.swift; sourceTree = "<group>"; };
 		D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+extension.swift"; sourceTree = "<group>"; };
 		D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeView.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 				D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */,
 				D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */,
 				D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */,
-				D9E704AD2C649AE900212FF0 /* ChallengeCell.swift */,
+				D9E704AD2C649AE900212FF0 /* TodayChallengeListItemView.swift */,
 				D9E704AF2C649AFE00212FF0 /* TodayChallenge.swift */,
 			);
 			path = RunAlone;
@@ -353,7 +353,7 @@
 				F6F085712C59338B00994E34 /* UserEnvironment.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
-				D9E704AE2C649AE900212FF0 /* ChallengeCell.swift in Sources */,
+				D9E704AE2C649AE900212FF0 /* TodayChallengeListItemView.swift in Sources */,
 				D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */,
 				D9D0B7182C4F553800D13160 /* RUError.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
