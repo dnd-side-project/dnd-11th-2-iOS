@@ -40,10 +40,8 @@ struct RunAloneHomeView: View {
             }
             .alert(Bundle.main.locationString,
                    isPresented: viewStore.$showLocationPermissionAlert) {
-                Button("취소", role: .cancel) {
-                    
-                }
-                Button("설정", role: .destructive) {
+                Button("취소") { }
+                Button("설정") {
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                 }
             }
