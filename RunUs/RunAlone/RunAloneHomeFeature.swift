@@ -29,7 +29,7 @@ struct RunAloneHomeFeature {
     }
     
     @Dependency(\.locationManager) var locationManager
-    @Dependency(\.serverNetwork) var serverNetwork
+    @Dependency(\.runAloneAPI) var api
     
     var body: some Reducer<State, Action> {
         BindingReducer()
@@ -66,7 +66,7 @@ struct RunAloneHomeFeature {
     
     private func onAppearEffect() -> Effect<Action> {
         .run { send in
-            let data = try await serverNetwork.getTodayChallenge()
+            let data = try await api.getTodayChallenge()
             await send(.setTodayChallengeList(data))
             
             let status = locationManager.authorizationStatus
