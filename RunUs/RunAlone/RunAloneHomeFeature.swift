@@ -23,8 +23,8 @@ struct RunAloneHomeFeature {
         case onAppear
         case requestLocationPermission
         case locationPermissionAlertChanged(Bool)
-        case todayChallengeListChanged([TodayChallenge])
-        case selectedChallengeChanged(Int)
+        case setTodayChallengeList([TodayChallenge])
+        case selectChallenge(Int)
         case startButtonTapped
     }
     
@@ -46,10 +46,10 @@ struct RunAloneHomeFeature {
             case .locationPermissionAlertChanged(let alert):
                 state.showLocationPermissionAlert = alert
                 return .none
-            case .todayChallengeListChanged(let list):
+            case .setTodayChallengeList(let list):
                 state.todayChallengeList = list
                 return .none
-            case .selectedChallengeChanged(let id):
+            case .selectChallenge(let id):
                 state.todayChallengeList = state.todayChallengeList.map {
                     .init(id: $0.id,
                           imageUrl: $0.imageUrl,
@@ -67,7 +67,7 @@ struct RunAloneHomeFeature {
     private func onAppearEffect() -> Effect<Action> {
         .run { send in
             let data = try await serverNetwork.getTodayChallenge()
-            await send(.todayChallengeListChanged(data))
+            await send(.setTodayChallengeList(data))
             
             let status = locationManager.authorizationStatus
             switch status {

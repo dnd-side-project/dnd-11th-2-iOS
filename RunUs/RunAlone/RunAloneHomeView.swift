@@ -88,7 +88,7 @@ extension RunAloneHomeView {
             HStack(spacing: 12) {
                 ForEach(list.indices, id: \.self) { index in
                     Button(action: {
-                        store.send(.selectedChallengeChanged(list[index].id))
+                        store.send(.selectChallenge(list[index].id))
                     }, label: {
                         ChallengeCell(challenge: list[index])
                     })
