@@ -26,6 +26,8 @@ struct RunAloneHomeView: View {
                         todayChallengeView(isOn: viewStore.$todayChallengeToggle)
                     }
                     if viewStore.todayChallengeToggle {
+                        Spacer()
+                            .frame(height: 34)
                         todayChallengeListView(viewStore.todayChallengeList)
                     }
                     Spacer()
@@ -94,7 +96,6 @@ extension RunAloneHomeView {
                     .padding(.trailing, index == list.count-1 ? 47 : 0)
                 }
             }
-            .padding(.vertical, 54)
         }
     }
 }
