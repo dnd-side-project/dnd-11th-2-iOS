@@ -17,7 +17,7 @@ extension DependencyValues {
 }
 
 struct AppleLoginDependencyKey {
-    var fetch: (ASAuthorization) async throws -> ServerResponse<AppleLoginResponseModel>?
+    var fetch: (ASAuthorization) async throws -> AppleLoginResponseModel?
 }
 
 extension AppleLoginDependencyKey: DependencyKey {
@@ -31,7 +31,7 @@ extension AppleLoginDependencyKey: DependencyKey {
                 
                 let appleLoginRequest = AppleLoginRequestModel(name: name, email: email, idToken: idToken)
                 let result: AppleLoginResponseModel = try await ServerNetwork.shared.request(.appleLogin(appleLoginRequest: appleLoginRequest))
-                return ServerResponse(success: true, data: result, error: nil)
+                return result
             } else {
                 return nil
             }

@@ -20,7 +20,7 @@ struct LoginStore: Reducer {
         case appleLoginRequest(ASAuthorizationAppleIDRequest)
         case appleLoginResult((Result<ASAuthorization, any Error>))
         
-        case appleLoginResponse(ServerResponse<AppleLoginResponseModel>?)
+        case appleLoginResponse(AppleLoginResponseModel?)
     }
     
     @Dependency(\.appleLoginDependency) var appleLoginDependency
@@ -51,13 +51,10 @@ struct LoginStore: Reducer {
             }
             
         case let .appleLoginResponse(response):
-            guard let response: ServerResponse<AppleLoginResponseModel> = response else {
+            guard let response: AppleLoginResponseModel = response else {
                 return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
             }
-            guard let responseData: AppleLoginResponseModel = response.data else {
-                return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
-            }
-            return .send(.changeLoginStatus(isLogin: response.success, accessToken: responseData.accessToken))
+            return .send(.changeLoginStatus(isLogin: true, accessToken: response.accessToken))
         }
     }
 }
