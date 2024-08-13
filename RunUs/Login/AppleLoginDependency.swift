@@ -29,7 +29,7 @@ extension AppleLoginDependencyKey: DependencyKey {
                 let email = appleIDCredential.email ?? ""
                 let idToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
                 
-                let appleLoginRequest = AppleLoginRequestModel(name: name, email: email, idToken: idToken)
+                let appleLoginRequest = AuthLoginRequestModel(socialType: "APPLE", name: name, email: email, idToken: idToken)
                 let result: AppleLoginResponseModel = try await ServerNetwork.shared.request(.appleLogin(appleLoginRequest: appleLoginRequest))
                 return result
             } else {

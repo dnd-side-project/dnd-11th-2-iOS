@@ -11,7 +11,7 @@ enum ServerEndpoint: NetworkEndpoint {
     case testRequest(string: String)
     case testResponse
     case testError
-    case appleLogin(appleLoginRequest: AppleLoginRequestModel)
+    case appleLogin(appleLoginRequest: AuthLoginRequestModel)
     
     var baseURL: URL? { URL(string: "https://api.runus.site") }
     

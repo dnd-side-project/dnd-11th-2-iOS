@@ -35,7 +35,7 @@
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
-		F6AC52DE2C6505AE00654820 /* AppleLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DD2C6505AE00654820 /* AppleLoginRequestModel.swift */; };
+		F6AC52DE2C6505AE00654820 /* AuthLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DD2C6505AE00654820 /* AuthLoginRequestModel.swift */; };
 		F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */; };
 		F6AC52E22C66345500654820 /* RunUsTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52E12C66345500654820 /* RunUsTopView.swift */; };
 		F6B9A33C2C63123900743FBE /* AppleLoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33B2C63123900743FBE /* AppleLoginDependency.swift */; };
@@ -80,7 +80,7 @@
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
-		F6AC52DD2C6505AE00654820 /* AppleLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRequestModel.swift; sourceTree = "<group>"; };
+		F6AC52DD2C6505AE00654820 /* AuthLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginRequestModel.swift; sourceTree = "<group>"; };
 		F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		F6AC52E12C66345500654820 /* RunUsTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunUsTopView.swift; sourceTree = "<group>"; };
 		F6B9A33B2C63123900743FBE /* AppleLoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginDependency.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
 				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
 				F6B9A33B2C63123900743FBE /* AppleLoginDependency.swift */,
-				F6AC52DD2C6505AE00654820 /* AppleLoginRequestModel.swift */,
+				F6AC52DD2C6505AE00654820 /* AuthLoginRequestModel.swift */,
 				F6B9A33D2C63287400743FBE /* AppleLoginResponseModel.swift */,
 			);
 			path = Login;
@@ -372,7 +372,7 @@
 				D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */,
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
-				F6AC52DE2C6505AE00654820 /* AppleLoginRequestModel.swift in Sources */,
+				F6AC52DE2C6505AE00654820 /* AuthLoginRequestModel.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
