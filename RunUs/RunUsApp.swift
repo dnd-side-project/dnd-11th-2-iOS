@@ -13,7 +13,7 @@ struct RunUsApp: App {
         WindowGroup {
             ZStack {
                 Color.background.ignoresSafeArea()
-                RunUs().environmentObject(UserEnvironment())
+                RunUsTopView().environmentObject(UserEnvironment())
             }
         }
     }
