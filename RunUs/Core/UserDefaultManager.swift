@@ -13,7 +13,7 @@ class UserDefaultManager {
 }
 
 enum UserDefaultKey: String {
-    case accessToken = ""
+    case accessToken
 }
 
 @propertyWrapper
@@ -34,7 +34,6 @@ struct UserDefault<T: Codable> {
         }
         set {
             self.storage.set(newValue, forKey: self.key.rawValue)
-            self.storage.synchronize()
         }
     }
 }
