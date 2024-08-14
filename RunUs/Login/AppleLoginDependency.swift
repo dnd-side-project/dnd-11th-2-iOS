@@ -31,6 +31,8 @@ extension AppleLoginDependencyKey: DependencyKey {
                 
                 let appleLoginRequest = AuthLoginRequestModel(socialType: "APPLE", name: name, email: email, idToken: idToken)
                 let result: AppleLoginResponseModel = try await ServerNetwork.shared.request(.appleLogin(appleLoginRequest: appleLoginRequest))
+                UserDefaultManager.name = name
+                UserDefaultManager.email = email
                 return result
             } else {
                 return nil

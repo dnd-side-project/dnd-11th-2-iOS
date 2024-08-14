@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SplashView: View {
     @Binding var isLoading: Bool
-    @EnvironmentObject var userEnvironment: UserEnvironment
     
     var body: some View {
         VStack {
@@ -20,8 +19,6 @@ struct SplashView: View {
                 .cornerRadius(20)
         }
         .onAppear {
-            let accessToken = UserDefaultManager.accessToken
-            userEnvironment.isLogin = accessToken != nil
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
                 isLoading = false
             }
@@ -32,5 +29,4 @@ struct SplashView: View {
 #Preview {
     SplashView(isLoading: .constant(true))
         .background(Color.background)
-        .environmentObject(UserEnvironment())
 }

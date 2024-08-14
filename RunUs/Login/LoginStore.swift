@@ -10,9 +10,7 @@ import ComposableArchitecture
 import AuthenticationServices
 
 struct LoginStore: Reducer {
-    struct State: Equatable {
-        var userEnvironment: UserEnvironment
-    }
+    struct State: Equatable {}
     
     enum Action {
         case changeLoginStatus(isLogin: Bool, accessToken: String?)
@@ -28,7 +26,7 @@ struct LoginStore: Reducer {
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case let .changeLoginStatus(isLogin, accessToken):
-            state.userEnvironment.isLogin = isLogin
+            UserDefaultManager.isLogin = isLogin
             UserDefaultManager.accessToken = accessToken
             return .none
             
@@ -46,7 +44,7 @@ struct LoginStore: Reducer {
                         await send(.changeLoginStatus(isLogin: false, accessToken: nil))
                     }
                 }
-            case .failure(let error):
+            case .failure(_):
                 return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
             }
             

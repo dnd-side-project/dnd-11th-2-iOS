@@ -10,14 +10,10 @@ import ComposableArchitecture
 import AuthenticationServices
 
 struct LoginView: View {
-    var store: StoreOf<LoginStore>
-    
-    init(userEnvironment: UserEnvironment) {
-        store = Store(
-            initialState: LoginStore.State(userEnvironment: userEnvironment),
-            reducer: { LoginStore() }
-        )
-    }
+    let store: StoreOf<LoginStore> = Store(
+        initialState: LoginStore.State(),
+        reducer: { LoginStore() }
+    )
     
     var body: some View {
         VStack {
@@ -67,6 +63,6 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(userEnvironment: UserEnvironment())
+    LoginView()
         .background(Color.background)
 }
