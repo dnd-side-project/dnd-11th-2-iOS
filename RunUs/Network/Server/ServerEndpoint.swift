@@ -49,8 +49,8 @@ enum ServerEndpoint: NetworkEndpoint {
         }
     }
     var header: [String : String]? {
-        switch self.method {
-        case .post:
+        switch self {
+        case .appleLogin:
             return ["Content-Type": "application/json"]
         default:
             return nil
