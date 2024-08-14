@@ -24,10 +24,16 @@ extension AppleLoginDependencyKey: DependencyKey {
     static let liveValue = Self { authorization in
         fetch: do {
             if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-                let fullName = appleIDCredential.fullName
-                let name =  (fullName?.familyName ?? "") + (fullName?.givenName ?? "")
-                let email = appleIDCredential.email ?? ""
-                let idToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
+                guard let fullName = appleIDCredential.fullName,
+                      let familyName = fullName.familyName,
+                      let givenName = fullName.givenName,
+                      let email = appleIDCredential.email,
+                      let identiTyToken = appleIDCredential.identityToken,
+                      let idToken = String(data: identiTyToken, encoding: .utf8)
+                else {
+                    throw NetworkError.unknown
+                }
+                let name = familyName + givenName
                 
                 let appleLoginRequest = AuthLoginRequestModel(socialType: "APPLE", name: name, email: email, idToken: idToken)
                 let result: AppleLoginResponseModel = try await ServerNetwork.shared.request(.appleLogin(appleLoginRequest: appleLoginRequest))
