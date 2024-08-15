@@ -38,7 +38,7 @@ struct LoginView: View {
                 Button {
                     viewStore.send(.doAppleLogin)
                 } label: {
-                    Label(  // 추후 컴포넌트화하기
+                    Label(  // TODO: 컴포넌트화
                         title: {
                             Text("Apple ID로 시작하기")
                                 .font(Fonts.pretendardVariable(size: 16))
