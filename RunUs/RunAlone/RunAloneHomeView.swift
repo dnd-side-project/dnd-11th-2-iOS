@@ -25,6 +25,9 @@ struct RunAloneHomeView: View {
                                         title: "혼자뛰기")
                         todayChallengeView(isOn: viewStore.$todayChallengeToggle)
                     }
+                    .padding(.horizontal, Paddings.outsideHorizontalPadding)
+                    .background(Color.background)
+                    
                     if viewStore.todayChallengeToggle {
                         Spacer()
                             .frame(height: 34)
@@ -78,9 +81,6 @@ extension RunAloneHomeView {
             Toggle("", isOn: isOn)
         }
         .frame(height: 80)
-        .padding(.horizontal, Paddings.outsideHorizontalPadding)
-        .background(Color.background)
-        .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
     }
     
     private func todayChallengeListView(_ list: [TodayChallenge]) -> some View {

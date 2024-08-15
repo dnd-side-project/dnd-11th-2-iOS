@@ -28,7 +28,6 @@ struct RUNavigationBar: View {
             Spacer()
             button.opacity(0)
         }
-        .padding(.horizontal, Paddings.outsideHorizontalPadding)
         .frame(height: 56)
         .background(Color.background)
     }
