@@ -7,10 +7,15 @@
 
 import SwiftUI
 import MapKit
+import ComposableArchitecture
 
 struct RunningView: View {
-    @State var isRunning: Bool = false
+    let store: StoreOf<RunningFeature> = .init(
+        initialState: RunningFeature.State(),
+        reducer: { RunningFeature() })
+    
     @State var isStateHidden: Bool = false
+    
     
     var body: some View {
         ZStack {
@@ -101,9 +106,9 @@ extension RunningView {
     
     private var runningButtons: some View {
         HStack(spacing: 22) {
-            if isRunning {
+            if store.isRunning {
                 Button(action: {
-                    isRunning = false
+                    store.send(.isRunningChanged(false))
                 }, label: {
                     CircleButtonView(.buttonPause)
                 })
@@ -115,7 +120,7 @@ extension RunningView {
                 })
                 
                 Button(action: {
-                    isRunning = true
+                    store.send(.isRunningChanged(true))
                 }, label: {
                     CircleButtonView(.buttonResume)
                 })
