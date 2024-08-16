@@ -15,11 +15,16 @@ struct RunningView: View {
         reducer: { RunningFeature() })
     
     @State var isStateHidden: Bool = false
-    
+    @State var userLocation: MapCameraPosition =
+        .userLocation(followsHeading: true, fallback: .automatic)
     
     var body: some View {
         ZStack {
-            Map()
+            Map(position: $userLocation) {
+                UserAnnotation {
+                    Image(.userLocationMark)
+                }
+            }
             VStack() {
                 Spacer()
                 if isStateHidden {
@@ -43,6 +48,9 @@ struct RunningView: View {
             }
             .ignoresSafeArea()
         }
+        .onAppear{
+            store.send(.onAppear)
+        }
     }
 }
 
@@ -65,12 +73,12 @@ extension RunningView {
                     }
                     Spacer()
                     VStack {
-                        mediumText("30:15")
+                        mediumText("\(store.time.toTimeString())")
                         smallText("시간")
                     }
                     Spacer()
                     VStack {
-                        mediumText("1.5km")
+                        mediumText("\(store.distance)km")
                         smallText("킬로미터")
                     }
                 }

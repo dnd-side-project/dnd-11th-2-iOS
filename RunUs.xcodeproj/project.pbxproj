@@ -13,6 +13,10 @@
 		D93A94EC2C4A372700BCCD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EB2C4A372700BCCD00 /* Assets.xcassets */; };
 		D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */; };
 		D95F830D2C6F5C9A000DCAA3 /* RunningFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F830C2C6F5C9A000DCAA3 /* RunningFeature.swift */; };
+		D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F830E2C6F5F64000DCAA3 /* RunningStateManager.swift */; };
+		D95F83112C6F82DF000DCAA3 /* RunningDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F83102C6F82DF000DCAA3 /* RunningDependency.swift */; };
+		D95F83132C6FAC76000DCAA3 /* Int+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F83122C6FAC76000DCAA3 /* Int+extension.swift */; };
+		D95F83172C6FB079000DCAA3 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F83162C6FB079000DCAA3 /* LocationManagerDelegate.swift */; };
 		D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97950A32C62831B00BDCD44 /* RUNavigationBar.swift */; };
 		D97950A62C62917400BDCD44 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97950A52C62917400BDCD44 /* View+extension.swift */; };
 		D97D2D7E2C6F53470080F6A7 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D2D7D2C6F53470080F6A7 /* CircleButtonView.swift */; };
@@ -61,6 +65,10 @@
 		D93A94EB2C4A372700BCCD00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D95F830C2C6F5C9A000DCAA3 /* RunningFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningFeature.swift; sourceTree = "<group>"; };
+		D95F830E2C6F5F64000DCAA3 /* RunningStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStateManager.swift; sourceTree = "<group>"; };
+		D95F83102C6F82DF000DCAA3 /* RunningDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningDependency.swift; sourceTree = "<group>"; };
+		D95F83122C6FAC76000DCAA3 /* Int+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+extension.swift"; sourceTree = "<group>"; };
+		D95F83162C6FB079000DCAA3 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		D97950A32C62831B00BDCD44 /* RUNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUNavigationBar.swift; sourceTree = "<group>"; };
 		D97950A52C62917400BDCD44 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 		D97D2D7D2C6F53470080F6A7 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
@@ -120,6 +128,8 @@
 				D90BE6662C6B6F7100999858 /* RunningView.swift */,
 				D97D2D7D2C6F53470080F6A7 /* CircleButtonView.swift */,
 				D95F830C2C6F5C9A000DCAA3 /* RunningFeature.swift */,
+				D95F830E2C6F5F64000DCAA3 /* RunningStateManager.swift */,
+				D95F83102C6F82DF000DCAA3 /* RunningDependency.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -225,6 +235,7 @@
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
 				F6F085702C59338B00994E34 /* UserEnvironment.swift */,
 				D97D9FE32C6078BD00C663BD /* LocationManager.swift */,
+				D95F83162C6FB079000DCAA3 /* LocationManagerDelegate.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -234,6 +245,7 @@
 			children = (
 				D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */,
 				D97950A52C62917400BDCD44 /* View+extension.swift */,
+				D95F83122C6FAC76000DCAA3 /* Int+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -378,11 +390,13 @@
 				D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
+				D95F83112C6F82DF000DCAA3 /* RunningDependency.swift in Sources */,
 				D9E704AE2C649AE900212FF0 /* TodayChallengeListItemView.swift in Sources */,
 				D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */,
 				D9D0B7182C4F553800D13160 /* RUError.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
 				D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */,
+				D95F83132C6FAC76000DCAA3 /* Int+extension.swift in Sources */,
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
@@ -390,8 +404,10 @@
 				D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */,
 				D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */,
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
+				D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
+				D95F83172C6FB079000DCAA3 /* LocationManagerDelegate.swift in Sources */,
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
 				D9E704B02C649AFE00212FF0 /* TodayChallenge.swift in Sources */,
 				D90BE6672C6B6F7100999858 /* RunningView.swift in Sources */,
