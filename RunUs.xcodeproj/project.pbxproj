@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90CDD782C6A623F00197214 /* CountDownView.swift */; };
 		D90BE6672C6B6F7100999858 /* RunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90BE6662C6B6F7100999858 /* RunningView.swift */; };
+		D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90CDD782C6A623F00197214 /* CountDownView.swift */; };
 		D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
 		D93A94EC2C4A372700BCCD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EB2C4A372700BCCD00 /* Assets.xcassets */; };
 		D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */; };
 		D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97950A32C62831B00BDCD44 /* RUNavigationBar.swift */; };
 		D97950A62C62917400BDCD44 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97950A52C62917400BDCD44 /* View+extension.swift */; };
+		D97D2D7E2C6F53470080F6A7 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D2D7D2C6F53470080F6A7 /* CircleButtonView.swift */; };
 		D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D9FE32C6078BD00C663BD /* LocationManager.swift */; };
 		D9D0B7182C4F553800D13160 /* RUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7172C4F553800D13160 /* RUError.swift */; };
 		D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7192C4F555500D13160 /* NetworkError.swift */; };
@@ -52,14 +53,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D90CDD782C6A623F00197214 /* CountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
 		D90BE6662C6B6F7100999858 /* RunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningView.swift; sourceTree = "<group>"; };
+		D90CDD782C6A623F00197214 /* CountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
 		D93A94E42C4A372600BCCD00 /* RunUs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunUs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93A94E72C4A372600BCCD00 /* RunUsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunUsApp.swift; sourceTree = "<group>"; };
 		D93A94EB2C4A372700BCCD00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D97950A32C62831B00BDCD44 /* RUNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUNavigationBar.swift; sourceTree = "<group>"; };
 		D97950A52C62917400BDCD44 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
+		D97D2D7D2C6F53470080F6A7 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		D97D9FE32C6078BD00C663BD /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D9D0B7172C4F553800D13160 /* RUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUError.swift; sourceTree = "<group>"; };
 		D9D0B7192C4F555500D13160 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				D90BE6662C6B6F7100999858 /* RunningView.swift */,
+				D97D2D7D2C6F53470080F6A7 /* CircleButtonView.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
+				D97D2D7E2C6F53470080F6A7 /* CircleButtonView.swift in Sources */,
 				F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,12 +532,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RunUs/RunUs.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunUs/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PF6QF5WXTK;
+				DEVELOPMENT_TEAM = PF6QF5WXTK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunUs/Info.plist;
@@ -550,7 +552,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dnd-11th-2.RunUs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = runus_dev_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -564,12 +565,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RunUs/RunUs.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunUs/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PF6QF5WXTK;
+				DEVELOPMENT_TEAM = PF6QF5WXTK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunUs/Info.plist;
@@ -586,7 +585,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dnd-11th-2.RunUs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = runus_dev_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

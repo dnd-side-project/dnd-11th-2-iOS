@@ -9,31 +9,42 @@ import SwiftUI
 import MapKit
 
 struct RunningView: View {
+    @State var isRunning: Bool = false
+    @State var isStateHidden: Bool = true
+    
     var body: some View {
         ZStack {
             Map()
-            VStack {
+            VStack() {
                 Spacer()
-                runningStateView
+                if isStateHidden {
+                    Button(action: {
+                        isStateHidden = false
+                    }, label: {
+                        Image(.buttonRunningStateUp)
+                    })
+                }
+                VStack(spacing:0) {
+                    if isStateHidden {
+                            runningStateTitleView
+                    } else {
+                        runningStateView
+                    }
+                }
+                .frame(height: isStateHidden ? 70 : 406)
+                .background(Color.background)
+                .cornerRadius(12, corners: [.topLeft, .topRight])
+                .shadow(color: .black.opacity(0.5), radius: 30, x: 1, y: 1)
             }
+            .ignoresSafeArea()
         }
     }
 }
 
 extension RunningView {
     private var runningStateView: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
             VStack(spacing: 32) {
-                HStack(spacing: 8) {
-                    Image(.runningStateShoes)
-                        .resizable()
-                        .frame(width: 19, height: 19)
-                    Text("현재 러닝 현황")
-                        .font(Fonts.pretendardSemiBold(size: 20))
-                        .foregroundStyle(.white)
-                    Spacer()
-                }.padding(.horizontal, Paddings.outsideHorizontalPadding)
+                runningStateTitleView
                 
                 VStack{
                     Text("2.07")
@@ -60,14 +71,43 @@ extension RunningView {
                 }
                 .padding(.horizontal, 21.5)
                 
-                Circle()
-                    .frame(width: 60)
-                    .foregroundStyle(.mainDeepDark)
-                    .overlay {
-                        Image(.buttonPause)
+                ZStack {
+                    runningButtons
+                    HStack {
+                        Spacer()
+                        Button {
+                            isStateHidden = true
+                        } label: {
+                            CircleButtonView(size: 40,
+                                             .buttonMap)
+                        }
                     }
+                }
+                .padding(Paddings.outsideHorizontalPadding)
             }
-        }.frame(height: 406)
+    }
+    
+    private var runningStateTitleView: some View {
+        HStack(spacing: 8) {
+            Image(.runningStateShoes)
+                .resizable()
+                .frame(width: 19, height: 19)
+            Text("현재 러닝 현황")
+                .font(Fonts.pretendardSemiBold(size: 20))
+                .foregroundStyle(.white)
+            Spacer()
+        }.padding(.horizontal, Paddings.outsideHorizontalPadding)
+    }
+    
+    private var runningButtons: some View {
+        HStack(spacing: 22) {
+            if isRunning {
+                CircleButtonView(.buttonPause)
+            } else {
+                CircleButtonView(.buttonStop)
+                CircleButtonView(.buttonResume)
+            }
+        }
     }
     
     private func smallText(_ string: String) -> some View {
