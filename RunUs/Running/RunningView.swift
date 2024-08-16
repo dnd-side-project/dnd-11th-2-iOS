@@ -10,7 +10,7 @@ import MapKit
 
 struct RunningView: View {
     @State var isRunning: Bool = false
-    @State var isStateHidden: Bool = true
+    @State var isStateHidden: Bool = false
     
     var body: some View {
         ZStack {
@@ -102,10 +102,23 @@ extension RunningView {
     private var runningButtons: some View {
         HStack(spacing: 22) {
             if isRunning {
-                CircleButtonView(.buttonPause)
+                Button(action: {
+                    isRunning = false
+                }, label: {
+                    CircleButtonView(.buttonPause)
+                })
             } else {
-                CircleButtonView(.buttonStop)
-                CircleButtonView(.buttonResume)
+                Button(action: {
+                    //TODO: 러닝 결과 화면으로 이동
+                }, label: {
+                    CircleButtonView(.buttonStop)
+                })
+                
+                Button(action: {
+                    isRunning = true
+                }, label: {
+                    CircleButtonView(.buttonResume)
+                })
             }
         }
     }
