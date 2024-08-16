@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SetGoalView: View {
+    let store: StoreOf<SetGoalStore> = Store(
+        initialState: SetGoalStore.State(),
+        reducer: { SetGoalStore() }
+    )
     let type: TypeObject
     @State var bigGoal: String = ""
     @State var smallGoal: String = ""
@@ -30,7 +35,7 @@ struct SetGoalView: View {
                 GoalTextField(type: type, goal: $smallGoal, isBigGoal: false)
             }
             Spacer()
-            HStack {
+            HStack(alignment: .bottom) {
                 Text("달리기 목표 달성량")
                     .font(Fonts.pretendardRegular(size: 15))
                 Spacer()
@@ -51,7 +56,7 @@ struct SetGoalView: View {
 }
 
 #Preview {
-    SetGoalView(type: TypeObject(goalType: GoalTypes.distance), bigGoal: "2", smallGoal: "")
+    SetGoalView(type: TypeObject(goalType: GoalTypes.distance), bigGoal: "", smallGoal: "")
 }
 
 extension SetGoalView {
@@ -62,7 +67,7 @@ extension SetGoalView {
                 Text("\(bigGoal.count > 0 ? bigGoal + "시간 " : "")\(smallGoal.count > 0 ? smallGoal + "분" : "")")
                     .font(Fonts.pretendardSemiBold(size: 20))
             case .distance:
-                Text("\(bigGoal.count > 0 ? bigGoal : "0")\(smallGoal.count > 0 ? "." + formatString(smallGoal) : "" )km")
+                Text("\(bigGoal.count > 0 ? bigGoal : "0")\(smallGoal.count > 0 ? "." + smallGoal.formatToKM : "" )km")
                     .font(Fonts.pretendardSemiBold(size: 20))
             }
         } else {
@@ -71,28 +76,28 @@ extension SetGoalView {
     }
 }
 
-private func formatString(_ input: String) -> String {
-    let count = input.count
-    
-    switch count {
-    case 1:
-        return "00" + input
-    case 2:
-        if input.hasSuffix("0") {
-            return "0" + String(input.dropLast())
-        } else {
-            return "0" + input
+extension String {
+    public var formatToKM: String {
+        switch self.count {
+        case 1:
+            return "00" + self
+        case 2:
+            if self.hasSuffix("0") {
+                return "0" + String(self.dropLast())
+            } else {
+                return "0" + self
+            }
+        case 3:
+            if self.hasSuffix("00") {
+                return String(self.dropLast(2))
+            } else if self.hasSuffix("0") {
+                return String(self.dropLast())
+            } else {
+                return self
+            }
+        default:
+            return self
         }
-    case 3:
-        if input.hasSuffix("00") {
-            return String(input.dropLast(2))
-        } else if input.hasSuffix("0") {
-            return String(input.dropLast())
-        } else {
-            return input
-        }
-    default:
-        return input
     }
 }
 
