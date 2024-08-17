@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct TypeButton: View {
-    let type: TypeObject
+    let typeObject: TypeObject
     
     var body: some View {
         NavigationLink {
-            SetGoalView(type: type)
+            SetGoalView(typeObject: typeObject)
                 .navigationBarBackButtonHidden()
         } label: {
             VStack(spacing: 8) {
-                Image(type.icon)
+                Image(typeObject.icon)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
-                Text(type.text)
+                Text(typeObject.text)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -33,5 +33,5 @@ struct TypeButton: View {
 }
 
 #Preview {
-    TypeButton(type: TypeObject(goalType: GoalTypes.distance))
+    TypeButton(typeObject: TypeObject(goalType: GoalTypes.distance))
 }

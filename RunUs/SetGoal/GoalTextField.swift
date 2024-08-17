@@ -6,30 +6,31 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct GoalTextField: View {
-    var type: TypeObject
-    @Binding var goal: String
-    let isBigGoal: Bool
     @FocusState private var isFocus: Bool?
+    let store: StoreOf<SetGoalStore>
+    let isBigGoal: Bool
     
     var body: some View {
-        HStack(spacing: 0) {
-            Text(String(format: "%0" + String(lengthOfTextField(type: type, isBigGoal: isBigGoal)) + "d", Int(goal) ?? 0))
-            TextField("", text: $goal)
-            // MARK: focus 되어있을 때만 cursor를 표시하기 위해 width 1 부여
-                .frame(width: isFocus ?? false ? 1 : 0)
-                .focused($isFocus, equals: true)
-                .keyboardType(.decimalPad)
-                .onChange(of: goal) { oldValue, newValue in
-                    if newValue == "0" { goal = "" }    // MARK: 첫 자리는 0일 수 없도록 처리
-                    if newValue.count > lengthOfTextField(type: type, isBigGoal: isBigGoal) {
-                        goal = oldValue
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            HStack(spacing: 0) {
+                Text(String(format: "%0" + String(lengthOfTextField(type: viewStore.typeObject.type, isBigGoal: isBigGoal)) + "d", Int(isBigGoal ? viewStore.bigGoal : viewStore.smallGoal) ?? 0))
+                TextField("", text: isBigGoal ? viewStore.$bigGoal : viewStore.$smallGoal)
+                // MARK: focus 되어있을 때만 cursor를 표시하기 위해 width 1 부여
+                    .frame(width: isFocus ?? false ? 1 : 0)
+                    .focused($isFocus, equals: true)
+                    .keyboardType(.decimalPad)
+                    .onChange(of: isBigGoal ? viewStore.bigGoal : viewStore.smallGoal) { oldValue, newValue in
+                        if newValue == "0" { viewStore.send(.setGoal(goal: "", isBigGoal: isBigGoal)) }    // MARK: 첫 자리는 0일 수 없도록 처리
+                        if newValue.count > lengthOfTextField(type: viewStore.typeObject.type, isBigGoal: isBigGoal) {
+                            viewStore.send(.setGoal(goal: oldValue, isBigGoal: isBigGoal))
+                        }
                     }
-                }
-            Text(unitOfTextField(type: type, isBigGoal: isBigGoal))
-            Spacer()
-        }
+                Text(unitOfTextField(type: viewStore.typeObject.type, isBigGoal: isBigGoal))
+                Spacer()
+            }
             .font(Fonts.pretendardMedium(size: 16))
             .padding(.vertical, 16)
             .padding(.horizontal, 12)
@@ -40,15 +41,12 @@ struct GoalTextField: View {
             .onTapGesture {
                 isFocus = true
             }
+        }
     }
 }
 
-#Preview {
-    GoalTextField(type: TypeObject(goalType: GoalTypes.time), goal: .constant(""), isBigGoal: true)
-}
-
-private func unitOfTextField(type: TypeObject, isBigGoal: Bool) -> String {
-    switch type.type {
+private func unitOfTextField(type: GoalTypes, isBigGoal: Bool) -> String {
+    switch type {
     case .time:
         return isBigGoal ? "시간" : "분"
     case .distance:
@@ -56,6 +54,6 @@ private func unitOfTextField(type: TypeObject, isBigGoal: Bool) -> String {
     }
 }
 
-private func lengthOfTextField(type: TypeObject, isBigGoal: Bool) -> Int {
-    return isBigGoal ? 1 : type.type == .time ? 2 : 3
+private func lengthOfTextField(type: GoalTypes, isBigGoal: Bool) -> Int {
+    return isBigGoal ? 1 : type == .time ? 2 : 3
 }

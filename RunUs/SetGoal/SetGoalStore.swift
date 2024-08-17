@@ -10,16 +10,31 @@ import ComposableArchitecture
 
 struct SetGoalStore: Reducer {
     struct State: Equatable {
-        var bigGoal: String = ""
-        var smallGoal: String = ""
+        var typeObject: TypeObject
+        @BindingState var bigGoal: String = ""
+        @BindingState var smallGoal: String = ""
     }
     
-    enum Action: Equatable {
+    enum Action: Equatable, BindableAction {
+        case binding(BindingAction<State>)
+        case setGoal(goal: String, isBigGoal: Bool)
     }
     
-    
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
+    var body: some Reducer<State, Action> {
+        BindingReducer()
+        
+        Reduce { state, action in
+            switch action {
+            case .binding(_):
+                return .none
+            case let .setGoal(goal, isBigGoal):
+                if isBigGoal {
+                    state.bigGoal = goal
+                } else {
+                    state.smallGoal = goal
+                }
+                return .none
+            }
         }
     }
 }
