@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct MainView: View {
-    @AppStorage("isLogin") var isLogin: Bool = false
+    @AppStorage(UserDefaultKey.isLogin.rawValue) var isLogin: Bool = false
     
     var body: some View {
         VStack {
