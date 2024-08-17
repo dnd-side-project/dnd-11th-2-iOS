@@ -25,15 +25,19 @@ extension AppleLoginDependencyKey: DependencyKey {
         fetch: do {
             if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
                 guard let fullName = appleIDCredential.fullName,
-                      let familyName = fullName.familyName,
-                      let givenName = fullName.givenName,
                       let email = appleIDCredential.email,
                       let identiTyToken = appleIDCredential.identityToken,
                       let idToken = String(data: identiTyToken, encoding: .utf8)
                 else {
                     throw NetworkError.unknown
                 }
-                let name = familyName + givenName
+                
+                var name = ""
+                if fullName.familyName == nil && fullName.givenName == nil {
+                    throw NetworkError.unknown
+                } else {
+                    name = (fullName.familyName ?? "") + (fullName.givenName ?? "")
+                }
                 
                 let appleLoginRequest = AuthLoginRequestModel(socialType: "APPLE", name: name, email: email, idToken: idToken)
                 let result: AppleLoginResponseModel = try await ServerNetwork.shared.request(.appleLogin(appleLoginRequest: appleLoginRequest))
