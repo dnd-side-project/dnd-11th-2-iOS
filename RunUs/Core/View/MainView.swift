@@ -9,21 +9,16 @@ import SwiftUI
 import ComposableArchitecture
 
 struct MainView: View {
-    @EnvironmentObject var userEnvironment: UserEnvironment
+    @AppStorage(UserDefaultKey.isLogin.rawValue) var isLogin: Bool = false
     
     var body: some View {
-        if userEnvironment.isLogin { HomeView() }
-        else {
-            LoginView(
-                store: Store(
-                    initialState: LoginStore.State(userEnvironment: userEnvironment),
-                    reducer: { LoginStore() }
-                )
-            )
+        VStack {
+            if isLogin { HomeView() }
+            else { LoginView() }
         }
     }
 }
 
 #Preview {
-    MainView().environmentObject(UserEnvironment())
+    MainView()
 }

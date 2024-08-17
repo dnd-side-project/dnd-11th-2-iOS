@@ -7,9 +7,13 @@
 
 import SwiftUI
 import ComposableArchitecture
+import AuthenticationServices
 
 struct LoginView: View {
-    let store: StoreOf<LoginStore>
+    let store: StoreOf<LoginStore> = Store(
+        initialState: LoginStore.State(),
+        reducer: { LoginStore() }
+    )
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,15 +33,21 @@ struct LoginView: View {
                     .font(Fonts.pretendardExtraBold(size: 24))
             }
             .foregroundStyle(.mainGreen)
-            .padding(Paddings.outsideHorizontalPadding)
+            .padding(.horizontal, Paddings.outsideHorizontalPadding)
             Image(.login)
                 .resizable()
                 .scaledToFit()
             Spacer()
             WithViewStore(store, observe: { $0 }) { viewStore in
-                Button {
-                    viewStore.send(.doAppleLogin)
-                } label: {
+                ZStack {
+                    SignInWithAppleButton(
+                        onRequest: { request in
+                            viewStore.send(.appleLoginRequest(request))
+                        },
+                        onCompletion: { result in
+                            viewStore.send(.appleLoginResult(result))
+                        }
+                    )
                     Label(  // TODO: 컴포넌트화
                         title: {
                             Text("Apple ID로 시작하기")
@@ -45,17 +55,14 @@ struct LoginView: View {
                         },
                         icon: { Image(systemName: "apple.logo") }
                     )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .foregroundColor(.black)
+                    .background(.white)
+                    .allowsHitTesting(false)
                 }
-                .frame(maxWidth: .infinity)
-                .foregroundColor(.black)
-                .background {
-                    Rectangle()
-                        .fill(.white)
-                        .cornerRadius(24)
-                        .frame(height: 48)
-                        .frame(maxWidth: .infinity)
-                }
-                .padding(Paddings.outsideHorizontalPadding)
+                .cornerRadius(24)
+                .frame(height: 48)
+                .padding(.horizontal, Paddings.outsideHorizontalPadding)
             }
             Spacer()
         }
@@ -64,11 +71,6 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(
-        store: Store(
-            initialState: LoginStore.State(userEnvironment: UserEnvironment()),
-            reducer: { LoginStore() }
-        )
-    )
-    .background(Color.background)
+    LoginView()
+        .background(Color.background)
 }

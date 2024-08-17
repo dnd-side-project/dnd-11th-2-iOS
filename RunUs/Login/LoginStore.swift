@@ -7,43 +7,52 @@
 
 import Foundation
 import ComposableArchitecture
+import AuthenticationServices
 
 struct LoginStore: Reducer {
-    struct State: Equatable {
-        static func == (lhs: LoginStore.State, rhs: LoginStore.State) -> Bool {
-            return lhs.isLogin == rhs.isLogin
-        }
+    struct State: Equatable {}
+    
+    enum Action {
+        case changeLoginStatus(isLogin: Bool, accessToken: String?)
         
-        var userEnvironment: UserEnvironment
-        var isLogin: Bool {
-            get {
-                return userEnvironment.isLogin
-            }
-            set(newValue) {
-                userEnvironment.isLogin = newValue
-            }
-        }
+        case appleLoginRequest(ASAuthorizationAppleIDRequest)
+        case appleLoginResult((Result<ASAuthorization, any Error>))
+        
+        case appleLoginResponse(AppleLoginResponseModel?)
     }
     
-    enum Action: Equatable {
-        case doAppleLogin
-        case appleLoginResponse(Data)
-    }
-    
-    @Dependency(\.loginDependency) var loginDependency
+    @Dependency(\.appleLoginDependency) var appleLoginDependency
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case .doAppleLogin:
-            return .run { send in
-                let data = try await loginDependency.fetch()
-                await send(.appleLoginResponse(data))
-            }
-        case let .appleLoginResponse(data):
-            print(String(decoding: data, as: UTF8.self))
-            state.isLogin = true
+        case let .changeLoginStatus(isLogin, accessToken):
+            UserDefaultManager.isLogin = isLogin
+            UserDefaultManager.accessToken = accessToken
             return .none
+            
+        case let .appleLoginRequest(request):
+            request.requestedScopes = [.fullName, .email]
+            return .none
+        case let .appleLoginResult(result):
+            switch result {
+            case .success(let authorization):
+                return .run { send in
+                    do {
+                        let response = try await appleLoginDependency.fetch(authorization)
+                        await send(.appleLoginResponse(response))
+                    } catch {
+                        await send(.changeLoginStatus(isLogin: false, accessToken: nil))
+                    }
+                }
+            case .failure(_):
+                return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
+            }
+            
+        case let .appleLoginResponse(response):
+            guard let response: AppleLoginResponseModel = response else {
+                return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
+            }
+            return .send(.changeLoginStatus(isLogin: true, accessToken: response.accessToken))
         }
     }
-
 }
