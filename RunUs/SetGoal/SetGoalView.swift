@@ -44,9 +44,12 @@ struct SetGoalView: View {
                     goalText
                 }
                 .padding(.bottom, 36)
-                RUButton(action: {
-                    // TODO: 러닝 화면으로 넘어가도록 구현
-                }, text: "목표 설정 완료")
+                RUButton(
+                    action: {
+                        // TODO: 러닝 화면으로 넘어가도록 구현
+                    }, text: "목표 설정 완료"
+                    , disableCondition: viewStore.bigGoal.count == 0 && viewStore.smallGoal.count == 0
+                )
             }
             .foregroundStyle(.white)
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
