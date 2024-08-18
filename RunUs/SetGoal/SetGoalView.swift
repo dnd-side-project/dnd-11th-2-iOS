@@ -45,7 +45,7 @@ struct SetGoalView: View {
                 }
                 .padding(.bottom, 36)
                 RUButton(action: {
-                    // TODO: CountDownView로 넘어가도록 구현
+                    // TODO: 러닝 화면으로 넘어가도록 구현
                 }, text: "목표 설정 완료")
             }
             .foregroundStyle(.white)

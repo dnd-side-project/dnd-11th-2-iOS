@@ -301,8 +301,8 @@
 				F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */,
 				F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */,
 				F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */,
-				F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */,
 				F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */,
+				F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */,
 			);
 			path = SetGoal;
 			sourceTree = "<group>";

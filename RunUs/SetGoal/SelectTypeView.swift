@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: #33(혼자 뛰기 홈화면 디자인 개편)시 삭제
 struct SelectTypeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
