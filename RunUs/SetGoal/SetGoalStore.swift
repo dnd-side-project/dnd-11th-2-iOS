@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct SetGoalStore: Reducer {
     struct State: Equatable {
-        var typeObject: TypeObject
+        var goalTypeObject: GoalTypeObject
         @BindingState var bigGoal: String = ""
         @BindingState var smallGoal: String = ""
     }

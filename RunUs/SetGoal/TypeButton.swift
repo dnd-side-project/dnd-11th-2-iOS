@@ -9,19 +9,23 @@ import SwiftUI
 
 // TODO: #33(혼자 뛰기 홈화면 디자인 개편)시 폴더 이동
 struct TypeButton: View {
-    let typeObject: TypeObject
+    let goalTypeObject: GoalTypeObject
+    
+    init(_ goalTypeObject: GoalTypeObject) {
+        self.goalTypeObject = goalTypeObject
+    }
     
     var body: some View {
         NavigationLink {
-            SetGoalView(typeObject: typeObject)
+            SetGoalView(goalTypeObject)
                 .navigationBarBackButtonHidden()
         } label: {
             VStack(spacing: 8) {
-                Image(typeObject.icon)
+                Image(goalTypeObject.icon)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
-                Text(typeObject.text)
+                Text(goalTypeObject.text)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -34,5 +38,5 @@ struct TypeButton: View {
 }
 
 #Preview {
-    TypeButton(typeObject: TypeObject(goalType: GoalTypes.distance))
+    TypeButton(GoalTypeObject(GoalTypes.distance))
 }

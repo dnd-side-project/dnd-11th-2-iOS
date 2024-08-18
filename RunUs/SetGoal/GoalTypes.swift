@@ -13,12 +13,12 @@ enum GoalTypes: String {
     case distance
 }
 
-struct TypeObject: Equatable {
+struct GoalTypeObject: Equatable {
     let type: GoalTypes
     let text: String
     let icon: ImageResource
     
-    init(goalType: GoalTypes) {
+    init(_ goalType: GoalTypes) {
         self.type = goalType
         switch goalType {
         case .time:

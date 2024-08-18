@@ -20,8 +20,8 @@ struct SelectTypeView: View {
                 .font(Fonts.pretendardRegular(size: 16))
                 .padding(.bottom, 78)
             HStack(spacing: 16) {
-                TypeButton(typeObject: TypeObject(goalType: GoalTypes.time))
-                TypeButton(typeObject: TypeObject(goalType: GoalTypes.distance))
+                TypeButton(GoalTypeObject(GoalTypes.time))
+                TypeButton(GoalTypeObject(GoalTypes.distance))
             }
             .frame(maxWidth: .infinity)
             Spacer()

@@ -16,7 +16,7 @@ struct GoalTextField: View {
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             HStack(spacing: 0) {
-                Text(String(format: "%0" + String(lengthOfTextField(type: viewStore.typeObject.type, isBigGoal: isBigGoal)) + "d", Int(isBigGoal ? viewStore.bigGoal : viewStore.smallGoal) ?? 0))
+                Text(String(format: "%0" + String(lengthOfTextField(type: viewStore.goalTypeObject.type, isBigGoal: isBigGoal)) + "d", Int(isBigGoal ? viewStore.bigGoal : viewStore.smallGoal) ?? 0))
                 TextField("", text: isBigGoal ? viewStore.$bigGoal : viewStore.$smallGoal)
                 // MARK: focus 되어있을 때만 cursor를 표시하기 위해 width 1 부여
                     .frame(width: isFocus ?? false ? 1 : 0)
@@ -24,11 +24,11 @@ struct GoalTextField: View {
                     .keyboardType(.decimalPad)
                     .onChange(of: isBigGoal ? viewStore.bigGoal : viewStore.smallGoal) { oldValue, newValue in
                         if newValue == "0" { viewStore.send(.setGoal(goal: "", isBigGoal: isBigGoal)) }    // MARK: 첫 자리는 0일 수 없도록 처리
-                        if newValue.count > lengthOfTextField(type: viewStore.typeObject.type, isBigGoal: isBigGoal) {
+                        if newValue.count > lengthOfTextField(type: viewStore.goalTypeObject.type, isBigGoal: isBigGoal) {
                             viewStore.send(.setGoal(goal: oldValue, isBigGoal: isBigGoal))
                         }
                     }
-                Text(unitOfTextField(type: viewStore.typeObject.type, isBigGoal: isBigGoal))
+                Text(unitOfTextField(type: viewStore.goalTypeObject.type, isBigGoal: isBigGoal))
                 Spacer()
             }
             .font(Fonts.pretendardMedium(size: 16))

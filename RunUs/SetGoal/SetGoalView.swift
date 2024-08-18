@@ -11,9 +11,9 @@ import ComposableArchitecture
 struct SetGoalView: View {
     let store: StoreOf<SetGoalStore>
     
-    init(typeObject: TypeObject) {
+    init(_ goalTypeObject: GoalTypeObject) {
         self.store = Store(
-            initialState: SetGoalStore.State(typeObject: typeObject),
+            initialState: SetGoalStore.State(goalTypeObject: goalTypeObject),
             reducer: { SetGoalStore() }
         )
     }
@@ -26,10 +26,10 @@ struct SetGoalView: View {
                 Text("목표 설정하기 🏃")
                     .font(Fonts.pretendardBold(size: 24))
                     .padding(.bottom, 25)
-                Text("오늘 달리며 달성할 \(goalTypeString(typeObject: viewStore.typeObject)) 직접 설정해보세요.")
+                Text("오늘 달리며 달성할 \(goalTypeString(viewStore.goalTypeObject)) 직접 설정해보세요.")
                     .font(Fonts.pretendardRegular(size: 16))
                     .padding(.bottom, 87)
-                Text(viewStore.typeObject.text)
+                Text(viewStore.goalTypeObject.text)
                     .font(Fonts.pretendardSemiBold(size: 16))
                     .padding(.bottom, 12)
                 HStack(spacing: 8) {
@@ -62,17 +62,17 @@ struct SetGoalView: View {
 }
 
 #Preview {
-    SetGoalView(typeObject: TypeObject(goalType: GoalTypes.distance))
+    SetGoalView(GoalTypeObject(GoalTypes.distance))
 }
 
 extension SetGoalView {
-    private func goalTypeString(typeObject: TypeObject) -> String {
+    private func goalTypeString(_ typeObject: GoalTypeObject) -> String {
         return typeObject.type == .time ? typeObject.text + "을" : typeObject.text + "를"
     }
     private var goalText: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             if viewStore.bigGoal.count > 0 || viewStore.smallGoal.count > 0 {
-                switch viewStore.typeObject.type {
+                switch viewStore.goalTypeObject.type {
                 case .time:
                     Text("\(viewStore.bigGoal.count > 0 ? viewStore.bigGoal + "시간 " : "")\(viewStore.smallGoal.count > 0 ? viewStore.smallGoal + "분" : "")")
                         .font(Fonts.pretendardSemiBold(size: 20))
