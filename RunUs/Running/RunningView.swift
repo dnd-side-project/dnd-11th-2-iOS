@@ -17,87 +17,92 @@ struct RunningView: View {
     @State var isStateHidden: Bool = false
     @State var userLocation: MapCameraPosition =
         .userLocation(followsHeading: true, fallback: .automatic)
+    @State var isReady: Bool = false
     
     var body: some View {
-        ZStack {
-            Map(position: $userLocation) {
-                UserAnnotation {
-                    Image(.userLocationMark)
-                }
-            }
-            VStack() {
-                Spacer()
-                if isStateHidden {
-                    Button(action: {
-                        isStateHidden = false
-                    }, label: {
-                        Image(.buttonRunningStateUp)
-                    })
-                }
-                VStack(spacing:0) {
-                    if isStateHidden {
-                            runningStateTitleView
-                    } else {
-                        runningStateView
+        if !isReady {
+            CountDownView(isFinished: $isReady)
+        } else {
+            ZStack {
+                Map(position: $userLocation) {
+                    UserAnnotation {
+                        Image(.userLocationMark)
                     }
                 }
-                .frame(height: isStateHidden ? 70 : 406)
-                .background(Color.background)
-                .cornerRadius(12, corners: [.topLeft, .topRight])
-                .shadow(color: .black.opacity(0.5), radius: 30, x: 1, y: 1)
+                VStack() {
+                    Spacer()
+                    if isStateHidden {
+                        Button(action: {
+                            isStateHidden = false
+                        }, label: {
+                            Image(.buttonRunningStateUp)
+                        })
+                    }
+                    VStack(spacing:0) {
+                        if isStateHidden {
+                            runningStateTitleView
+                        } else {
+                            runningStateView
+                        }
+                    }
+                    .frame(height: isStateHidden ? 85 : 406)
+                    .background(Color.background)
+                    .cornerRadius(12, corners: [.topLeft, .topRight])
+                    .shadow(color: .black.opacity(0.5), radius: 30, x: 1, y: 1)
+                }
+                .ignoresSafeArea()
             }
-            .ignoresSafeArea()
-        }
-        .onAppear{
-            store.send(.onAppear)
+            .onAppear{
+                store.send(.onAppear)
+            }
         }
     }
 }
 
 extension RunningView {
     private var runningStateView: some View {
-            VStack(spacing: 32) {
-                runningStateTitleView
-                
-                VStack{
-                    Text("2.07")
-                        .font(Fonts.pretendardBlack(size: 84))
-                        .foregroundStyle(.white)
+        VStack(spacing: 32) {
+            runningStateTitleView
+            
+            VStack{
+                Text(store.distance)
+                    .font(Fonts.pretendardBlack(size: 84))
+                    .foregroundStyle(.white)
+                smallText("킬로미터")
+            }
+            
+            HStack {
+                VStack {
+                    mediumText("0’00”")
+                    smallText("평균페이스")
+                }
+                Spacer()
+                VStack {
+                    mediumText("\(store.time.toTimeString())")
+                    smallText("시간")
+                }
+                Spacer()
+                VStack {
+                    mediumText("\(store.distance)km")
                     smallText("킬로미터")
                 }
-                
-                HStack {
-                    VStack {
-                        mediumText("0’00”")
-                        smallText("평균페이스")
-                    }
-                    Spacer()
-                    VStack {
-                        mediumText("\(store.time.toTimeString())")
-                        smallText("시간")
-                    }
-                    Spacer()
-                    VStack {
-                        mediumText("\(store.distance)km")
-                        smallText("킬로미터")
-                    }
-                }
-                .padding(.horizontal, 21.5)
-                
-                ZStack {
-                    runningButtons
-                    HStack {
-                        Spacer()
-                        Button {
-                            isStateHidden = true
-                        } label: {
-                            CircleButtonView(size: 40,
-                                             .buttonMap)
-                        }
-                    }
-                }
-                .padding(Paddings.outsideHorizontalPadding)
             }
+            .padding(.horizontal, 21.5)
+            
+            ZStack {
+                runningButtons
+                HStack {
+                    Spacer()
+                    Button {
+                        isStateHidden = true
+                    } label: {
+                        CircleButtonView(size: 40,
+                                         .buttonMap)
+                    }
+                }
+            }
+            .padding(Paddings.outsideHorizontalPadding)
+        }
     }
     
     private var runningStateTitleView: some View {

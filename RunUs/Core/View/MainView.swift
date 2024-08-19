@@ -14,7 +14,7 @@ struct MainView: View {
     var body: some View {
 //        if userEnvironment.isLogin { HomeView() }
         if userEnvironment.isLogin {
-            RunningView()
+            RunAloneHomeView()
         }
         else {
             LoginView(
