@@ -12,18 +12,22 @@ struct MyRecordButton: View {
     let text: String
     
     var body: some View {
-        HStack {
-            Text(text)
-            Spacer()
-            Image(.chevronRight)
-                .resizable()
-                .renderingMode(.template)
-                .foregroundColor(.gray300)
-                .frame(width: 24, height: 24)
+        Button {
+            action()
+        } label: {
+            HStack {
+                Text(text)
+                Spacer()
+                Image(.chevronRight)
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(.gray300)
+                    .frame(width: 24, height: 24)
+            }
+            .font(Fonts.pretendardBold(size: 16))
+            .foregroundColor(.white)
+            .frame(height: 60)
         }
-        .font(Fonts.pretendardBold(size: 16))
-        .foregroundColor(.white)
-        .frame(height: 60)
     }
 }
 

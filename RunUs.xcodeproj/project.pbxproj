@@ -45,6 +45,10 @@
 		F65033C72C73232D00C81DA6 /* MyRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033C62C73232D00C81DA6 /* MyRecordButton.swift */; };
 		F65033CB2C7457F900C81DA6 /* MyBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033CA2C7457F900C81DA6 /* MyBadges.swift */; };
 		F65033CD2C74585500C81DA6 /* BadgesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */; };
+		F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D02C747DB000C81DA6 /* MyRecordStore.swift */; };
+		F65033D32C747E8500C81DA6 /* MyRecordDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */; };
+		F65033D52C747ECA00C81DA6 /* MyRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */; };
+		F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */; };
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
@@ -106,6 +110,10 @@
 		F65033C62C73232D00C81DA6 /* MyRecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordButton.swift; sourceTree = "<group>"; };
 		F65033CA2C7457F900C81DA6 /* MyBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadges.swift; sourceTree = "<group>"; };
 		F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesResponseModel.swift; sourceTree = "<group>"; };
+		F65033D02C747DB000C81DA6 /* MyRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordStore.swift; sourceTree = "<group>"; };
+		F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordDependency.swift; sourceTree = "<group>"; };
+		F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordAPI.swift; sourceTree = "<group>"; };
+		F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseModel.swift; sourceTree = "<group>"; };
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
@@ -274,9 +282,13 @@
 			isa = PBXGroup;
 			children = (
 				F63B81692C71F50C002F45F4 /* MyRecordView.swift */,
+				F65033D02C747DB000C81DA6 /* MyRecordStore.swift */,
+				F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */,
+				F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */,
 				F65033C62C73232D00C81DA6 /* MyRecordButton.swift */,
 				F65033CA2C7457F900C81DA6 /* MyBadges.swift */,
 				F65033C42C731EC500C81DA6 /* RecordMenus.swift */,
+				F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */,
 				F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */,
 			);
 			path = Record;
@@ -418,11 +430,13 @@
 			files = (
 				F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */,
 				F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */,
+				F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */,
 				F65033C52C731EC500C81DA6 /* RecordMenus.swift in Sources */,
 				F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */,
 				F65033CD2C74585500C81DA6 /* BadgesResponseModel.swift in Sources */,
 				F65033CB2C7457F900C81DA6 /* MyBadges.swift in Sources */,
 				D9E704B22C6A222000212FF0 /* RunAloneAPI.swift in Sources */,
+				F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */,
 				D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
@@ -445,6 +459,7 @@
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,
 				F65033C72C73232D00C81DA6 /* MyRecordButton.swift in Sources */,
+				F65033D52C747ECA00C81DA6 /* MyRecordAPI.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
 				F6AC52DE2C6505AE00654820 /* AuthLoginRequestModel.swift in Sources */,
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
@@ -456,6 +471,7 @@
 				F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,
 				F6F41B722C69BC27002EA1F5 /* SelectTypeView.swift in Sources */,
+				F65033D32C747E8500C81DA6 /* MyRecordDependency.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
 				F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */,
 				F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */,

@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct MyRecordView: View {
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
+    let store: StoreOf<MyRecordStore> = Store(
+        initialState: MyRecordStore.State(),
+        reducer: { MyRecordStore() }
+    )
     
     var body: some View {
         ViewThatFits(in: .vertical) {
@@ -30,16 +35,26 @@ extension MyRecordView {
                     Text("\(userName)님")
                         .font(Fonts.pretendardBold(size: 20))
                     Spacer()
-                    HStack {
-                        Text("현재까지 20Km를 달렸어요!")    // TODO: '20Km' 수정 필요
+                    HStack(spacing: 0) {
+                        Text("현재까지 ")
+                        Text(store.profile.currentKm)
+                            .font(Fonts.pretendardBold(size: 14))
+                            .foregroundColor(.mainGreen)
+                        Text("를 달렸어요!")
                     }
-                    Text("Level 2 까지 5Km 남았어요!")    // TODO: 'Level 2' & '5Km' 수정 필요
+                    Text("\(store.profile.nextLevelName) 까지 \(store.profile.nextLevelKm) 남았어요!")
                 }
                 .font(Fonts.pretendardMedium(size: 14))
                 Spacer()
-                Image(.splash)  // TODO: 서버에서 받는 이미지 URL로 수정 필요
-                    .resizable()
-                    .scaledToFit()
+                AsyncImage(url: URL(string: store.profile.profileImageUrl)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                } placeholder: {
+                    ProgressView()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 100, maxHeight: .infinity) // MARK: 임의 Width 사용
+                }
             }
             .frame(maxHeight: 86)
             .padding(.top, 48)
@@ -50,7 +65,7 @@ extension MyRecordView {
                 // TODO: 나의 뱃지 화면으로 이동
             }, text: "나의 뱃지")
             .padding(.bottom, 18)
-            MyBadges(badges: [])    // TODO: 서버에서 받는 뱃지 리스트로 수정 필요
+            MyBadges(badges: store.badges)
             Divider()
                 .frame(maxWidth: .infinity)
                 .frame(height: 8)
@@ -67,6 +82,9 @@ extension MyRecordView {
         }
         .foregroundColor(.white)
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
+        .onAppear {
+            store.send(.onAppear)
+        }
     }
     
     private var recordMenus: some View {

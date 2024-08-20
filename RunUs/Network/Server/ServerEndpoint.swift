@@ -11,7 +11,10 @@ enum ServerEndpoint: NetworkEndpoint {
     case testRequest(string: String)
     case testResponse
     case testError
+    case testHeader
     case appleLogin(appleLoginRequest: AuthLoginRequestModel)
+    case getProfiles
+    case getBadges
     
     var baseURL: URL? { URL(string: "https://api.runus.site") }
     
@@ -27,14 +30,20 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/examples/empty"
         case .testError:
             return APIversion.v1 + "/examples/errors"
+        case .testHeader:
+            return APIversion.v1 + "/examples/headers"
         case .appleLogin:
             return APIversion.v1 + "/auth/oauth"
+        case .getProfiles:
+            return APIversion.v1 + "/members/profiles/me"
+        case .getBadges:
+            return APIversion.v1 + "/badges/me"
         }
     }
     
     var method: NetworkMethod {
         switch self {
-        case .testRequest, .testResponse, .testError:
+        case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges:
             return .get
         case .appleLogin:
             return .post
@@ -52,6 +61,11 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .appleLogin:
             return ["Content-Type": "application/json"]
+        case .testHeader, .getProfiles, .getBadges:
+            guard let accessToken: String = UserDefaultManager.accessToken else {
+                return nil
+            }
+            return ["Authorization": "Bearer " + accessToken]
         default:
             return nil
         }

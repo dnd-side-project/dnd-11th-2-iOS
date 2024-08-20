@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MyBadges: View {
-    let badges: [BadgesResponseModel]
+    let badges: [Badge]
     
     var body: some View {
         HStack(spacing: 0) {
@@ -39,7 +39,7 @@ struct MyBadges: View {
 }
 
 struct MyBadge: View {
-    let badge: BadgesResponseModel?
+    let badge: Badge?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -50,10 +50,14 @@ struct MyBadge: View {
                     .padding(50)
                     .opacity(0)
             } else {
-                Image(.splash)  // TODO: 서버에서 받는 이미지 URL로 수정 필요
-                    .resizable()
-                    .scaledToFit()
-                    .padding(25)
+                AsyncImage(url: URL(string: badge!.imageUrl)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .padding(25)
+                } placeholder: {
+                    ProgressView()
+                }
                 Text(badge!.name)
                     .font(.system(size: 12))
                     .foregroundStyle(.gray200)
@@ -63,6 +67,6 @@ struct MyBadge: View {
 }
 
 #Preview {
-    MyBadges(badges: [BadgesResponseModel(), BadgesResponseModel()])
+    MyBadges(badges: [])
         .background(Color.background)
 }
