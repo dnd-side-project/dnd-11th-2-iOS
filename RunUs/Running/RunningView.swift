@@ -21,7 +21,10 @@ struct RunningView: View {
     
     var body: some View {
         if !isReady {
-            CountDownView(isFinished: $isReady)
+            ZStack {
+                Color.background.ignoresSafeArea()
+                CountDownView(isFinished: $isReady)
+            }
         } else {
             ZStack {
                 Map(position: $userLocation) {
@@ -29,6 +32,8 @@ struct RunningView: View {
                         Image(.userLocationMark)
                     }
                 }
+                .padding(.bottom, isStateHidden ? 0 : 350)
+                
                 VStack() {
                     Spacer()
                     if isStateHidden {
@@ -36,6 +41,7 @@ struct RunningView: View {
                             isStateHidden = false
                         }, label: {
                             Image(.buttonRunningStateUp)
+                                .padding([.top,.horizontal])
                         })
                     }
                     VStack(spacing:0) {
@@ -73,7 +79,7 @@ extension RunningView {
             
             HStack {
                 VStack {
-                    mediumText("0’00”")
+                    mediumText("\(store.pace)")
                     smallText("평균페이스")
                 }
                 Spacer()
@@ -83,8 +89,8 @@ extension RunningView {
                 }
                 Spacer()
                 VStack {
-                    mediumText("\(store.distance)km")
-                    smallText("킬로미터")
+                    mediumText("\(store.kcal)")
+                    smallText("칼로리")
                 }
             }
             .padding(.horizontal, 21.5)
