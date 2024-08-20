@@ -23,9 +23,10 @@ struct GoalTextField: View {
                     .focused($isFocus, equals: true)
                     .keyboardType(.decimalPad)
                     .onChange(of: isBigGoal ? viewStore.bigGoal : viewStore.smallGoal) { oldValue, newValue in
-                        if newValue == "0" { viewStore.send(.setGoal(goal: "", isBigGoal: isBigGoal)) }    // MARK: 첫 자리는 0일 수 없도록 처리
+                        // MARK: 첫 자리가 0이거나 입력 값중에 숫자 이외의 값이 있는 예외 처리
+                        if newValue == "0" || !newValue.allSatisfy({ $0.isNumber }) { viewStore.send(.setGoal(goal: "", isBigGoal: isBigGoal)) }
                         if newValue.count > lengthOfTextField(type: viewStore.goalTypeObject.type, isBigGoal: isBigGoal) {
-                            viewStore.send(.setGoal(goal: oldValue, isBigGoal: isBigGoal))
+                            viewStore.send(.setGoal(goal: oldValue, isBigGoal: isBigGoal))  // MARK: 자리수 제한
                         }
                     }
                 Text(unitOfTextField(type: viewStore.goalTypeObject.type, isBigGoal: isBigGoal))
