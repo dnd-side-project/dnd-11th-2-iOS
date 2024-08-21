@@ -62,7 +62,7 @@ struct RecordMenu: View {
                     .font(Fonts.pretendardMedium(size: 14))
                     .foregroundColor(.gray200)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
