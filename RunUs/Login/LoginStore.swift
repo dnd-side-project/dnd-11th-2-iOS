@@ -10,6 +10,7 @@ import ComposableArchitecture
 import AuthenticationServices
 
 struct LoginStore: Reducer {
+    @ObservableState
     struct State: Equatable {}
     
     enum Action {

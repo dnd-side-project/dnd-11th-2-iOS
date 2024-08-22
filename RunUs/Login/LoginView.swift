@@ -38,32 +38,30 @@ struct LoginView: View {
                 .resizable()
                 .scaledToFit()
             Spacer()
-            WithViewStore(store, observe: { $0 }) { viewStore in
-                ZStack {
-                    SignInWithAppleButton(
-                        onRequest: { request in
-                            viewStore.send(.appleLoginRequest(request))
-                        },
-                        onCompletion: { result in
-                            viewStore.send(.appleLoginResult(result))
-                        }
-                    )
-                    Label(  // TODO: 컴포넌트화
-                        title: {
-                            Text("Apple ID로 시작하기")
-                                .font(Fonts.pretendardVariable(size: 16))
-                        },
-                        icon: { Image(systemName: "apple.logo") }
-                    )
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .foregroundColor(.black)
-                    .background(.white)
-                    .allowsHitTesting(false)
-                }
-                .cornerRadius(24)
-                .frame(height: 48)
-                .padding(.horizontal, Paddings.outsideHorizontalPadding)
+            ZStack {
+                SignInWithAppleButton(
+                    onRequest: { request in
+                        store.send(.appleLoginRequest(request))
+                    },
+                    onCompletion: { result in
+                        store.send(.appleLoginResult(result))
+                    }
+                )
+                Label(  // TODO: 컴포넌트화
+                    title: {
+                        Text("Apple ID로 시작하기")
+                            .font(Fonts.pretendardVariable(size: 16))
+                    },
+                    icon: { Image(systemName: "apple.logo") }
+                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .foregroundColor(.black)
+                .background(.white)
+                .allowsHitTesting(false)
             }
+            .cornerRadius(24)
+            .frame(height: 48)
+            .padding(.horizontal, Paddings.outsideHorizontalPadding)
             Spacer()
         }
         .ignoresSafeArea()
