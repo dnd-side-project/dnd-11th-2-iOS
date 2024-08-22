@@ -9,10 +9,11 @@ import Foundation
 import ComposableArchitecture
 
 struct SetGoalStore: Reducer {
+    @ObservableState
     struct State: Equatable {
         var goalTypeObject: GoalTypeObject
-        @BindingState var bigGoal: String = ""
-        @BindingState var smallGoal: String = ""
+        var bigGoal: String = ""
+        var smallGoal: String = ""
     }
     
     enum Action: Equatable, BindableAction {
@@ -25,14 +26,18 @@ struct SetGoalStore: Reducer {
         
         Reduce { state, action in
             switch action {
-            case .binding(_):
-                return .none
             case let .setGoal(goal, isBigGoal):
                 if isBigGoal {
                     state.bigGoal = goal
                 } else {
                     state.smallGoal = goal
                 }
+                return .none
+            case .binding(\.bigGoal):
+                return .none
+            case .binding(\.smallGoal):
+                return .none
+            case .binding(_):
                 return .none
             }
         }
