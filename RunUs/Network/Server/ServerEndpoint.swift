@@ -13,6 +13,7 @@ enum ServerEndpoint: NetworkEndpoint {
     case testError
     case testHeader
     case appleLogin(appleLoginRequest: AuthLoginRequestModel)
+    case withdraw(withdrawRequest: WithdrawRequestModel)
     case getProfiles
     case getBadges
     
@@ -34,6 +35,8 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/examples/headers"
         case .appleLogin:
             return APIversion.v1 + "/auth/oauth"
+        case .withdraw:
+            return APIversion.v1 + "/auth/oauth/withdraw"
         case .getProfiles:
             return APIversion.v1 + "/members/profiles/me"
         case .getBadges:
@@ -45,7 +48,7 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges:
             return .get
-        case .appleLogin:
+        case .appleLogin, .withdraw:
             return .post
         }
     }
@@ -66,6 +69,11 @@ enum ServerEndpoint: NetworkEndpoint {
                 return nil
             }
             return ["Authorization": "Bearer " + accessToken]
+        case .withdraw:
+            guard let accessToken: String = UserDefaultManager.accessToken else {
+                return nil
+            }
+            return ["Content-Type": "application/json", "Authorization": "Bearer " + accessToken]
         default:
             return nil
         }
@@ -74,6 +82,8 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .appleLogin(let appleLoginRequest):
             return appleLoginRequest
+        case .withdraw(let withdrawRequest):
+            return withdrawRequest
         default:
             return nil
         }

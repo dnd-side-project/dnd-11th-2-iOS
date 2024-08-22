@@ -73,10 +73,10 @@ extension MyRecordView {
                 .padding(.horizontal, -Paddings.outsideHorizontalPadding)
                 .padding(.bottom, 12)
             MyRecordButton(action: {
-                // TODO: Logout 기능 구현
+                store.send(.logout)
             }, text: "로그아웃")
             MyRecordButton(action: {
-                // TODO: 회원 탈퇴 기능 구현
+                store.send(.appleLoginForWithdraw)
             }, text: "회원 탈퇴")
             Spacer()
         }
@@ -84,6 +84,7 @@ extension MyRecordView {
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
         .onAppear {
             store.send(.onAppear)
+            store.send(.mapAuthorizationPublisher)
         }
     }
     

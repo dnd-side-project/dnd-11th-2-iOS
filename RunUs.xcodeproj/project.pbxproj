@@ -49,6 +49,9 @@
 		F65033D32C747E8500C81DA6 /* MyRecordDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */; };
 		F65033D52C747ECA00C81DA6 /* MyRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */; };
 		F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */; };
+		F65033D92C75D21800C81DA6 /* WithdrawRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */; };
+		F65033DB2C75D51500C81DA6 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033DA2C75D51500C81DA6 /* LoginAPI.swift */; };
+		F65033DD2C76D9F400C81DA6 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033DC2C76D9F400C81DA6 /* AuthorizationManager.swift */; };
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
@@ -114,6 +117,9 @@
 		F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordDependency.swift; sourceTree = "<group>"; };
 		F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordAPI.swift; sourceTree = "<group>"; };
 		F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseModel.swift; sourceTree = "<group>"; };
+		F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawRequestModel.swift; sourceTree = "<group>"; };
+		F65033DA2C75D51500C81DA6 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		F65033DC2C76D9F400C81DA6 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthorizationManager.swift; path = ../../../../../Downloads/AuthorizationManager.swift; sourceTree = "<group>"; };
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 			children = (
 				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
 				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
+				F65033DA2C75D51500C81DA6 /* LoginAPI.swift */,
 				F6B9A33B2C63123900743FBE /* AppleLoginDependency.swift */,
 				F6AC52DD2C6505AE00654820 /* AuthLoginRequestModel.swift */,
 				F6B9A33D2C63287400743FBE /* AppleLoginResponseModel.swift */,
@@ -283,13 +290,15 @@
 			children = (
 				F63B81692C71F50C002F45F4 /* MyRecordView.swift */,
 				F65033D02C747DB000C81DA6 /* MyRecordStore.swift */,
-				F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */,
 				F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */,
+				F65033DC2C76D9F400C81DA6 /* AuthorizationManager.swift */,
+				F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */,
 				F65033C62C73232D00C81DA6 /* MyRecordButton.swift */,
 				F65033CA2C7457F900C81DA6 /* MyBadges.swift */,
 				F65033C42C731EC500C81DA6 /* RecordMenus.swift */,
 				F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */,
 				F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */,
+				F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -447,10 +456,13 @@
 				F6B9A33E2C63287400743FBE /* AppleLoginResponseModel.swift in Sources */,
 				F6B9A33C2C63123900743FBE /* AppleLoginDependency.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
+				F65033DB2C75D51500C81DA6 /* LoginAPI.swift in Sources */,
+				F65033D92C75D21800C81DA6 /* WithdrawRequestModel.swift in Sources */,
 				D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */,
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
 				F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
+				F65033DD2C76D9F400C81DA6 /* AuthorizationManager.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
 				F63B81672C710573002F45F4 /* String+extension.swift in Sources */,
