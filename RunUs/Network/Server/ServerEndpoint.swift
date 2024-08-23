@@ -12,7 +12,8 @@ enum ServerEndpoint: NetworkEndpoint {
     case testResponse
     case testError
     case testHeader
-    case appleLogin(appleLoginRequest: AuthLoginRequestModel)
+    case signUp(signUpRequest: SignUpRequestModel)
+    case signIn(signInRequest: SignInRequestModel)
     case withdraw(withdrawRequest: WithdrawRequestModel)
     case getProfiles
     case getBadges
@@ -33,8 +34,10 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/examples/errors"
         case .testHeader:
             return APIversion.v1 + "/examples/headers"
-        case .appleLogin:
-            return APIversion.v1 + "/auth/oauth"
+        case .signUp:
+            return APIversion.v1 + "/auth/oauth/sign-up"
+        case .signIn:
+            return APIversion.v1 + "/auth/oauth/sign-in"
         case .withdraw:
             return APIversion.v1 + "/auth/oauth/withdraw"
         case .getProfiles:
@@ -48,7 +51,7 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges:
             return .get
-        case .appleLogin, .withdraw:
+        case .signUp, .signIn, .withdraw:
             return .post
         }
     }
@@ -62,7 +65,7 @@ enum ServerEndpoint: NetworkEndpoint {
     }
     var header: [String : String]? {
         switch self {
-        case .appleLogin:
+        case .signUp, .signIn:
             return ["Content-Type": "application/json"]
         case .testHeader, .getProfiles, .getBadges:
             guard let accessToken: String = UserDefaultManager.accessToken else {
@@ -80,8 +83,10 @@ enum ServerEndpoint: NetworkEndpoint {
     }
     var body: Encodable? {
         switch self {
-        case .appleLogin(let appleLoginRequest):
-            return appleLoginRequest
+        case .signUp(let signUpRequest):
+            return signUpRequest
+        case .signIn(let signInRequest):
+            return signInRequest
         case .withdraw(let withdrawRequest):
             return withdrawRequest
         default:
