@@ -17,7 +17,7 @@ struct RunningView: View {
     @State var isStateHidden: Bool = false
     @State var userLocation: MapCameraPosition =
         .userLocation(followsHeading: true, fallback: .automatic)
-    @State var isReady: Bool = true //FIXME: false
+    @State var isReady: Bool = false
     
     var body: some View {
         if !isReady {
@@ -71,7 +71,7 @@ extension RunningView {
             runningStateTitleView
             
             VStack{
-                Text(store.distance == 0 ? "0.0" : String(format: "%.2f", store.distance))
+                Text(store.distance == 0.00 ? "0.0" : String(format: "%.2f", store.distance))
                     .font(Fonts.pretendardBlack(size: 84))
                     .foregroundStyle(.white)
                 smallText("킬로미터")
