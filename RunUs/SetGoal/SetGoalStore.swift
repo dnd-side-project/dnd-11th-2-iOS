@@ -14,6 +14,10 @@ struct SetGoalStore: Reducer {
         var goalTypeObject: GoalTypeObject
         var bigGoal: String = ""
         var smallGoal: String = ""
+
+        init(goalTypeObject: GoalTypeObject) {
+            self.goalTypeObject = goalTypeObject
+        }
     }
     
     enum Action: Equatable, BindableAction {
