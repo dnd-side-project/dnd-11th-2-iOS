@@ -18,6 +18,9 @@ struct RunUsApp: App {
                 if isLoading { SplashView(isLoading: $isLoading) }
                 else         { MainView().environmentObject(UserEnvironment()) } // 추후 네이밍 수정
             }
+            .onAppear{
+                _ = LocationManager.shared
+            }
         }
     }
 }

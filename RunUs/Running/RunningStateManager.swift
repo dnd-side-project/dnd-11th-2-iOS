@@ -33,6 +33,7 @@ class RunningStateManagerImplements: RunningStateManager {
     }
     
     func start() {
+        self.timePublisher.send(self.time)
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
             self.time += 1
             self.timePublisher.send(self.time)
@@ -41,11 +42,13 @@ class RunningStateManagerImplements: RunningStateManager {
             self.kcal += 0.16
             self.kcalPublisher.send(Int(self.kcal))
         })
+        LocationManager.shared.startUpdatingLocation()
     }
     
     func pause() {
         timer?.invalidate()
         timer = nil
+        LocationManager.shared.stopUpdatingLocation()
     }
     
     deinit {

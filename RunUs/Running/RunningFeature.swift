@@ -17,10 +17,10 @@ struct RunningFeature {
         var isRunning: Bool = true
         var time: Int = 0
         var location: CLLocation?
-        var distance: String = "0.0"
+        var distance: Double = 0
         var kcal: Int = 0
         var pace: String = "0’00”"
-        fileprivate var beforeDistance = ""
+        fileprivate var beforeLocation: CLLocation?
     }
     
     enum Action: Equatable {
@@ -34,7 +34,6 @@ struct RunningFeature {
     }
     
     @Dependency(\.runningStateManager) var runningStateManager
-    @Dependency(\.locationManager) var locationManager
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -60,10 +59,8 @@ struct RunningFeature {
                 state.isRunning = isRunning
                 if isRunning {
                     runningStateManager.start()
-                    locationManager.startUpdatingLocation()
                 } else {
                     runningStateManager.pause()
-                    locationManager.stopUpdatingLocation()
                 }
                 return .none
             case .timeUpdated(let time):
@@ -76,6 +73,7 @@ struct RunningFeature {
             case .locationUpdated(let location):
                 let before = state.location
                 state.location = location
+                if state.time == 0 { state.beforeLocation = location }
                 return .send(.distanceUpdated(calculateDistance(before: before,
                                                                 after: location)))
             case .distanceUpdated(let distance):
@@ -86,9 +84,9 @@ struct RunningFeature {
                 state.kcal = kcal
                 return .none
             case .paceUpdated:
-                let pace = calculatePace(before: state.beforeDistance, after: state.distance)
-                state.pace = pace
-                state.beforeDistance = state.distance
+                let distance = calculateDistance(before: state.beforeLocation, after: state.location)
+                state.pace = calculatePace(distance: distance)
+                state.beforeLocation = state.location
                 return .none
             }
         }
@@ -101,17 +99,15 @@ extension RunningFeature {
         return after.distance(from: before)
     }
     
-    private func formatDistance(distance: String, newDistance: Double) -> String {
-        let doubleDistance = (Double(distance) ?? 0.0) + newDistance/1000
-        let stringDistance = String(format: "%.1f", doubleDistance)
-        return stringDistance
+    private func formatDistance(distance: Double, newDistance: Double) -> Double {
+        return distance + newDistance/1000
     }
     
-    private func calculatePace(before: String, after: String) -> String {
-        guard let before = Double(before), let after = Double(after) else { return "0’00”" }
-        let paceDistance = after-before == 0 ? 0 :  Int(1000 / (after - before))
-        let paceMin: Int = paceDistance / 60
-        let paceSec: Int = paceDistance % 60
+    private func calculatePace(distance: Double) -> String {
+        if distance == 0 { return "0’00”" }
+        let time = Int(5000 / distance)
+        let paceMin: Int = time / 60
+        let paceSec: Int = time % 60
         return "\(paceMin)’\(String(format: "%02d", paceSec))”"
     }
 }

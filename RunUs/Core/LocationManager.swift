@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import ComposableArchitecture
+import Combine
 
 extension DependencyValues {
     var locationManager: LocationManager {
@@ -30,6 +31,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     
     static let shared = LocationManager()
     private let locationManager = CLLocationManager()
+    private var stopLocation: CLLocation?
     
     var delegate: LocationManagerDelegate?
     
@@ -60,6 +62,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func stopUpdatingLocation() {
+        stopLocation = locationManager.location
         locationManager.stopUpdatingLocation()
     }
 }
@@ -67,6 +70,9 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
 extension LocationManager {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //TODO: stop -> start 되자마자 받은 location은 무시 해야함
+        if stopLocation == locations.last {
+            return
+        }
         delegate?.locationUpdated(locations.last)
     }
 }
