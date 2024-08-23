@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90CDD782C6A623F00197214 /* CountDownView.swift */; };
-		D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
 		D93A94EC2C4A372700BCCD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EB2C4A372700BCCD00 /* Assets.xcassets */; };
 		D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */; };
 		D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97950A32C62831B00BDCD44 /* RUNavigationBar.swift */; };
@@ -28,6 +27,10 @@
 		D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */; };
 		D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */; };
 		D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */; };
+		F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
+		F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */; };
+		F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */; };
+		F63B81672C710573002F45F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81662C710573002F45F4 /* String+extension.swift */; };
 		F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */; };
 		F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */; };
 		F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */; };
@@ -50,6 +53,11 @@
 		F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF887C2C4F7E46008EF2FD /* HomeView.swift */; };
 		F6F085652C58C4BE00994E34 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */; };
 		F6F085732C59FAF700994E34 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085722C59FAF700994E34 /* Fonts.swift */; };
+		F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */; };
+		F6F41B722C69BC27002EA1F5 /* SelectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B712C69BC27002EA1F5 /* SelectTypeView.swift */; };
+		F6F41B742C69BCE1002EA1F5 /* TypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */; };
+		F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */; };
+		F6F41B782C69C85A002EA1F5 /* GoalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +83,9 @@
 		D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeView.swift; sourceTree = "<group>"; };
 		D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeFeature.swift; sourceTree = "<group>"; };
 		D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneDependency.swift; sourceTree = "<group>"; };
+		F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUButton.swift; sourceTree = "<group>"; };
+		F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalStore.swift; sourceTree = "<group>"; };
+		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -98,6 +109,11 @@
 		F6EF887C2C4F7E46008EF2FD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
 		F6F085722C59FAF700994E34 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
+		F6F41B712C69BC27002EA1F5 /* SelectTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTypeView.swift; sourceTree = "<group>"; };
+		F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeButton.swift; sourceTree = "<group>"; };
+		F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTypes.swift; sourceTree = "<group>"; };
+		F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +151,10 @@
 				F64FBE3B2C566B110024E920 /* Info.plist */,
 				D93A94E72C4A372600BCCD00 /* RunUsApp.swift */,
 				D9D0B7532C5D473E00D13160 /* Core */,
-				D9F5B8582C60ED63009CEB19 /* RunAlone */,
 				D9D0B7502C5D46CA00D13160 /* Login */,
 				D9D0B7522C5D471800D13160 /* Home */,
+				D9F5B8582C60ED63009CEB19 /* RunAlone */,
+				F6F41B6C2C690091002EA1F5 /* SetGoal */,
 				D9D0B7162C4F549D00D13160 /* Network */,
 				F6F085662C58C90200994E34 /* Resource */,
 				D93A94EB2C4A372700BCCD00 /* Assets.xcassets */,
@@ -214,6 +231,7 @@
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
 				D97D9FE32C6078BD00C663BD /* LocationManager.swift */,
 				F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */,
+				F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -223,6 +241,7 @@
 			children = (
 				D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */,
 				D97950A52C62917400BDCD44 /* View+extension.swift */,
+				F63B81662C710573002F45F4 /* String+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -273,6 +292,19 @@
 				F64FBE272C566AAC0024E920 /* Fonts */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		F6F41B6C2C690091002EA1F5 /* SetGoal */ = {
+			isa = PBXGroup;
+			children = (
+				F6F41B712C69BC27002EA1F5 /* SelectTypeView.swift */,
+				F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */,
+				F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */,
+				F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */,
+				F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */,
+				F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */,
+			);
+			path = SetGoal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +393,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */,
+				F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */,
 				F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */,
 				D9E704B22C6A222000212FF0 /* RunAloneAPI.swift in Sources */,
 				D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */,
@@ -368,15 +402,16 @@
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
 				D9E704AE2C649AE900212FF0 /* TodayChallengeListItemView.swift in Sources */,
 				D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */,
+				F6F41B782C69C85A002EA1F5 /* GoalTextField.swift in Sources */,
 				D9D0B7182C4F553800D13160 /* RUError.swift in Sources */,
 				F6B9A33E2C63287400743FBE /* AppleLoginResponseModel.swift in Sources */,
 				F6B9A33C2C63123900743FBE /* AppleLoginDependency.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
 				D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */,
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
-				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
+				F63B81672C710573002F45F4 /* String+extension.swift in Sources */,
 				D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */,
 				D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */,
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
@@ -385,12 +420,16 @@
 				F6AC52DE2C6505AE00654820 /* AuthLoginRequestModel.swift in Sources */,
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
 				D9E704B02C649AFE00212FF0 /* TodayChallenge.swift in Sources */,
-				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
+				F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */,
+				F6F41B742C69BCE1002EA1F5 /* TypeButton.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
 				F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,
+				F6F41B722C69BC27002EA1F5 /* SelectTypeView.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
+				F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */,
+				F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */,
 				F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
