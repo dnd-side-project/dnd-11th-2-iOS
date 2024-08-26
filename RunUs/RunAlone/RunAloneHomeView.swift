@@ -11,28 +11,28 @@ import MapKit
 
 struct RunAloneHomeView: View {
     @Environment(\.dismiss) var dismiss
-    let store: StoreOf<RunAloneHomeFeature> = .init(
+    @State var store: StoreOf<RunAloneHomeFeature> = .init(
         initialState: RunAloneHomeFeature.State(),
         reducer: { RunAloneHomeFeature() })
     
     var body: some View {
         NavigationView {
-            WithViewStore(self.store, observe: { $0 }) { viewStore in
+            
                 ZStack {
                     Map()
                     VStack(spacing: 0) {
                         VStack(spacing: 0) {
                             RUNavigationBar(buttonType: .back,
                                             title: "혼자뛰기")
-                            todayChallengeView(isOn: viewStore.$todayChallengeToggle)
+                            todayChallengeView(isOn: $store.todayChallengeToggle)
                         }
                         .padding(.horizontal, Paddings.outsideHorizontalPadding)
                         .background(Color.background)
                         
-                        if viewStore.todayChallengeToggle {
+                        if store.todayChallengeToggle {
                             Spacer()
                                 .frame(height: 34)
-                            todayChallengeListView(viewStore.todayChallengeList)
+                            todayChallengeListView(store.todayChallengeList)
                         }
                         Spacer()
                         startButton
@@ -45,13 +45,13 @@ struct RunAloneHomeView: View {
                     store.send(.onAppear)
                 }
                 .alert(Bundle.main.locationString,
-                       isPresented: viewStore.$showLocationPermissionAlert) {
+                       isPresented: $store.showLocationPermissionAlert) {
                     Button("취소") { }
                     Button("설정") {
                         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                     }
                 }
-            }
+            
         }
     }
 }
