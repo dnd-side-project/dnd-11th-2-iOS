@@ -12,10 +12,7 @@ struct MainView: View {
     @EnvironmentObject var userEnvironment: UserEnvironment
     
     var body: some View {
-//        if userEnvironment.isLogin { HomeView() }
-        if userEnvironment.isLogin {
-            RunAloneHomeView()
-        }
+        if userEnvironment.isLogin { HomeView() }
         else {
             LoginView(
                 store: Store(
