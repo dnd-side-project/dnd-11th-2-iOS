@@ -73,20 +73,6 @@ extension RunAloneHomeView {
                     .foregroundStyle(Color.background)
             }
         }
-
-//        Button(action: {
-//            store.send(.startButtonTapped)
-//        }, label: {
-//            ZStack {
-//                Circle()
-//                    .frame(width: 92, height: 92)
-//                    .foregroundStyle(Color.mainGreen)
-//                    .shadow(color: .black.opacity(0.25), radius: 10, x: 1, y: 1)
-//                Text("start")
-//                    .font(Fonts.pretendardBold(size: 24))
-//                    .foregroundStyle(Color.background)
-//            }
-//        })
     }
     
     private func todayChallengeView(isOn: Binding<Bool>) -> some View {
