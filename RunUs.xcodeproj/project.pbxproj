@@ -27,6 +27,7 @@
 		D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */; };
 		D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */; };
 		D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */; };
+		F611B21A2C7CB04100797470 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B2192C7CB04100797470 /* AuthorizationManager.swift */; };
 		F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
 		F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */; };
 		F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */; };
@@ -51,7 +52,6 @@
 		F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */; };
 		F65033D92C75D21800C81DA6 /* WithdrawRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */; };
 		F65033DB2C75D51500C81DA6 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033DA2C75D51500C81DA6 /* LoginAPI.swift */; };
-		F65033DD2C76D9F400C81DA6 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033DC2C76D9F400C81DA6 /* AuthorizationManager.swift */; };
 		F65033DF2C7856AA00C81DA6 /* SignUpRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033DE2C7856AA00C81DA6 /* SignUpRequestModel.swift */; };
 		F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033E02C7856B300C81DA6 /* SignInRequestModel.swift */; };
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
@@ -96,6 +96,7 @@
 		D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeView.swift; sourceTree = "<group>"; };
 		D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeFeature.swift; sourceTree = "<group>"; };
 		D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneDependency.swift; sourceTree = "<group>"; };
+		F611B2192C7CB04100797470 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
 		F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUButton.swift; sourceTree = "<group>"; };
 		F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalStore.swift; sourceTree = "<group>"; };
 		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseModel.swift; sourceTree = "<group>"; };
 		F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawRequestModel.swift; sourceTree = "<group>"; };
 		F65033DA2C75D51500C81DA6 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		F65033DC2C76D9F400C81DA6 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthorizationManager.swift; path = ../../../../../Downloads/AuthorizationManager.swift; sourceTree = "<group>"; };
 		F65033DE2C7856AA00C81DA6 /* SignUpRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestModel.swift; sourceTree = "<group>"; };
 		F65033E02C7856B300C81DA6 /* SignInRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequestModel.swift; sourceTree = "<group>"; };
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 				F63B81692C71F50C002F45F4 /* MyRecordView.swift */,
 				F65033D02C747DB000C81DA6 /* MyRecordStore.swift */,
 				F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */,
-				F65033DC2C76D9F400C81DA6 /* AuthorizationManager.swift */,
+				F611B2192C7CB04100797470 /* AuthorizationManager.swift */,
 				F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */,
 				F65033C62C73232D00C81DA6 /* MyRecordButton.swift */,
 				F65033CA2C7457F900C81DA6 /* MyBadges.swift */,
@@ -463,9 +463,8 @@
 				F65033D92C75D21800C81DA6 /* WithdrawRequestModel.swift in Sources */,
 				D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */,
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
+				F611B21A2C7CB04100797470 /* AuthorizationManager.swift in Sources */,
 				F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */,
-				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
-				F65033DD2C76D9F400C81DA6 /* AuthorizationManager.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
 				F63B81672C710573002F45F4 /* String+extension.swift in Sources */,
