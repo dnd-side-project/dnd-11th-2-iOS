@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum RunningMood {
+enum RunningMood: Int, CaseIterable {
     case veryGood
     case good
     case soso

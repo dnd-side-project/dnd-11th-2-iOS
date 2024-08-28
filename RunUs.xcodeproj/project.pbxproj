@@ -25,6 +25,7 @@
 		D9A65D0E2C7CCCE700FA33BF /* RunningResultFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */; };
 		D9A65D102C7CCD9400FA33BF /* RunningMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */; };
 		D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */; };
+		D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */; };
 		D9D0B7182C4F553800D13160 /* RUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7172C4F553800D13160 /* RUError.swift */; };
 		D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7192C4F555500D13160 /* NetworkError.swift */; };
 		D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B71B2C4F566E00D13160 /* NetworkService.swift */; };
@@ -105,6 +106,7 @@
 		D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningResultFeature.swift; sourceTree = "<group>"; };
 		D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningMood.swift; sourceTree = "<group>"; };
 		D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResult.swift; sourceTree = "<group>"; };
+		D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRunningEmotionView.swift; sourceTree = "<group>"; };
 		D9D0B7172C4F553800D13160 /* RUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUError.swift; sourceTree = "<group>"; };
 		D9D0B7192C4F555500D13160 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		D9D0B71B2C4F566E00D13160 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */,
 				D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */,
 				D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */,
+				D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */,
 			);
 			path = RunningResult;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				D9E704B02C649AFE00212FF0 /* TodayChallenge.swift in Sources */,
 				D90BE6672C6B6F7100999858 /* RunningView.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
+				D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */,
 				F6AB2E952C5C7C4B0015A1CA /* LoginDependency.swift in Sources */,
 				F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */,
 				F6F41B742C69BCE1002EA1F5 /* TypeButton.swift in Sources */,
