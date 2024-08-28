@@ -10,7 +10,7 @@ import Foundation
 protocol HomeAPI {
     func getWeathers() async throws -> WeatherResponseModel
     func getChallenges() async throws -> [TodayChallenge]
-    func getRunningRecord() async throws -> RunningRecordResponseModel
+    func getMonthlySummary() async throws -> MonthlySummaryResponseModel
 }
 
 final class HomeAPILive: HomeAPI {  // TODO: API 나오면 연동
@@ -20,8 +20,9 @@ final class HomeAPILive: HomeAPI {  // TODO: API 나오면 연동
     func getChallenges() async throws -> [TodayChallenge] {
         return []
     }
-    func getRunningRecord() async throws -> RunningRecordResponseModel {
-        return RunningRecordResponseModel()
+    func getMonthlySummary() async throws -> MonthlySummaryResponseModel {
+        let result: MonthlySummaryResponseModel = try await ServerNetwork.shared.request(.getMonthlySummary)
+        return result
     }
 }
 
@@ -32,7 +33,7 @@ final class HomeAPIPreview: HomeAPI {
     func getChallenges() async throws -> [TodayChallenge] {
         return [TodayChallenge(id: 0, imageUrl: "", title: "어제보다 5분 더 뛰기", estimatedMinute: 5, isSelected: false), TodayChallenge(id: 0, imageUrl: "", title: "어제보다 5분 더 뛰기", estimatedMinute: 5, isSelected: false)]
     }
-    func getRunningRecord() async throws -> RunningRecordResponseModel {
-        return RunningRecordResponseModel(7, "32km", "Level 2", "18km")
+    func getMonthlySummary() async throws -> MonthlySummaryResponseModel {
+        return MonthlySummaryResponseModel("7월", "32km", "Level 2", "18km")
     }
 }

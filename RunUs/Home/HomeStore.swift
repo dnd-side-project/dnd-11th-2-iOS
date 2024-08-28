@@ -13,14 +13,14 @@ struct HomeStore: Reducer {
     struct State: Equatable {
         var weather: WeatherResponseModel = WeatherResponseModel()
         var challenges: [TodayChallenge] = []
-        var runningRecord: RunningRecordResponseModel = RunningRecordResponseModel()
+        var monthlySummary: MonthlySummaryResponseModel = MonthlySummaryResponseModel()
     }
     
     enum Action {
         case onAppear
         case setWeather(weather: WeatherResponseModel)
         case setChallenges(challenges: [TodayChallenge])
-        case setRunningRecord(runningRecord: RunningRecordResponseModel)
+        case setMonthlySummary(monthlySummary: MonthlySummaryResponseModel)
     }
     
     @Dependency(\.homeAPI) var homeAPI
@@ -34,8 +34,8 @@ struct HomeStore: Reducer {
                     await send(.setWeather(weather: weather))
                     let challenges = try await homeAPI.getChallenges()
                     await send(.setChallenges(challenges: challenges))
-                    let runningRecord = try await homeAPI.getRunningRecord()
-                    await send(.setRunningRecord(runningRecord: runningRecord))
+                    let monthlySummary = try await homeAPI.getMonthlySummary()
+                    await send(.setMonthlySummary(monthlySummary: monthlySummary))
                 } catch {
                     // TODO: API 에러났을 때 처리 시나리오 필요
                 }
@@ -46,8 +46,8 @@ struct HomeStore: Reducer {
         case let .setChallenges(challenges):
             state.challenges = challenges
             return .none
-        case let .setRunningRecord(runningRecord):
-            state.runningRecord = runningRecord
+        case let .setMonthlySummary(monthlySummary):
+            state.monthlySummary = monthlySummary
             return .none
         }
     }

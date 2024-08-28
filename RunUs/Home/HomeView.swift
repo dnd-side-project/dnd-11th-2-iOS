@@ -121,12 +121,12 @@ extension HomeView {
                 .frame(height: 60)
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 0) {
-                    Text("\(store.runningRecord.currentMonth)")
-                    Text("월에는")
+                    Text(store.monthlySummary.month)
+                    Text("에는")
                 }
                 .padding(.bottom, 4)
                 HStack(spacing: 0) {
-                    Text(store.runningRecord.currentKm)
+                    Text(store.monthlySummary.monthlyKm)
                         .foregroundStyle(.mainGreen)
                         .font(Fonts.pretendardSemiBold(size: 16))
                     Text(" 달렸어요")
@@ -134,9 +134,9 @@ extension HomeView {
                 }
                 .padding(.bottom, 10)
                 HStack(spacing: 0) {
-                    Text(store.runningRecord.nextLevelName)
+                    Text(store.monthlySummary.nextLevelName)
                     Text("까지 ")
-                    Text(store.runningRecord.nextLevelKm)
+                    Text(store.monthlySummary.nextLevelKm)
                     Text(" 남았어요!")
                 }
                 .font(Fonts.pretendardRegular(size: 12))
