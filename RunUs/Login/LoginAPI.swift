@@ -19,7 +19,7 @@ final class LoginAPILive: LoginAPI {
                   let idTokenData = appleIDCredential.identityToken,
                   let idToken = String(data: idTokenData, encoding: .utf8)
             else {
-                throw NetworkError.unknown  // MARK: idToken을 제대로 받지 못한 에러
+                throw NetworkError.unknown  // MARK: fullName & idToken을 제대로 받지 못한 에러
             }
             var name = ""
             
