@@ -10,26 +10,20 @@ import ComposableArchitecture
 import AuthenticationServices
 
 struct LoginStore: Reducer {
+    @ObservableState
     struct State: Equatable {}
     
     enum Action {
-        case changeLoginStatus(isLogin: Bool, accessToken: String?)
-        
         case appleLoginRequest(ASAuthorizationAppleIDRequest)
         case appleLoginResult((Result<ASAuthorization, any Error>))
         
-        case appleLoginResponse(AppleLoginResponseModel?)
+        case appleLoginResponse(LoginResponseModel?)
     }
     
-    @Dependency(\.appleLoginDependency) var appleLoginDependency
+    @Dependency(\.loginAPI) var loginAPI
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case let .changeLoginStatus(isLogin, accessToken):
-            UserDefaultManager.isLogin = isLogin
-            UserDefaultManager.accessToken = accessToken
-            return .none
-            
         case let .appleLoginRequest(request):
             request.requestedScopes = [.fullName, .email]
             return .none
@@ -37,22 +31,27 @@ struct LoginStore: Reducer {
             switch result {
             case .success(let authorization):
                 return .run { send in
-                    do {
-                        let response = try await appleLoginDependency.fetch(authorization)
-                        await send(.appleLoginResponse(response))
-                    } catch {
-                        await send(.changeLoginStatus(isLogin: false, accessToken: nil))
-                    }
+                    let response: LoginResponseModel? = try await loginAPI.appleLogin(authorization: authorization)
+                    await send(.appleLoginResponse(response))
                 }
             case .failure(_):
-                return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
+                return .none
             }
             
         case let .appleLoginResponse(response):
-            guard let response: AppleLoginResponseModel = response else {
-                return .send(.changeLoginStatus(isLogin: false, accessToken: nil))
+            guard let loginResponse: LoginResponseModel = response else {
+                return .none
             }
-            return .send(.changeLoginStatus(isLogin: true, accessToken: response.accessToken))
+            setUserDefaults(loginResponse: loginResponse)
+            return .none
         }
+    }
+    
+    private func setUserDefaults(loginResponse: LoginResponseModel) {
+        UserDefaultManager.isLogin = true
+        UserDefaultManager.name = loginResponse.nickname
+        UserDefaultManager.email = loginResponse.email
+        UserDefaultManager.accessToken = loginResponse.accessToken
+        // TODO: 추후 refreshToken 추가
     }
 }
