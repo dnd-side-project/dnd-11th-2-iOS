@@ -16,16 +16,14 @@ struct HomeView: View {
     )
     
     var body: some View {
-        NavigationView {    // TODO: 탭바 작업 시 MainView로 이동
-            ViewThatFits(in: .vertical) {
+        ViewThatFits(in: .vertical) {
+            homeView
+            ScrollView {
                 homeView
-                ScrollView {
-                    homeView
-                }
             }
-            .padding(.top, 1)   // MARK: ViewThatFits에서 ScrollView를 사용하면 SafeArea를 유지하기 위해 필요
-            .background(Color.background)
         }
+        .padding(.top, 1)   // MARK: ViewThatFits에서 ScrollView를 사용하면 SafeArea를 유지하기 위해 필요
+        .background(Color.background)
     }
 }
 
@@ -63,15 +61,16 @@ extension HomeView {
             .padding(.bottom, 39)
             HStack(alignment: .bottom, spacing: 20) {
                 VStack(alignment: .leading, spacing: 6) {
-                    Label(
-                        // TODO: 위도 / 경도를 서버에서 보내달라고 함, 서울시 강남구를 프론트에서 표기할 수 있는지 확인
-                        title: { Text("서울시 강남구").font(Fonts.pretendardRegular(size: 12)) },
-                        icon: {
-                            Image(.location)    // TODO: 현재 이미지 아이콘 우측이 조금 잘려서 추후에 디자이너분들께 다시 받아 수정
-                                .resizable()
-                                .scaledToFit()
-                        }
-                    )
+                    // TODO: locationManager의 permission을 HomeView로 이동 + 현재 주소 가져오기 적용
+                    // TODO: 위치 정보 제공 안할 시 HStack hide 및 서버로 서울 강남 위도 / 경도 전송
+                    HStack(spacing: 0) {
+                        Image(.location)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 18)
+                            .padding(.horizontal, 1)
+                        Text("서울시 강남구").font(Fonts.pretendardRegular(size: 12))
+                    }
                     .frame(height: 20)
                     Text(store.weather.title)
                         .font(Fonts.pretendardSemiBold(size: 16))
@@ -87,28 +86,27 @@ extension HomeView {
                             Text("\(store.weather.minimumTemperature)")
                             Text("℃")
                         }
-                        .foregroundStyle(.gray200)
+                        .foregroundStyle(.gray300)
                         .font(Fonts.pretendardRegular(size: 10))
                     }
                     .font(Fonts.pretendardRegular(size: 12))
                 }
-                // TODO: 줄바꿈, 폰트 색상, 위치 등 논의 후 수정
                 Text(store.weather.caption)
+                    .lineSpacing(8)
                     .foregroundStyle(.gray100)
                     .font(Fonts.pretendardRegular(size: 12))
             }
             .padding(.bottom, 28)
             MyRecordButton(action: {
-                // TODO: running (아마 목표 설정) 화면으로 << 시나리오 확인 필요
+                // TODO: running 화면으로 이동
             }, text: "오늘의 러닝 챌린지 및 목표설정")
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 14) {
                     ForEach(store.challenges) { challenge in
                         Button {
-                            // TODO: 혼자 뛰기를 시작하겠냐는 팝업을 띄운다던지.. 시나리오 상의 필요 (바로 카운트 다운으로 가면 이상할 듯..?)
+                            // TODO: 해당 challenge가 선택되어있는 running 화면으로 이동
                         } label: {
-                            // TODO: background가 mainDeepDark인 케이스 추가 필요
-                            TodayChallengeListItemView(challenge: challenge)
+                            TodayChallengeListItemView(challenge: challenge, backgroundColor: .mainDeepDark)
                         }
                     }
                 }
@@ -143,8 +141,8 @@ extension HomeView {
             }
             .font(Fonts.pretendardMedium(size: 16))
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
+            .padding(.vertical, 12)
             .frame(maxWidth: .infinity)
-            .frame(height: 90)
             .background(.mainDeepDark)
             .cornerRadius(12)
             Spacer()
