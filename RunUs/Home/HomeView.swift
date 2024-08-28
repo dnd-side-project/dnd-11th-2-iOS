@@ -16,7 +16,7 @@ struct HomeView: View {
     )
     
     var body: some View {
-        NavigationView {
+        NavigationView {    // TODO: 탭바 작업 시 MainView로 이동
             ViewThatFits(in: .vertical) {
                 homeView
                 ScrollView {
