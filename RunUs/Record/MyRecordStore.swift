@@ -46,10 +46,7 @@ struct MyRecordStore: Reducer {
                     .map { Action.withdraw(withdrawRequest: $0) }
             })
         case let .setProfile(profile):
-            state.profile.profileImageUrl = profile.profileImageUrl
-            state.profile.currentKm = profile.currentKm
-            state.profile.nextLevelName = profile.nextLevelName
-            state.profile.nextLevelKm = profile.nextLevelKm
+            state.profile = profile
             return .none
         case let .setBadges(badges):
             state.badges = badges
