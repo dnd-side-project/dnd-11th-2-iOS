@@ -55,7 +55,7 @@ struct MyRecordStore: Reducer {
             state.badges = badges
             return .none
         case .logout:
-            UserDefaultManager.isLogin = false
+            resetUserDefaults()
             return .none
         case .appleLoginForWithdraw:
             state.appleLoginDelegate = AppleLoginDelegate() { result in
@@ -79,11 +79,15 @@ struct MyRecordStore: Reducer {
         case let .withdraw(withdrawRequest):
             return .run { _ in
                 try await myRecordAPI.withdraw(withdrawRequest: withdrawRequest)
-                UserDefaultManager.isLogin = false
-                UserDefaultManager.name = nil
-                UserDefaultManager.email = nil
-                UserDefaultManager.accessToken = nil
+                resetUserDefaults()
             }
         }
+    }
+    
+    private func resetUserDefaults() {
+        UserDefaultManager.isLogin = false
+        UserDefaultManager.name = nil
+        UserDefaultManager.email = nil
+        UserDefaultManager.accessToken = nil
     }
 }

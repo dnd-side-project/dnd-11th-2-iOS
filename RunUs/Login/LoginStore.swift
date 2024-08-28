@@ -39,15 +39,19 @@ struct LoginStore: Reducer {
             }
             
         case let .appleLoginResponse(response):
-            guard let response: LoginResponseModel = response else {
+            guard let loginResponse: LoginResponseModel = response else {
                 return .none
             }
-            UserDefaultManager.isLogin = true
-            UserDefaultManager.name = response.nickname
-            UserDefaultManager.email = response.email
-            UserDefaultManager.accessToken = response.accessToken
-            // TODO: 추후 refreshToken 추가
+            setUserDefaults(loginResponse: loginResponse)
             return .none
         }
+    }
+    
+    private func setUserDefaults(loginResponse: LoginResponseModel) {
+        UserDefaultManager.isLogin = true
+        UserDefaultManager.name = loginResponse.nickname
+        UserDefaultManager.email = loginResponse.email
+        UserDefaultManager.accessToken = loginResponse.accessToken
+        // TODO: 추후 refreshToken 추가
     }
 }
