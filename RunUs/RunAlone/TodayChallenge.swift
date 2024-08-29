@@ -7,10 +7,14 @@
 
 import Foundation
 
-struct TodayChallenge: Equatable, Decodable, Identifiable {
-    let id: Int
-    let imageUrl: String
+struct TodayChallenge: Equatable, Decodable {
+    let challengeId: Int
     let title: String
-    let estimatedMinute: Int
-    var isSelected: Bool
+    let expectedTime: String
+    let icon: String
+    var isSelected: Bool = false
+}
+
+extension TodayChallenge: Identifiable {
+    var id: Int { challengeId }
 }
