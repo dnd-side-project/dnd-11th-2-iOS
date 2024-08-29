@@ -12,22 +12,18 @@ protocol RunAloneAPI {
 }
 
 final class RunAloneAPIImplements: RunAloneAPI {
-    //TODO: API 나오면 변경
     func getTodayChallenge() async throws -> [TodayChallenge] {
-        return [
-            .init(id: 0, imageUrl: "SampleImage", title: "어제보다 500m더 뛰기", estimatedMinute: 12, isSelected: false),
-            .init(id: 1, imageUrl: "SampleImage", title: "저번보다 500m더 뛰기", estimatedMinute: 99999, isSelected: false),
-            .init(id: 2, imageUrl: "SampleImage", title: "옛날보다 500m더 뛰기", estimatedMinute: 0, isSelected: false),
-        ]
+        let result: [TodayChallenge] = try await ServerNetwork.shared.request(.getChallenges)
+        return result
     }
 }
 
 final class RunAloneAPIMock: RunAloneAPI {
     func getTodayChallenge() async throws -> [TodayChallenge] {
         return [
-            .init(id: 0, imageUrl: "SampleImage", title: "어제보다 500m더 뛰기", estimatedMinute: 12, isSelected: false),
-            .init(id: 1, imageUrl: "SampleImage", title: "저번보다 500m더 뛰기", estimatedMinute: 99999, isSelected: false),
-            .init(id: 2, imageUrl: "SampleImage", title: "옛날보다 500m더 뛰기", estimatedMinute: 0, isSelected: false),
+            .init(challengeId: 0, title: "어제보다 500m더 뛰기", expectedTime: "12분", icon: "SampleImage", isSelected: false),
+            .init(challengeId: 1, title: "저번보다 500m더 뛰기", expectedTime: "99999분", icon: "SampleImage", isSelected: false),
+            .init(challengeId: 2, title: "옛날보다 500m더 뛰기", expectedTime: "0분", icon: "SampleImage", isSelected: false),
         ]
     }
 }

@@ -51,11 +51,11 @@ struct RunAloneHomeFeature {
                 return .none
             case .selectChallenge(let id):
                 state.todayChallengeList = state.todayChallengeList.map {
-                    .init(id: $0.id,
-                          imageUrl: $0.imageUrl,
+                    .init(challengeId: $0.challengeId,
                           title: $0.title,
-                          estimatedMinute: $0.estimatedMinute,
-                          isSelected: id == $0.id)
+                          expectedTime: $0.expectedTime,
+                          icon: $0.icon,
+                          isSelected: id == $0.challengeId)
                 }
                 return .none
             case .startButtonTapped:

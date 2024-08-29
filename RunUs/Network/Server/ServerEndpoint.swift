@@ -17,6 +17,7 @@ enum ServerEndpoint: NetworkEndpoint {
     case withdraw(withdrawRequest: WithdrawRequestModel)
     case getProfiles
     case getBadges
+    case getChallenges
     case getMonthlySummary
     
     var baseURL: URL? { URL(string: "https://api.runus.site") }
@@ -45,6 +46,8 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/members/profiles/me"
         case .getBadges:
             return APIversion.v1 + "/badges/me"
+        case .getChallenges:
+            return APIversion.v1 + "/challenges"
         case .getMonthlySummary:
             return APIversion.v1 + "/running-records/monthly-summary"
         }
@@ -52,7 +55,7 @@ enum ServerEndpoint: NetworkEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges, .getMonthlySummary:
+        case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges, .getChallenges, .getMonthlySummary:
             return .get
         case .signUp, .signIn, .withdraw:
             return .post
@@ -70,7 +73,7 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .signUp, .signIn:
             return ["Content-Type": "application/json"]
-        case .testHeader, .getProfiles, .getBadges, .getMonthlySummary:
+        case .testHeader, .getProfiles, .getBadges, .getChallenges, .getMonthlySummary:
             guard let accessToken: String = UserDefaultManager.accessToken else {
                 return nil
             }
