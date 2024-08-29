@@ -9,16 +9,22 @@ import SwiftUI
 
 struct TodayChallengeListItemView: View {
     let challenge: TodayChallenge
+    var isSelected: Bool = false
+    var hasShadowPadding: Bool = true
     var backgroundColor: Color = .mainDark
     
     var body: some View {
         VStack {
-            shadowPadding
+            if hasShadowPadding { shadowPadding }
             HStack(spacing: 16) {
-                Image(challenge.icon)
-                    .resizable()
-                    .frame(width: 56, height: 56)
-                    .padding(.leading, Paddings.outsideHorizontalPadding)
+                AsyncImage(url: URL(string: challenge.icon)) { image in
+                    image
+                        .resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 56, height: 56)
+                .padding(.leading, Paddings.outsideHorizontalPadding)
                 VStack(alignment: .leading, spacing: 8) {
                     Text(challenge.title)
                         .font(Fonts.pretendardSemiBold(size: 16))
@@ -29,12 +35,12 @@ struct TodayChallengeListItemView: View {
                 Spacer()
             }
             .frame(width: 280, height: 91)
-            .background(challenge.isSelected ? .background : backgroundColor)
+            .background(isSelected ? .background : backgroundColor)
             .cornerRadius(12, corners: .allCorners)
-            .if(challenge.isSelected, transform: { view in
+            .if(isSelected, transform: { view in
                 view.shadow(color: .black.opacity(0.7), radius: 10, x: 1, y: 1)
             })
-            shadowPadding
+            if hasShadowPadding { shadowPadding }
         }
     }
 }
@@ -47,5 +53,5 @@ extension TodayChallengeListItemView {
 }
 
 #Preview {
-    TodayChallengeListItemView(challenge: .init(challengeId: 0, title: "어제보다 더뛰기", expectedTime: "10분", icon: "SampleImage", isSelected: false))
+    TodayChallengeListItemView(challenge: .init(challengeId: 0, title: "어제보다 더뛰기", expectedTime: "10분", icon: "SampleImage"))
 }

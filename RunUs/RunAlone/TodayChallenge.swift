@@ -12,7 +12,6 @@ struct TodayChallenge: Equatable, Decodable {
     let title: String
     let expectedTime: String
     let icon: String
-    var isSelected: Bool = false
 }
 
 extension TodayChallenge: Identifiable {

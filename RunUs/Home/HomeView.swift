@@ -106,7 +106,7 @@ extension HomeView {
                         Button {
                             // TODO: 해당 challenge가 선택되어있는 running 화면으로 이동
                         } label: {
-                            TodayChallengeListItemView(challenge: challenge, backgroundColor: .mainDeepDark)
+                            TodayChallengeListItemView(challenge: challenge, hasShadowPadding: false, backgroundColor: .mainDeepDark)
                         }
                     }
                 }
