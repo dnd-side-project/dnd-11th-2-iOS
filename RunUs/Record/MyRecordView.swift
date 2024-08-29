@@ -64,7 +64,7 @@ extension MyRecordView {
             MyRecordButton(action: {
                 // TODO: 나의 뱃지 화면으로 이동
             }, text: "나의 뱃지")
-            .padding(.bottom, 18)
+            .padding(.bottom, 12)
             MyBadges(badges: store.badges)
             Divider()
                 .frame(maxWidth: .infinity)
