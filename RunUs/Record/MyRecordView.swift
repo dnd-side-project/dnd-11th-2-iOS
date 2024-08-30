@@ -66,10 +66,10 @@ extension MyRecordView {
             }, text: "나의 뱃지")
             .padding(.bottom, 12)
             MyBadges(badges: store.badges)
-            Divider()
+            Rectangle()
+                .fill(.mainDeepDark)
                 .frame(maxWidth: .infinity)
                 .frame(height: 8)
-                .background(.mainDeepDark)
                 .padding(.horizontal, -Paddings.outsideHorizontalPadding)
                 .padding(.bottom, 12)
             MyRecordButton(action: {
