@@ -52,8 +52,8 @@ extension MyRecordView {
                         .scaledToFit()
                 } placeholder: {
                     ProgressView()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 100, maxHeight: .infinity) // MARK: 임의 Width 사용
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .aspectRatio(1, contentMode: .fit)
                 }
             }
             .frame(maxHeight: 86)
