@@ -36,7 +36,7 @@ struct RunAloneHomeView: View {
                     Spacer()
                     startButton
                     Spacer()
-                        .frame(height: 95)
+                        .frame(height: 48)
                 }
                 
             }
