@@ -46,11 +46,10 @@ extension HomeView {
                 }
                 .font(Fonts.pretendardBold(size: 20))
                 Spacer()
-                AsyncImage(url: URL(string: store.weather.imageUrl)) { image in
+                AsyncImage(url: URL(string: store.weather.weatherIconUrl)) { image in
                     image
                         .resizable()
                         .scaledToFit()
-                        .padding(20)
                 } placeholder: {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -61,29 +60,27 @@ extension HomeView {
             .padding(.bottom, 39)
             HStack(alignment: .bottom, spacing: 20) {
                 VStack(alignment: .leading, spacing: 6) {
-                    // TODO: locationManager의 permission을 HomeView로 이동 + 현재 주소 가져오기 적용
-                    // TODO: 위치 정보 제공 안할 시 HStack hide 및 서버로 서울 강남 위도 / 경도 전송
                     HStack(spacing: 0) {
                         Image(.location)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 18)
                             .padding(.horizontal, 1)
-                        Text("서울시 강남구").font(Fonts.pretendardRegular(size: 12))
+                        Text(store.currentLocatoin).font(Fonts.pretendardRegular(size: 12))
                     }
                     .frame(height: 20)
-                    Text(store.weather.title)
+                    Text(store.weather.weatherName)
                         .font(Fonts.pretendardSemiBold(size: 16))
                     HStack(spacing: 4) {
                         HStack(spacing: 0) {
                             Text("체감온도 ")
-                            Text("\(store.weather.sensoryTemperature)")
+                            Text("\(store.weather.apparentTemperature)")
                             Text("℃")
                         }
                         HStack(spacing: 0) {
-                            Text("\(store.weather.maximumTemperature)")
+                            Text("\(store.weather.maxTemperature)")
                             Text("℃/")
-                            Text("\(store.weather.minimumTemperature)")
+                            Text("\(store.weather.minTemperature)")
                             Text("℃")
                         }
                         .foregroundStyle(.gray300)
@@ -91,7 +88,7 @@ extension HomeView {
                     }
                     .font(Fonts.pretendardRegular(size: 12))
                 }
-                Text(store.weather.caption)
+                Text(store.weather.weatherDescription)
                     .lineSpacing(8)
                     .foregroundStyle(.gray100)
                     .font(Fonts.pretendardRegular(size: 12))
@@ -151,6 +148,7 @@ extension HomeView {
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
         .onAppear {
             store.send(.onAppear)
+            store.send(.mapGetWeatherPublisher)
         }
     }
 }

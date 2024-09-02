@@ -38,6 +38,7 @@
 		F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */; };
 		F63B81672C710573002F45F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81662C710573002F45F4 /* String+extension.swift */; };
 		F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81692C71F50C002F45F4 /* MyRecordView.swift */; };
+		F63BAA4F2C8588F800DCE9EC /* WeatherParametersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA4E2C8588F800DCE9EC /* WeatherParametersModel.swift */; };
 		F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */; };
 		F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */; };
 		F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */; };
@@ -111,6 +112,7 @@
 		F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalStore.swift; sourceTree = "<group>"; };
 		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		F63B81692C71F50C002F45F4 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
+		F63BAA4E2C8588F800DCE9EC /* WeatherParametersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherParametersModel.swift; sourceTree = "<group>"; };
 		F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				F611B21B2C7E1A7300797470 /* HomeStore.swift */,
 				F611B2212C7E22AF00797470 /* HomeDependency.swift */,
 				F611B2232C7E23EE00797470 /* HomeAPI.swift */,
+				F63BAA4E2C8588F800DCE9EC /* WeatherParametersModel.swift */,
 				F611B21F2C7E1FBE00797470 /* WeatherResponseModel.swift */,
 				F611B2252C7E275C00797470 /* MonthlySummaryResponseModel.swift */,
 			);
@@ -474,6 +477,7 @@
 				D9D0B7182C4F553800D13160 /* RUError.swift in Sources */,
 				F6B9A33E2C63287400743FBE /* LoginResponseModel.swift in Sources */,
 				F6B9A33C2C63123900743FBE /* LoginDependency.swift in Sources */,
+				F63BAA4F2C8588F800DCE9EC /* WeatherParametersModel.swift in Sources */,
 				F611B21C2C7E1A7300797470 /* HomeStore.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
 				F65033DB2C75D51500C81DA6 /* LoginAPI.swift in Sources */,
