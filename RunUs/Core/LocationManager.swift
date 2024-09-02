@@ -47,7 +47,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
             return getWeatherPublisher.send(WeatherParametersModel("서울시 강남구", 127.0495556, 37.514575))
         }
         
-        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in  // TODO: 추후 Combine으로 수정
+        CLGeocoder().reverseGeocodeLocation(location) { [weak self] (placemarks, error) in  // TODO: 추후 Combine으로 수정
             var address = ""
             if let placemark = placemarks?.first {
                 if let administrativeArea = placemark.administrativeArea {
@@ -60,7 +60,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
             let longitude = location.coordinate.longitude
             let latitude = location.coordinate.latitude
             
-            self.getWeatherPublisher.send(WeatherParametersModel(address, longitude, latitude))
+            self?.getWeatherPublisher.send(WeatherParametersModel(address, longitude, latitude))
         }
     }
 }
