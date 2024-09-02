@@ -11,10 +11,6 @@ import ComposableArchitecture
 struct RUCalendarView: View {
     let store: StoreOf<RecordCalendarFeature>
     
-    @State var month: Date = Date()
-    @State var selectedDay: Int = 0
-    @State var recordDay: Set<Int> = [2,9,19]
-    
     var body: some View {
         VStack(spacing: 26) {
             headerView
@@ -70,11 +66,11 @@ extension RUCalendarView {
                             .foregroundStyle(.clear)
                     } else {
                         let day = index - firstWeekday + 1
-                        DayComponent(day: day, hasRecord: recordDay.contains(day))
+                        DayComponent(day: day, hasRecord: store.recordDays.contains(day))
                         .padding(.top, 13)
                         .onTapGesture {
-                            if recordDay.contains(day) {
-                                selectedDay = day
+                            if store.recordDays.contains(day) {
+                                store.send(.tapDay(day))
                             }
                         }
                     }
@@ -117,17 +113,6 @@ private extension RUCalendarView {
         return calendar.veryShortWeekdaySymbols
     }
     
-    /// 특정 해당 날짜
-    private func getDate(for day: Int) -> Date {
-        return Calendar.current.date(byAdding: .day, value: day, to: startOfMonth())!
-    }
-    
-    /// 해당 월의 시작 날짜
-    func startOfMonth() -> Date {
-        let components = Calendar.current.dateComponents([.year, .month], from: month)
-        return Calendar.current.date(from: components)!
-    }
-    
     /// 해당 월에 존재하는 일자 수
     func numberOfDays(in date: Date) -> Int {
         return Calendar.current.range(of: .day, in: .month, for: date)?.count ?? 0
@@ -140,17 +125,4 @@ private extension RUCalendarView {
         
         return Calendar.current.component(.weekday, from: firstDayOfMonth)
     }
-    
-    /// 월 변경
-    func changeMonth(by value: Int) {
-        let calendar = Calendar.current
-        if let newMonth = calendar.date(byAdding: .month, value: value, to: month) {
-            self.month = newMonth
-        }
-    }
 }
-
-
-//#Preview {
-//    RUCalendarView(selectedDay: .constant(0))
-//}

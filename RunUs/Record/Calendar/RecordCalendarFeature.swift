@@ -15,12 +15,13 @@ struct RecordCalendarFeature {
         var currentMonth: Date = .now
         var currentDay: Int = Calendar.current.component(.day, from: Date())
         var recordDays: Set<Int> = []
-        var currentRecord: RunningRecord?
+        var currentDaily: String = DateFormatter.yyyyMMdd_dot.string(from: Date())
+        var currentRecord: [RunningRecord] = []
     }
     
     enum Action {
         case binding(BindingAction<State>)
-        case updateRecord
+        case updateRecord([RunningRecord])
         case tapLeftButton
         case tapRightButton
         case tapDay(Int)
@@ -38,25 +39,44 @@ struct RecordCalendarFeature {
             switch action {
             case .binding(_):
                 return .none
-            case .updateRecord:
-                //TODO: state.day를 기준으로 API호출
+            case .updateRecord(let record):
+                state.currentRecord = record
                 return .none
             case .tapLeftButton:
                 state.currentMonth = changeMonth(by: -1, month: state.currentMonth)
+                state.recordDays = []
                 return .send(.getRecordDays(state.currentMonth))
             case .tapRightButton:
                 state.currentMonth = changeMonth(by: +1, month: state.currentMonth)
+                state.recordDays = []
                 return .send(.getRecordDays(state.currentMonth))
             case .tapDay(let day):
+                let currentMonth = state.currentMonth
                 state.currentDay = day
-                return .send(.updateRecord)
+                state.currentDaily = dateFormatter(currentMonth: currentMonth,
+                                                   day: day,
+                                                   split: ".") ?? DateFormatter.yyyyMMdd_dot.string(from: Date())
+                return .run { send in
+                    guard let date = dateFormatter(currentMonth: currentMonth, day: day, split: "-")
+                    else { return }
+                    do {
+                        let model = try await api.getDaily(date: date)
+                        await send(.updateRecord(model.records))
+                    } catch(let error) {
+                        print(error)
+                    }
+                }
             case .tapRecord:
                 return .none
             case .getRecordDays(let date):
                 return .run { send in
                     let (year, month) = dateFormatter(date: date)
-                    let model = try await api.getMonthly(year: year, month: month)
-                    await send(.updateRecordDays(model.days))
+                    do {
+                        let model = try await api.getMonthly(year: year, month: month)
+                        await send(.updateRecordDays(model.days))
+                    } catch(let error) {
+                        print(error)
+                    }
                 }
             case .updateRecordDays(let date):
                 let days = date.compactMap { getDay(date: $0) }
@@ -80,6 +100,19 @@ extension RecordCalendarFeature {
         let year: Int = calendar.component(.year, from: date)
         let month: Int = calendar.component(.month, from: date)
         return (year, month)
+    }
+    
+    private func dateFormatter(currentMonth: Date, day: Int, split: String) -> String? {
+        var component = calendar.dateComponents([.year, .month], from: currentMonth)
+        component.day = day
+        
+        guard let date = calendar.date(from: component) else { return nil }
+        
+        if split == "-" {
+            return DateFormatter.yyyyMMdd_hyphen.string(from: date)
+        } else {
+            return DateFormatter.yyyyMMdd_dot.string(from: date)
+        }
     }
     
     private func getDay(date: String) -> Int? {

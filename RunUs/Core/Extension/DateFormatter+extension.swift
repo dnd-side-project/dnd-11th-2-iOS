@@ -14,9 +14,15 @@ extension DateFormatter {
         return formatter
     }()
     
-    static let yyyyMM_dot: DateFormatter = {
+    static let yyyyMMdd_dot: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM."
+        formatter.dateFormat = "yyyy.MM.dd"
+        return formatter
+    }()
+    
+    static let yyyyMMdd_hyphen: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
 }

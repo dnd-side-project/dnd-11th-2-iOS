@@ -22,7 +22,7 @@ struct RecordCalendarAPIKey: DependencyKey {
 
 protocol RecordCalendarAPI {
     func getMonthly(year: Int, month: Int) async throws -> RunningMonthlyRecord
-    func getDaily(date: String) async throws -> RunningRecord
+    func getDaily(date: String) async throws -> RunningRecordResponse
 }
 
 final class RecordCalendarAPILive: RecordCalendarAPI {
@@ -30,7 +30,7 @@ final class RecordCalendarAPILive: RecordCalendarAPI {
         try await ServerNetwork.shared.request(.getMonthly(year: year, month: month))
     }
     
-    func getDaily(date: String) async throws -> RunningRecord {
+    func getDaily(date: String) async throws -> RunningRecordResponse {
         try await ServerNetwork.shared.request(.getDaily(date))
     }
 }

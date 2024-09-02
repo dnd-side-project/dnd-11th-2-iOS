@@ -16,6 +16,18 @@ struct RecordCalendarView: View {
     @State var selectedDay: Int = 0
     
     var body: some View {
+        ViewThatFits(in: .vertical) {
+            recordCalendarView
+            ScrollView {
+                recordCalendarView
+            }
+        }
+    }
+}
+
+extension RecordCalendarView {
+    
+    private var recordCalendarView: some View {
         ZStack {
             Color.background.ignoresSafeArea()
             VStack {
@@ -28,41 +40,57 @@ struct RecordCalendarView: View {
             .padding(Paddings.outsideHorizontalPadding)
         }
     }
-}
-
-extension RecordCalendarView {
+    
     private var dailyRecordView: some View {
-        VStack(alignment: .leading, spacing: 26) {
-            Text(DateFormatter.yyyyMM_dot.string(from: store.currentMonth) +
-                 String(format: "%02d", store.currentDay))
-                .font(Fonts.pretendardSemiBold(size: 16))
-                .foregroundStyle(.white)
-            VStack(spacing: 25) {
-                HStack {
-                    Image(.timeIcon)
-                        .resizable()
-                        .frame(width: 37, height: 37)
-                    VStack(alignment: .leading) {
-                        Text("서울 강남구 러닝")
-                            .font(Fonts.pretendardRegular(size: 15))
-                        Text("2.3km")
-                            .font(Fonts.pretendardSemiBold(size: 22))
-                    }
+        VStack {
+            HStack {
+                Text(store.currentDaily)
+                    .font(Fonts.pretendardSemiBold(size: 16))
                     .foregroundStyle(.white)
-                    Spacer()
-                }.padding(.leading, 22)
-                HStack {
-                    recordText(title: "평균페이스", data: "0’00”")
-                    Spacer()
-                    recordText(title: "시간", data: "30:15")
-                    Spacer()
-                    recordText(title: "칼로리", data: "200")
-                }.padding(.horizontal, 26)
+                Spacer()
             }
-            .frame(height: 160)
-            .background(Color.mainDeepDark)
-            .cornerRadius(14, corners: .allCorners)
+            if store.currentRecord.isEmpty {
+                HStack(alignment: .center) {
+                    Text("운동 기록이 없습니다.")
+                        .font(Fonts.pretendardMedium(size: 14))
+                        .foregroundStyle(.gray200)
+                        .padding(.top, 66)
+                }
+            } else {
+                ForEach(store.currentRecord) { record in
+                    recordView(record: record)
+                }
+            }
         }
+    }
+    
+    private func recordView(record: RunningRecord) -> some View {
+        VStack(spacing: 25) {
+            HStack {
+                Image(.timeIcon)
+                    .resizable()
+                    .frame(width: 37, height: 37)
+                VStack(alignment: .leading) {
+                    Text(record.startLocation)
+                        .font(Fonts.pretendardRegular(size: 15))
+                    Text("\(record.distanceMeter)km")
+                        .font(Fonts.pretendardSemiBold(size: 22))
+                }
+                .foregroundStyle(.white)
+                Spacer()
+            }.padding(.leading, 22)
+            HStack {
+                recordText(title: "평균페이스", data: record.averagePace)
+                Spacer()
+                recordText(title: "시간", data: record.duration)
+                Spacer()
+                recordText(title: "칼로리", data: "\(record.calorie)")
+            }.padding(.horizontal, 26)
+        }
+        .frame(height: 160)
+        .background(Color.mainDeepDark)
+        .cornerRadius(14, corners: .allCorners)
+        .padding(.top, 26)
     }
     
     //TODO: 러닝 화면에 있는 Text 컴포넌트화 해서 사용하기
