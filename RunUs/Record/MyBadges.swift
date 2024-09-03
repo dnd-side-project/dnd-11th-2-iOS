@@ -24,8 +24,8 @@ struct MyBadges: View {
             } else {
                 // TODO: 미리 보기 뱃지 갯수 정의 (ex: 미리 보기 뱃지는 3개로 고정) 이후 수정
                 VStack {
-                    ForEach (0 ... (badges.count / 3), id: \.self) { rowIndex in
-                        HStack(spacing: 0) {
+                    ForEach (0 ... ((badges.count - 1) / 3), id: \.self) { rowIndex in
+                        HStack(spacing: 3) {
                             MyBadge(badge: badges[rowIndex * 3])
                             MyBadge(badge: badges.count > rowIndex * 3 + 1 ? badges[rowIndex * 3 + 1] : nil)
                             MyBadge(badge: badges.count > rowIndex * 3 + 2 ? badges[rowIndex * 3 + 2] : nil)
@@ -46,18 +46,18 @@ struct MyBadge: View {
             if badge == nil {
                 Image(.xmark)  // MARK: empty Image
                     .resizable()
-                    .scaledToFit()
-                    .padding(50)
+                    .aspectRatio(1, contentMode: .fit)
                     .opacity(0)
             } else {
                 AsyncImage(url: URL(string: badge!.imageUrl)) { image in
                     image
                         .resizable()
-                        .scaledToFit()
-                        .padding(25)
                 } placeholder: {
                     ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
+                .aspectRatio(1, contentMode: .fit)
+                .padding(13)
                 Text(badge!.name)
                     .font(.system(size: 12))
                     .foregroundStyle(.gray200)
