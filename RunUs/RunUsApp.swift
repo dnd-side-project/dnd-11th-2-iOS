@@ -16,7 +16,7 @@ struct RunUsApp: App {
             ZStack {
                 Color.background.ignoresSafeArea()
                 if isLoading { SplashView(isLoading: $isLoading) }
-                else { MainView() }
+                else { MainView().environmentObject(ViewEnvironment()) }
             }
         }
     }

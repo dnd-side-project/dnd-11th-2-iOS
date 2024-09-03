@@ -12,7 +12,6 @@ class UserDefaultManager {
     @UserDefault(key: .name, defaultValue: nil) static var name: String?
     @UserDefault(key: .email, defaultValue: nil) static var email: String?
     @UserDefault(key: .accessToken, defaultValue: nil) static var accessToken: String?
-    @UserDefault(key: .selectedTabItem, defaultValue: TabItems.home.rawValue) static var selectedTabItem: String?
 }
 
 enum UserDefaultKey: String {
@@ -20,7 +19,6 @@ enum UserDefaultKey: String {
     case name
     case email
     case accessToken
-    case selectedTabItem
 }
 
 @propertyWrapper

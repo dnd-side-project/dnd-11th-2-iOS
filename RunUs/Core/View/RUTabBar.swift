@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct RUTabBar: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
+    
     var body: some View {
         HStack {
-            RUDefualtTabItem(tabItemObject: TabItemObject(TabItems.home))
-            RUDefualtTabItem(tabItemObject: TabItemObject(TabItems.running))
-            RUDefualtTabItem(tabItemObject: TabItemObject(TabItems.myRecord))
+            RUDefualtTabItem(viewEnvironment, TabItemObject(TabItems.home))
+            RUDefualtTabItem(viewEnvironment, TabItemObject(TabItems.running))
+            RUDefualtTabItem(viewEnvironment, TabItemObject(TabItems.myRecord))
         }
         .frame(maxWidth: .infinity)
         .frame(height: 83)
@@ -20,9 +22,11 @@ struct RUTabBar: View {
     }
 }
 
-private func RUDefualtTabItem(tabItemObject: TabItemObject) -> some View {
+private func RUDefualtTabItem(_ viewEnvironment: ViewEnvironment, _ tabItemObject: TabItemObject) -> some View {
     Button {
-        UserDefaultManager.selectedTabItem = tabItemObject.tabItem.rawValue
+        if viewEnvironment.selectedTabItem != tabItemObject.tabItem {
+            viewEnvironment.selectedTabItem = tabItemObject.tabItem
+        }
     } label: {
         VStack(spacing: 4) {
             Image(tabItemObject.icon)

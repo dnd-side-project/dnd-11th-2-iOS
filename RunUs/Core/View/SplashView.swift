@@ -18,7 +18,6 @@ struct SplashView: View {
                 .frame(width: 79)
         }
         .onAppear {
-            UserDefaultManager.selectedTabItem = TabItems.home.rawValue
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
                 isLoading = false
             }

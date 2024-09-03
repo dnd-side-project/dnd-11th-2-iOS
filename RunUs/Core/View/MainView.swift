@@ -9,14 +9,14 @@ import SwiftUI
 import ComposableArchitecture
 
 struct MainView: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     @AppStorage(UserDefaultKey.isLogin.rawValue) var isLogin: Bool = false
-    @AppStorage(UserDefaultKey.selectedTabItem.rawValue) var selectedTabItem: TabItems = .home
     
     var body: some View {
-        NavigationStack {   // TODO: EnvironmentObject로 path 추가할지 여부와 selectedTabItem을 EnvironmentObject에 넣을지 논의 후 수정
+        NavigationStack(path: $viewEnvironment.navigationPath) {
             VStack(spacing: 0) {
                 if isLogin {
-                    switch selectedTabItem {
+                    switch viewEnvironment.selectedTabItem {
                     case .home:
                         HomeView()
                     case .running:
