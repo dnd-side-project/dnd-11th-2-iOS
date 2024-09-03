@@ -2,30 +2,19 @@
 //  LoginDependency.swift
 //  RunUs
 //
-//  Created by seungyooooong on 8/2/24.
+//  Created by seungyooooong on 8/7/24.
 //
 
 import Foundation
-import Dependencies
+import ComposableArchitecture
 
 extension DependencyValues {
-    var loginDependency: LoginDependencyKey {
-        get { self[LoginDependencyKey.self] }
-        set { self[LoginDependencyKey.self] = newValue }
+    var loginAPI: LoginAPI {
+        get { self[LoginAPIKey.self] }
+        set { self[LoginAPIKey.self] = newValue }
     }
 }
 
-struct LoginDependencyKey {
-    var fetch: () async throws -> Data
-}
-
-extension LoginDependencyKey: DependencyKey {
-    static let liveValue = Self {
-        fetch: do {
-            let (data, _) = try await URLSession.shared.data(
-                from: URL(string: "https://api.runus.site/api/v1/examples/data")!
-            )
-            return data
-        }
-    }
+struct LoginAPIKey: DependencyKey {
+    static var liveValue: LoginAPI = LoginAPILive()
 }

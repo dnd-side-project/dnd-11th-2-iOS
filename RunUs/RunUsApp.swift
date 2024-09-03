@@ -16,7 +16,7 @@ struct RunUsApp: App {
             ZStack {
                 Color.background.ignoresSafeArea()
                 if isLoading { SplashView(isLoading: $isLoading) }
-                else         { MainView().environmentObject(UserEnvironment()) } // 추후 네이밍 수정
+                else { MainView() }
             }
             .onAppear{
                 _ = LocationManager.shared

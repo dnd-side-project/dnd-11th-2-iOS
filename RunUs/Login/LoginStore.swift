@@ -7,43 +7,51 @@
 
 import Foundation
 import ComposableArchitecture
+import AuthenticationServices
 
 struct LoginStore: Reducer {
-    struct State: Equatable {
-        static func == (lhs: LoginStore.State, rhs: LoginStore.State) -> Bool {
-            return lhs.isLogin == rhs.isLogin
-        }
+    @ObservableState
+    struct State: Equatable {}
+    
+    enum Action {
+        case appleLoginRequest(ASAuthorizationAppleIDRequest)
+        case appleLoginResult((Result<ASAuthorization, any Error>))
         
-        var userEnvironment: UserEnvironment
-        var isLogin: Bool {
-            get {
-                return userEnvironment.isLogin
-            }
-            set(newValue) {
-                userEnvironment.isLogin = newValue
-            }
-        }
+        case appleLoginResponse(LoginResponseModel?)
     }
     
-    enum Action: Equatable {
-        case doAppleLogin
-        case appleLoginResponse(Data)
-    }
-    
-    @Dependency(\.loginDependency) var loginDependency
+    @Dependency(\.loginAPI) var loginAPI
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case .doAppleLogin:
-            return .run { send in
-                let data = try await loginDependency.fetch()
-                await send(.appleLoginResponse(data))
+        case let .appleLoginRequest(request):
+            request.requestedScopes = [.fullName, .email]
+            return .none
+        case let .appleLoginResult(result):
+            switch result {
+            case .success(let authorization):
+                return .run { send in
+                    let response: LoginResponseModel? = try await loginAPI.appleLogin(authorization: authorization)
+                    await send(.appleLoginResponse(response))
+                }
+            case .failure(_):
+                return .none
             }
-        case let .appleLoginResponse(data):
-            print(String(decoding: data, as: UTF8.self))
-            state.isLogin = true
+            
+        case let .appleLoginResponse(response):
+            guard let loginResponse: LoginResponseModel = response else {
+                return .none
+            }
+            setUserDefaults(loginResponse: loginResponse)
             return .none
         }
     }
-
+    
+    private func setUserDefaults(loginResponse: LoginResponseModel) {
+        UserDefaultManager.isLogin = true
+        UserDefaultManager.name = loginResponse.nickname
+        UserDefaultManager.email = loginResponse.email
+        UserDefaultManager.accessToken = loginResponse.accessToken
+        // TODO: 추후 refreshToken 추가
+    }
 }

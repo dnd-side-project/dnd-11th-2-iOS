@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D90BE6672C6B6F7100999858 /* RunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90BE6662C6B6F7100999858 /* RunningView.swift */; };
 		D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90CDD782C6A623F00197214 /* CountDownView.swift */; };
-		D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
 		D93A94EC2C4A372700BCCD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EB2C4A372700BCCD00 /* Assets.xcassets */; };
 		D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */; };
 		D95F830D2C6F5C9A000DCAA3 /* RunningFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F830C2C6F5C9A000DCAA3 /* RunningFeature.swift */; };
@@ -35,6 +34,12 @@
 		D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */; };
 		D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */; };
 		D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */; };
+		F611B21A2C7CB04100797470 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B2192C7CB04100797470 /* AuthorizationManager.swift */; };
+		F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
+		F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */; };
+		F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */; };
+		F63B81672C710573002F45F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81662C710573002F45F4 /* String+extension.swift */; };
+		F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81692C71F50C002F45F4 /* MyRecordView.swift */; };
 		F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */; };
 		F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */; };
 		F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */; };
@@ -44,17 +49,35 @@
 		F64FBE382C566AE10024E920 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2F2C566AE10024E920 /* Pretendard-SemiBold.otf */; };
 		F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE302C566AE10024E920 /* Pretendard-Light.otf */; };
 		F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */; };
+		F65033C52C731EC500C81DA6 /* RecordMenus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033C42C731EC500C81DA6 /* RecordMenus.swift */; };
+		F65033C72C73232D00C81DA6 /* MyRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033C62C73232D00C81DA6 /* MyRecordButton.swift */; };
+		F65033CB2C7457F900C81DA6 /* MyBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033CA2C7457F900C81DA6 /* MyBadges.swift */; };
+		F65033CD2C74585500C81DA6 /* BadgesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */; };
+		F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D02C747DB000C81DA6 /* MyRecordStore.swift */; };
+		F65033D32C747E8500C81DA6 /* MyRecordDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */; };
+		F65033D52C747ECA00C81DA6 /* MyRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */; };
+		F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */; };
+		F65033D92C75D21800C81DA6 /* WithdrawRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */; };
+		F65033DB2C75D51500C81DA6 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033DA2C75D51500C81DA6 /* LoginAPI.swift */; };
+		F65033DF2C7856AA00C81DA6 /* SignUpRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033DE2C7856AA00C81DA6 /* SignUpRequestModel.swift */; };
+		F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033E02C7856B300C81DA6 /* SignInRequestModel.swift */; };
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
-		F6AB2E952C5C7C4B0015A1CA /* LoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */; };
+		F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */; };
+		F6B9A33C2C63123900743FBE /* LoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33B2C63123900743FBE /* LoginDependency.swift */; };
+		F6B9A33E2C63287400743FBE /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33D2C63287400743FBE /* LoginResponseModel.swift */; };
 		F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88732C4E7FF5008EF2FD /* SplashView.swift */; };
 		F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88752C4E802E008EF2FD /* MainView.swift */; };
 		F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88772C4E839A008EF2FD /* LoginView.swift */; };
 		F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF887C2C4F7E46008EF2FD /* HomeView.swift */; };
 		F6F085652C58C4BE00994E34 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */; };
-		F6F085712C59338B00994E34 /* UserEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085702C59338B00994E34 /* UserEnvironment.swift */; };
 		F6F085732C59FAF700994E34 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085722C59FAF700994E34 /* Fonts.swift */; };
+		F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */; };
+		F6F41B722C69BC27002EA1F5 /* SelectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B712C69BC27002EA1F5 /* SelectTypeView.swift */; };
+		F6F41B742C69BCE1002EA1F5 /* TypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */; };
+		F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */; };
+		F6F41B782C69C85A002EA1F5 /* GoalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +110,11 @@
 		D9F5B8592C60EDD0009CEB19 /* RunAloneHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeView.swift; sourceTree = "<group>"; };
 		D9F5B85B2C60EE1E009CEB19 /* RunAloneHomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneHomeFeature.swift; sourceTree = "<group>"; };
 		D9F5B85F2C6101E1009CEB19 /* RunAloneDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneDependency.swift; sourceTree = "<group>"; };
+		F611B2192C7CB04100797470 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
+		F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUButton.swift; sourceTree = "<group>"; };
+		F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalStore.swift; sourceTree = "<group>"; };
+		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
+		F63B81692C71F50C002F45F4 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
 		F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -97,17 +125,35 @@
 		F64FBE302C566AE10024E920 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		F64FBE3B2C566B110024E920 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F65033C42C731EC500C81DA6 /* RecordMenus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMenus.swift; sourceTree = "<group>"; };
+		F65033C62C73232D00C81DA6 /* MyRecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordButton.swift; sourceTree = "<group>"; };
+		F65033CA2C7457F900C81DA6 /* MyBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadges.swift; sourceTree = "<group>"; };
+		F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesResponseModel.swift; sourceTree = "<group>"; };
+		F65033D02C747DB000C81DA6 /* MyRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordStore.swift; sourceTree = "<group>"; };
+		F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordDependency.swift; sourceTree = "<group>"; };
+		F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordAPI.swift; sourceTree = "<group>"; };
+		F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseModel.swift; sourceTree = "<group>"; };
+		F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawRequestModel.swift; sourceTree = "<group>"; };
+		F65033DA2C75D51500C81DA6 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		F65033DE2C7856AA00C81DA6 /* SignUpRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestModel.swift; sourceTree = "<group>"; };
+		F65033E02C7856B300C81DA6 /* SignInRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequestModel.swift; sourceTree = "<group>"; };
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
-		F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDependency.swift; sourceTree = "<group>"; };
+		F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		F6B9A33B2C63123900743FBE /* LoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDependency.swift; sourceTree = "<group>"; };
+		F6B9A33D2C63287400743FBE /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
 		F6EF88732C4E7FF5008EF2FD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F6EF88752C4E802E008EF2FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F6EF88772C4E839A008EF2FD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F6EF887C2C4F7E46008EF2FD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
-		F6F085702C59338B00994E34 /* UserEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEnvironment.swift; sourceTree = "<group>"; };
 		F6F085722C59FAF700994E34 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
+		F6F41B712C69BC27002EA1F5 /* SelectTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTypeView.swift; sourceTree = "<group>"; };
+		F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeButton.swift; sourceTree = "<group>"; };
+		F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTypes.swift; sourceTree = "<group>"; };
+		F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,9 +204,11 @@
 				D93A94E72C4A372600BCCD00 /* RunUsApp.swift */,
 				D9D0B7532C5D473E00D13160 /* Core */,
 				D90BE6652C6B6F4200999858 /* Running */,
-				D9F5B8582C60ED63009CEB19 /* RunAlone */,
-				D9D0B7502C5D46CA00D13160 /* Login */,
+                D9D0B7502C5D46CA00D13160 /* Login */,
+				F63B81682C71F4A3002F45F4 /* Record */,
 				D9D0B7522C5D471800D13160 /* Home */,
+				D9F5B8582C60ED63009CEB19 /* RunAlone */,
+				F6F41B6C2C690091002EA1F5 /* SetGoal */,
 				D9D0B7162C4F549D00D13160 /* Network */,
 				F6F085662C58C90200994E34 /* Resource */,
 				D93A94EB2C4A372700BCCD00 /* Assets.xcassets */,
@@ -201,9 +249,13 @@
 		D9D0B7502C5D46CA00D13160 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
 				F6EF88772C4E839A008EF2FD /* LoginView.swift */,
-				F6AB2E942C5C7C4B0015A1CA /* LoginDependency.swift */,
+				F66C5C892C5B3CD500EE695A /* LoginStore.swift */,
+				F65033DA2C75D51500C81DA6 /* LoginAPI.swift */,
+				F6B9A33B2C63123900743FBE /* LoginDependency.swift */,
+				F65033DE2C7856AA00C81DA6 /* SignUpRequestModel.swift */,
+				F65033E02C7856B300C81DA6 /* SignInRequestModel.swift */,
+				F6B9A33D2C63287400743FBE /* LoginResponseModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -233,9 +285,10 @@
 				D9F5B8552C60D141009CEB19 /* Extension */,
 				D9D0B7512C5D46F900D13160 /* View */,
 				D9D0B7172C4F553800D13160 /* RUError.swift */,
-				F6F085702C59338B00994E34 /* UserEnvironment.swift */,
 				D97D9FE32C6078BD00C663BD /* LocationManager.swift */,
 				D95F83162C6FB079000DCAA3 /* LocationManagerDelegate.swift */,
+				F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */,
+				F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -246,6 +299,7 @@
 				D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */,
 				D97950A52C62917400BDCD44 /* View+extension.swift */,
 				D95F83122C6FAC76000DCAA3 /* Int+extension.swift */,
+				F63B81662C710573002F45F4 /* String+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -261,6 +315,24 @@
 				D9E704B12C6A222000212FF0 /* RunAloneAPI.swift */,
 			);
 			path = RunAlone;
+			sourceTree = "<group>";
+		};
+		F63B81682C71F4A3002F45F4 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				F63B81692C71F50C002F45F4 /* MyRecordView.swift */,
+				F65033D02C747DB000C81DA6 /* MyRecordStore.swift */,
+				F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */,
+				F611B2192C7CB04100797470 /* AuthorizationManager.swift */,
+				F65033D22C747E8500C81DA6 /* MyRecordDependency.swift */,
+				F65033C62C73232D00C81DA6 /* MyRecordButton.swift */,
+				F65033CA2C7457F900C81DA6 /* MyBadges.swift */,
+				F65033C42C731EC500C81DA6 /* RecordMenus.swift */,
+				F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */,
+				F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */,
+				F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		F64FBE272C566AAC0024E920 /* Fonts */ = {
@@ -296,6 +368,19 @@
 				F64FBE272C566AAC0024E920 /* Fonts */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		F6F41B6C2C690091002EA1F5 /* SetGoal */ = {
+			isa = PBXGroup;
+			children = (
+				F6F41B712C69BC27002EA1F5 /* SelectTypeView.swift */,
+				F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */,
+				F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */,
+				F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */,
+				F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */,
+				F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */,
+			);
+			path = SetGoal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,28 +469,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */,
+				F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */,
+				F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */,
+				F65033C52C731EC500C81DA6 /* RecordMenus.swift in Sources */,
 				F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */,
-				F6F085712C59338B00994E34 /* UserEnvironment.swift in Sources */,
+				F65033CD2C74585500C81DA6 /* BadgesResponseModel.swift in Sources */,
+				F65033CB2C7457F900C81DA6 /* MyBadges.swift in Sources */,
 				D9E704B22C6A222000212FF0 /* RunAloneAPI.swift in Sources */,
+				F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */,
 				D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,
 				D95F83112C6F82DF000DCAA3 /* RunningDependency.swift in Sources */,
 				D9E704AE2C649AE900212FF0 /* TodayChallengeListItemView.swift in Sources */,
 				D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */,
+				F6F41B782C69C85A002EA1F5 /* GoalTextField.swift in Sources */,
 				D9D0B7182C4F553800D13160 /* RUError.swift in Sources */,
+				F6B9A33E2C63287400743FBE /* LoginResponseModel.swift in Sources */,
+				F6B9A33C2C63123900743FBE /* LoginDependency.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
+				F65033DB2C75D51500C81DA6 /* LoginAPI.swift in Sources */,
+				F65033D92C75D21800C81DA6 /* WithdrawRequestModel.swift in Sources */,
 				D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */,
 				D95F83132C6FAC76000DCAA3 /* Int+extension.swift in Sources */,
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
-				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
+				F611B21A2C7CB04100797470 /* AuthorizationManager.swift in Sources */,
+				F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
+				F63B81672C710573002F45F4 /* String+extension.swift in Sources */,
 				D9F5B85A2C60EDD0009CEB19 /* RunAloneHomeView.swift in Sources */,
 				D9F5B8602C6101E1009CEB19 /* RunAloneDependency.swift in Sources */,
+				F65033DF2C7856AA00C81DA6 /* SignUpRequestModel.swift in Sources */,
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */,
+				F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,
+				F65033C72C73232D00C81DA6 /* MyRecordButton.swift in Sources */,
+				F65033D52C747ECA00C81DA6 /* MyRecordAPI.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
 				D95F83172C6FB079000DCAA3 /* LocationManagerDelegate.swift in Sources */,
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
@@ -413,12 +515,20 @@
 				D90BE6672C6B6F7100999858 /* RunningView.swift in Sources */,
 				D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */,
 				F6AB2E952C5C7C4B0015A1CA /* LoginDependency.swift in Sources */,
+				F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */,
+				F6F41B742C69BCE1002EA1F5 /* TypeButton.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
+				F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,
 				D95F830D2C6F5C9A000DCAA3 /* RunningFeature.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
 				D97D2D7E2C6F53470080F6A7 /* CircleButtonView.swift in Sources */,
+				F6F41B722C69BC27002EA1F5 /* SelectTypeView.swift in Sources */,
+				F65033D32C747E8500C81DA6 /* MyRecordDependency.swift in Sources */,
+				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
+				F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */,
+				F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */,
 				F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
