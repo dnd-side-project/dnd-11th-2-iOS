@@ -11,9 +11,10 @@ import ComposableArchitecture
 @Reducer
 struct RunAloneHomeFeature {
     
+    @ObservableState
     struct State: Equatable {
-        @BindingState var showLocationPermissionAlert: Bool = false
-        @BindingState var todayChallengeToggle: Bool = true
+        var showLocationPermissionAlert: Bool = false
+        var todayChallengeToggle: Bool = true
         var selectedChallengeId: Int = 0
         var todayChallengeList: [TodayChallenge] = []
     }
@@ -36,7 +37,9 @@ struct RunAloneHomeFeature {
         
         Reduce { state, action in
             switch action {
-            case .binding(_):
+            case .binding(_),
+                 .binding(\.todayChallengeToggle),
+                 .binding(\.showLocationPermissionAlert):
                 return .none
             case .onAppear:
                 return onAppearEffect()

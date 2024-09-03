@@ -7,6 +7,19 @@
 
 import Foundation
 import CoreLocation
+import ComposableArchitecture
+import Combine
+
+extension DependencyValues {
+    var locationManager: LocationManager {
+        get { self[LocationManagerKey.self] }
+        set { self[LocationManagerKey.self] = newValue }
+    }
+}
+
+struct LocationManagerKey: DependencyKey {
+    static let liveValue = LocationManager.shared
+}
 
 enum LocationAuthorizationStatus {
     case agree
@@ -14,8 +27,18 @@ enum LocationAuthorizationStatus {
     case notyet
 }
 
-final class LocationManager {
+final class LocationManager: NSObject, CLLocationManagerDelegate {
+    
+    static let shared = LocationManager()
     private let locationManager = CLLocationManager()
+    private var stopLocation: CLLocation?
+    
+    var delegate: LocationManagerDelegate?
+    
+    private override init() {
+        super.init()
+        locationManager.delegate = self
+    }
     
     var authorizationStatus: LocationAuthorizationStatus {
         switch locationManager.authorizationStatus {
@@ -32,5 +55,24 @@ final class LocationManager {
     
     func requestLocationPermission() {
         locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func startUpdatingLocation() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    func stopUpdatingLocation() {
+        stopLocation = locationManager.location
+        locationManager.stopUpdatingLocation()
+    }
+}
+
+extension LocationManager {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //TODO: stop -> start 되자마자 받은 location은 무시 해야함
+        if stopLocation == locations.last {
+            return
+        }
+        delegate?.locationUpdated(locations.last)
     }
 }

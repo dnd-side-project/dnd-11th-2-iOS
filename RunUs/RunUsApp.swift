@@ -18,6 +18,9 @@ struct RunUsApp: App {
                 if isLoading { SplashView(isLoading: $isLoading) }
                 else { MainView() }
             }
+            .onAppear{
+                _ = LocationManager.shared
+            }
         }
     }
 }
