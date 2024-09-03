@@ -14,6 +14,8 @@ struct RunningView: View {
         initialState: RunningFeature.State(),
         reducer: { RunningFeature() })
     
+    @Namespace private var namespace
+    
     @State var isStateHidden: Bool = false
     @State var userLocation: MapCameraPosition =
         .userLocation(followsHeading: true, fallback: .automatic)
@@ -38,7 +40,9 @@ struct RunningView: View {
                     Spacer()
                     if isStateHidden {
                         Button(action: {
-                            isStateHidden = false
+                            withAnimation {
+                                isStateHidden = false
+                            }
                         }, label: {
                             Image(.buttonRunningStateUp)
                                 .padding([.top,.horizontal])
@@ -47,6 +51,7 @@ struct RunningView: View {
                     VStack(spacing:0) {
                         if isStateHidden {
                             runningStateTitleView
+                                .matchedGeometryEffect(id: "runnningStateTitleView", in: namespace)
                         } else {
                             runningStateView
                         }
@@ -69,6 +74,7 @@ extension RunningView {
     private var runningStateView: some View {
         VStack(spacing: 32) {
             runningStateTitleView
+                .matchedGeometryEffect(id: "runnningStateTitleView", in: namespace)
             
             VStack{
                 Text(store.distance == 0.00 ? "0.0" : String(format: "%.2f", store.distance))
@@ -100,7 +106,9 @@ extension RunningView {
                 HStack {
                     Spacer()
                     Button {
-                        isStateHidden = true
+                        withAnimation {
+                            isStateHidden = true
+                        }
                     } label: {
                         CircleButtonView(size: 40,
                                          .buttonMap)
