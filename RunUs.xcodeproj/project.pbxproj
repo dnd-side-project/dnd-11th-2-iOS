@@ -65,6 +65,7 @@
 		F63BAA462C84399F00DCE9EC /* RUTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA452C84399F00DCE9EC /* RUTabBar.swift */; };
 		F63BAA4F2C8588F800DCE9EC /* WeatherParametersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA4E2C8588F800DCE9EC /* WeatherParametersModel.swift */; };
 		F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA502C86C8E900DCE9EC /* ViewEnvironment.swift */; };
+		F63BAA4B2C84A9A700DCE9EC /* AchieveRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */; };
 		F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */; };
 		F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */; };
 		F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */; };
@@ -170,6 +171,7 @@
 		F63BAA452C84399F00DCE9EC /* RUTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUTabBar.swift; sourceTree = "<group>"; };
 		F63BAA4E2C8588F800DCE9EC /* WeatherParametersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherParametersModel.swift; sourceTree = "<group>"; };
 		F63BAA502C86C8E900DCE9EC /* ViewEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEnvironment.swift; sourceTree = "<group>"; };
+		F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordView.swift; sourceTree = "<group>"; };
 		F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -445,8 +447,17 @@
 				F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */,
 				F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */,
 				D9842DD62C846450002B145C /* Calendar */,
+				F63BAA492C84A98900DCE9EC /* AchieveRecord */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		F63BAA492C84A98900DCE9EC /* AchieveRecord */ = {
+			isa = PBXGroup;
+			children = (
+				F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */,
+			);
+			path = AchieveRecord;
 			sourceTree = "<group>";
 		};
 		F64FBE272C566AAC0024E920 /* Fonts */ = {
@@ -593,6 +604,7 @@
 				D9E704B22C6A222000212FF0 /* RunAloneAPI.swift in Sources */,
 				D9D4387E2C7F506B00F3E079 /* RUCalendarView.swift in Sources */,
 				F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */,
+				F63BAA4B2C84A9A700DCE9EC /* AchieveRecordView.swift in Sources */,
 				D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */,
 				F611B2262C7E275C00797470 /* MonthlySummaryResponseModel.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,

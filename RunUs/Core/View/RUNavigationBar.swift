@@ -16,6 +16,7 @@ struct RUNavigationBar: View {
     @Environment(\.dismiss) var dismiss
     let buttonType: NavigationButtonType?
     let title: String
+    var backgroundColor: Color = .background
     
     private let homeButtonAction: (() -> Void)?
     
@@ -42,7 +43,7 @@ struct RUNavigationBar: View {
             button.opacity(0)
         }
         .frame(height: 56)
-        .background(Color.background)
+        .background(backgroundColor)
     }
 }
 
