@@ -14,7 +14,6 @@ struct RunAloneHomeFeature {
     struct State: Equatable {
         @BindingState var showLocationPermissionAlert: Bool = false
         @BindingState var todayChallengeToggle: Bool = true
-        var selectedChallengeId: Int = 0
         var todayChallengeList: [TodayChallenge] = []
     }
     
@@ -50,7 +49,13 @@ struct RunAloneHomeFeature {
                 state.todayChallengeList = list
                 return .none
             case .selectChallenge(let id):
-                state.selectedChallengeId = id
+                state.todayChallengeList = state.todayChallengeList.map {
+                    .init(id: $0.id,
+                          title: $0.title,
+                          expectedTime: $0.expectedTime,
+                          icon: $0.icon,
+                          isSelected: id == $0.id)
+                }
                 return .none
             case .startButtonTapped:
                 return startButtonTappedEffect()

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TodayChallengeListItemView: View {
     let challenge: TodayChallenge
-    var isSelected: Bool = false
     var hasShadowPadding: Bool = true
     var backgroundColor: Color = .mainDark
     
@@ -35,9 +34,9 @@ struct TodayChallengeListItemView: View {
                 Spacer()
             }
             .frame(width: 280, height: 91)
-            .background(isSelected ? .background : backgroundColor)
+            .background(challenge.isSelected ? .background : backgroundColor)
             .cornerRadius(12, corners: .allCorners)
-            .if(isSelected, transform: { view in
+            .if(challenge.isSelected, transform: { view in
                 view.shadow(color: .black.opacity(0.7), radius: 10, x: 1, y: 1)
             })
             if hasShadowPadding { shadowPadding }
