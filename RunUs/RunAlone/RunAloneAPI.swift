@@ -21,9 +21,9 @@ final class RunAloneAPIImplements: RunAloneAPI {
 final class RunAloneAPIMock: RunAloneAPI {
     func getTodayChallenge() async throws -> [TodayChallenge] {
         return [
-            .init(challengeId: 0, title: "어제보다 500m더 뛰기", expectedTime: "12분", icon: "SampleImage"),
-            .init(challengeId: 1, title: "저번보다 500m더 뛰기", expectedTime: "99999분", icon: "SampleImage"),
-            .init(challengeId: 2, title: "옛날보다 500m더 뛰기", expectedTime: "0분", icon: "SampleImage"),
+            .init(id: 0, title: "어제보다 500m더 뛰기", expectedTime: "12분", icon: "SampleImage"),
+            .init(id: 1, title: "저번보다 500m더 뛰기", expectedTime: "99999분", icon: "SampleImage"),
+            .init(id: 2, title: "옛날보다 500m더 뛰기", expectedTime: "0분", icon: "SampleImage"),
         ]
     }
 }

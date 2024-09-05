@@ -7,13 +7,16 @@
 
 import Foundation
 
-struct TodayChallenge: Equatable, Decodable {
-    let challengeId: Int
+struct TodayChallenge: Equatable, Decodable, Identifiable {
+    let id: Int
     let title: String
     let expectedTime: String
     let icon: String
-}
-
-extension TodayChallenge: Identifiable {
-    var id: Int { challengeId }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "challengeId"
+        case title
+        case expectedTime
+        case icon
+    }
 }

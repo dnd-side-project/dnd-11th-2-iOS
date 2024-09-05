@@ -53,5 +53,5 @@ extension TodayChallengeListItemView {
 }
 
 #Preview {
-    TodayChallengeListItemView(challenge: .init(challengeId: 0, title: "어제보다 더뛰기", expectedTime: "10분", icon: "SampleImage"))
+    TodayChallengeListItemView(challenge: .init(id: 0, title: "어제보다 더뛰기", expectedTime: "10분", icon: "SampleImage"))
 }
