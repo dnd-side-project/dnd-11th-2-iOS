@@ -89,6 +89,8 @@
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */; };
+		F69BFDA62C89703E0073775C /* RUAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA52C89703E0073775C /* RUAlert.swift */; };
+		F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA72C897DA90073775C /* AlertEnvironment.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
 		F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */; };
 		F6B9A33C2C63123900743FBE /* LoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33B2C63123900743FBE /* LoginDependency.swift */; };
@@ -191,6 +193,8 @@
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordResponseModel.swift; sourceTree = "<group>"; };
+		F69BFDA52C89703E0073775C /* RUAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUAlert.swift; sourceTree = "<group>"; };
+		F69BFDA72C897DA90073775C /* AlertEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEnvironment.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		F6B9A33B2C63123900743FBE /* LoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDependency.swift; sourceTree = "<group>"; };
@@ -387,6 +391,8 @@
 				F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */,
 				F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */,
 				F63BAA502C86C8E900DCE9EC /* ViewEnvironment.swift */,
+				F69BFDA52C89703E0073775C /* RUAlert.swift */,
+				F69BFDA72C897DA90073775C /* AlertEnvironment.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -617,6 +623,7 @@
 				F65033DF2C7856AA00C81DA6 /* SignUpRequestModel.swift in Sources */,
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */,
+				F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */,
 				F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,
 				F611B2202C7E1FBE00797470 /* WeatherResponseModel.swift in Sources */,
@@ -656,6 +663,7 @@
 				D9842DD82C84646A002B145C /* RecordCalendarFeature.swift in Sources */,
 				F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */,
 				F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */,
+				F69BFDA62C89703E0073775C /* RUAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
