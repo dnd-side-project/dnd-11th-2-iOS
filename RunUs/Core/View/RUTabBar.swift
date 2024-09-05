@@ -12,35 +12,34 @@ struct RUTabBar: View {
     
     var body: some View {
         HStack {
-            RUDefualtTabItem(viewEnvironment, TabItemObject(TabItems.home))
-            RUDefualtTabItem(viewEnvironment, TabItemObject(TabItems.running))
-            RUDefualtTabItem(viewEnvironment, TabItemObject(TabItems.myRecord))
+            RUDefualtTabItem(TabItemObject(TabItems.home))
+            RUDefualtTabItem(TabItemObject(TabItems.running))
+            RUDefualtTabItem(TabItemObject(TabItems.myRecord))
         }
         .frame(maxWidth: .infinity)
         .frame(height: 83)
         .background(.white)
     }
-}
-
-private func RUDefualtTabItem(_ viewEnvironment: ViewEnvironment, _ tabItemObject: TabItemObject) -> some View {
-    Button {
-        if viewEnvironment.selectedTabItem != tabItemObject.tabItem {
-            viewEnvironment.selectedTabItem = tabItemObject.tabItem
+    
+    private func RUDefualtTabItem(_ tabItemObject: TabItemObject) -> some View {
+        Button {
+            if viewEnvironment.selectedTabItem != tabItemObject.tabItem {
+                viewEnvironment.selectedTabItem = tabItemObject.tabItem
+            }
+        } label: {
+            VStack(spacing: 4) {
+                Image(tabItemObject.icon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 24)
+                Text(tabItemObject.name)
+            }
         }
-    } label: {
-        VStack(spacing: 4) {
-            Image(tabItemObject.icon)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 24)
-            Text(tabItemObject.name)
-        }
+        .font(Fonts.pretendardMedium(size: 10))
+        .foregroundColor(.black)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-    .font(Fonts.pretendardMedium(size: 10))
-    .foregroundColor(.black)
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
 }
-
 
 enum TabItems: String {
     case home
