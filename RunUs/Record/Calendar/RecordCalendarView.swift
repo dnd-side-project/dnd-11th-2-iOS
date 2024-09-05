@@ -22,6 +22,9 @@ struct RecordCalendarView: View {
                 recordCalendarView
             }
         }
+        .onAppear {
+            store.send(.onAppear)
+        }
     }
 }
 
@@ -66,11 +69,11 @@ extension RecordCalendarView {
     
     private func recordView(record: RunningRecord) -> some View {
         VStack(spacing: 25) {
-            HStack {
+            HStack(spacing: 18) {
                 Image(.timeIcon)
                     .resizable()
                     .frame(width: 37, height: 37)
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text(record.startLocation)
                         .font(Fonts.pretendardRegular(size: 15))
                     Text("\(record.distanceMeter)km")

@@ -20,6 +20,7 @@ struct RecordCalendarFeature {
     }
     
     enum Action {
+        case onAppear
         case binding(BindingAction<State>)
         case updateRecord([RunningRecord])
         case tapLeftButton
@@ -37,6 +38,8 @@ struct RecordCalendarFeature {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .onAppear:
+                return .send(.getRecordDays(state.currentMonth))
             case .binding(_):
                 return .none
             case .updateRecord(let record):
