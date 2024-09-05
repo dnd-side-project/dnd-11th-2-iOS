@@ -15,7 +15,7 @@ enum LocationAuthorizationStatus {
     case notyet
 }
 
-final class LocationManager: NSObject, CLLocationManagerDelegate {
+final class LocationManager: NSObject {
     private let locationManager = CLLocationManager()
     var getWeatherPublisher = PassthroughSubject<WeatherParametersModel, Never>()
     
@@ -40,7 +40,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     func requestLocationPermission() {
         locationManager.requestWhenInUseAuthorization()
     }
-    
+}
+
+// MARK: delegate
+extension LocationManager: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         guard let location = self.locationManager.location else {
             // MARK: 사용자가 위치 접근 권한을 허용하지 않을 때, 기본 위치: 서울시 강남구
