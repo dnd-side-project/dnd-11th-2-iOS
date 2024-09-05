@@ -24,6 +24,7 @@ enum ServerEndpoint: NetworkEndpoint {
     case getChallenges
     case getWeathers(longitude: Double, latitude: Double)
     case getMonthlySummary
+    case getCourseSummary
     
     var baseURL: URL? { URL(string: "https://api.runus.site") }
     
@@ -65,12 +66,14 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/weathers"
         case .getMonthlySummary:
             return APIversion.v1 + "/running-records/monthly-summary"
+        case .getCourseSummary:
+            return APIversion.v1 + "/scale/course-summary"
         }
     }
     
     var method: NetworkMethod {
         switch self {
-        case .testRequest, .testResponse, .testError, .testHeader, .getServerVersion, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary:
+        case .testRequest, .testResponse, .testError, .testHeader, .getServerVersion, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourseSummary:
             return .get
         case .signUp, .signIn, .withdraw, .postRunningRecord:
             return .post
@@ -99,7 +102,7 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .signUp, .signIn:
             return ["Content-Type": "application/json"]
-        case .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary:
+        case .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourseSummary:
             guard let accessToken: String = UserDefaultManager.accessToken else {
                 return nil
             }

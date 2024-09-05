@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct AchieveRecordView: View {
+    let store: StoreOf<AchieveRecordStore> = Store(
+        initialState: AchieveRecordStore.State(),
+        reducer: { AchieveRecordStore() }
+    )
+    
     var body: some View {
         VStack(spacing: 0) {
             RUNavigationBar(buttonType: .back, title: "달성기록", backgroundColor: .mainDeepDark)
@@ -66,6 +72,9 @@ struct AchieveRecordView: View {
             }
         }
         .background(Color.background)
+        .onAppear {
+            store.send(.onAppear)
+        }
     }
 }
 
@@ -73,7 +82,7 @@ extension AchieveRecordView {
     private var achieveRecordView: some View {
         VStack(spacing: 0) {
             HStack(spacing: 14) {
-                Image(.splash)  // TODO: 이미지 변경
+                Image(.runEarthWithRunUs)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
@@ -82,9 +91,9 @@ extension AchieveRecordView {
                         .foregroundStyle(.white)
                         .font(Fonts.pretendardSemiBold(size: 16))
                     HStack(spacing: 8) {
-                        Text("코스: 18코스")    // TODO: API 나오면 수정
-                        Text("런어스 총 거리: 43,800런km") // TODO: API 나오면 수정
-                        Text("지구 한 바퀴: 40,075km")   // TODO: API 나오면 수정
+                        Text("코스: \(store.state.courseSummary.courseCount)")
+                        Text("런어스 총 거리: \(store.state.courseSummary.runUsDistanceKm)")
+                        Text("지구 한 바퀴: \(store.state.courseSummary.earthDistanceKm)")
                     }
                     .foregroundStyle(.gray300)
                     .font(Fonts.pretendardSemiBold(size: 10))
