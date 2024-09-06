@@ -12,6 +12,7 @@ enum ServerEndpoint: NetworkEndpoint {
     case testResponse
     case testError
     case testHeader
+    case getServerVersion(version: String)
     case signUp(signUpRequest: SignUpRequestModel)
     case signIn(signInRequest: SignInRequestModel)
     case withdraw(withdrawRequest: WithdrawRequestModel)
@@ -40,6 +41,8 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/examples/errors"
         case .testHeader:
             return APIversion.v1 + "/examples/headers"
+        case .getServerVersion:
+            return APIversion.v1 + "/servers/versions"
         case .signUp:
             return APIversion.v1 + "/auth/oauth/sign-up"
         case .signIn:
@@ -67,7 +70,7 @@ enum ServerEndpoint: NetworkEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary:
+        case .testRequest, .testResponse, .testError, .testHeader, .getServerVersion, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary:
             return .get
         case .signUp, .signIn, .withdraw, .postRunningRecord:
             return .post
@@ -83,6 +86,8 @@ enum ServerEndpoint: NetworkEndpoint {
                     .init(name: "month", value: String(month))]
         case .getDaily(let date):
             return [.init(name: "date", value: date)]
+        case .getServerVersion(let version):
+            return[.init(name: "version", value: version)]
         case .getWeathers(let longitude, let latitude):
             return [.init(name: "longitude", value: String(longitude)),
                     .init(name: "latitude", value: String(latitude))]

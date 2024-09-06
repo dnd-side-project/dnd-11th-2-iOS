@@ -60,7 +60,7 @@ struct RunAloneHomeView: View {
                    isPresented: $store.showLocationPermissionAlert) {
                 Button("취소") { }
                 Button("설정") {
-                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    SystemManager.shared.openAppSetting()
                 }
             }
         }
