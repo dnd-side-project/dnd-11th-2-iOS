@@ -11,40 +11,39 @@ import MapKit
 
 struct RunAloneHomeView: View {
     @Environment(\.dismiss) var dismiss
-    let store: StoreOf<RunAloneHomeFeature> = .init(
+    @State var store: StoreOf<RunAloneHomeFeature> = .init(
         initialState: RunAloneHomeFeature.State(),
         reducer: { RunAloneHomeFeature() })
     
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
+        NavigationView {
             ZStack {
                 Map()
                 VStack(spacing: 0) {
                     VStack(spacing: 0) {
                         RUNavigationBar(buttonType: .back,
                                         title: "혼자뛰기")
-                        todayChallengeView(isOn: viewStore.$todayChallengeToggle)
+                        todayChallengeView(isOn: $store.todayChallengeToggle)
                     }
                     .padding(.horizontal, Paddings.outsideHorizontalPadding)
                     .background(Color.background)
-                    
-                    if viewStore.todayChallengeToggle {
+
+                    if store.todayChallengeToggle {
                         Spacer()
                             .frame(height: 34)
-                        todayChallengeListView(viewStore.todayChallengeList)
+                        todayChallengeListView(store.todayChallengeList)
                     }
                     Spacer()
                     startButton
                     Spacer()
                         .frame(height: 48)
                 }
-                
             }
             .onAppear {
                 store.send(.onAppear)
             }
             .alert(Bundle.main.locationString,
-                   isPresented: viewStore.$showLocationPermissionAlert) {
+                   isPresented: $store.showLocationPermissionAlert) {
                 Button("취소") { }
                 Button("설정") {
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
@@ -57,9 +56,10 @@ struct RunAloneHomeView: View {
 extension RunAloneHomeView {
     
     private var startButton: some View {
-        Button(action: {
-            store.send(.startButtonTapped)
-        }, label: {
+        NavigationLink {
+            RunningView()
+                .navigationBarBackButtonHidden()
+        } label: {
             ZStack {
                 Circle()
                     .frame(width: 92, height: 92)
@@ -69,7 +69,7 @@ extension RunAloneHomeView {
                     .font(Fonts.pretendardBold(size: 24))
                     .foregroundStyle(Color.background)
             }
-        })
+        }
     }
     
     private func todayChallengeView(isOn: Binding<Bool>) -> some View {

@@ -9,31 +9,37 @@ import SwiftUI
 
 struct TodayChallengeListItemView: View {
     let challenge: TodayChallenge
+    var hasShadowPadding: Bool = true
+    var backgroundColor: Color = .mainDark
     
     var body: some View {
         VStack {
-            shadowPadding
+            if hasShadowPadding { shadowPadding }
             HStack(spacing: 16) {
-                Image(challenge.imageUrl)
-                    .resizable()
-                    .frame(width: 56, height: 56)
-                    .padding(.leading, Paddings.outsideHorizontalPadding)
+                AsyncImage(url: URL(string: challenge.icon)) { image in
+                    image
+                        .resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 56, height: 56)
+                .padding(.leading, Paddings.outsideHorizontalPadding)
                 VStack(alignment: .leading, spacing: 8) {
                     Text(challenge.title)
                         .font(Fonts.pretendardSemiBold(size: 16))
-                    Text("소요시간 • \(challenge.estimatedMinute)분")
+                    Text("소요시간 • \(challenge.expectedTime)")
                         .font(Fonts.pretendardMedium(size: 10))
                 }
                 .foregroundStyle(.white)
                 Spacer()
             }
             .frame(width: 280, height: 91)
-            .background(challenge.isSelected ? .background : .mainDark)
+            .background(challenge.isSelected ? .background : backgroundColor)
             .cornerRadius(12, corners: .allCorners)
             .if(challenge.isSelected, transform: { view in
                 view.shadow(color: .black.opacity(0.7), radius: 10, x: 1, y: 1)
             })
-            shadowPadding
+            if hasShadowPadding { shadowPadding }
         }
     }
 }
@@ -46,5 +52,5 @@ extension TodayChallengeListItemView {
 }
 
 #Preview {
-    TodayChallengeListItemView(challenge: .init(id: 0, imageUrl: "SampleImage", title: "어제보다 더뛰기", estimatedMinute: 10, isSelected: true))
+    TodayChallengeListItemView(challenge: .init(id: 0, title: "어제보다 더뛰기", expectedTime: "10분", icon: "SampleImage"))
 }
