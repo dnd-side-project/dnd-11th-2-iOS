@@ -15,5 +15,5 @@ struct Badge: Decodable, Equatable {
     var badgeId: Int = 0
     var name: String = ""
     var imageUrl: String = ""
-    var achieveAt: String = ""
+    var achievedAt: String = ""
 }

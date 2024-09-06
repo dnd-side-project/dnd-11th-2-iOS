@@ -11,45 +11,47 @@ import MapKit
 
 struct RunAloneHomeView: View {
     @Environment(\.dismiss) var dismiss
-    let store: StoreOf<RunAloneHomeFeature> = .init(
+    @State var store: StoreOf<RunAloneHomeFeature> = .init(
         initialState: RunAloneHomeFeature.State(),
         reducer: { RunAloneHomeFeature() })
     
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            ZStack {
-                Map()
-                VStack(spacing: 0) {
+        NavigationView {
+            
+                ZStack {
+                    Map()
                     VStack(spacing: 0) {
-                        RUNavigationBar(buttonType: .back,
-                                        title: "혼자뛰기")
-                        todayChallengeView(isOn: viewStore.$todayChallengeToggle)
-                    }
-                    .padding(.horizontal, Paddings.outsideHorizontalPadding)
-                    .background(Color.background)
-                    
-                    if viewStore.todayChallengeToggle {
+                        VStack(spacing: 0) {
+                            RUNavigationBar(buttonType: .back,
+                                            title: "혼자뛰기")
+                            todayChallengeView(isOn: $store.todayChallengeToggle)
+                        }
+                        .padding(.horizontal, Paddings.outsideHorizontalPadding)
+                        .background(Color.background)
+                        
+                        if store.todayChallengeToggle {
+                            Spacer()
+                                .frame(height: 34)
+                            todayChallengeListView(store.todayChallengeList)
+                        }
                         Spacer()
-                            .frame(height: 34)
-                        todayChallengeListView(viewStore.todayChallengeList)
+                        startButton
+                        Spacer()
+                            .frame(height: 95)
                     }
-                    Spacer()
-                    startButton
-                    Spacer()
-                        .frame(height: 95)
+                    
                 }
-                
-            }
-            .onAppear {
-                store.send(.onAppear)
-            }
-            .alert(Bundle.main.locationString,
-                   isPresented: viewStore.$showLocationPermissionAlert) {
-                Button("취소") { }
-                Button("설정") {
-                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                .onAppear {
+                    store.send(.onAppear)
                 }
-            }
+                .alert(Bundle.main.locationString,
+                       isPresented: $store.showLocationPermissionAlert) {
+                    Button("취소") { }
+                    Button("설정") {
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                }
+            
         }
     }
 }
@@ -57,9 +59,10 @@ struct RunAloneHomeView: View {
 extension RunAloneHomeView {
     
     private var startButton: some View {
-        Button(action: {
-            store.send(.startButtonTapped)
-        }, label: {
+        NavigationLink {
+            RunningView()
+                .navigationBarBackButtonHidden()
+        } label: {
             ZStack {
                 Circle()
                     .frame(width: 92, height: 92)
@@ -69,7 +72,7 @@ extension RunAloneHomeView {
                     .font(Fonts.pretendardBold(size: 24))
                     .foregroundStyle(Color.background)
             }
-        })
+        }
     }
     
     private func todayChallengeView(isOn: Binding<Bool>) -> some View {

@@ -15,9 +15,9 @@ struct ProfileResponseModel: Decodable, Equatable {
     
     init() {
         self.profileImageUrl = ""
-        self.currentKm = ""
-        self.nextLevelName = ""
-        self.nextLevelKm = ""
+        self.currentKm = "0km"
+        self.nextLevelName = "Level 0"
+        self.nextLevelKm = "0Km"
     }
     
     init(_ profileImageUrl: String, _ currentKm: String, _ nextLevelName: String, _ nextLevelKm: String) {
