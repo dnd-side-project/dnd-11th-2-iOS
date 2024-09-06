@@ -24,7 +24,7 @@ extension RunUsApp {
         ZStack {
             Color.background.ignoresSafeArea()
             if isLoading { SplashView(isLoading: $isLoading) }
-            else { MainView() }
+            else { MainView().environmentObject(ViewEnvironment()) }
             if alertEnvironment.isShowAlert { alertEnvironment.ruAlert }
         }
         .onAppear{
