@@ -32,6 +32,7 @@ struct RUAlert: View {
                         subButtonAction()
                     } label: {
                         Text(subButtonText)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     .frame(width: 121, height: 40)
                     .background(.mainDark)
@@ -41,6 +42,7 @@ struct RUAlert: View {
                     } label: {
                         Text(mainButtonText)
                             .foregroundStyle(mainButtonColor == .mainGreen ? .black : .white)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     .frame(width: 121, height: 40)
                     .background(mainButtonColor)

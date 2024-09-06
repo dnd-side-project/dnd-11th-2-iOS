@@ -32,6 +32,7 @@ struct RUTabBar: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 24)
+                    .foregroundStyle(.mainGreen)
                 Text(tabItemObject.name)
             }
         }
