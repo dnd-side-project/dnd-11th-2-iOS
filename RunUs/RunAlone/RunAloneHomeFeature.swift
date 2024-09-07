@@ -14,8 +14,10 @@ struct RunAloneHomeFeature {
     @ObservableState
     struct State: Equatable {
         var showLocationPermissionAlert: Bool = false
-        var todayChallengeToggle: Bool = true
+        var mode: RunningMode = .normal
         var todayChallengeList: [TodayChallenge] = []
+        var selectedChallengeId: Int?
+        var selectedGoalType: GoalTypes?
     }
     
     enum Action: Equatable, BindableAction {
@@ -25,7 +27,9 @@ struct RunAloneHomeFeature {
         case locationPermissionAlertChanged(Bool)
         case setTodayChallengeList([TodayChallenge])
         case selectChallenge(Int)
+        case selectGoal(GoalTypes)
         case startButtonTapped
+        case changeMode(RunningMode)
     }
     
     @Dependency(\.locationManager) var locationManager
@@ -37,7 +41,6 @@ struct RunAloneHomeFeature {
         Reduce { state, action in
             switch action {
             case .binding(_),
-                 .binding(\.todayChallengeToggle),
                  .binding(\.showLocationPermissionAlert):
                 return .none
             case .onAppear:
@@ -59,9 +62,16 @@ struct RunAloneHomeFeature {
                           icon: $0.icon,
                           isSelected: id == $0.id)
                 }
+                state.selectedChallengeId = id
                 return .none
             case .startButtonTapped:
                 return startButtonTappedEffect()
+            case .changeMode(let mode):
+                state.mode = mode
+                return .none
+            case .selectGoal(let goal):
+                state.selectedGoalType = goal
+                return .none
             }
         }
     }
