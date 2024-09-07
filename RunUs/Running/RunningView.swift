@@ -10,7 +10,7 @@ import MapKit
 import ComposableArchitecture
 
 struct RunningView: View {
-    let store: StoreOf<RunningFeature> = .init(
+    @State var store: StoreOf<RunningFeature> = .init(
         initialState: RunningFeature.State(),
         reducer: { RunningFeature() })
     
