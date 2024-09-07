@@ -60,7 +60,15 @@ extension RunAloneHomeView {
     
     private var startButton: some View {
         NavigationLink {
-            RunningView()
+            RunningView(store: .init(
+                initialState: RunningFeature.State(
+                    challengeId: 0,
+                    goalDistance: 0,
+                    goalTime: 0,
+                    achievementMode: "normal"),
+                reducer: {
+                RunningFeature()
+            }))
                 .navigationBarBackButtonHidden()
         } label: {
             ZStack {

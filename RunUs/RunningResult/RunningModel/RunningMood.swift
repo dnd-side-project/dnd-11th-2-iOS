@@ -14,6 +14,7 @@ enum RunningMood: Int, CaseIterable {
     case soso
     case bad
     case veryBad
+    case none
     
     var icon: ImageResource {
         switch self {
@@ -27,6 +28,8 @@ enum RunningMood: Int, CaseIterable {
             return .badEmotion
         case .veryBad:
             return .veryBadEmotion
+        case .none:
+            return .xmark
         }
     }
     
@@ -42,6 +45,26 @@ enum RunningMood: Int, CaseIterable {
             return "잘 모르겠어요"
         case .veryBad:
             return "별로에요!"
+        case .none:
+            return ""
+        }
+    }
+    
+    //server
+    var entity: String {
+        switch self {
+        case .veryGood:
+            return "very-good"
+        case .good:
+            return "good"
+        case .soso:
+            return "soso"
+        case .bad:
+            return "bad"
+        case .veryBad:
+            return "very-bad"
+        case .none:
+            return ""
         }
     }
 }

@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SelectRunningEmotionView: View {
-    
-    @Binding var selectEmotion: RunningMood
+    let store: StoreOf<RunningFeature>
     
     var body: some View {
         ZStack {
@@ -18,20 +18,24 @@ struct SelectRunningEmotionView: View {
                 Text("오늘 달리기는 어떠셨나요?")
                 HStack {
                     ForEach(RunningMood.allCases, id: \.self) { emotion in
-                        VStack(spacing: 14) {
-                            Image(emotion.icon)
-                            Text(emotion.text)
-                                .font(Fonts.pretendardRegular(size: 10))
-                        }.onTapGesture {
-                            selectEmotion = emotion
+                        if emotion == .none {
+                            EmptyView()
+                        } else {
+                            NavigationLink {
+                                RunningResultView(initialState: 
+                                        .init(runningResult: store.state.getRunningResult(emotion: emotion)))
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                VStack(spacing: 14) {
+                                    Image(emotion.icon)
+                                    Text(emotion.text)
+                                        .font(Fonts.pretendardRegular(size: 10))
+                                }
+                            }
                         }
                     }
                 }.padding(.horizontal, 46)
             }.foregroundStyle(.white)
         }
     }
-}
-
-#Preview {
-    SelectRunningEmotionView(selectEmotion: .constant(.bad))
 }

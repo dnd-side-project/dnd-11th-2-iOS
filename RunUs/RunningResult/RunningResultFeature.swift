@@ -13,26 +13,69 @@ struct RunningResultFeature {
     
     @ObservableState
     struct State {
-        var date: String = "24. 07. 20. 오후 7:00 ~ 24. 07. 20. 오후 7:30"
-        var mood: RunningMood = .veryGood
+        var runningResult: RunningResult
+        var date: String
+        var mood: RunningMood
         var hasChallenge: Bool = false
-        var challengeResult: ChallengeResult = .init()
-        var averagePace: String = "0’00”"
-        var runningTime: String = "30:15"
-        var distance: Double = 2.07
-        var kcal: Int = 200
+        var challengeResult: ChallengeResult?
+        var goalResult: GoalResult?
+        var averagePace: String
+        var runningTime: String
+        var distance: Double
+        var kcal: Int
+        
+        init(runningResult: RunningResult) {
+            self.runningResult = runningResult
+            let startAt = runningResult.startAt.formatDateHyphen().formatStringDot()
+            let endAt = runningResult.endAt.formatDateHyphen().formatStringDot()
+            self.date = "\(startAt) ~ \(endAt)"
+            self.mood = .none
+            self.averagePace = runningResult.runningData.averagePace
+            self.runningTime = runningResult.runningData.runningTime
+            self.distance = Double(runningResult.runningData.distanceMeter) * 0.01
+            self.kcal = runningResult.runningData.calorie
+        }
     }
     
     enum Action {
         case onAppear
+        case setRunningRecord(RunningRecord)
     }
+    
+    @Dependency(\.runningRecordAPI) var api
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             case .onAppear:
+                let runningResult = state.runningResult
+                return .run { send in
+                    print(runningResult)
+                    let record = try await api.postRunningRecord(result: runningResult)
+                    await send(.setRunningRecord(record))
+                }
+            case .setRunningRecord(let record):
+                let startAt = record.startAt.formatDateHyphen().formatStringDot()
+                let endAt = record.endAt.formatDateHyphen().formatStringDot()
+                state.date = "\(startAt) ~ \(endAt)"
+                state.mood = getEmotion(with: record.emotion)
+                state.challengeResult = record.challenge
+                state.goalResult = record.goal
+                state.averagePace = record.runningData.averagePace
+                state.distance = distanceMtoKM(m: record.runningData.distanceMeter)
+                state.runningTime = record.runningData.runningTime
+                state.kcal = record.runningData.calorie
                 return .none
             }
         }
+    }
+    
+    func getEmotion(with string: String) -> RunningMood {
+        RunningMood.allCases.filter { $0.entity == string }
+            .first ?? .veryGood
+    }
+    
+    func distanceMtoKM(m: Int) -> Double {
+        Double(m) * 0.01
     }
 }
