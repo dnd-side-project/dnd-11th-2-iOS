@@ -110,31 +110,43 @@ extension RunningResultView {
         .background(.mainDeepDark)
         .cornerRadius(12, corners: .allCorners)
     }
-    
+
     private var resultView: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(store.distance == 0.0 ? "0.0" : String(format: "%.2f", 0.0))
                 .font(Fonts.pretendardBlack(size: 84))
-            SmallText("킬로미터")
+            smallText("킬로미터")
             
             HStack {
                 VStack {
-                    MediumText("\(store.averagePace)")
-                    SmallText("평균페이스")
+                    mediumText("\(store.averagePace)")
+                    smallText("평균페이스")
                 }
                 Spacer()
                 VStack {
-                    MediumText("\(store.runningTime)")
-                    SmallText("시간")
+                    mediumText("\(store.runningTime)")
+                    smallText("시간")
                 }
                 Spacer()
                 VStack {
-                    MediumText("\(store.kcal)")
-                    SmallText("칼로리")
+                    mediumText("\(store.kcal)")
+                    smallText("칼로리")
                 }
             }
             .padding(.top, 32)
             .padding(.bottom, 52)
         }
+    }
+    
+    private func smallText(_ string: String) -> some View {
+        Text(string)
+            .font(Fonts.pretendardRegular(size: 12))
+            .foregroundStyle(.gray200)
+    }
+    
+    private func mediumText(_ string: String) -> some View {
+        Text(string)
+            .font(Fonts.pretendardBold(size: 26))
+            .foregroundStyle(.white)
     }
 }

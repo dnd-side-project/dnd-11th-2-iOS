@@ -81,23 +81,23 @@ extension RunningView {
                 Text(store.distance == 0.00 ? "0.0" : String(format: "%.2f", store.distance))
                     .font(Fonts.pretendardBlack(size: 84))
                     .foregroundStyle(.white)
-                SmallText("킬로미터")
+                smallText("킬로미터")
             }
             
             HStack {
                 VStack {
-                    MediumText("\(store.pace)")
-                    SmallText("평균페이스")
+                    mediumText("\(store.pace)")
+                    smallText("평균페이스")
                 }
                 Spacer()
                 VStack {
-                    MediumText("\(store.time.toTimeString())")
-                    SmallText("시간")
+                    mediumText("\(store.time.toTimeString())")
+                    smallText("시간")
                 }
                 Spacer()
                 VStack {
-                    MediumText("\(store.kcal)")
-                    SmallText("칼로리")
+                    mediumText("\(store.kcal)")
+                    smallText("칼로리")
                 }
             }
             .padding(.horizontal, 21.5)
@@ -154,5 +154,17 @@ extension RunningView {
                 })
             }
         }
+    }
+    
+    private func smallText(_ string: String) -> some View {
+        Text(string)
+            .font(Fonts.pretendardRegular(size: 12))
+            .foregroundStyle(.gray200)
+    }
+    
+    private func mediumText(_ string: String) -> some View {
+        Text(string)
+            .font(Fonts.pretendardBold(size: 26))
+            .foregroundStyle(.white)
     }
 }

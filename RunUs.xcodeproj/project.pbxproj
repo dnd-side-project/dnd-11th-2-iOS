@@ -18,7 +18,6 @@
 		D9417AD42C8BFDD7008F8075 /* RunningData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9417AD32C8BFDD7008F8075 /* RunningData.swift */; };
 		D9417AD72C8C000C008F8075 /* RunningResultDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9417AD62C8C000C008F8075 /* RunningResultDependency.swift */; };
 		D9417AD92C8C2B6B008F8075 /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9417AD82C8C2B6B008F8075 /* Date+extension.swift */; };
-		D9417ADB2C8C41CB008F8075 /* TextComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9417ADA2C8C41CB008F8075 /* TextComponent.swift */; };
 		D95F830D2C6F5C9A000DCAA3 /* RunningFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F830C2C6F5C9A000DCAA3 /* RunningFeature.swift */; };
 		D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F830E2C6F5F64000DCAA3 /* RunningStateManager.swift */; };
 		D95F83112C6F82DF000DCAA3 /* RunningDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F83102C6F82DF000DCAA3 /* RunningDependency.swift */; };
@@ -105,7 +104,6 @@
 		D9417AD32C8BFDD7008F8075 /* RunningData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningData.swift; sourceTree = "<group>"; };
 		D9417AD62C8C000C008F8075 /* RunningResultDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningResultDependency.swift; sourceTree = "<group>"; };
 		D9417AD82C8C2B6B008F8075 /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
-		D9417ADA2C8C41CB008F8075 /* TextComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextComponent.swift; sourceTree = "<group>"; };
 		D95F830C2C6F5C9A000DCAA3 /* RunningFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningFeature.swift; sourceTree = "<group>"; };
 		D95F830E2C6F5F64000DCAA3 /* RunningStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStateManager.swift; sourceTree = "<group>"; };
 		D95F83102C6F82DF000DCAA3 /* RunningDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningDependency.swift; sourceTree = "<group>"; };
@@ -315,7 +313,6 @@
 				F6EF88752C4E802E008EF2FD /* MainView.swift */,
 				D97950A32C62831B00BDCD44 /* RUNavigationBar.swift */,
 				D90CDD782C6A623F00197214 /* CountDownView.swift */,
-				D9417ADA2C8C41CB008F8075 /* TextComponent.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -523,7 +520,6 @@
 				F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */,
 				F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */,
 				F65033C52C731EC500C81DA6 /* RecordMenus.swift in Sources */,
-				D9417ADB2C8C41CB008F8075 /* TextComponent.swift in Sources */,
 				F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */,
 				F65033CD2C74585500C81DA6 /* BadgesResponseModel.swift in Sources */,
 				F65033CB2C7457F900C81DA6 /* MyBadges.swift in Sources */,
