@@ -64,6 +64,7 @@ struct LoginView: View {
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
             Spacer()
         }
+        .background(Color.background)
         .ignoresSafeArea()
     }
 }

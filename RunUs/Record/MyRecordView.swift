@@ -52,8 +52,8 @@ extension MyRecordView {
                         .scaledToFit()
                 } placeholder: {
                     ProgressView()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 100, maxHeight: .infinity) // MARK: 임의 Width 사용
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .aspectRatio(1, contentMode: .fit)
                 }
             }
             .frame(maxHeight: 86)
@@ -64,12 +64,12 @@ extension MyRecordView {
             MyRecordButton(action: {
                 // TODO: 나의 뱃지 화면으로 이동
             }, text: "나의 뱃지")
-            .padding(.bottom, 18)
+            .padding(.bottom, 12)
             MyBadges(badges: store.badges)
-            Divider()
+            Rectangle()
+                .fill(.mainDeepDark)
                 .frame(maxWidth: .infinity)
                 .frame(height: 8)
-                .background(.mainDeepDark)
                 .padding(.horizontal, -Paddings.outsideHorizontalPadding)
                 .padding(.bottom, 12)
             MyRecordButton(action: {

@@ -19,6 +19,9 @@ enum ServerEndpoint: NetworkEndpoint {
     case getBadges
     case getMonthly(year: Int, month: Int)
     case getDaily(String)
+    case getChallenges
+    case getWeathers(longitude: Double, latitude: Double)
+    case getMonthlySummary
     
     var baseURL: URL? { URL(string: "https://api.runus.site") }
     
@@ -50,12 +53,18 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/running-records/monthly-dates"
         case .getDaily:
             return APIversion.v1 + "/running-records/daily"
+        case .getChallenges:
+            return APIversion.v1 + "/challenges"
+        case .getWeathers:
+            return APIversion.v1 + "/weathers"
+        case .getMonthlySummary:
+            return APIversion.v1 + "/running-records/monthly-summary"
         }
     }
     
     var method: NetworkMethod {
         switch self {
-        case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily:
+        case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary:
             return .get
         case .signUp, .signIn, .withdraw:
             return .post
@@ -71,6 +80,9 @@ enum ServerEndpoint: NetworkEndpoint {
                     .init(name: "month", value: String(month))]
         case .getDaily(let date):
             return [.init(name: "date", value: date)]
+        case .getWeathers(let longitude, let latitude):
+            return [.init(name: "longitude", value: String(longitude)),
+                    .init(name: "latitude", value: String(latitude))]
         default:
             return nil
         }
@@ -79,7 +91,7 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .signUp, .signIn:
             return ["Content-Type": "application/json"]
-        case .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily:
+        case .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary:
             guard let accessToken: String = UserDefaultManager.accessToken else {
                 return nil
             }
