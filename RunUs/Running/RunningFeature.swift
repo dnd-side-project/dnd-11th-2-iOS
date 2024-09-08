@@ -20,7 +20,48 @@ struct RunningFeature {
         var distance: Double = 0
         var kcal: Int = 0
         var pace: String = "0’00”"
+        var isFinished: Bool = false
         fileprivate var beforeLocation: CLLocation?
+        var startAt: String
+        var endAt: String = ""
+        var startLocation: String = ""
+        var endLocation: String = ""
+        var challengeId: Int?
+        var goalDistance: Int?
+        var goalTime: Int?
+        var achievementMode: String
+        
+        init(challengeId: Int? = nil,
+             goalDistance: Int,
+             goalTime: Int,
+             achievementMode: String) {
+            self.startAt = Date().formatStringHyphen()
+            self.startLocation = "서울시 강남구"
+            self.challengeId = challengeId
+            self.goalDistance = goalDistance
+            self.goalTime = goalTime
+            self.achievementMode = achievementMode
+        }
+        
+        func getRunningResult(emotion: RunningMood) -> RunningResult {
+            .init(startAt: self.startAt,
+                  endAt: self.endAt,
+                  startLocation: self.startLocation,
+                  endLocation: self.endLocation,
+                  emotion: emotion.entity,
+                  challengeId: self.challengeId,
+                  goalDistance: self.goalDistance,
+                  goalTime: 10,
+                  achievementMode: "goal",
+                  runningData: .init(averagePace: self.pace,
+                                     runningTime: self.time.toTimeString(),
+                                     distanceMeter: distanceKMtoM(km: self.distance),
+                                     calorie: self.kcal))
+        }
+        
+        private func distanceKMtoM(km: Double) -> Int {
+            return Int(km*1000)
+        }
     }
     
     enum Action: Equatable {
@@ -31,6 +72,7 @@ struct RunningFeature {
         case distanceUpdated(Double)
         case kcalUpdated(Int)
         case paceUpdated
+        case isFinishedChanged(Bool)
     }
     
     @Dependency(\.runningStateManager) var runningStateManager
@@ -87,6 +129,11 @@ struct RunningFeature {
                 let distance = calculateDistance(before: state.beforeLocation, after: state.location)
                 state.pace = calculatePace(distance: distance)
                 state.beforeLocation = state.location
+                return .none
+            case .isFinishedChanged(let bool):
+                state.endAt = Date().formatStringHyphen()
+                state.endLocation = "서울시 마포구"
+                state.isFinished = bool
                 return .none
             }
         }

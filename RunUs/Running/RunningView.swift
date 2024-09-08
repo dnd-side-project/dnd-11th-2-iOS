@@ -10,9 +10,7 @@ import MapKit
 import ComposableArchitecture
 
 struct RunningView: View {
-    let store: StoreOf<RunningFeature> = .init(
-        initialState: RunningFeature.State(),
-        reducer: { RunningFeature() })
+    @State var store: StoreOf<RunningFeature>
     
     @Namespace private var namespace
     
@@ -62,6 +60,9 @@ struct RunningView: View {
                     .shadow(color: .black.opacity(0.5), radius: 30, x: 1, y: 1)
                 }
                 .ignoresSafeArea()
+                if store.isFinished {
+                    SelectRunningEmotionView(store: store)
+                }
             }
             .onAppear{
                 store.send(.onAppear)
@@ -141,7 +142,7 @@ extension RunningView {
                 })
             } else {
                 Button(action: {
-                    //TODO: 러닝 결과 화면으로 이동
+                    store.send(.isFinishedChanged(true))
                 }, label: {
                     CircleButtonView(.buttonStop)
                 })
@@ -166,8 +167,4 @@ extension RunningView {
             .font(Fonts.pretendardBold(size: 26))
             .foregroundStyle(.white)
     }
-}
-
-#Preview {
-    RunningView()
 }

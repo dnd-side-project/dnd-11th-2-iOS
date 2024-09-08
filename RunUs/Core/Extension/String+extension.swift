@@ -30,4 +30,18 @@ extension String {
             return self
         }
     }
+    
+    func formatDateHyphen() -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.date(from: self) ?? Date()
+    }
+    
+    func formatDateDot() -> Date {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yy. MM. dd. a h:mm"
+        return formatter.date(from: self) ?? Date()
+    }
+    
 }
