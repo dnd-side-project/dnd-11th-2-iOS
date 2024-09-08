@@ -15,7 +15,6 @@ struct RunAloneHomeFeature {
     struct State: Equatable {
         var showLocationPermissionAlert: Bool = false
         var todayChallengeToggle: Bool = true
-        var selectedChallengeId: Int = 0
         var todayChallengeList: [TodayChallenge] = []
     }
     
@@ -55,9 +54,9 @@ struct RunAloneHomeFeature {
             case .selectChallenge(let id):
                 state.todayChallengeList = state.todayChallengeList.map {
                     .init(id: $0.id,
-                          imageUrl: $0.imageUrl,
                           title: $0.title,
-                          estimatedMinute: $0.estimatedMinute,
+                          expectedTime: $0.expectedTime,
+                          icon: $0.icon,
                           isSelected: id == $0.id)
                 }
                 return .none

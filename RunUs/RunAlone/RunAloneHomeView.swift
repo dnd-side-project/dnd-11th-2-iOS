@@ -17,41 +17,38 @@ struct RunAloneHomeView: View {
     
     var body: some View {
         NavigationView {
-            
-                ZStack {
-                    Map()
+            ZStack {
+                Map()
+                VStack(spacing: 0) {
                     VStack(spacing: 0) {
-                        VStack(spacing: 0) {
-                            RUNavigationBar(buttonType: .back,
-                                            title: "혼자뛰기")
-                            todayChallengeView(isOn: $store.todayChallengeToggle)
-                        }
-                        .padding(.horizontal, Paddings.outsideHorizontalPadding)
-                        .background(Color.background)
-                        
-                        if store.todayChallengeToggle {
-                            Spacer()
-                                .frame(height: 34)
-                            todayChallengeListView(store.todayChallengeList)
-                        }
-                        Spacer()
-                        startButton
-                        Spacer()
-                            .frame(height: 95)
+                        RUNavigationBar(buttonType: .back,
+                                        title: "혼자뛰기")
+                        todayChallengeView(isOn: $store.todayChallengeToggle)
                     }
-                    
-                }
-                .onAppear {
-                    store.send(.onAppear)
-                }
-                .alert(Bundle.main.locationString,
-                       isPresented: $store.showLocationPermissionAlert) {
-                    Button("취소") { }
-                    Button("설정") {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    .padding(.horizontal, Paddings.outsideHorizontalPadding)
+                    .background(Color.background)
+
+                    if store.todayChallengeToggle {
+                        Spacer()
+                            .frame(height: 34)
+                        todayChallengeListView(store.todayChallengeList)
                     }
+                    Spacer()
+                    startButton
+                    Spacer()
+                        .frame(height: 48)
                 }
-            
+            }
+            .onAppear {
+                store.send(.onAppear)
+            }
+            .alert(Bundle.main.locationString,
+                   isPresented: $store.showLocationPermissionAlert) {
+                Button("취소") { }
+                Button("설정") {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                }
+            }
         }
     }
 }
