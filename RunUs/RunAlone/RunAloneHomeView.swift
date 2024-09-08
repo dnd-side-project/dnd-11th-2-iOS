@@ -68,7 +68,6 @@ struct RunAloneHomeView: View {
 }
 
 extension RunAloneHomeView {
-    
     private var runninModeView: some View {
         HStack(spacing: 7) {
             modeItem(.normal)
@@ -76,7 +75,6 @@ extension RunAloneHomeView {
             modeItem(.goal)
         }
     }
-    
     private func modeItem(_ mode: RunningMode) -> some View {
         VStack {
             Text(mode.string)
@@ -98,14 +96,12 @@ extension RunAloneHomeView {
         }
         .animation(.easeInOut, value: store.mode)
     }
-    
     private var goalView: some View {
         HStack(spacing: 14) {
             TypeButton(GoalTypeObject(GoalTypes.time))
             TypeButton(GoalTypeObject(GoalTypes.distance))
         }
     }
-    
     private func todayChallengeListView(_ list: [TodayChallenge]) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
@@ -121,7 +117,6 @@ extension RunAloneHomeView {
             }
         }
     }
-    
     private var startButton: some View {
         NavigationLink {
             RunningView()

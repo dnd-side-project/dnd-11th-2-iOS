@@ -17,6 +17,9 @@ enum ServerEndpoint: NetworkEndpoint {
     case withdraw(withdrawRequest: WithdrawRequestModel)
     case getProfiles
     case getBadges
+    case postRunningRecord(result: RunningResult)
+    case getMonthly(year: Int, month: Int)
+    case getDaily(String)
     case getChallenges
     case getWeathers(longitude: Double, latitude: Double)
     case getMonthlySummary
@@ -47,6 +50,12 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/members/profiles/me"
         case .getBadges:
             return APIversion.v1 + "/badges/me"
+        case .postRunningRecord:
+            return APIversion.v1 + "/running-records"
+        case .getMonthly:
+            return APIversion.v1 + "/running-records/monthly-dates"
+        case .getDaily:
+            return APIversion.v1 + "/running-records/daily"
         case .getChallenges:
             return APIversion.v1 + "/challenges"
         case .getWeathers:
@@ -58,18 +67,25 @@ enum ServerEndpoint: NetworkEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges, .getChallenges, .getWeathers, .getMonthlySummary:
+        case .testRequest, .testResponse, .testError, .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary:
             return .get
-        case .signUp, .signIn, .withdraw:
+        case .signUp, .signIn, .withdraw, .postRunningRecord:
             return .post
         }
     }
+    
     var parameters: [URLQueryItem]? {
         switch self {
         case .testRequest(let string):
             return [.init(name: "input", value: string)]
+        case .getMonthly(let year, let month):
+            return [.init(name: "year", value: String(year)),
+                    .init(name: "month", value: String(month))]
+        case .getDaily(let date):
+            return [.init(name: "date", value: date)]
         case .getWeathers(let longitude, let latitude):
-            return [.init(name: "longitude", value: String(longitude)), .init(name: "latitude", value: String(latitude))]
+            return [.init(name: "longitude", value: String(longitude)),
+                    .init(name: "latitude", value: String(latitude))]
         default:
             return nil
         }
@@ -78,12 +94,12 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .signUp, .signIn:
             return ["Content-Type": "application/json"]
-        case .testHeader, .getProfiles, .getBadges, .getChallenges, .getWeathers, .getMonthlySummary:
+        case .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary:
             guard let accessToken: String = UserDefaultManager.accessToken else {
                 return nil
             }
             return ["Authorization": "Bearer " + accessToken]
-        case .withdraw:
+        case .withdraw, .postRunningRecord:
             guard let accessToken: String = UserDefaultManager.accessToken else {
                 return nil
             }
@@ -100,6 +116,8 @@ enum ServerEndpoint: NetworkEndpoint {
             return signInRequest
         case .withdraw(let withdrawRequest):
             return withdrawRequest
+        case .postRunningRecord(let result):
+            return result
         default:
             return nil
         }

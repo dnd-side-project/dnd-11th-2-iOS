@@ -9,13 +9,26 @@ import SwiftUI
 
 enum NavigationButtonType {
     case back
-    case home
+    case home(action: () -> Void)
 }
 
 struct RUNavigationBar: View {
     @Environment(\.dismiss) var dismiss
     let buttonType: NavigationButtonType?
     let title: String
+    
+    private let homeButtonAction: (() -> Void)?
+    
+    init(buttonType: NavigationButtonType, title: String) {
+        self.buttonType = buttonType
+        self.title = title
+        switch buttonType {
+        case .home(let action):
+            self.homeButtonAction = action
+        default:
+            self.homeButtonAction = nil
+        }
+    }
     
     var body: some View {
         HStack {
@@ -40,7 +53,7 @@ extension RUNavigationBar {
             case .back:
                 backButton
             case .home:
-                backButton
+                homeButton
             case .none:
                 EmptyView()
             }
@@ -53,6 +66,20 @@ extension RUNavigationBar {
             Image(.chevronLeft)
         }
     }
+    
+    private var homeButton: some View {
+        Button {
+            if let action = homeButtonAction {
+                action()
+            }
+        } label: {
+            Image(.home)
+                .resizable()
+                .frame(width: 24, height: 24)
+                .tint(.white)
+        }
+    }
+    
     private var titleText: some View {
         Text(title)
             .bold()
@@ -62,5 +89,5 @@ extension RUNavigationBar {
 }
 
 #Preview {
-    RUNavigationBar(buttonType: .back, title: "목표설정")
+    RUNavigationBar(buttonType: .home{}, title: "목표설정")
 }
