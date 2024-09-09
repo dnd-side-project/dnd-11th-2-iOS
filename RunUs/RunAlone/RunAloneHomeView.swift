@@ -11,7 +11,7 @@ import MapKit
 
 struct RunAloneHomeView: View {
     @Environment(\.dismiss) var dismiss
-    @State var store: StoreOf<RunAloneHomeFeature> = .init( 
+    @State var store: StoreOf<RunAloneHomeFeature> = .init(
         initialState: RunAloneHomeFeature.State(),
         reducer: { RunAloneHomeFeature() })
     
@@ -119,7 +119,15 @@ extension RunAloneHomeView {
     }
     private var startButton: some View {
         NavigationLink {
-            RunningView()
+            RunningView(store: .init(
+                initialState: RunningFeature.State(
+                    challengeId: 0,
+                    goalDistance: 0,
+                    goalTime: 0,
+                    achievementMode: "normal"),
+                reducer: {
+                RunningFeature()
+            }))
                 .navigationBarBackButtonHidden()
         } label: {
             ZStack {

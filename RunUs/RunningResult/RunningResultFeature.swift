@@ -39,7 +39,7 @@ struct RunningResultFeature {
     
     enum Action {
         case onAppear
-        case setRunningRecord(RunningRecord)
+        case setRunningRecord(RunningRecordResponseModel)
     }
     
     @Dependency(\.runningRecordAPI) var api
@@ -50,8 +50,7 @@ struct RunningResultFeature {
             case .onAppear:
                 let runningResult = state.runningResult
                 return .run { send in
-                    print(runningResult)
-                    let record = try await api.postRunningRecord(result: runningResult)
+                    let record: RunningRecordResponseModel = try await api.postRunningRecord(result: runningResult)
                     await send(.setRunningRecord(record))
                 }
             case .setRunningRecord(let record):

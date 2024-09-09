@@ -1,13 +1,13 @@
 //
-//  RunningRecord.swift
+//  RunningRecordResponseModel.swift
 //  RunUs
 //
-//  Created by Ryeong on 9/7/24.
+//  Created by seungyooooong on 9/9/24.
 //
 
 import Foundation
 
-struct RunningRecord: Decodable {
+struct RunningRecordResponseModel: Decodable {
     let runningRecordId: Int
     let startAt: String
     let endAt: String

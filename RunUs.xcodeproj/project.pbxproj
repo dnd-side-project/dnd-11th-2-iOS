@@ -10,12 +10,10 @@
 		D90BE6672C6B6F7100999858 /* RunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90BE6662C6B6F7100999858 /* RunningView.swift */; };
 		D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90CDD782C6A623F00197214 /* CountDownView.swift */; };
 		D93975912C78D33B00507BAF /* RunningResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93975902C78D33B00507BAF /* RunningResultView.swift */; };
-		D93A94E82C4A372600BCCD00 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
 		D93A94EC2C4A372700BCCD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EB2C4A372700BCCD00 /* Assets.xcassets */; };
 		D93A94EF2C4A372700BCCD00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */; };
 		D93AC4B12C8C53A900C1570F /* RunningMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93AC4B02C8C53A900C1570F /* RunningMode.swift */; };
 		D9417AD02C8BFCC2008F8075 /* RunningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9417ACF2C8BFCC2008F8075 /* RunningResult.swift */; };
-		D9417AD22C8BFDC7008F8075 /* RunningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9417AD12C8BFDC7008F8075 /* RunningRecord.swift */; };
 		D9417AD42C8BFDD7008F8075 /* RunningData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9417AD32C8BFDD7008F8075 /* RunningData.swift */; };
 		D9417AD72C8C000C008F8075 /* RunningResultDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9417AD62C8C000C008F8075 /* RunningResultDependency.swift */; };
 		D9417AD92C8C2B6B008F8075 /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9417AD82C8C2B6B008F8075 /* Date+extension.swift */; };
@@ -28,15 +26,15 @@
 		D97950A62C62917400BDCD44 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97950A52C62917400BDCD44 /* View+extension.swift */; };
 		D97D2D7E2C6F53470080F6A7 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D2D7D2C6F53470080F6A7 /* CircleButtonView.swift */; };
 		D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D9FE32C6078BD00C663BD /* LocationManager.swift */; };
-		D9A65D0E2C7CCCE700FA33BF /* RunningResultFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */; };
-		D9A65D102C7CCD9400FA33BF /* RunningMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */; };
-		D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */; };
-		D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */; };
 		D9842DD82C84646A002B145C /* RecordCalendarFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9842DD72C84646A002B145C /* RecordCalendarFeature.swift */; };
 		D9842DDA2C8465A1002B145C /* RunningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9842DD92C8465A1002B145C /* RunningRecord.swift */; };
 		D9842DDC2C84A514002B145C /* RecordCalendarDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9842DDB2C84A514002B145C /* RecordCalendarDependency.swift */; };
 		D9842DDE2C84A5E5002B145C /* RunningMonthlyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9842DDD2C84A5E5002B145C /* RunningMonthlyRecord.swift */; };
 		D9842DE02C84AFE3002B145C /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9842DDF2C84AFE3002B145C /* DateFormatter+extension.swift */; };
+		D9A65D0E2C7CCCE700FA33BF /* RunningResultFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */; };
+		D9A65D102C7CCD9400FA33BF /* RunningMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */; };
+		D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */; };
+		D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */; };
 		D9D0B7182C4F553800D13160 /* RUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7172C4F553800D13160 /* RUError.swift */; };
 		D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7192C4F555500D13160 /* NetworkError.swift */; };
 		D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B71B2C4F566E00D13160 /* NetworkService.swift */; };
@@ -90,6 +88,7 @@
 		F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033E02C7856B300C81DA6 /* SignInRequestModel.swift */; };
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
+		F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
 		F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */; };
 		F6B9A33C2C63123900743FBE /* LoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33B2C63123900743FBE /* LoginDependency.swift */; };
@@ -117,7 +116,6 @@
 		D93A94EE2C4A372700BCCD00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D93AC4B02C8C53A900C1570F /* RunningMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningMode.swift; sourceTree = "<group>"; };
 		D9417ACF2C8BFCC2008F8075 /* RunningResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningResult.swift; sourceTree = "<group>"; };
-		D9417AD12C8BFDC7008F8075 /* RunningRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecord.swift; sourceTree = "<group>"; };
 		D9417AD32C8BFDD7008F8075 /* RunningData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningData.swift; sourceTree = "<group>"; };
 		D9417AD62C8C000C008F8075 /* RunningResultDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningResultDependency.swift; sourceTree = "<group>"; };
 		D9417AD82C8C2B6B008F8075 /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
@@ -130,15 +128,15 @@
 		D97950A52C62917400BDCD44 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 		D97D2D7D2C6F53470080F6A7 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		D97D9FE32C6078BD00C663BD /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningResultFeature.swift; sourceTree = "<group>"; };
-		D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningMood.swift; sourceTree = "<group>"; };
-		D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResult.swift; sourceTree = "<group>"; };
-		D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRunningEmotionView.swift; sourceTree = "<group>"; };
 		D9842DD72C84646A002B145C /* RecordCalendarFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCalendarFeature.swift; sourceTree = "<group>"; };
 		D9842DD92C8465A1002B145C /* RunningRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecord.swift; sourceTree = "<group>"; };
 		D9842DDB2C84A514002B145C /* RecordCalendarDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCalendarDependency.swift; sourceTree = "<group>"; };
 		D9842DDD2C84A5E5002B145C /* RunningMonthlyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningMonthlyRecord.swift; sourceTree = "<group>"; };
 		D9842DDF2C84AFE3002B145C /* DateFormatter+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
+		D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningResultFeature.swift; sourceTree = "<group>"; };
+		D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningMood.swift; sourceTree = "<group>"; };
+		D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResult.swift; sourceTree = "<group>"; };
+		D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRunningEmotionView.swift; sourceTree = "<group>"; };
 		D9D0B7172C4F553800D13160 /* RUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUError.swift; sourceTree = "<group>"; };
 		D9D0B7192C4F555500D13160 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		D9D0B71B2C4F566E00D13160 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -192,6 +190,7 @@
 		F65033E02C7856B300C81DA6 /* SignInRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequestModel.swift; sourceTree = "<group>"; };
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
+		F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordResponseModel.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		F6B9A33B2C63123900743FBE /* LoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDependency.swift; sourceTree = "<group>"; };
@@ -298,9 +297,11 @@
 				D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */,
 				D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */,
 				D9417AD32C8BFDD7008F8075 /* RunningData.swift */,
-				D9417AD12C8BFDC7008F8075 /* RunningRecord.swift */,
+				F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */,
 			);
 			path = RunningModel;
+			sourceTree = "<group>";
+		};
 		D9842DD62C846450002B145C /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,9 +606,9 @@
 				D9417AD92C8C2B6B008F8075 /* Date+extension.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
 				D9A65D102C7CCD9400FA33BF /* RunningMood.swift in Sources */,
+				F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
 				D9417AD02C8BFCC2008F8075 /* RunningResult.swift in Sources */,
-				F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */,
 				F611B2222C7E22AF00797470 /* HomeDependency.swift in Sources */,
 				F63B81672C710573002F45F4 /* String+extension.swift in Sources */,
 				D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */,
@@ -616,7 +617,6 @@
 				F65033DF2C7856AA00C81DA6 /* SignUpRequestModel.swift in Sources */,
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */,
-				D9417AD22C8BFDC7008F8075 /* RunningRecord.swift in Sources */,
 				F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,
 				F611B2202C7E1FBE00797470 /* WeatherResponseModel.swift in Sources */,
@@ -626,7 +626,6 @@
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
 				D9842DE02C84AFE3002B145C /* DateFormatter+extension.swift in Sources */,
 				D9842DDC2C84A514002B145C /* RecordCalendarDependency.swift in Sources */,
-				F6AC52DE2C6505AE00654820 /* AuthLoginRequestModel.swift in Sources */,
 				D95F83172C6FB079000DCAA3 /* LocationManagerDelegate.swift in Sources */,
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
 				D93975912C78D33B00507BAF /* RunningResultView.swift in Sources */,
@@ -639,6 +638,7 @@
 				D93AC4B12C8C53A900C1570F /* RunningMode.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
+				F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */,
 				D9D4387C2C7F488E00F3E079 /* RecordCalendarView.swift in Sources */,
 				F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */,
 				D9842DDA2C8465A1002B145C /* RunningRecord.swift in Sources */,
@@ -759,7 +759,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = a"dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -791,10 +791,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunUs/Preview Content\"";
-				DEVELOPMENT_TEAM = PF6QF5WXTK;
+				DEVELOPMENT_TEAM = 3NLDZW4Z5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunUs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RunUs;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "런어스 서비스 이용을 위해서는 위치정보 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -804,8 +807,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dnd-11th-2.RunUs";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = site.runus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -824,10 +827,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunUs/Preview Content\"";
-				DEVELOPMENT_TEAM = PF6QF5WXTK;
+				DEVELOPMENT_TEAM = 3NLDZW4Z5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunUs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RunUs;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "런어스 서비스 이용을 위해서는 위치정보 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -837,8 +843,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dnd-11th-2.RunUs";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = site.runus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
