@@ -43,14 +43,14 @@ struct AchieveRecordView: View {
                     .padding(.bottom, 29)
                 HStack {
                     VStack(alignment: .leading, spacing: 3) {
-                        Text("인천에서 대전") // TODO: API 나오면 수정
+                        Text(store.state.courses.currentCourse.name)
                             .foregroundStyle(.mainGreen)
                             .font(Fonts.pretendardBold(size: 15))
-                        Text("대전까지 100km 남았어요!")    // TODO: API 나오면 수정
+                        Text(store.state.courses.currentCourse.message)
                             .font(Fonts.pretendardMedium(size: 10))
                     }
                     Spacer()
-                    Text("현재 50m 달성")   // TODO: API 나오면 수정
+                    Text("현재 \(store.state.courses.currentCourse.achievedMeter)m 달성")
                         .font(Fonts.pretendardSemiBold(size: 10))
                         .padding(.vertical, 8)
                         .padding(.horizontal, 11)
@@ -91,9 +91,9 @@ extension AchieveRecordView {
                         .foregroundStyle(.white)
                         .font(Fonts.pretendardSemiBold(size: 16))
                     HStack(spacing: 8) {
-                        Text("코스: \(store.state.courseSummary.courseCount)")
-                        Text("런어스 총 거리: \(store.state.courseSummary.runUsDistanceKm)")
-                        Text("지구 한 바퀴: \(store.state.courseSummary.earthDistanceKm)")
+                        Text("코스: \(store.state.courses.info.totalCourses)코스")
+                        Text("런어스 총 거리: \(store.state.courses.info.totalMeter)")
+                        Text("지구 한 바퀴: 40,075km")
                     }
                     .foregroundStyle(.gray300)
                     .font(Fonts.pretendardSemiBold(size: 10))
@@ -101,11 +101,15 @@ extension AchieveRecordView {
                 Spacer()
             }
             .padding(.vertical, 26)
-            // TODO: 반복문 추가
-            AchieveRecordCardView(isCurrentAchieve: true)
-            AchieveRecordCardView(isCurrentAchieve: false)
-            AchieveRecordCardView(isCurrentAchieve: false, isEmptyView: true)
-            AchieveRecordCardView(isCurrentAchieve: false)
+            ForEach (store.state.courses.achievedCourses, id: \.self.name) { course in
+                AchieveRecordCardView(distance: course.meter, title: course.name, subTitle: course.achievedAt, isCurrentAchieve: true)
+            }
+            AchieveRecordCardView(distance: store.state.courses.currentCourse.totalMeter, title: store.state.courses.currentCourse.name, subTitle: store.state.courses.currentCourse.message)
+            // TODO: totalCourses에 지구 한바퀴까지 포함인지 개념적인 확인 필요
+            if store.state.courses.achievedCourses.count < store.state.courses.info.totalCourses {
+                AchieveRecordCardView(isEmptyView: true)
+            }
+            AchieveRecordCardView(distance: "43,800km", title: "지구한바퀴 완주!", subTitle: "축하합니다! 지구한바퀴 완주하셨네요!")
             Spacer()
         }
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
@@ -113,14 +117,29 @@ extension AchieveRecordView {
 }
 
 struct AchieveRecordCardView: View {
+    var distance: String
+    var title: String
+    var subTitle: String
     var isCurrentAchieve: Bool
     var isEmptyView: Bool
     var gradient: LinearGradient
     
-    init(isCurrentAchieve: Bool, isEmptyView: Bool = false) {
+    init(distance: String, title: String, subTitle: String, isCurrentAchieve: Bool = false) {
+        self.distance = distance
+        self.title = title
+        self.subTitle = subTitle
         self.isCurrentAchieve = isCurrentAchieve
-        self.isEmptyView = isEmptyView
+        self.isEmptyView = false
         gradient = LinearGradient(colors: [.white, isCurrentAchieve ? .mainGreen : .mainDeepDark], startPoint: .top, endPoint: .bottom)
+    }
+    
+    init(isEmptyView: Bool) {
+        self.distance = ""
+        self.title = ""
+        self.subTitle = ""
+        self.isCurrentAchieve = false
+        self.isEmptyView = isEmptyView
+        gradient = LinearGradient(colors: [.white, .mainDeepDark], startPoint: .top, endPoint: .bottom)
     }
     
     var body: some View {
@@ -145,17 +164,17 @@ struct AchieveRecordCardView: View {
                     Text("다음 코스 공개까지 RUN with RUNUS!")
                         .font(Fonts.pretendardMedium(size: 12))
                 } else {
-                    Text("31.2km") // TODO: API 나오면 수정
+                    Text(distance)
                         .font(Fonts.pretendardBold(size: 12))
                         .foregroundStyle(isCurrentAchieve ? .white : .gray300)
                         .padding(.vertical, 13)
-                        .padding(.horizontal, 18)
+                        .frame(width: 76)
                         .background(Color.background)
                         .cornerRadius(6)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("서울에서 인천") // TODO: API 나오면 수정
+                        Text(title)
                             .font(Fonts.pretendardBold(size: 14))
-                        Text("2024. 08. 23.") // TODO: API 나오면 수정
+                        Text(subTitle)
                             .font(Fonts.pretendardMedium(size: 12))
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)

@@ -11,13 +11,13 @@ import ComposableArchitecture
 struct AchieveRecordStore: Reducer {
     @ObservableState
     struct State: Equatable {
-        var courseSummary: CourseSummaryResponseModel = CourseSummaryResponseModel()
+        var courses: CoursesResponseModel = CoursesResponseModel()
     }
     
     enum Action {
         case onAppear
-        case getCourseSummary
-        case setCourseSummary(courseSummary: CourseSummaryResponseModel)
+        case getCourses
+        case setCourses(courses: CoursesResponseModel)
     }
     
     @Dependency(\.achieveRecordAPI) var achieveRecordAPI
@@ -26,15 +26,15 @@ struct AchieveRecordStore: Reducer {
         switch action {
         case .onAppear:
             return .run { send in
-                await send(.getCourseSummary)
+                await send(.getCourses)
             }
-        case .getCourseSummary:
+        case .getCourses:
             return .run { send in
-                let courseSummary = try await achieveRecordAPI.getCourseSummary()
-                await send(.setCourseSummary(courseSummary: courseSummary))
+                let courses = try await achieveRecordAPI.getCourses()
+                await send(.setCourses(courses: courses))
             }
-        case let .setCourseSummary(courseSummary):
-            state.courseSummary = courseSummary
+        case let .setCourses(courses):
+            state.courses = courses
             return .none
         }
     }

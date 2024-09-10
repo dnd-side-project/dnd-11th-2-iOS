@@ -63,9 +63,9 @@
 		F63B81672C710573002F45F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81662C710573002F45F4 /* String+extension.swift */; };
 		F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81692C71F50C002F45F4 /* MyRecordView.swift */; };
 		F63BAA462C84399F00DCE9EC /* RUTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA452C84399F00DCE9EC /* RUTabBar.swift */; };
+		F63BAA4B2C84A9A700DCE9EC /* AchieveRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */; };
 		F63BAA4F2C8588F800DCE9EC /* WeatherParametersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA4E2C8588F800DCE9EC /* WeatherParametersModel.swift */; };
 		F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA502C86C8E900DCE9EC /* ViewEnvironment.swift */; };
-		F63BAA4B2C84A9A700DCE9EC /* AchieveRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */; };
 		F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */; };
 		F64FBE332C566AE10024E920 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */; };
 		F64FBE342C566AE10024E920 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */; };
@@ -90,14 +90,14 @@
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */; };
+		F69BFD9E2C8966C70073775C /* AchieveRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */; };
+		F69BFDA02C89670C0073775C /* AchieveRecordDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFD9F2C89670C0073775C /* AchieveRecordDependency.swift */; };
+		F69BFDA22C8967540073775C /* AchieveRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */; };
+		F69BFDA42C8968030073775C /* CoursesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA32C8968030073775C /* CoursesResponseModel.swift */; };
 		F69BFDA62C89703E0073775C /* RUAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA52C89703E0073775C /* RUAlert.swift */; };
 		F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA72C897DA90073775C /* AlertEnvironment.swift */; };
 		F69BFDAA2C8B64070073775C /* VersionResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA92C8B64070073775C /* VersionResponseModel.swift */; };
 		F69BFDAC2C8B64DF0073775C /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDAB2C8B64DF0073775C /* SystemManager.swift */; };
-		F69BFD9E2C8966C70073775C /* AchieveRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */; };
-		F69BFDA02C89670C0073775C /* AchieveRecordDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFD9F2C89670C0073775C /* AchieveRecordDependency.swift */; };
-		F69BFDA22C8967540073775C /* AchieveRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */; };
-		F69BFDA42C8968030073775C /* CourseSummaryResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA32C8968030073775C /* CourseSummaryResponseModel.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
 		F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */; };
 		F6B9A33C2C63123900743FBE /* LoginDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33B2C63123900743FBE /* LoginDependency.swift */; };
@@ -173,9 +173,9 @@
 		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		F63B81692C71F50C002F45F4 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
 		F63BAA452C84399F00DCE9EC /* RUTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUTabBar.swift; sourceTree = "<group>"; };
+		F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordView.swift; sourceTree = "<group>"; };
 		F63BAA4E2C8588F800DCE9EC /* WeatherParametersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherParametersModel.swift; sourceTree = "<group>"; };
 		F63BAA502C86C8E900DCE9EC /* ViewEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEnvironment.swift; sourceTree = "<group>"; };
-		F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordView.swift; sourceTree = "<group>"; };
 		F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		F64FBE2A2C566AE00024E920 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F64FBE2B2C566AE00024E920 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -201,14 +201,14 @@
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordResponseModel.swift; sourceTree = "<group>"; };
+		F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordStore.swift; sourceTree = "<group>"; };
+		F69BFD9F2C89670C0073775C /* AchieveRecordDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordDependency.swift; sourceTree = "<group>"; };
+		F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordAPI.swift; sourceTree = "<group>"; };
+		F69BFDA32C8968030073775C /* CoursesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesResponseModel.swift; sourceTree = "<group>"; };
 		F69BFDA52C89703E0073775C /* RUAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUAlert.swift; sourceTree = "<group>"; };
 		F69BFDA72C897DA90073775C /* AlertEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEnvironment.swift; sourceTree = "<group>"; };
 		F69BFDA92C8B64070073775C /* VersionResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionResponseModel.swift; sourceTree = "<group>"; };
 		F69BFDAB2C8B64DF0073775C /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
-		F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordStore.swift; sourceTree = "<group>"; };
-		F69BFD9F2C89670C0073775C /* AchieveRecordDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordDependency.swift; sourceTree = "<group>"; };
-		F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordAPI.swift; sourceTree = "<group>"; };
-		F69BFDA32C8968030073775C /* CourseSummaryResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSummaryResponseModel.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		F6B9A33B2C63123900743FBE /* LoginDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDependency.swift; sourceTree = "<group>"; };
@@ -467,7 +467,7 @@
 				F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */,
 				F69BFD9F2C89670C0073775C /* AchieveRecordDependency.swift */,
 				F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */,
-				F69BFDA32C8968030073775C /* CourseSummaryResponseModel.swift */,
+				F69BFDA32C8968030073775C /* CoursesResponseModel.swift */,
 			);
 			path = AchieveRecord;
 			sourceTree = "<group>";
@@ -681,7 +681,7 @@
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
 				F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */,
 				D9D4387C2C7F488E00F3E079 /* RecordCalendarView.swift in Sources */,
-				F69BFDA42C8968030073775C /* CourseSummaryResponseModel.swift in Sources */,
+				F69BFDA42C8968030073775C /* CoursesResponseModel.swift in Sources */,
 				F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */,
 				D9842DDA2C8465A1002B145C /* RunningRecord.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,
