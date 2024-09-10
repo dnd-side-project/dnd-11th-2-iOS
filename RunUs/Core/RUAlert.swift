@@ -24,6 +24,7 @@ struct RUAlert: View {
                     .padding(.top, subTitle.count > 0 ? 8 : 18)
                     .padding(.bottom, subTitle.count > 0 ? 12 : 10)
                 Text(subTitle)
+                    .lineSpacing(4)
                     .multilineTextAlignment(.center)
                     .font(Fonts.pretendardRegular(size: 12))
                     .padding(.bottom, 20)

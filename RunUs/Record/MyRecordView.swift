@@ -9,8 +9,10 @@ import SwiftUI
 import ComposableArchitecture
 
 struct MyRecordView: View {
+    @EnvironmentObject var alertEnvironment: AlertEnvironment
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
-    let store: StoreOf<MyRecordStore> = Store(
+    @State var store: StoreOf<MyRecordStore> = Store(
         initialState: MyRecordStore.State(),
         reducer: { MyRecordStore() }
     )
@@ -73,10 +75,10 @@ extension MyRecordView {
                 .padding(.horizontal, -Paddings.outsideHorizontalPadding)
                 .padding(.bottom, 12)
             MyRecordButton(action: {
-                store.send(.logout)
+                alertEnvironment.showAlert(title: "로그아웃 하시겠습니까?", mainButtonText: "로그아웃", mainButtonAction: logout)
             }, text: "로그아웃")
             MyRecordButton(action: {
-                store.send(.appleLoginForWithdraw)
+                alertEnvironment.showAlert(title: "정말 탈퇴 하시겠습니까?", subTitle: "탈퇴할 경우 모든 데이터가 삭제되고\n복구가 불가능합니다.", mainButtonText: "탈퇴하기", mainButtonColor: .red, mainButtonAction: withdraw)
             }, text: "회원 탈퇴")
             Spacer()
         }
@@ -105,6 +107,16 @@ extension MyRecordView {
         Divider()
             .frame(width: 1, height: 45)
             .background(.white)
+    }
+    
+    private func logout() {
+        store.send(.logout)
+        alertEnvironment.dismiss()
+    }
+    
+    private func withdraw() {
+        store.send(.appleLoginForWithdraw)
+        alertEnvironment.dismiss()
     }
 }
 

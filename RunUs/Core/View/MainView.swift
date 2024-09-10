@@ -16,18 +16,23 @@ struct MainView: View {
         NavigationStack(path: $viewEnvironment.navigationPath) {
             VStack(spacing: 0) {
                 if isLogin {
-                    switch viewEnvironment.selectedTabItem {
-                    case .home:
+                    ZStack {    // TODO: 추후 LazyHStack을 사용하거나.. 더 좋은 방법으로 수정
                         HomeView()
-                    case .running:
+                            .opacity(viewEnvironment.selectedTabItem == .home ? 1 : 0)
                         RunAloneHomeView()
-                    case .myRecord:
+                            .opacity(viewEnvironment.selectedTabItem == .running ? 1 : 0)
                         MyRecordView()
+                            .opacity(viewEnvironment.selectedTabItem == .myRecord ? 1 : 0)
                     }
                     RUTabBar()
                 } else { LoginView() }
             }
             .ignoresSafeArea(.container, edges: .bottom)    // MARK: 홈버튼UI와 홈바UI에서 탭바를 동일하게 표현하기 위한 장치
+            .onChange(of: isLogin) { oldValue, newValue in  // MARK: logout & withdraw 완료 후 viewEnvironment 초기화
+                if !newValue {
+                    viewEnvironment.selectedTabItem = .home
+                }
+            }
         }
     }
 }

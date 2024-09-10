@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct HomeView: View {
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
-    let store: StoreOf<HomeStore> = Store(
+    @State var store: StoreOf<HomeStore> = Store(
         initialState: HomeStore.State(),
         reducer: { HomeStore() }
     )

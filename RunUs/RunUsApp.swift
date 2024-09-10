@@ -11,6 +11,7 @@ import SwiftUI
 struct RunUsApp: App {
     @State var isLoading: Bool = true
     @StateObject private var alertEnvironment = AlertEnvironment()
+    @StateObject private var viewEnvironment = ViewEnvironment()
     
     var body: some Scene {
         WindowGroup {
@@ -24,7 +25,7 @@ extension RunUsApp {
         ZStack {
             Color.background.ignoresSafeArea()
             if isLoading { SplashView(isLoading: $isLoading) }
-            else { MainView().environmentObject(ViewEnvironment()) }
+            else { MainView().environmentObject(viewEnvironment) }
             if alertEnvironment.isShowAlert { alertEnvironment.ruAlert }
         }
         .onAppear{
