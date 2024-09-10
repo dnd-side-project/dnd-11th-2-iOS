@@ -16,11 +16,11 @@ struct RUNavigationBar: View {
     @Environment(\.dismiss) var dismiss
     let buttonType: NavigationButtonType?
     let title: String
-    var backgroundColor: Color = .background
+    let backgroundColor: Color
     
     private let homeButtonAction: (() -> Void)?
     
-    init(buttonType: NavigationButtonType, title: String) {
+    init(buttonType: NavigationButtonType, title: String, backgroundColor: Color = .background) {
         self.buttonType = buttonType
         self.title = title
         switch buttonType {
@@ -29,6 +29,7 @@ struct RUNavigationBar: View {
         default:
             self.homeButtonAction = nil
         }
+        self.backgroundColor = backgroundColor
     }
     
     var body: some View {
