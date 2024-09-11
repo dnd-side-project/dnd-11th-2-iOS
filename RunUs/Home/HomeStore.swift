@@ -48,6 +48,7 @@ struct HomeStore: Reducer {
                 case .notyet:
                     await send(.requestLocationPermission)
                 }
+                locationManager.sendGetWeatherPublisher()
                 await send(.getChallenges)
                 await send(.getMonthlySummary)
             }
