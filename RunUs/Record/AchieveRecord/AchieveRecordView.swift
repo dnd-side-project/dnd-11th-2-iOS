@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AchieveRecordView: View {
+    let profiles: ProfileResponseModel
     let store: StoreOf<AchieveRecordStore> = Store(
         initialState: AchieveRecordStore.State(),
         reducer: { AchieveRecordStore() }
@@ -50,7 +51,7 @@ struct AchieveRecordView: View {
                             .font(Fonts.pretendardMedium(size: 10))
                     }
                     Spacer()
-                    Text("현재 \(store.state.courses.currentCourse.achievedMeter)m 달성")
+                    Text("현재 \(store.state.courses.currentCourse.achievedDistance) 달성")
                         .font(Fonts.pretendardSemiBold(size: 10))
                         .padding(.vertical, 8)
                         .padding(.horizontal, 11)
@@ -92,7 +93,7 @@ extension AchieveRecordView {
                         .font(Fonts.pretendardSemiBold(size: 16))
                     HStack(spacing: 8) {
                         Text("코스: \(store.state.courses.info.totalCourses)코스")
-                        Text("런어스 총 거리: \(store.state.courses.info.totalMeter)")
+                        Text("런어스 총 거리: \(store.state.courses.info.totalDistance)")
                         Text("지구 한 바퀴: 40,075km")
                     }
                     .foregroundStyle(.gray300)
@@ -102,9 +103,9 @@ extension AchieveRecordView {
             }
             .padding(.vertical, 26)
             ForEach (store.state.courses.achievedCourses, id: \.self.name) { course in
-                AchieveRecordCardView(distance: course.meter, title: course.name, subTitle: course.achievedAt, isCurrentAchieve: true)
+                AchieveRecordCardView(distance: course.totalDistance, title: course.name, subTitle: course.achievedAt, isCurrentAchieve: true)
             }
-            AchieveRecordCardView(distance: store.state.courses.currentCourse.totalMeter, title: store.state.courses.currentCourse.name, subTitle: store.state.courses.currentCourse.message)
+            AchieveRecordCardView(distance: store.state.courses.currentCourse.totalDistance, title: store.state.courses.currentCourse.name, subTitle: store.state.courses.currentCourse.message)
             // TODO: totalCourses에 지구 한바퀴까지 포함인지 개념적인 확인 필요
             if store.state.courses.achievedCourses.count < store.state.courses.info.totalCourses {
                 AchieveRecordCardView(isEmptyView: true)
@@ -205,5 +206,5 @@ struct DottedLine: View {
 }
 
 #Preview {
-    AchieveRecordView()
+    AchieveRecordView(profiles: ProfileResponseModel())
 }
