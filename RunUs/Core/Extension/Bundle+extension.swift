@@ -9,7 +9,6 @@ import Foundation
 
 extension Bundle {
     var locationString: String {
-        return object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") as? 
-        String ?? "위치 설정 필요"
+        return object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") as? String ?? "위치 설정 필요"
     }
 }

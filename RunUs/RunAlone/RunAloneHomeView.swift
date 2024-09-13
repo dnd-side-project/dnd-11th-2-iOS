@@ -10,6 +10,7 @@ import ComposableArchitecture
 import MapKit
 
 struct RunAloneHomeView: View {
+    @EnvironmentObject var alertEnvironment: AlertEnvironment
     @State var store: StoreOf<RunAloneHomeFeature> = .init(
         initialState: RunAloneHomeFeature.State(),
         reducer: { RunAloneHomeFeature() })
@@ -47,13 +48,11 @@ struct RunAloneHomeView: View {
         .onAppear {
             store.send(.onAppear)
         }
-        .alert(Bundle.main.locationString,
-               isPresented: $store.showLocationPermissionAlert) {
-            Button("취소") { }
-            Button("설정") {
-                SystemManager.shared.openAppSetting()
+        .onChange(of: store.showLocationPermissionAlert, { oldValue, newValue in
+            if newValue {
+                alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
             }
-        }
+        })
         .navigationDestination(isPresented: $store.navigateRunningView) {
            RunningView(store: .init(
                initialState: RunningFeature.State(
@@ -134,6 +133,10 @@ extension RunAloneHomeView {
                     .foregroundStyle(Color.background)
             }
         }
+    }
+    private func subButtonAction() {
+        store.send(.locationPermissionAlertChanged(false))
+        alertEnvironment.dismiss()
     }
 }
 

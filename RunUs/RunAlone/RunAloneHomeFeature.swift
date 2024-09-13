@@ -42,7 +42,6 @@ struct RunAloneHomeFeature {
         Reduce { state, action in
             switch action {
             case .binding(_),
-                 .binding(\.showLocationPermissionAlert),
                  .binding(\.navigateRunningView):
                 return .none
             case .onAppear:

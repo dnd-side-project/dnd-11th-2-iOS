@@ -19,15 +19,18 @@ struct RUAlert: View {
     var body: some View {
         Group {
             VStack(spacing: 0) {
+                Spacer().frame(height: subTitle.count > 0 ? 8 : 18)
                 Text(title)
+                    .lineSpacing(8)
+                    .multilineTextAlignment(.center)
                     .font(Fonts.pretendardSemiBold(size: 16))
-                    .padding(.top, subTitle.count > 0 ? 8 : 18)
-                    .padding(.bottom, subTitle.count > 0 ? 12 : 10)
+                    .frame(minHeight: subTitle.count > 0 ? 0 : 40)
+                Spacer().frame(height: subTitle.count > 0 ? 12 : 0)
                 Text(subTitle)
                     .lineSpacing(4)
                     .multilineTextAlignment(.center)
                     .font(Fonts.pretendardRegular(size: 12))
-                    .padding(.bottom, 20)
+                Spacer().frame(height: 20)
                 HStack(spacing: 11) {
                     Button {
                         subButtonAction()
