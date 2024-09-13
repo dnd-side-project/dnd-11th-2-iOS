@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AchieveRecordView: View {
-    let profiles: ProfileResponseModel
+    let profile: ProfileResponseModel
     let store: StoreOf<AchieveRecordStore> = Store(
         initialState: AchieveRecordStore.State(),
         reducer: { AchieveRecordStore() }
@@ -22,13 +22,19 @@ struct AchieveRecordView: View {
                 .background(.mainDeepDark)
             VStack(spacing: 0) {
                 HStack(spacing: 13) {
-                    Image(.splash)  // TODO: API 나오면 수정
-                        .resizable()
-                        .scaledToFit()
+                    AsyncImage(url: URL(string: profile.profileImageUrl)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } placeholder: {
+                        ProgressView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .aspectRatio(1, contentMode: .fit)
+                    }
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("LEVEL.1") // TODO: API 나오면 수정
+                        Text(profile.currentLevelName)
                             .font(Fonts.pretendardBold(size: 24))
-                        Text("50km 추가 달성 시 LV.2 달성")    // TODO: API 나오면 수정
+                        Text("\(profile.nextLevelKm) 추가 달성 시 \(profile.nextLevelName) 달성")
                             .font(Fonts.pretendardMedium(size: 12))
                     }
                     Spacer()
@@ -206,5 +212,5 @@ struct DottedLine: View {
 }
 
 #Preview {
-    AchieveRecordView(profiles: ProfileResponseModel())
+    AchieveRecordView(profile: ProfileResponseModel())
 }
