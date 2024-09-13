@@ -10,60 +10,61 @@ import ComposableArchitecture
 import MapKit
 
 struct RunAloneHomeView: View {
-    @Environment(\.dismiss) var dismiss
     @State var store: StoreOf<RunAloneHomeFeature> = .init(
         initialState: RunAloneHomeFeature.State(),
         reducer: { RunAloneHomeFeature() })
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Map()
-                VStack(spacing: 0) {
-                    VStack(spacing: 0) {
-                        RUNavigationBar(buttonType: .back,
-                                        title: "혼자뛰기")
-                        runninModeView
-                            .shadow(radius: 4, x: 0, y: 4)
+        ZStack {
+            Map()
+            VStack(spacing: 0) {
+                RUNavigationBar(buttonType: nil, title: "혼자뛰기")
+                runninModeView
+                    .shadow(radius: 4, x: 0, y: 4)
+                
+                Spacer().frame(height: 64)
+                
+                VStack {
+                    // MARK: 모드에 따라 전환되는 화면
+                    switch store.mode {
+                    case .normal:
+                        EmptyView()
+                    case .challenge:
+                        todayChallengeListView(store.todayChallengeList)
+                            .transition(.scale)
+                    case .goal:
+                        goalView
+                            .transition(.scale)
                     }
-                    .padding(.horizontal, Paddings.outsideHorizontalPadding)
-                    .background(Color.background)
-                    
-                    Spacer()
-                        .frame(height: 64)
-                    
-                    VStack {
-                        // 현재 모드에 따라 전환되는 화면
-                        switch store.mode {
-                        case .normal:
-                            EmptyView()
-                        case .challenge:
-                            todayChallengeListView(store.todayChallengeList)
-                                .transition(.scale)
-                        case .goal:
-                            goalView
-                                .transition(.scale)
-                        }
-                    }
-                    .animation(.easeInOut, value: store.mode)
-                    
-                    Spacer()
-                    startButton
-                    Spacer()
-                        .frame(height: 48)
                 }
-            }
-            .onAppear {
-                store.send(.onAppear)
-            }
-            .alert(Bundle.main.locationString,
-                   isPresented: $store.showLocationPermissionAlert) {
-                Button("취소") { }
-                Button("설정") {
-                    SystemManager.shared.openAppSetting()
-                }
+                .animation(.easeInOut, value: store.mode)
+                
+                Spacer()
+                startButton
+                Spacer().frame(height: 48)
             }
         }
+        .onAppear {
+            store.send(.onAppear)
+        }
+        .alert(Bundle.main.locationString,
+               isPresented: $store.showLocationPermissionAlert) {
+            Button("취소") { }
+            Button("설정") {
+                SystemManager.shared.openAppSetting()
+            }
+        }
+        .navigationDestination(isPresented: $store.navigateRunningView) {
+           RunningView(store: .init(
+               initialState: RunningFeature.State(
+                   challengeId: 0,
+                   goalDistance: 0,
+                   goalTime: 0,
+                   achievementMode: "normal"),
+               reducer: {
+               RunningFeature()
+           })).navigationBarBackButtonHidden()
+       }
     }
 }
 
@@ -74,6 +75,8 @@ extension RunAloneHomeView {
             modeItem(.challenge)
             modeItem(.goal)
         }
+        .frame(maxWidth: .infinity)
+        .background(Color.background)
     }
     private func modeItem(_ mode: RunningMode) -> some View {
         VStack {
@@ -118,17 +121,8 @@ extension RunAloneHomeView {
         }
     }
     private var startButton: some View {
-        NavigationLink {
-            RunningView(store: .init(
-                initialState: RunningFeature.State(
-                    challengeId: 0,
-                    goalDistance: 0,
-                    goalTime: 0,
-                    achievementMode: "normal"),
-                reducer: {
-                RunningFeature()
-            }))
-                .navigationBarBackButtonHidden()
+        Button {
+            store.send(.startButtonTapped)
         } label: {
             ZStack {
                 Circle()

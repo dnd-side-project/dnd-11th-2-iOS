@@ -14,6 +14,7 @@ struct RunAloneHomeFeature {
     @ObservableState
     struct State: Equatable {
         var showLocationPermissionAlert: Bool = false
+        var navigateRunningView: Bool = false
         var mode: RunningMode = .normal
         var todayChallengeList: [TodayChallenge] = []
         var selectedChallengeId: Int?
@@ -41,7 +42,8 @@ struct RunAloneHomeFeature {
         Reduce { state, action in
             switch action {
             case .binding(_),
-                 .binding(\.showLocationPermissionAlert):
+                 .binding(\.showLocationPermissionAlert),
+                 .binding(\.navigateRunningView):
                 return .none
             case .onAppear:
                 return onAppearEffect()
@@ -65,7 +67,16 @@ struct RunAloneHomeFeature {
                 state.selectedChallengeId = id
                 return .none
             case .startButtonTapped:
-                return startButtonTappedEffect()
+                let status = locationManager.authorizationStatus
+                switch status {
+                case .agree:
+                    state.navigateRunningView = true
+                    return .none
+                case .disagree:
+                    return .send(.locationPermissionAlertChanged(true))
+                case .notyet:
+                    return .send(.requestLocationPermission)
+                }
             case .changeMode(let mode):
                 state.mode = mode
                 return .none
@@ -90,19 +101,6 @@ struct RunAloneHomeFeature {
             case .notyet:
                 await send(.requestLocationPermission)
             }
-        }
-    }
-    
-    private func startButtonTappedEffect() -> Effect<Action> {
-        let status = locationManager.authorizationStatus
-        switch status {
-        case .agree:
-            //TODO: 목표 설정 + 시작 화면 구현후 로직 구현
-            return .none
-        case .disagree:
-            return .send(.locationPermissionAlertChanged(true))
-        case .notyet:
-            return .send(.requestLocationPermission)
         }
     }
 }

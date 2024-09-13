@@ -19,7 +19,7 @@ struct RUNavigationBar: View {
     
     private let homeButtonAction: (() -> Void)?
     
-    init(buttonType: NavigationButtonType, title: String) {
+    init(buttonType: NavigationButtonType?, title: String) {
         self.buttonType = buttonType
         self.title = title
         switch buttonType {
