@@ -38,12 +38,12 @@ struct RunAloneHomeView: View {
                             .transition(.scale)
                     }
                 }
-                .animation(.easeInOut, value: store.mode)
                 
                 Spacer()
-                startButton
+                if store.mode != .goal { startButton.transition(.scale) }
                 Spacer().frame(height: 48)
             }
+            .animation(.easeInOut, value: store.mode)
         }
         .onAppear {
             store.send(.onAppear)

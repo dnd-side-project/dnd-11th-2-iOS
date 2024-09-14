@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: #33(혼자 뛰기 홈화면 디자인 개편)시 폴더 이동
 struct TypeButton: View {
     let goalTypeObject: GoalTypeObject
     

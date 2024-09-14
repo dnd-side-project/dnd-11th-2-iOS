@@ -12,6 +12,8 @@ struct SetGoalStore: Reducer {
     @ObservableState
     struct State: Equatable {
         var goalTypeObject: GoalTypeObject
+        var showLocationPermissionAlert: Bool = false
+        var navigateRunningView: Bool = false
         var bigGoal: String = ""
         var smallGoal: String = ""
 
@@ -23,7 +25,12 @@ struct SetGoalStore: Reducer {
     enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
         case setGoal(goal: String, isBigGoal: Bool)
+        case runningStart
+        case requestLocationPermission
+        case locationPermissionAlertChanged(Bool)
     }
+    
+    @Dependency(\.locationManager) var locationManager
     
     var body: some Reducer<State, Action> {
         BindingReducer()
@@ -36,6 +43,23 @@ struct SetGoalStore: Reducer {
                 } else {
                     state.smallGoal = goal
                 }
+                return .none
+            case .runningStart:
+                let status = locationManager.authorizationStatus
+                switch status {
+                case .agree:
+                    state.navigateRunningView = true
+                    return .none
+                case .disagree:
+                    return .send(.locationPermissionAlertChanged(true))
+                case .notyet:
+                    return .send(.requestLocationPermission)
+                }
+            case .requestLocationPermission:
+                locationManager.requestLocationPermission()
+                return .none
+            case .locationPermissionAlertChanged(let alert):
+                state.showLocationPermissionAlert = alert
                 return .none
             case .binding(\.bigGoal):
                 return .none

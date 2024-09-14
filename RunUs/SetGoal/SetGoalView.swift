@@ -9,7 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SetGoalView: View {
-    let store: StoreOf<SetGoalStore>
+    @EnvironmentObject var alertEnvironment: AlertEnvironment
+    @State var store: StoreOf<SetGoalStore>
     
     init(_ goalTypeObject: GoalTypeObject) {
         self.store = Store(
@@ -45,7 +46,7 @@ struct SetGoalView: View {
             .padding(.bottom, 36)
             RUButton(
                 action: {
-                    // TODO: 러닝 화면으로 넘어가도록 구현
+                    store.send(.runningStart)
                 }, text: "목표 설정 완료"
                 , disableCondition: store.bigGoal.count == 0 && store.smallGoal.count == 0
             )
@@ -56,6 +57,22 @@ struct SetGoalView: View {
         .onTapGesture {
             hideKeyboard()
         }
+        .onChange(of: store.showLocationPermissionAlert, { oldValue, newValue in
+            if newValue {
+                alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
+            }
+        })
+        .navigationDestination(isPresented: $store.navigateRunningView) {
+           RunningView(store: .init(
+               initialState: RunningFeature.State(
+                   challengeId: 0,
+                   goalDistance: 0,
+                   goalTime: 0,
+                   achievementMode: "normal"),
+               reducer: {
+               RunningFeature()
+           })).navigationBarBackButtonHidden()
+       }
     }
 }
 
@@ -80,5 +97,9 @@ extension SetGoalView {
         } else {
             Text("")
         }
+    }
+    private func subButtonAction() {
+        store.send(.locationPermissionAlertChanged(false))
+        alertEnvironment.dismiss()
     }
 }

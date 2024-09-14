@@ -104,7 +104,6 @@
 		F6F085652C58C4BE00994E34 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */; };
 		F6F085732C59FAF700994E34 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085722C59FAF700994E34 /* Fonts.swift */; };
 		F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */; };
-		F6F41B722C69BC27002EA1F5 /* SelectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B712C69BC27002EA1F5 /* SelectTypeView.swift */; };
 		F6F41B742C69BCE1002EA1F5 /* TypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */; };
 		F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */; };
 		F6F41B782C69C85A002EA1F5 /* GoalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */; };
@@ -210,7 +209,6 @@
 		F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
 		F6F085722C59FAF700994E34 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
-		F6F41B712C69BC27002EA1F5 /* SelectTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTypeView.swift; sourceTree = "<group>"; };
 		F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeButton.swift; sourceTree = "<group>"; };
 		F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTypes.swift; sourceTree = "<group>"; };
 		F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTextField.swift; sourceTree = "<group>"; };
@@ -487,10 +485,9 @@
 		F6F41B6C2C690091002EA1F5 /* SetGoal */ = {
 			isa = PBXGroup;
 			children = (
-				F6F41B712C69BC27002EA1F5 /* SelectTypeView.swift */,
+				F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */,
 				F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */,
 				F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */,
-				F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */,
 				F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */,
 				F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */,
 			);
@@ -663,7 +660,6 @@
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
 				D9417AD72C8C000C008F8075 /* RunningResultDependency.swift in Sources */,
 				D97D2D7E2C6F53470080F6A7 /* CircleButtonView.swift in Sources */,
-				F6F41B722C69BC27002EA1F5 /* SelectTypeView.swift in Sources */,
 				F65033D32C747E8500C81DA6 /* MyRecordDependency.swift in Sources */,
 				D9417AD42C8BFDD7008F8075 /* RunningData.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
