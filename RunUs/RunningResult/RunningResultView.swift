@@ -21,7 +21,7 @@ struct RunningResultView: View {
         ZStack {
             Color.background.ignoresSafeArea()
             VStack(alignment: .leading, spacing: 0) {
-                RUNavigationBar(buttonType: .home{ }, title: "러닝결과")
+                RUNavigationBar(buttonType: .home, title: "러닝결과")
                     .padding(.bottom, 26)
                 Text("\(store.date)")
                     .font(Fonts.pretendardMedium(size: 14))

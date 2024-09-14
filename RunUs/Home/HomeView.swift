@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct HomeView: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
     @State var store: StoreOf<HomeStore> = Store(
         initialState: HomeStore.State(),
@@ -95,13 +96,13 @@ extension HomeView {
             }
             .padding(.bottom, 28)
             MyRecordButton(action: {
-                // TODO: running 화면으로 이동
+                viewEnvironment.selectedTabItem = .running
             }, text: "오늘의 러닝 챌린지 및 목표설정")
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 14) {
                     ForEach(store.challenges) { challenge in
                         Button {
-                            // TODO: 해당 challenge가 선택되어있는 running 화면으로 이동
+                            viewEnvironment.selectedTabItem = .running
                         } label: {
                             TodayChallengeListItemView(challenge: challenge, hasShadowPadding: false, backgroundColor: .mainDeepDark)
                         }
