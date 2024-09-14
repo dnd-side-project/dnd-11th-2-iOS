@@ -98,9 +98,23 @@ extension LocationManager: CLLocationManagerDelegate {
             return getWeatherPublisher.send(WeatherParametersModel("서울특별시 강남구", 127.0495556, 37.514575))
         }
         
-        CLGeocoder().reverseGeocodeLocation(location) { [weak self] (placemarks, error) in  // TODO: 추후 Combine으로 수정
+        Task {
+            let address = await getAddress()
+            let longitude = location.coordinate.longitude
+            let latitude = location.coordinate.latitude
+            
+            return getWeatherPublisher.send(WeatherParametersModel(address, longitude, latitude))
+        }
+    }
+    
+    func getAddress() async -> String {
+        guard let location: CLLocation = self.locationManager.location else {
+            return "서울특별시 강남구"
+        }
+        do {
+            let placemarks = try await CLGeocoder().reverseGeocodeLocation(location)
             var address = ""
-            if let placemark = placemarks?.first {
+            if let placemark = placemarks.first {
                 if let administrativeArea = placemark.administrativeArea {
                     address = administrativeArea
                 }
@@ -114,10 +128,9 @@ extension LocationManager: CLLocationManagerDelegate {
                     }
                 }
             }
-            let longitude = location.coordinate.longitude
-            let latitude = location.coordinate.latitude
-            
-            self?.getWeatherPublisher.send(WeatherParametersModel(address, longitude, latitude))
+            return address
+        } catch {
+            return "서울특별시 강남구"
         }
     }
 }

@@ -44,7 +44,6 @@ struct RunningFeature {
              goalTime: Int,
              achievementMode: String) {
             self.startAt = Date().formatStringHyphen()
-            self.startLocation = "서울시 강남구"
             self.challengeId = challengeId
             self.goalDistance = goalDistance
             self.goalTime = goalTime
@@ -82,6 +81,8 @@ struct RunningFeature {
         case kcalUpdated(Int)
         case paceUpdated
         case isFinishedChanged(Bool)
+        case setStartLocation(String)
+        case setEndLocation(String)
     }
     
     @Dependency(\.runningStateManager) var runningStateManager
@@ -105,8 +106,11 @@ struct RunningFeature {
                     Effect.publisher({
                         runningStateManager.kcalPublisher
                             .map(Action.kcalUpdated)
-                    })
-
+                    }),
+                    Effect.run { send in
+                        let address = await LocationManager.shared.getAddress()
+                        await send(.setStartLocation(address))
+                    }
                 )
             case .isRunningChanged(let isRunning):
                 state.isRunning = isRunning
@@ -143,8 +147,16 @@ struct RunningFeature {
                 return .none
             case .isFinishedChanged(let bool):
                 state.endAt = Date().formatStringHyphen()
-                state.endLocation = "서울시 마포구"
                 state.isFinished = bool
+                return .run { send in
+                    let address = await LocationManager.shared.getAddress()
+                    await send(.setEndLocation(address))
+                }
+            case .setStartLocation(let address):
+                state.startLocation = address
+                return .none
+            case .setEndLocation(let address):
+                state.endLocation = address
                 return .none
             }
         }
