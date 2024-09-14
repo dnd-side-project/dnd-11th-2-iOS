@@ -15,7 +15,7 @@ struct RunningResultFeature {
     struct State {
         var runningResult: RunningResult
         var date: String
-        var mood: RunningMood
+        var emotion: Emotions
         var hasChallenge: Bool = false
         var challengeResult: ChallengeResult?
         var goalResult: GoalResult?
@@ -29,7 +29,7 @@ struct RunningResultFeature {
             let startAt = runningResult.startAt.formatDateHyphen().formatStringDot()
             let endAt = runningResult.endAt.formatDateHyphen().formatStringDot()
             self.date = "\(startAt) ~ \(endAt)"
-            self.mood = .none
+            self.emotion = .none
             self.averagePace = runningResult.runningData.averagePace
             self.runningTime = runningResult.runningData.runningTime
             self.distance = Double(runningResult.runningData.distanceMeter) * 0.01
@@ -57,7 +57,7 @@ struct RunningResultFeature {
                 let startAt = record.startAt.formatDateHyphen().formatStringDot()
                 let endAt = record.endAt.formatDateHyphen().formatStringDot()
                 state.date = "\(startAt) ~ \(endAt)"
-                state.mood = getEmotion(with: record.emotion)
+                state.emotion = getEmotion(with: record.emotion)
                 state.challengeResult = record.challenge
                 state.goalResult = record.goal
                 state.averagePace = record.runningData.averagePace
@@ -69,8 +69,8 @@ struct RunningResultFeature {
         }
     }
     
-    func getEmotion(with string: String) -> RunningMood {
-        RunningMood.allCases.filter { $0.entity == string }
+    func getEmotion(with string: String) -> Emotions {
+        Emotions.allCases.filter { $0.entity == string }
             .first ?? .veryGood
     }
     

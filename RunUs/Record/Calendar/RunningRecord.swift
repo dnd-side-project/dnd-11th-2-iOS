@@ -16,7 +16,7 @@ struct RunningRecord: Codable, Identifiable {
         return runningRecordId
     }
     var runningRecordId: Int
-    var emoji: String //FIXME: runningMood로 변경
+    var emotion: Emotions
     var startLocation: String
     var endLocation: String
     var distanceMeter: Int
@@ -25,7 +25,7 @@ struct RunningRecord: Codable, Identifiable {
     var duration: String
     
     init(runningRecordId: Int = 0,
-         emoji: String = "",
+         emotion: Emotions = .veryGood,
          startLocation: String = "",
          endLocation: String = "",
          distanceMeter: Int = 0,
@@ -33,7 +33,7 @@ struct RunningRecord: Codable, Identifiable {
          calorie: Int = 0,
          duration: String = "") {
         self.runningRecordId = runningRecordId
-        self.emoji = emoji
+        self.emotion = emotion
         self.startLocation = startLocation
         self.endLocation = endLocation
         self.distanceMeter = distanceMeter
@@ -45,7 +45,7 @@ struct RunningRecord: Codable, Identifiable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.runningRecordId = try container.decode(Int.self, forKey: .runningRecordId)
-        self.emoji = try container.decode(String.self, forKey: .emoji)
+        self.emotion = try container.decode(Emotions.self, forKey: .emotion)
         self.startLocation = try container.decode(String.self, forKey: .startLocation)
         self.endLocation = try container.decode(String.self, forKey: .endLocation)
         self.distanceMeter = try container.decode(Int.self, forKey: .distanceMeter)

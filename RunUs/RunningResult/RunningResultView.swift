@@ -26,7 +26,7 @@ struct RunningResultView: View {
                 Text("\(store.date)")
                     .font(Fonts.pretendardMedium(size: 14))
                     .padding(.bottom, 20)
-                MoodView
+                EmotionView
                     .padding(.bottom, 28)
                 if let challengResult = store.challengeResult {
                     Text("오늘의 러닝 챌린지")
@@ -56,10 +56,10 @@ struct RunningResultView: View {
 }
 
 extension RunningResultView {
-    private var MoodView: some View {
+    private var EmotionView: some View {
         HStack(spacing: 16) {
-            Image(store.state.mood.icon)
-            Text("\(store.state.mood.text)")
+            Image(store.state.emotion.icon)
+            Text("\(store.state.emotion.text)")
                 .font(Fonts.pretendardBold(size: 16))
                 .foregroundStyle(.white)
             Spacer()

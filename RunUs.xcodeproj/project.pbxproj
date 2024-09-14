@@ -32,7 +32,7 @@
 		D9842DDE2C84A5E5002B145C /* RunningMonthlyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9842DDD2C84A5E5002B145C /* RunningMonthlyRecord.swift */; };
 		D9842DE02C84AFE3002B145C /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9842DDF2C84AFE3002B145C /* DateFormatter+extension.swift */; };
 		D9A65D0E2C7CCCE700FA33BF /* RunningResultFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */; };
-		D9A65D102C7CCD9400FA33BF /* RunningMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */; };
+		D9A65D102C7CCD9400FA33BF /* Emotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0F2C7CCD9400FA33BF /* Emotions.swift */; };
 		D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */; };
 		D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */; };
 		D9D0B7182C4F553800D13160 /* RUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7172C4F553800D13160 /* RUError.swift */; };
@@ -137,7 +137,7 @@
 		D9842DDD2C84A5E5002B145C /* RunningMonthlyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningMonthlyRecord.swift; sourceTree = "<group>"; };
 		D9842DDF2C84AFE3002B145C /* DateFormatter+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
 		D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningResultFeature.swift; sourceTree = "<group>"; };
-		D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningMood.swift; sourceTree = "<group>"; };
+		D9A65D0F2C7CCD9400FA33BF /* Emotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotions.swift; sourceTree = "<group>"; };
 		D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResult.swift; sourceTree = "<group>"; };
 		D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRunningEmotionView.swift; sourceTree = "<group>"; };
 		D9D0B7172C4F553800D13160 /* RUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUError.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				D9417ACF2C8BFCC2008F8075 /* RunningResult.swift */,
-				D9A65D0F2C7CCD9400FA33BF /* RunningMood.swift */,
+				D9A65D0F2C7CCD9400FA33BF /* Emotions.swift */,
 				D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */,
 				D9417AD32C8BFDD7008F8075 /* RunningData.swift */,
 				F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */,
@@ -615,7 +615,7 @@
 				F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */,
 				D9417AD92C8C2B6B008F8075 /* Date+extension.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
-				D9A65D102C7CCD9400FA33BF /* RunningMood.swift in Sources */,
+				D9A65D102C7CCD9400FA33BF /* Emotions.swift in Sources */,
 				F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
 				D9417AD02C8BFCC2008F8075 /* RunningResult.swift in Sources */,

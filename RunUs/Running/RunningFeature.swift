@@ -43,7 +43,7 @@ struct RunningFeature {
             self.achievementMode = achievementMode
         }
         
-        func getRunningResult(emotion: RunningMood) -> RunningResult {
+        func getRunningResult(emotion: Emotions) -> RunningResult {
             .init(startAt: self.startAt,
                   endAt: self.endAt,
                   startLocation: self.startLocation,
