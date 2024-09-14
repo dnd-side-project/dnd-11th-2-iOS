@@ -6,13 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
+import MapKit
 import ComposableArchitecture
 
 @Reducer
 struct RunAloneHomeFeature {
     
     @ObservableState
-    struct State: Equatable {
+    struct State {
+        var userLocation: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
         var showLocationPermissionAlert: Bool = false
         var navigateRunningView: Bool = false
         var mode: RunningMode = .normal
@@ -24,6 +27,7 @@ struct RunAloneHomeFeature {
     enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
         case onAppear
+        case setUserLocation
         case requestLocationPermission
         case locationPermissionAlertChanged(Bool)
         case setTodayChallengeList([TodayChallenge])
@@ -46,6 +50,14 @@ struct RunAloneHomeFeature {
                 return .none
             case .onAppear:
                 return onAppearEffect()
+            case .setUserLocation:
+                state.userLocation = .region(
+                        MKCoordinateRegion(
+                            center: LocationManager.shared.getCurrentLocationCoordinator(),
+                            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                        )
+                    )
+                return .none
             case .requestLocationPermission:
                 locationManager.requestLocationPermission()
                 return .none
@@ -94,7 +106,7 @@ struct RunAloneHomeFeature {
             let status = locationManager.authorizationStatus
             switch status {
             case .agree:
-                break
+                await send(.setUserLocation)
             case .disagree:
                 await send(.locationPermissionAlertChanged(true))
             case .notyet:

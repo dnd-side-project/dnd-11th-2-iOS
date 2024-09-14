@@ -67,6 +67,13 @@ final class LocationManager: NSObject {
         stopLocation = locationManager.location
         locationManager.stopUpdatingLocation()
     }
+    
+    func getCurrentLocationCoordinator() -> CLLocationCoordinate2D {
+        guard let location = self.locationManager.location else {
+            return CLLocationCoordinate2D()
+        }
+        return location.coordinate
+    }
 }
 
 extension LocationManager {

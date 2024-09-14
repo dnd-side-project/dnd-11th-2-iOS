@@ -17,7 +17,11 @@ struct RunAloneHomeView: View {
     
     var body: some View {
         ZStack {
-            Map()
+            Map(position: $store.userLocation) {
+                UserAnnotation {
+                    Image(.userLocationMark)
+                }
+            }
             VStack(spacing: 0) {
                 RUNavigationBar(buttonType: nil, title: "혼자뛰기")
                 runninModeView

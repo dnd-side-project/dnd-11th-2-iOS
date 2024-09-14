@@ -15,8 +15,6 @@ struct RunningView: View {
     @Namespace private var namespace
     
     @State var isStateHidden: Bool = false
-    @State var userLocation: MapCameraPosition =
-        .userLocation(followsHeading: true, fallback: .automatic)
     @State var isReady: Bool = false
     
     var body: some View {
@@ -27,7 +25,7 @@ struct RunningView: View {
             }
         } else {
             ZStack {
-                Map(position: $userLocation) {
+                Map(position: $store.userLocation) {
                     UserAnnotation {
                         Image(.userLocationMark)
                     }

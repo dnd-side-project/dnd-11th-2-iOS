@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import MapKit
 import ComposableArchitecture
 import Combine
 import CoreLocation
@@ -13,7 +15,13 @@ import CoreLocation
 @Reducer
 struct RunningFeature {
     @ObservableState
-    struct State: Equatable {
+    struct State {
+        var userLocation: MapCameraPosition = .region(
+            MKCoordinateRegion(
+                center: LocationManager.shared.getCurrentLocationCoordinator(),
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            )
+        )
         var isRunning: Bool = true
         var time: Int = 0
         var location: CLLocation?
@@ -64,7 +72,8 @@ struct RunningFeature {
         }
     }
     
-    enum Action: Equatable {
+    enum Action: Equatable, BindableAction {
+        case binding(BindingAction<State>)
         case onAppear
         case isRunningChanged(Bool)
         case timeUpdated(Int)
@@ -80,6 +89,8 @@ struct RunningFeature {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .binding(_):
+                return .none
             case .onAppear:
                 return .merge(
                     .send(.isRunningChanged(true)),
