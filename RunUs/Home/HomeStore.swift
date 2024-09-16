@@ -56,6 +56,7 @@ struct HomeStore: Reducer {
             return Effect.publisher({
                 locationManager.getWeatherPublisher
                     .map { Action.getWeather($0) }
+                    .receive(on: DispatchQueue.main)
             })
         case .requestLocationPermission:
             locationManager.requestLocationPermission()

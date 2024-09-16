@@ -551,7 +551,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					D93A94E32C4A372600BCCD00 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -694,7 +694,6 @@
 				D97D2D7E2C6F53470080F6A7 /* CircleButtonView.swift in Sources */,
 				F65033D32C747E8500C81DA6 /* MyRecordDependency.swift in Sources */,
 				D9417AD42C8BFDD7008F8075 /* RunningData.swift in Sources */,
-				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
 				F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */,
 				D9842DD82C84646A002B145C /* RecordCalendarFeature.swift in Sources */,
 				F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */,
