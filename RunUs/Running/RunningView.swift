@@ -17,6 +17,10 @@ struct RunningView: View {
     @State var isStateHidden: Bool = false
     @State var isReady: Bool = false
     
+    init(_ runningStartInfo: RunningStartInfo) {
+        self.store = Store(initialState: RunningFeature.State(runningStartInfo: runningStartInfo), reducer: { RunningFeature() })
+    }
+    
     var body: some View {
         if !isReady {
             ZStack {

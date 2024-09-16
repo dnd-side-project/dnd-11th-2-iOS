@@ -11,6 +11,7 @@ import MapKit
 
 struct RunAloneHomeView: View {
     @EnvironmentObject var alertEnvironment: AlertEnvironment
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     @State var store: StoreOf<RunAloneHomeFeature> = .init(
         initialState: RunAloneHomeFeature.State(),
         reducer: { RunAloneHomeFeature() })
@@ -50,24 +51,13 @@ struct RunAloneHomeView: View {
             .animation(.easeInOut, value: store.mode)
         }
         .onAppear {
-            store.send(.onAppear)
+            store.send(.onAppear(viewEnvironment))
         }
         .onChange(of: store.showLocationPermissionAlert, { oldValue, newValue in
             if newValue {
                 alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
             }
         })
-        .navigationDestination(isPresented: $store.navigateRunningView) {
-           RunningView(store: .init(
-               initialState: RunningFeature.State(
-                   challengeId: 0,
-                   goalDistance: 0,
-                   goalTime: 0,
-                   achievementMode: "normal"),
-               reducer: {
-               RunningFeature()
-           })).navigationBarBackButtonHidden()
-       }
     }
 }
 

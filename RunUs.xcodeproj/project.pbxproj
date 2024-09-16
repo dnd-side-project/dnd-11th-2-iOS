@@ -59,6 +59,7 @@
 		F611B2262C7E275C00797470 /* MonthlySummaryResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B2252C7E275C00797470 /* MonthlySummaryResponseModel.swift */; };
 		F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
 		F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */; };
+		F62A4A012C9807D700E1B011 /* RunningStartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A4A002C9807D700E1B011 /* RunningStartInfo.swift */; };
 		F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */; };
 		F63B81672C710573002F45F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81662C710573002F45F4 /* String+extension.swift */; };
 		F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81692C71F50C002F45F4 /* MyRecordView.swift */; };
@@ -168,6 +169,7 @@
 		F611B2232C7E23EE00797470 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		F611B2252C7E275C00797470 /* MonthlySummaryResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryResponseModel.swift; sourceTree = "<group>"; };
 		F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUButton.swift; sourceTree = "<group>"; };
+		F62A4A002C9807D700E1B011 /* RunningStartInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStartInfo.swift; sourceTree = "<group>"; };
 		F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalStore.swift; sourceTree = "<group>"; };
 		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		F63B81692C71F50C002F45F4 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				D95F830C2C6F5C9A000DCAA3 /* RunningFeature.swift */,
 				D95F830E2C6F5F64000DCAA3 /* RunningStateManager.swift */,
 				D95F83102C6F82DF000DCAA3 /* RunningDependency.swift */,
+				F62A4A002C9807D700E1B011 /* RunningStartInfo.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				F69BFDAC2C8B64DF0073775C /* SystemManager.swift in Sources */,
 				F63BAA4F2C8588F800DCE9EC /* WeatherParametersModel.swift in Sources */,
 				F611B21C2C7E1A7300797470 /* HomeStore.swift in Sources */,
+				F62A4A012C9807D700E1B011 /* RunningStartInfo.swift in Sources */,
 				D9D0B7252C50BC5800D13160 /* ServerEndpoint.swift in Sources */,
 				F65033DB2C75D51500C81DA6 /* LoginAPI.swift in Sources */,
 				F65033D92C75D21800C81DA6 /* WithdrawRequestModel.swift in Sources */,

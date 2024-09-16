@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SelectRunningEmotionView: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     let store: StoreOf<RunningFeature>
     
     var body: some View {
@@ -21,10 +22,12 @@ struct SelectRunningEmotionView: View {
                         if emotion == .none {
                             EmptyView()
                         } else {
-                            NavigationLink {
-                                RunningResultView(initialState: 
-                                        .init(runningResult: store.state.getRunningResult(emotion: emotion)))
-                                    .navigationBarBackButtonHidden()
+                            Button {
+                                let navigationObject = NavigationObject(
+                                    viewType: .runningResult,
+                                    data: store.state.getRunningResult(emotion: emotion)
+                                )
+                                viewEnvironment.navigationPath.append(navigationObject)
                             } label: {
                                 VStack(spacing: 14) {
                                     Image(emotion.icon)

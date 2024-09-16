@@ -37,17 +37,14 @@ struct RunningFeature {
         var challengeId: Int?
         var goalDistance: Int?
         var goalTime: Int?
-        var achievementMode: String
+        var achievementMode: RunningMode
         
-        init(challengeId: Int? = nil,
-             goalDistance: Int,
-             goalTime: Int,
-             achievementMode: String) {
+        init(runningStartInfo: RunningStartInfo) {
             self.startAt = Date().formatStringHyphen()
-            self.challengeId = challengeId
-            self.goalDistance = goalDistance
-            self.goalTime = goalTime
-            self.achievementMode = achievementMode
+            self.challengeId = runningStartInfo.challengeId
+            self.goalDistance = runningStartInfo.goalDistance
+            self.goalTime = runningStartInfo.goalTime
+            self.achievementMode = runningStartInfo.achievementMode
         }
         
         func getRunningResult(emotion: Emotions) -> RunningResult {
@@ -59,7 +56,7 @@ struct RunningFeature {
                   challengeId: self.challengeId,
                   goalDistance: self.goalDistance,
                   goalTime: 10,
-                  achievementMode: "goal",
+                  achievementMode: achievementMode.rawValue,
                   runningData: .init(averagePace: self.pace,
                                      runningTime: self.time.toTimeString(),
                                      distanceMeter: distanceKMtoM(km: self.distance),

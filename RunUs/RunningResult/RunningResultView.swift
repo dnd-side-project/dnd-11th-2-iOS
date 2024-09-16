@@ -9,12 +9,10 @@ import SwiftUI
 import ComposableArchitecture
 
 struct RunningResultView: View {
-    let store: StoreOf<RunningResultFeature>
+    @State var store: StoreOf<RunningResultFeature>
     
-    init(initialState: RunningResultFeature.State) {
-        self.store = .init(
-            initialState: initialState,
-            reducer: { RunningResultFeature() })
+    init(runningResult: RunningResult) {
+        self.store = Store(initialState: RunningResultFeature.State(runningResult: runningResult), reducer: { RunningResultFeature() })
     }
     
     var body: some View {

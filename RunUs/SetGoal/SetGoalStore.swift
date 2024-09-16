@@ -10,10 +10,10 @@ import ComposableArchitecture
 
 struct SetGoalStore: Reducer {
     @ObservableState
-    struct State: Equatable {
+    struct State {
         var goalTypeObject: GoalTypeObject
+        var viewEnvironment: ViewEnvironment = ViewEnvironment()
         var showLocationPermissionAlert: Bool = false
-        var navigateRunningView: Bool = false
         var bigGoal: String = ""
         var smallGoal: String = ""
 
@@ -22,8 +22,9 @@ struct SetGoalStore: Reducer {
         }
     }
     
-    enum Action: Equatable, BindableAction {
+    enum Action: BindableAction {
         case binding(BindingAction<State>)
+        case onAppear(ViewEnvironment)
         case setGoal(goal: String, isBigGoal: Bool)
         case runningStart
         case requestLocationPermission
@@ -44,11 +45,21 @@ struct SetGoalStore: Reducer {
                     state.smallGoal = goal
                 }
                 return .none
+            case let .onAppear(viewEnvironment):
+                state.viewEnvironment = viewEnvironment
+                return .none
             case .runningStart:
                 let status = locationManager.authorizationStatus
                 switch status {
                 case .agree:
-                    state.navigateRunningView = true
+                    let runningStartInfo = RunningStartInfo(
+                        challengeId: nil,
+                        goalDistance: state.goalTypeObject.type == .distance ? Int(state.bigGoal) ?? 0 : 0,    // TODO: bigGoal + smallGoal Int
+                        goalTime: state.goalTypeObject.type == .time ? Int(state.bigGoal) ?? 0 : 0,    // TODO: bigGoal + smallGoal Int
+                        achievementMode: .goal
+                    )
+                    let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
+                    state.viewEnvironment.navigationPath.append(navigationObject)
                     return .none
                 case .disagree:
                     return .send(.locationPermissionAlertChanged(true))

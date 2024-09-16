@@ -36,6 +36,7 @@ struct RecordMenuObject {
 }
 
 struct RecordMenu: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     let recordMenuObject: RecordMenuObject
     let profile: ProfileResponseModel
     
@@ -45,17 +46,19 @@ struct RecordMenu: View {
     }
     
     var body: some View {
-        NavigationLink {
-//            switch self.recordMenuObject.recordMenu {
-//            case .runningRecord:
-//                // TODO: 운동기록화면으로 이동
-//            case .runningSummary:
-//                // TODO: 활동요약화면으로 이동
-//            case .achieveRecord:
-//                // TODO: 달성기록화면으로 이동
-//            }
-            AchieveRecordView(profile: profile)
-                .navigationBarBackButtonHidden()
+        Button {
+            switch self.recordMenuObject.recordMenu {
+            case .runningRecord:
+                let navigationObject = NavigationObject(viewType: .recordCalendar)
+                viewEnvironment.navigationPath.append(navigationObject)
+                break
+            case .runningSummary:
+                // TODO: 활동요약화면으로 이동
+                break
+            case .achieveRecord:
+                let navigationObject = NavigationObject(viewType: .achieveRecord, data: profile)
+                viewEnvironment.navigationPath.append(navigationObject)
+            }
         } label: {
             VStack {
                 Image(recordMenuObject.icon)

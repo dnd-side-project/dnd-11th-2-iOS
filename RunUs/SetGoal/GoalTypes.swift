@@ -13,7 +13,7 @@ enum GoalTypes: String {
     case distance
 }
 
-struct GoalTypeObject: Equatable {
+struct GoalTypeObject: Equatable, Navigatable {
     let type: GoalTypes
     let text: String
     let icon: ImageResource

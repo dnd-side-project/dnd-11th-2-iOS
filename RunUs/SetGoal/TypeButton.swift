@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TypeButton: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     let goalTypeObject: GoalTypeObject
     
     init(_ goalTypeObject: GoalTypeObject) {
@@ -15,9 +16,9 @@ struct TypeButton: View {
     }
     
     var body: some View {
-        NavigationLink {
-            SetGoalView(goalTypeObject)
-                .navigationBarBackButtonHidden()
+        Button {
+            let navigationObject = NavigationObject(viewType: .setGoal, data: goalTypeObject)
+            viewEnvironment.navigationPath.append(navigationObject)
         } label: {
             VStack(spacing: 8) {
                 Image(goalTypeObject.icon)

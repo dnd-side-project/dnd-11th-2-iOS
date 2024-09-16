@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RunningResult: Encodable {
+struct RunningResult: Encodable, Navigatable {
     let startAt: String
     let endAt: String
     let startLocation: String

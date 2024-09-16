@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProfileResponseModel: Decodable, Equatable {
+struct ProfileResponseModel: Decodable, Equatable, Navigatable {
     var profileImageUrl: String
     var currentLevelName: String
     var currentKm: String

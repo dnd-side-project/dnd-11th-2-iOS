@@ -33,6 +33,29 @@ struct MainView: View {
                     viewEnvironment.selectedTabItem = .home
                 }
             }
+            .navigationDestination(for: NavigationObject.self) { navigationObject in
+                switch navigationObject.viewType {
+                case .setGoal:
+                    let goalTypeObject = navigationObject.data as! GoalTypeObject
+                    SetGoalView(goalTypeObject)
+                        .navigationBarBackButtonHidden()
+                case .running:
+                    let runningStartInfo = navigationObject.data as! RunningStartInfo
+                    RunningView(runningStartInfo)
+                        .navigationBarBackButtonHidden()
+                case .runningResult:
+                    let runningResult = navigationObject.data as! RunningResult
+                    RunningResultView(runningResult: runningResult)
+                        .navigationBarBackButtonHidden()
+                case .recordCalendar:
+                    RecordCalendarView()
+                        .navigationBarBackButtonHidden()
+                case .achieveRecord:
+                    let profile = navigationObject.data as! ProfileResponseModel
+                    AchieveRecordView(profile: profile)
+                        .navigationBarBackButtonHidden()
+                }
+            }
         }
     }
 }

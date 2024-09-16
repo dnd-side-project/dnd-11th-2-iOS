@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct RecordCalendarView: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     let store: StoreOf<RecordCalendarFeature> = .init(
         initialState: RecordCalendarFeature.State(),
         reducer: { RecordCalendarFeature() })
@@ -36,7 +37,7 @@ extension RecordCalendarView {
             VStack {
                 RUNavigationBar(buttonType: .back, title: "운동 기록")
                 RUCalendarView(store: store)
-                    .padding(.bottom, 53)
+                Spacer().frame(height: 53)
                 dailyRecordView
                 Spacer()
             }
@@ -61,7 +62,31 @@ extension RecordCalendarView {
                 }
             } else {
                 ForEach(store.currentRecord) { record in
-                    recordView(record: record)
+                    Button {
+                        let navigationObject = NavigationObject(
+                            viewType: .runningResult,
+                            data: RunningResult(    // TODO: 부족한 데이터들 채우기
+                                startAt: "",
+                                endAt: "",
+                                startLocation: record.startLocation,
+                                endLocation: record.endLocation,
+                                emotion: record.emoji.rawValue,
+                                challengeId: nil,
+                                goalDistance: 0,
+                                goalTime: 0,
+                                achievementMode: "",
+                                runningData: RunningData(
+                                    averagePace: record.averagePace,
+                                    runningTime: record.duration,
+                                    distanceMeter: record.distanceMeter,
+                                    calorie: record.calorie
+                                )
+                            )
+                        )
+                        viewEnvironment.navigationPath.append(navigationObject)
+                    } label: {
+                        recordView(record: record)
+                    }
                 }
             }
         }
@@ -70,7 +95,7 @@ extension RecordCalendarView {
     private func recordView(record: RunningRecord) -> some View {
         VStack(spacing: 25) {
             HStack(spacing: 18) {
-                Image(.timeIcon)
+                Image(record.emoji.icon)
                     .resizable()
                     .frame(width: 37, height: 37)
                 VStack(alignment: .leading, spacing: 10) {

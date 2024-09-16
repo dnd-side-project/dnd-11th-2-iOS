@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RunningData: Codable {
+struct RunningData: Codable, Navigatable {
     let averagePace: String
     let runningTime: String
     let distanceMeter: Int

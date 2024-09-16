@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RunningMode: String {
+enum RunningMode: String, Navigatable {
     case normal
     case challenge
     case goal

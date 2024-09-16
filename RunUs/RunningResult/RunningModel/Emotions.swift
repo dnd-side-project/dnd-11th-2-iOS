@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-enum Emotions: Int, CaseIterable, Codable {
-    case veryBad
+enum Emotions: String, CaseIterable, Codable, CodingKey {
+    case veryBad = "very-bad"
     case bad
     case soso
     case good
-    case veryGood
+    case veryGood = "very-good"
     case none
     
     var icon: ImageResource {

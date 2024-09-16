@@ -15,17 +15,17 @@ struct RunAloneHomeFeature {
     
     @ObservableState
     struct State {
+        var viewEnvironment: ViewEnvironment = ViewEnvironment()
         var userLocation: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
         var showLocationPermissionAlert: Bool = false
-        var navigateRunningView: Bool = false
         var mode: RunningMode = .normal
         var todayChallengeList: [TodayChallenge] = []
         var selectedGoalType: GoalTypes?
     }
     
-    enum Action: Equatable, BindableAction {
+    enum Action: BindableAction {
         case binding(BindingAction<State>)
-        case onAppear
+        case onAppear(ViewEnvironment)
         case setUserLocation
         case requestLocationPermission
         case locationPermissionAlertChanged(Bool)
@@ -44,10 +44,10 @@ struct RunAloneHomeFeature {
         
         Reduce { state, action in
             switch action {
-            case .binding(_),
-                 .binding(\.navigateRunningView):
+            case .binding(_):
                 return .none
-            case .onAppear:
+            case let .onAppear(viewEnvironment):
+                state.viewEnvironment = viewEnvironment
                 return onAppearEffect()
             case .setUserLocation:
                 state.userLocation = .region(
@@ -80,7 +80,14 @@ struct RunAloneHomeFeature {
                 let status = locationManager.authorizationStatus
                 switch status {
                 case .agree:
-                    state.navigateRunningView = true
+                    let runningStartInfo = RunningStartInfo(
+                        challengeId: state.mode == .normal ? nil : state.todayChallengeList[0].id,    // TODO: 0.id -> selectedId
+                        goalDistance: 0,
+                        goalTime: 0,
+                        achievementMode: state.mode
+                    )
+                    let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
+                    state.viewEnvironment.navigationPath.append(navigationObject)
                     return .none
                 case .disagree:
                     return .send(.locationPermissionAlertChanged(true))
