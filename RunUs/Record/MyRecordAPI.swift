@@ -29,7 +29,7 @@ final class MyRecordAPILive: MyRecordAPI {
 
 final class MyRecordAPIPreview: MyRecordAPI {
     func getProfiles() async throws -> ProfileResponseModel {
-        return ProfileResponseModel("", "20Km", "Level 2", "5Km")
+        return ProfileResponseModel("", "Level 1", "20Km", "Level 2", "5Km")
     }
     func getBadges() async throws -> [Badge] {
         return []

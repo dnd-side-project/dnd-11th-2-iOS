@@ -63,6 +63,7 @@
 		F63B81672C710573002F45F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81662C710573002F45F4 /* String+extension.swift */; };
 		F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81692C71F50C002F45F4 /* MyRecordView.swift */; };
 		F63BAA462C84399F00DCE9EC /* RUTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA452C84399F00DCE9EC /* RUTabBar.swift */; };
+		F63BAA4B2C84A9A700DCE9EC /* AchieveRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */; };
 		F63BAA4F2C8588F800DCE9EC /* WeatherParametersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA4E2C8588F800DCE9EC /* WeatherParametersModel.swift */; };
 		F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BAA502C86C8E900DCE9EC /* ViewEnvironment.swift */; };
 		F64FBE322C566AE10024E920 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */; };
@@ -89,6 +90,10 @@
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */; };
+		F69BFD9E2C8966C70073775C /* AchieveRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */; };
+		F69BFDA02C89670C0073775C /* AchieveRecordDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFD9F2C89670C0073775C /* AchieveRecordDependency.swift */; };
+		F69BFDA22C8967540073775C /* AchieveRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */; };
+		F69BFDA42C8968030073775C /* CoursesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA32C8968030073775C /* CoursesResponseModel.swift */; };
 		F69BFDA62C89703E0073775C /* RUAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA52C89703E0073775C /* RUAlert.swift */; };
 		F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA72C897DA90073775C /* AlertEnvironment.swift */; };
 		F69BFDAA2C8B64070073775C /* VersionResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA92C8B64070073775C /* VersionResponseModel.swift */; };
@@ -167,6 +172,7 @@
 		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		F63B81692C71F50C002F45F4 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
 		F63BAA452C84399F00DCE9EC /* RUTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUTabBar.swift; sourceTree = "<group>"; };
+		F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordView.swift; sourceTree = "<group>"; };
 		F63BAA4E2C8588F800DCE9EC /* WeatherParametersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherParametersModel.swift; sourceTree = "<group>"; };
 		F63BAA502C86C8E900DCE9EC /* ViewEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEnvironment.swift; sourceTree = "<group>"; };
 		F64FBE292C566AE00024E920 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -194,6 +200,10 @@
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordResponseModel.swift; sourceTree = "<group>"; };
+		F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordStore.swift; sourceTree = "<group>"; };
+		F69BFD9F2C89670C0073775C /* AchieveRecordDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordDependency.swift; sourceTree = "<group>"; };
+		F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordAPI.swift; sourceTree = "<group>"; };
+		F69BFDA32C8968030073775C /* CoursesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesResponseModel.swift; sourceTree = "<group>"; };
 		F69BFDA52C89703E0073775C /* RUAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUAlert.swift; sourceTree = "<group>"; };
 		F69BFDA72C897DA90073775C /* AlertEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEnvironment.swift; sourceTree = "<group>"; };
 		F69BFDA92C8B64070073775C /* VersionResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionResponseModel.swift; sourceTree = "<group>"; };
@@ -443,8 +453,21 @@
 				F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */,
 				F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */,
 				D9842DD62C846450002B145C /* Calendar */,
+				F63BAA492C84A98900DCE9EC /* AchieveRecord */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		F63BAA492C84A98900DCE9EC /* AchieveRecord */ = {
+			isa = PBXGroup;
+			children = (
+				F63BAA4A2C84A9A700DCE9EC /* AchieveRecordView.swift */,
+				F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */,
+				F69BFD9F2C89670C0073775C /* AchieveRecordDependency.swift */,
+				F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */,
+				F69BFDA32C8968030073775C /* CoursesResponseModel.swift */,
+			);
+			path = AchieveRecord;
 			sourceTree = "<group>";
 		};
 		F64FBE272C566AAC0024E920 /* Fonts */ = {
@@ -580,6 +603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F69BFDA22C8967540073775C /* AchieveRecordAPI.swift in Sources */,
 				F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */,
 				F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */,
 				F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */,
@@ -590,6 +614,7 @@
 				D9E704B22C6A222000212FF0 /* RunAloneAPI.swift in Sources */,
 				D9D4387E2C7F506B00F3E079 /* RUCalendarView.swift in Sources */,
 				F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */,
+				F63BAA4B2C84A9A700DCE9EC /* AchieveRecordView.swift in Sources */,
 				D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */,
 				F611B2262C7E275C00797470 /* MonthlySummaryResponseModel.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
@@ -597,6 +622,7 @@
 				F63BAA462C84399F00DCE9EC /* RUTabBar.swift in Sources */,
 				D95F83112C6F82DF000DCAA3 /* RunningDependency.swift in Sources */,
 				D9E704AE2C649AE900212FF0 /* TodayChallengeListItemView.swift in Sources */,
+				F69BFDA02C89670C0073775C /* AchieveRecordDependency.swift in Sources */,
 				D9F5B85C2C60EE1E009CEB19 /* RunAloneHomeFeature.swift in Sources */,
 				F6F41B782C69C85A002EA1F5 /* GoalTextField.swift in Sources */,
 				D9D0B7182C4F553800D13160 /* RUError.swift in Sources */,
@@ -641,6 +667,7 @@
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
 				D93975912C78D33B00507BAF /* RunningResultView.swift in Sources */,
 				F611B2242C7E23EE00797470 /* HomeAPI.swift in Sources */,
+				F69BFD9E2C8966C70073775C /* AchieveRecordStore.swift in Sources */,
 				D9E704B02C649AFE00212FF0 /* TodayChallenge.swift in Sources */,
 				D90BE6672C6B6F7100999858 /* RunningView.swift in Sources */,
 				D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */,
@@ -651,6 +678,7 @@
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
 				F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */,
 				D9D4387C2C7F488E00F3E079 /* RecordCalendarView.swift in Sources */,
+				F69BFDA42C8968030073775C /* CoursesResponseModel.swift in Sources */,
 				F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */,
 				D9842DDA2C8465A1002B145C /* RunningRecord.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,

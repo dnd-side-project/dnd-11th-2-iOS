@@ -96,7 +96,7 @@ extension MyRecordView {
             recordDivider
             RecordMenu(RecordMenuObject(RecordMenus.runningSummary))
             recordDivider
-            RecordMenu(RecordMenuObject(RecordMenus.achieveRecord))
+            RecordMenu(RecordMenuObject(RecordMenus.achieveRecord), store.profile)
         }
         .frame(height: 102)
         .background(.mainDeepDark)

@@ -37,9 +37,11 @@ struct RecordMenuObject {
 
 struct RecordMenu: View {
     let recordMenuObject: RecordMenuObject
+    let profile: ProfileResponseModel
     
-    init(_ recordMenuObject: RecordMenuObject) {
+    init(_ recordMenuObject: RecordMenuObject, _ profile: ProfileResponseModel = ProfileResponseModel()) {
         self.recordMenuObject = recordMenuObject
+        self.profile = profile
     }
     
     var body: some View {
@@ -52,6 +54,8 @@ struct RecordMenu: View {
 //            case .achieveRecord:
 //                // TODO: 달성기록화면으로 이동
 //            }
+            AchieveRecordView(profile: profile)
+                .navigationBarBackButtonHidden()
         } label: {
             VStack {
                 Image(recordMenuObject.icon)
