@@ -17,6 +17,7 @@ extension DependencyValues {
 
 struct RecordCalendarAPIKey: DependencyKey {
     static let liveValue: RecordCalendarAPI = RecordCalendarAPILive()
+    static var previewValue: RecordCalendarAPI = RecordCalendarAPIPreview()
 }
 
 
@@ -32,5 +33,15 @@ final class RecordCalendarAPILive: RecordCalendarAPI {
     
     func getDaily(date: String) async throws -> RunningRecordResponse {
         try await ServerNetwork.shared.request(.getDaily(date))
+    }
+}
+
+final class RecordCalendarAPIPreview: RecordCalendarAPI {
+    func getMonthly(year: Int, month: Int) async throws -> RunningMonthlyRecord {
+        return RunningMonthlyRecord(days: ["2024-09-17"])
+    }
+    
+    func getDaily(date: String) async throws -> RunningRecordResponse {
+        return RunningRecordResponse(records: [RunningRecord(startLocation: "서울특별시 강남구", distanceMeter: 999, averagePace: "9'99\"", calorie: 99, duration: "99:99")])
     }
 }

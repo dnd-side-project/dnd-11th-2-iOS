@@ -79,7 +79,7 @@ extension RunningView {
             runningStateTitleView
                 .matchedGeometryEffect(id: "runnningStateTitleView", in: namespace)
             
-            VStack{
+            VStack(spacing: 6) {
                 Text(store.distance == 0.00 ? "0.0" : String(format: "%.2f", store.distance))
                     .font(Fonts.pretendardBlack(size: 84))
                     .foregroundStyle(.white)
@@ -87,17 +87,17 @@ extension RunningView {
             }
             
             HStack {
-                VStack {
+                VStack(spacing: 6) {
                     mediumText("\(store.pace)")
                     smallText("평균페이스")
                 }
                 Spacer()
-                VStack {
-                    mediumText("\(store.time.toTimeString())")
+                VStack(spacing: 6) {
+                    mediumText("\(store.time.toTimeString().formatToTime)")
                     smallText("시간")
                 }
                 Spacer()
-                VStack {
+                VStack(spacing: 6) {
                     mediumText("\(store.kcal)")
                     smallText("칼로리")
                 }

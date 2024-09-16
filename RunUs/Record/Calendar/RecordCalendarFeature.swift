@@ -27,7 +27,7 @@ struct RecordCalendarFeature {
         case tapRightButton
         case tapDay(Int)
         case tapRecord
-        case getRecordDays(Date)
+        case getRecordDays
         case updateRecordDays([String])
     }
     
@@ -39,7 +39,11 @@ struct RecordCalendarFeature {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                return .send(.getRecordDays(state.currentMonth))
+                let day = state.currentDay
+                return .run { send in
+                    await send(.getRecordDays)
+                    await send(.tapDay(day))
+                }
             case .binding(_):
                 return .none
             case .updateRecord(let record):
@@ -48,11 +52,11 @@ struct RecordCalendarFeature {
             case .tapLeftButton:
                 state.currentMonth = changeMonth(by: -1, month: state.currentMonth)
                 state.recordDays = []
-                return .send(.getRecordDays(state.currentMonth))
+                return .send(.getRecordDays)
             case .tapRightButton:
                 state.currentMonth = changeMonth(by: +1, month: state.currentMonth)
                 state.recordDays = []
-                return .send(.getRecordDays(state.currentMonth))
+                return .send(.getRecordDays)
             case .tapDay(let day):
                 let currentMonth = state.currentMonth
                 state.currentDay = day
@@ -71,7 +75,8 @@ struct RecordCalendarFeature {
                 }
             case .tapRecord:
                 return .none
-            case .getRecordDays(let date):
+            case .getRecordDays:
+                let date = state.currentMonth
                 return .run { send in
                     let (year, month) = dateFormatter(date: date)
                     do {

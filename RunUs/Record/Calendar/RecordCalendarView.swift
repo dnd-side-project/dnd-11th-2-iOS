@@ -17,12 +17,17 @@ struct RecordCalendarView: View {
     @State var selectedDay: Int = 0
     
     var body: some View {
-        ViewThatFits(in: .vertical) {
-            recordCalendarView
-            ScrollView {
+        VStack(spacing: 0) {
+            RUNavigationBar(buttonType: .back, title: "운동 기록")
+                .padding(.horizontal, Paddings.outsideHorizontalPadding)
+            ViewThatFits(in: .vertical) {
                 recordCalendarView
+                ScrollView {
+                    recordCalendarView
+                }
             }
         }
+        .background(Color.background)
         .onAppear {
             store.send(.onAppear)
         }
@@ -30,36 +35,27 @@ struct RecordCalendarView: View {
 }
 
 extension RecordCalendarView {
-    
     private var recordCalendarView: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
-            VStack {
-                RUNavigationBar(buttonType: .back, title: "운동 기록")
-                RUCalendarView(store: store)
-                Spacer().frame(height: 53)
-                dailyRecordView
-                Spacer()
-            }
-            .padding(Paddings.outsideHorizontalPadding)
+        VStack {
+            RUCalendarView(store: store)
+            Spacer().frame(height: 53)
+            dailyRecordView
+            Spacer()
         }
+        .padding(Paddings.outsideHorizontalPadding)
     }
     
     private var dailyRecordView: some View {
-        VStack {
-            HStack {
-                Text(store.currentDaily)
-                    .font(Fonts.pretendardSemiBold(size: 16))
-                    .foregroundStyle(.white)
-                Spacer()
-            }
+        VStack(alignment: .leading, spacing: 26) {
+            Text(store.currentDaily)
+                .font(Fonts.pretendardSemiBold(size: 16))
+                .foregroundStyle(.white)
             if store.currentRecord.isEmpty {
-                HStack(alignment: .center) {
-                    Text("운동 기록이 없습니다.")
-                        .font(Fonts.pretendardMedium(size: 14))
-                        .foregroundStyle(.gray200)
-                        .padding(.top, 66)
-                }
+                Text("운동 기록이 없습니다.")
+                    .font(Fonts.pretendardMedium(size: 14))
+                    .foregroundStyle(.gray200)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 40)
             } else {
                 ForEach(store.currentRecord) { record in
                     Button {
@@ -93,32 +89,32 @@ extension RecordCalendarView {
     }
     
     private func recordView(record: RunningRecord) -> some View {
-        VStack(spacing: 25) {
-            HStack(spacing: 18) {
+        VStack(spacing: 20) {
+            HStack(spacing: 11) {
                 Image(record.emoji.icon)
                     .resizable()
-                    .frame(width: 37, height: 37)
-                VStack(alignment: .leading, spacing: 10) {
+                    .padding(3) // MARK: UI상 이미지 크기와 Assets에 저장되어있는 이미지 크기가 맞지 않아 적용
+                    .frame(width: 50, height: 50)
+                VStack(alignment: .leading, spacing: 8) {
                     Text(record.startLocation)
                         .font(Fonts.pretendardRegular(size: 15))
                     Text("\(record.distanceMeter)km")
                         .font(Fonts.pretendardSemiBold(size: 22))
                 }
-                .foregroundStyle(.white)
                 Spacer()
-            }.padding(.leading, 22)
+            }.padding(.horizontal, 15)
             HStack {
                 recordText(title: "평균페이스", data: record.averagePace)
                 Spacer()
-                recordText(title: "시간", data: record.duration)
+                recordText(title: "시간", data: record.duration.formatToTime)
                 Spacer()
-                recordText(title: "칼로리", data: "\(record.calorie)")
+                recordText(title: "칼로리", data: String(record.calorie))
             }.padding(.horizontal, 26)
         }
         .frame(height: 160)
+        .foregroundStyle(.white)
         .background(Color.mainDeepDark)
-        .cornerRadius(14, corners: .allCorners)
-        .padding(.top, 26)
+        .cornerRadius(14)
     }
     
     //TODO: 러닝 화면에 있는 Text 컴포넌트화 해서 사용하기
@@ -127,9 +123,11 @@ extension RecordCalendarView {
             Text(title)
                 .font(Fonts.pretendardRegular(size: 12))
                 .foregroundStyle(.gray200)
+                .frame(height: 22)
             Text(data)
                 .font(Fonts.pretendardBold(size: 20))
                 .foregroundStyle(.white)
+                .frame(height: 22)
         }
     }
 }

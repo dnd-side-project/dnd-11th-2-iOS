@@ -122,7 +122,7 @@ extension RunningResultView {
                 }
                 Spacer()
                 VStack {
-                    mediumText("\(store.runningTime)")
+                    mediumText("\(store.runningTime.formatToTime)")
                     smallText("시간")
                 }
                 Spacer()

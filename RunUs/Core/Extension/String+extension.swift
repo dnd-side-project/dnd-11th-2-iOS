@@ -31,6 +31,15 @@ extension String {
         }
     }
     
+    public var formatToTime: String {
+        let components = self.split(separator: ":").map { String($0) }
+        guard components.count == 3 else { return self }
+        let hours = components[0]
+        let minutes = components[1]
+        let seconds = components[2]
+        return hours == "00" ? "\(minutes):\(seconds)" : "\(hours):\(minutes):\(seconds)"
+    }
+    
     func formatDateHyphen() -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -43,5 +52,4 @@ extension String {
         formatter.dateFormat = "yy. MM. dd. a h:mm"
         return formatter.date(from: self) ?? Date()
     }
-    
 }

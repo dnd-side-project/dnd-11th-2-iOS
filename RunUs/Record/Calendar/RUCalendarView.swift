@@ -69,9 +69,7 @@ extension RUCalendarView {
                         DayComponent(day: day, hasRecord: store.recordDays.contains(day))
                         .padding(.top, 13)
                         .onTapGesture {
-                            if store.recordDays.contains(day) {
-                                store.send(.tapDay(day))
-                            }
+                            store.send(.tapDay(day))
                         }
                     }
                 }
@@ -85,11 +83,10 @@ extension RUCalendarView {
         
         var body: some View {
             ZStack {
-                if hasRecord {
-                    Circle()
-                        .foregroundStyle(.mainGreen)
-                        .frame(width: 24, height: 24)
-                }
+                Circle()
+                    .foregroundStyle(.mainGreen)
+                    .frame(width: 24, height: 24)
+                    .opacity(hasRecord ? 1 : 0)
                 
                 Text(String(day))
                     .font(Fonts.pretendardRegular(size: 12))
