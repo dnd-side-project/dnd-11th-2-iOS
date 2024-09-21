@@ -117,7 +117,6 @@ extension RecordCalendarView {
         .cornerRadius(14)
     }
     
-    //TODO: 러닝 화면에 있는 Text 컴포넌트화 해서 사용하기
     private func recordText(title: String, data: String) -> some View {
         VStack(spacing: 4) {
             Text(title)

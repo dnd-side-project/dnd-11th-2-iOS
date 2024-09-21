@@ -78,7 +78,7 @@ final class LocationManager: NSObject {
 
 extension LocationManager {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //TODO: stop -> start 되자마자 받은 location은 무시 해야함
+        // MARK: stop -> start 되자마자 받은 location은 무시 해야함
         if stopLocation == locations.last {
             return
         }

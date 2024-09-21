@@ -12,6 +12,7 @@ struct HomeStore: Reducer {
     @ObservableState
     struct State: Equatable {
         var currentLocatoin: String = ""
+        var showLocationPermissionAlert: Bool = false
         var weather: WeatherResponseModel = WeatherResponseModel()
         var challenges: [TodayChallenge] = []
         var monthlySummary: MonthlySummaryResponseModel = MonthlySummaryResponseModel()
@@ -21,6 +22,7 @@ struct HomeStore: Reducer {
         case onAppear
         case mapGetWeatherPublisher
         case requestLocationPermission
+        case locationPermissionAlertChanged(Bool)
         
         case getWeather(WeatherParametersModel)
         case getChallenges
@@ -43,8 +45,7 @@ struct HomeStore: Reducer {
                 case .agree:
                     break
                 case .disagree:
-//                    await send(.locationPermissionAlertChanged(true))
-                    break   // TODO: locationPermissionAlert MainView로 옮기고 작업 수정
+                    await send(.locationPermissionAlertChanged(true))
                 case .notyet:
                     await send(.requestLocationPermission)
                 }
@@ -60,6 +61,9 @@ struct HomeStore: Reducer {
             })
         case .requestLocationPermission:
             locationManager.requestLocationPermission()
+            return .none
+        case .locationPermissionAlertChanged(let alert):
+            state.showLocationPermissionAlert = alert
             return .none
             
         case let .getWeather(weatherParameters):

@@ -111,11 +111,9 @@ extension AchieveRecordView {
             ForEach (store.state.courses.achievedCourses, id: \.self.name) { course in
                 AchieveRecordCardView(distance: course.totalDistance, title: course.name, subTitle: course.achievedAt, isCurrentAchieve: true)
             }
+            // TODO: 컴포넌트별 조건 정의 필요
             AchieveRecordCardView(distance: store.state.courses.currentCourse.totalDistance, title: store.state.courses.currentCourse.name, subTitle: store.state.courses.currentCourse.message)
-            // TODO: totalCourses에 지구 한바퀴까지 포함인지 개념적인 확인 필요
-            if store.state.courses.achievedCourses.count < store.state.courses.info.totalCourses {
-                AchieveRecordCardView(isEmptyView: true)
-            }
+            AchieveRecordCardView(isEmptyView: true)
             AchieveRecordCardView(distance: "40.075km", title: "지구한바퀴 완주!", subTitle: "축하합니다! 지구한바퀴 완주하셨네요!")
             Spacer()
         }

@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct HomeView: View {
+    @EnvironmentObject var alertEnvironment: AlertEnvironment
     @EnvironmentObject var viewEnvironment: ViewEnvironment
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
     @State var store: StoreOf<HomeStore> = Store(
@@ -151,6 +152,16 @@ extension HomeView {
             store.send(.onAppear)
             store.send(.mapGetWeatherPublisher)
         }
+        .onChange(of: store.showLocationPermissionAlert, { oldValue, newValue in
+            if newValue {
+                alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
+            }
+        })
+    }
+    
+    private func subButtonAction() {
+        store.send(.locationPermissionAlertChanged(false))
+        alertEnvironment.dismiss()
     }
 }
     

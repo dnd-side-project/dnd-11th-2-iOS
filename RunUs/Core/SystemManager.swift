@@ -10,7 +10,7 @@ import Foundation
 
 class SystemManager {
     static let shared = SystemManager()
-    static let storeID = 6480167782 // TODO: 계정 변경 이후 RunUs에 맞춰 수정 필요
+    static let storeID = 6689522964
     static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     static let openAppStoreURLString = "itms-apps://itunes.apple.com/app/apple-store/\(SystemManager.storeID)"
     

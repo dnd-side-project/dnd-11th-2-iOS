@@ -10,14 +10,14 @@ import SwiftUI
 struct CountDownView: View {
     @Binding var isFinished: Bool
     @State private var count: Int = 3
+    @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
     
     var body: some View {
         VStack {
             Text("\(count)")
                 .font(Fonts.pretendardBlack(size: 84))
                 .foregroundStyle(.mainGreen)
-            //TODO: 런어스님 닉네임으로 변경
-            Text("런어스님 오늘도 힘내세요!")
+            Text("\(userName)님 오늘도 힘내세요!")
                 .font(Fonts.pretendardMedium(size: 18))
                 .foregroundStyle(.white)
         }
