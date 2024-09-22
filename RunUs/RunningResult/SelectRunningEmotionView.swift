@@ -17,7 +17,7 @@ struct SelectRunningEmotionView: View {
             Color.black.opacity(0.9).ignoresSafeArea()
             VStack(spacing: 34) {
                 Text("오늘 달리기는 어떠셨나요?")
-                HStack {
+                HStack(spacing: 12) {
                     ForEach(Emotions.allCases, id: \.self) { emotion in
                         if emotion == .none {
                             EmptyView()
@@ -31,6 +31,8 @@ struct SelectRunningEmotionView: View {
                             } label: {
                                 VStack(spacing: 14) {
                                     Image(emotion.icon)
+                                        .resizable()
+                                        .scaledToFit()
                                     Text(emotion.text)
                                         .font(Fonts.pretendardRegular(size: 10))
                                 }

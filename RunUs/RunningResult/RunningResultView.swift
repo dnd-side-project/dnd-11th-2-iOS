@@ -57,6 +57,9 @@ extension RunningResultView {
     private var EmotionView: some View {
         HStack(spacing: 16) {
             Image(store.state.emotion.icon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
             Text("\(store.state.emotion.text)")
                 .font(Fonts.pretendardBold(size: 16))
                 .foregroundStyle(.white)
