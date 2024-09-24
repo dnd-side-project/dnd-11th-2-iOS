@@ -52,4 +52,9 @@ extension String {
         formatter.dateFormat = "yy. MM. dd. a h:mm"
         return formatter.date(from: self) ?? Date()
     }
+    
+    func getEmotion() -> Emotions {
+        Emotions.allCases.filter { $0.entity == self }
+            .first ?? .veryGood
+    }
 }

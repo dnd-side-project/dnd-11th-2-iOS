@@ -25,7 +25,7 @@ struct RunningFeature {
         var isRunning: Bool = true
         var time: Int = 0
         var location: CLLocation?
-        var distance: Double = 0
+        var distance: Double = 0.00
         var kcal: Int = 0
         var pace: String = "0’00”"
         var isRunningEnd: Bool = false

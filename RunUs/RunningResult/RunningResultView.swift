@@ -124,7 +124,7 @@ extension RunningResultView {
 
     private var resultView: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(store.distance == 0.0 ? "0.0" : String(format: "%.2f", 0.0))
+            Text(String(format: "%.2f", store.distance))
                 .font(Fonts.pretendardBlack(size: 84))
             smallText("킬로미터")
             
