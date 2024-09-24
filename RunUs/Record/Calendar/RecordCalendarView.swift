@@ -59,27 +59,28 @@ extension RecordCalendarView {
             } else {
                 ForEach(store.currentRecord) { record in
                     Button {
-                        let navigationObject = NavigationObject(
-                            viewType: .runningResult,
-                            data: RunningResult(    // TODO: 부족한 데이터들 채우기 -> runningRecordId로 API 추가되면 반영하기
-                                startAt: "",
-                                endAt: "",
-                                startLocation: record.startLocation,
-                                endLocation: record.endLocation,
-                                emotion: record.emoji.rawValue,
-                                challengeId: nil,
-                                goalDistance: 0,
-                                goalTime: 0,
-                                achievementMode: "",
-                                runningData: RunningData(
-                                    averagePace: record.averagePace,
-                                    runningTime: record.duration,
-                                    distanceMeter: record.distanceMeter,
-                                    calorie: record.calorie
-                                )
-                            )
-                        )
-                        viewEnvironment.navigationPath.append(navigationObject)
+                        // TODO: runningRecordId로 API 추가되면 반영하기
+//                        let navigationObject = NavigationObject(
+//                            viewType: .runningResult,
+//                            data: RunningResult(
+//                                startAt: "",
+//                                endAt: "",
+//                                startLocation: record.startLocation,
+//                                endLocation: record.endLocation,
+//                                emotion: record.emoji.rawValue,
+//                                challengeId: nil,
+//                                goalDistance: 0,
+//                                goalTime: 0,
+//                                achievementMode: "",
+//                                runningData: RunningData(
+//                                    averagePace: record.averagePace,
+//                                    runningTime: record.duration,
+//                                    distanceMeter: record.distanceMeter,
+//                                    calorie: record.calorie
+//                                )
+//                            )
+//                        )
+//                        viewEnvironment.navigationPath.append(navigationObject)
                     } label: {
                         recordView(record: record)
                     }
