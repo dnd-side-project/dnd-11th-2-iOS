@@ -28,7 +28,7 @@ struct RunningFeature {
         var distance: Double = 0
         var kcal: Int = 0
         var pace: String = "0’00”"
-        var isFinished: Bool = false
+        var isRunningEnd: Bool = false
         fileprivate var beforeLocation: CLLocation?
         var startAt: String
         var endAt: String = ""
@@ -55,7 +55,7 @@ struct RunningFeature {
                   emotion: emotion.entity,
                   challengeId: self.challengeId,
                   goalDistance: self.goalDistance,
-                  goalTime: 10,
+                  goalTime: self.goalTime,
                   achievementMode: achievementMode.rawValue,
                   runningData: .init(averagePace: self.pace,
                                      runningTime: self.time.toTimeString(),
@@ -77,7 +77,7 @@ struct RunningFeature {
         case distanceUpdated(Double)
         case kcalUpdated(Int)
         case paceUpdated
-        case isFinishedChanged(Bool)
+        case runningEnd
         case setStartLocation(String)
         case setEndLocation(String)
     }
@@ -142,9 +142,9 @@ struct RunningFeature {
                 state.pace = calculatePace(distance: distance)
                 state.beforeLocation = state.location
                 return .none
-            case .isFinishedChanged(let bool):
+            case .runningEnd:
                 state.endAt = Date().formatStringHyphen()
-                state.isFinished = bool
+                state.isRunningEnd = true
                 return .run { send in
                     let address = await LocationManager.shared.getAddress()
                     await send(.setEndLocation(address))

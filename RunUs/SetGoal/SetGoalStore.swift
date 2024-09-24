@@ -52,10 +52,11 @@ struct SetGoalStore: Reducer {
                 let status = locationManager.authorizationStatus
                 switch status {
                 case .agree:
+                    let goal = calcGoal(type: state.goalTypeObject.type, bigGoal: Int(state.bigGoal), smallGoal: Int(state.smallGoal))
                     let runningStartInfo = RunningStartInfo(
                         challengeId: nil,
-                        goalDistance: state.goalTypeObject.type == .distance ? Int(state.bigGoal) ?? 0 : 0,    // TODO: bigGoal + smallGoal Int
-                        goalTime: state.goalTypeObject.type == .time ? Int(state.bigGoal) ?? 0 : 0,    // TODO: bigGoal + smallGoal Int
+                        goalDistance: state.goalTypeObject.type == .distance ? goal : nil,
+                        goalTime: state.goalTypeObject.type == .time ? goal : nil,
                         achievementMode: .goal
                     )
                     let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
@@ -79,6 +80,16 @@ struct SetGoalStore: Reducer {
             case .binding(_):
                 return .none
             }
+        }
+    }
+    private func calcGoal(type: GoalTypes, bigGoal: Int?, smallGoal: Int?) -> Int {
+        let big = bigGoal == nil ? 0 : bigGoal!
+        let small = smallGoal == nil ? 0 : smallGoal!
+        switch(type) {
+        case .distance:
+            return big * 1000 + small
+        case .time:
+            return big * 3600 + small * 60
         }
     }
 }

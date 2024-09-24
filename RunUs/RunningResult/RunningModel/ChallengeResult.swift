@@ -27,5 +27,6 @@ struct ChallengeResult: Decodable {
 struct GoalResult: Decodable {
     var title: String
     var subTitle: String
+    var iconUrl: String
     var isSuccess: Bool
 }

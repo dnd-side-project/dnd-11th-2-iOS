@@ -19,5 +19,3 @@ struct RunningResult: Encodable, Navigatable {
     let achievementMode: String
     let runningData: RunningData
 }
-
-

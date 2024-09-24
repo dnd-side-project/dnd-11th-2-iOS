@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CountDownView: View {
-    @Binding var isFinished: Bool
+    @Binding var isReady: Bool
     @State private var count: Int = 3
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
     
@@ -32,12 +32,12 @@ struct CountDownView: View {
                 self.count -= 1
             } else {
                 timer.invalidate()
-                self.isFinished = true
+                self.isReady = true
             }
         }
     }
 }
 
 #Preview {
-    CountDownView(isFinished: .constant(false))
+    CountDownView(isReady: .constant(false))
 }

@@ -25,7 +25,7 @@ struct RunningView: View {
         if !isReady {
             ZStack {
                 Color.background.ignoresSafeArea()
-                CountDownView(isFinished: $isReady)
+                CountDownView(isReady: $isReady)
             }
         } else {
             ZStack {
@@ -62,7 +62,7 @@ struct RunningView: View {
                     .shadow(color: .black.opacity(0.5), radius: 30, x: 1, y: 1)
                 }
                 .ignoresSafeArea()
-                if store.isFinished {
+                if store.isRunningEnd {
                     SelectRunningEmotionView(store: store)
                 }
             }
@@ -144,7 +144,7 @@ extension RunningView {
                 })
             } else {
                 Button(action: {
-                    store.send(.isFinishedChanged(true))
+                    store.send(.runningEnd)
                 }, label: {
                     CircleButtonView(.buttonStop)
                 })

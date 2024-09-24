@@ -68,8 +68,15 @@ extension RunningResultView {
     }
     private func challengeView(_ challengeResult: ChallengeResult) -> some View {
         HStack {
-            Image(challengeResult.iconUrl)
-                .padding(.leading, 14)
+            AsyncImage(url: URL(string: challengeResult.iconUrl)) { image in
+                image
+                    .resizable()
+                    .grayscale(challengeResult.isSuccess ? 0 : 1)
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 48, height: 48)
+            .padding(.leading, 14)
             VStack(alignment: .leading) {
                 Text("\(challengeResult.title)")
                     .font(Fonts.pretendardSemiBold(size: 16))
@@ -78,14 +85,11 @@ extension RunningResultView {
             }
             .padding(.leading, 10)
             Spacer()
-            Text(challengeResult.isSuccess ?
-                 "도전 성공!" : "도전 실패!")
+            Text(challengeResult.isSuccess ? "도전 성공!" : "도전 실패!")
                 .font(Fonts.pretendardSemiBold(size: 10))
                 .frame(width: 83, height: 26)
-                .foregroundStyle(challengeResult.isSuccess ?
-                    .mainDeepDark : .white)
-                .background(challengeResult.isSuccess ?
-                    .mainGreen : .red)
+                .foregroundStyle(challengeResult.isSuccess ? .mainDeepDark : .white)
+                .background(challengeResult.isSuccess ? .mainGreen : .gray300)
                 .cornerRadius(6, corners: .allCorners)
                 .padding(.trailing, 11)
         }
@@ -96,8 +100,14 @@ extension RunningResultView {
     
     private func goalView(_ goalResult: GoalResult) -> some View {
         HStack {
-            Image(goalResult.isSuccess ? .goalSuccess : .goalFail)
-                .padding(.leading, 14)
+            AsyncImage(url: URL(string: goalResult.iconUrl)) { image in
+                image
+                    .resizable()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 56, height: 56)
+            .padding(.leading, 14)
             VStack(alignment: .leading) {
                 Text("\(goalResult.title)")
                     .font(Fonts.pretendardSemiBold(size: 16))

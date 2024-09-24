@@ -20,6 +20,7 @@ struct RunAloneHomeFeature {
         var showLocationPermissionAlert: Bool = false
         var mode: RunningMode = .normal
         var todayChallengeList: [TodayChallenge] = []
+        var selectedChallengeId: Int = 0
         var selectedGoalType: GoalTypes?
     }
     
@@ -65,9 +66,11 @@ struct RunAloneHomeFeature {
                 return .none
             case .setTodayChallengeList(let list):
                 state.todayChallengeList = list
+                state.selectedChallengeId = state.todayChallengeList[0].id
                 state.todayChallengeList[0].isSelected = true
                 return .none
             case .selectChallenge(let id):
+                state.selectedChallengeId = id
                 state.todayChallengeList = state.todayChallengeList.map {
                     .init(id: $0.id,
                           title: $0.title,
@@ -81,7 +84,7 @@ struct RunAloneHomeFeature {
                 switch status {
                 case .agree:
                     let runningStartInfo = RunningStartInfo(
-                        challengeId: state.mode == .normal ? nil : state.todayChallengeList[0].id,    // TODO: 0.id -> selectedId
+                        challengeId: state.mode == .normal ? nil : state.selectedChallengeId,
                         goalDistance: 0,
                         goalTime: 0,
                         achievementMode: state.mode

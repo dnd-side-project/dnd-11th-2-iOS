@@ -22,42 +22,46 @@ struct SetGoalView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            RUNavigationBar(buttonType: .back, title: "목표설정")
-                .padding(.bottom, 29)
-            Text("목표 설정하기 🏃")
-                .font(Fonts.pretendardBold(size: 24))
-                .padding(.bottom, 25)
-            Text("오늘 달리며 달성할 \(goalTypeString(store.goalTypeObject)) 직접 설정해보세요.")
-                .font(Fonts.pretendardRegular(size: 16))
-                .padding(.bottom, 87)
-            Text(store.goalTypeObject.text)
-                .font(Fonts.pretendardSemiBold(size: 16))
-                .padding(.bottom, 12)
-            HStack(spacing: 8) {
-                GoalTextField(store: store, isBigGoal: true)
-                GoalTextField(store: store, isBigGoal: false)
-            }
-            Spacer()
-            HStack(alignment: .bottom) {
-                Text("달리기 목표 달성량")
-                    .font(Fonts.pretendardRegular(size: 15))
+            VStack(alignment: .leading, spacing: 0) {
+                RUNavigationBar(buttonType: .back, title: "목표설정")
+                Spacer().frame(height: 29)
+                Text("목표 설정하기 🏃")
+                    .font(Fonts.pretendardBold(size: 24))
+                Spacer().frame(height: 25)
+                Text("오늘 달리며 달성할 \(goalTypeString(store.goalTypeObject)) 직접 설정해보세요.")
+                    .font(Fonts.pretendardRegular(size: 16))
+                Spacer().frame(height: 87)
+                Text(store.goalTypeObject.text)
+                    .font(Fonts.pretendardSemiBold(size: 16))
+                Spacer().frame(height: 12)
+                HStack(spacing: 8) {
+                    GoalTextField(store: store, isBigGoal: true)
+                    GoalTextField(store: store, isBigGoal: false)
+                }
                 Spacer()
-                goalText
+                HStack(alignment: .bottom) {
+                    Text("달리기 목표 달성량")
+                        .font(Fonts.pretendardRegular(size: 15))
+                    Spacer()
+                    goalText
+                }
+                Spacer().frame(height: 36)
             }
-            .padding(.bottom, 36)
+            .padding(.horizontal, Paddings.outsideHorizontalPadding)
+            .background(Color.background)
+            .onTapGesture {
+                hideKeyboard()
+            }
             RUButton(
                 action: {
                     store.send(.runningStart)
                 }, text: "목표 설정 완료"
                 , disableCondition: store.bigGoal.count == 0 && store.smallGoal.count == 0
             )
+            .padding(.horizontal, Paddings.outsideHorizontalPadding)
+            .background(Color.background)
         }
         .foregroundStyle(.white)
-        .padding(.horizontal, Paddings.outsideHorizontalPadding)
-        .background(Color.background)
-        .onTapGesture {
-            hideKeyboard()
-        }
         .onAppear {
             store.send(.onAppear(viewEnvironment))
         }
@@ -71,6 +75,8 @@ struct SetGoalView: View {
 
 #Preview {
     SetGoalView(GoalTypeObject(GoalTypes.distance))
+        .environmentObject(AlertEnvironment())
+        .environmentObject(ViewEnvironment())
 }
 
 extension SetGoalView {

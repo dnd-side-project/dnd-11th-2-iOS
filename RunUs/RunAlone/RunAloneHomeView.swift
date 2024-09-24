@@ -137,4 +137,6 @@ extension RunAloneHomeView {
 
 #Preview {
     RunAloneHomeView()
+        .environmentObject(AlertEnvironment())
+        .environmentObject(ViewEnvironment())
 }

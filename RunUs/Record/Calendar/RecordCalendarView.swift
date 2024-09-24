@@ -61,7 +61,7 @@ extension RecordCalendarView {
                     Button {
                         let navigationObject = NavigationObject(
                             viewType: .runningResult,
-                            data: RunningResult(    // TODO: 부족한 데이터들 채우기
+                            data: RunningResult(    // TODO: 부족한 데이터들 채우기 -> runningRecordId로 API 추가되면 반영하기
                                 startAt: "",
                                 endAt: "",
                                 startLocation: record.startLocation,

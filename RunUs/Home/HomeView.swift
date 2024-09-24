@@ -168,4 +168,6 @@ extension HomeView {
 
 #Preview {
     HomeView()
+        .environmentObject(AlertEnvironment())
+        .environmentObject(ViewEnvironment())
 }
