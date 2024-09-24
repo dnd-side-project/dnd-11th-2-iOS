@@ -24,6 +24,7 @@ struct MainView: View {
                         MyRecordView()
                             .opacity(viewEnvironment.selectedTabItem == .myRecord ? 1 : 0)
                     }
+                    .navigationBarHidden(true)  // MARK: iOS 18 이후 NavigationStack + Map UI에서 나타나는 NavigationBar 영역을 지우기 위해 필요
                     RUTabBar()
                 } else { LoginView() }
             }
@@ -38,22 +39,22 @@ struct MainView: View {
                 case .setGoal:
                     let goalTypeObject = navigationObject.data as! GoalTypeObject
                     SetGoalView(goalTypeObject)
-                        .navigationBarBackButtonHidden()
+                        .navigationBarHidden(true)
                 case .running:
                     let runningStartInfo = navigationObject.data as! RunningStartInfo
                     RunningView(runningStartInfo)
-                        .navigationBarBackButtonHidden()
+                        .navigationBarHidden(true)
                 case .runningResult:
                     let runningResult = navigationObject.data as! RunningResult
                     RunningResultView(runningResult: runningResult)
-                        .navigationBarBackButtonHidden()
+                        .navigationBarHidden(true)
                 case .recordCalendar:
                     RecordCalendarView()
-                        .navigationBarBackButtonHidden()
+                        .navigationBarHidden(true)
                 case .achieveRecord:
                     let profile = navigationObject.data as! ProfileResponseModel
                     AchieveRecordView(profile: profile)
-                        .navigationBarBackButtonHidden()
+                        .navigationBarHidden(true)
                 }
             }
         }
@@ -62,4 +63,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .environmentObject(ViewEnvironment())
 }
