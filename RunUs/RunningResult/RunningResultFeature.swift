@@ -32,7 +32,7 @@ struct RunningResultFeature {
             self.emotion = runningResult.emotion.getEmotion()
             self.averagePace = runningResult.runningData.averagePace
             self.runningTime = runningResult.runningData.runningTime
-            self.distance = Double(runningResult.runningData.distanceMeter) * 0.01
+            self.distance = Double(runningResult.runningData.distanceMeter) * 0.001
             self.kcal = runningResult.runningData.calorie
         }
     }
@@ -70,6 +70,6 @@ struct RunningResultFeature {
     }
     
     func distanceMtoKM(m: Int) -> Double {
-        Double(m) * 0.01
+        Double(m) * 0.001
     }
 }
