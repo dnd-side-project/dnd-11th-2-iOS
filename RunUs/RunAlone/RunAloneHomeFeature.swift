@@ -18,9 +18,7 @@ struct RunAloneHomeFeature {
         var viewEnvironment: ViewEnvironment = ViewEnvironment()
         var userLocation: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
         var showLocationPermissionAlert: Bool = false
-        var mode: RunningMode = .normal
         var todayChallengeList: [TodayChallenge] = []
-        var selectedChallengeId: Int = 0
         var selectedGoalType: GoalTypes?
     }
     
@@ -34,7 +32,6 @@ struct RunAloneHomeFeature {
         case selectChallenge(Int)
         case selectGoal(GoalTypes)
         case startButtonTapped
-        case changeMode(RunningMode)
     }
     
     @Dependency(\.locationManager) var locationManager
@@ -66,11 +63,9 @@ struct RunAloneHomeFeature {
                 return .none
             case .setTodayChallengeList(let list):
                 state.todayChallengeList = list
-                state.selectedChallengeId = state.todayChallengeList[0].id
                 state.todayChallengeList[0].isSelected = true
                 return .none
             case .selectChallenge(let id):
-                state.selectedChallengeId = id
                 state.todayChallengeList = state.todayChallengeList.map {
                     .init(id: $0.id,
                           title: $0.title,
@@ -84,10 +79,10 @@ struct RunAloneHomeFeature {
                 switch status {
                 case .agree:
                     let runningStartInfo = RunningStartInfo(
-                        challengeId: state.mode == .normal ? nil : state.selectedChallengeId,
+                        challengeId: state.viewEnvironment.selectedRunningMode == .normal ? nil : state.todayChallengeList[state.viewEnvironment.selectedChallengeIndex].id,
                         goalDistance: nil,
                         goalTime: nil,
-                        achievementMode: state.mode
+                        achievementMode: state.viewEnvironment.selectedRunningMode
                     )
                     let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
                     state.viewEnvironment.navigationPath.append(navigationObject)
@@ -97,9 +92,6 @@ struct RunAloneHomeFeature {
                 case .notyet:
                     return .send(.requestLocationPermission)
                 }
-            case .changeMode(let mode):
-                state.mode = mode
-                return .none
             case .selectGoal(let goal):
                 state.selectedGoalType = goal
                 return .none

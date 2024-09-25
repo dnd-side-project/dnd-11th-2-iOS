@@ -32,7 +32,7 @@ struct RunAloneHomeView: View {
                 
                 VStack {
                     // MARK: 모드에 따라 전환되는 화면
-                    switch store.mode {
+                    switch viewEnvironment.selectedRunningMode {
                     case .normal:
                         EmptyView()
                     case .challenge:
@@ -45,19 +45,22 @@ struct RunAloneHomeView: View {
                 }
                 
                 Spacer()
-                if store.mode != .goal { startButton.transition(.scale) }
+                if viewEnvironment.selectedRunningMode != .goal { startButton.transition(.scale) }
                 Spacer().frame(height: 48)
             }
-            .animation(.easeInOut, value: store.mode)
+            .animation(.easeInOut, value: viewEnvironment.selectedRunningMode)
         }
         .onAppear {
             store.send(.onAppear(viewEnvironment))
         }
-        .onChange(of: store.showLocationPermissionAlert, { oldValue, newValue in
+        .onChange(of: store.showLocationPermissionAlert) { oldValue, newValue in
             if newValue {
                 alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
             }
-        })
+        }
+        .onChange(of: viewEnvironment.selectedChallengeIndex) { oldValue, newValue in
+            store.send(.selectChallenge(store.todayChallengeList[newValue].id))  // TODO: todayChallengeList에 isSelected 삭제 후 변경
+        }
     }
 }
 
@@ -75,10 +78,10 @@ extension RunAloneHomeView {
         VStack {
             Text(mode.string)
                 .font(Fonts.pretendardSemiBold(size: 16))
-                .foregroundStyle(store.mode == mode ? .white : .gray300)
+                .foregroundStyle(viewEnvironment.selectedRunningMode == mode ? .white : .gray300)
         }
         .onTapGesture {
-            store.send(.changeMode(mode))
+            viewEnvironment.selectedRunningMode = mode
         }
         .padding(.vertical, 25)
         .padding(.horizontal, 8)
@@ -86,11 +89,11 @@ extension RunAloneHomeView {
             VStack {
                 Spacer()
                 Rectangle()
-                    .fill(store.mode == mode ? .white : .clear)
+                    .fill(viewEnvironment.selectedRunningMode == mode ? .white : .clear)
                     .frame(height: 2)
             }
         }
-        .animation(.easeInOut, value: store.mode)
+        .animation(.easeInOut, value: viewEnvironment.selectedRunningMode)
     }
     private var goalView: some View {
         HStack(spacing: 14) {
@@ -103,7 +106,7 @@ extension RunAloneHomeView {
             HStack(spacing: 12) {
                 ForEach(list.indices, id: \.self) { index in
                     Button(action: {
-                        store.send(.selectChallenge(list[index].id))
+                        viewEnvironment.selectedChallengeIndex = index
                     }, label: {
                         TodayChallengeListItemView(challenge: list[index])
                     })

@@ -98,14 +98,17 @@ extension HomeView {
             .padding(.bottom, 28)
             MyRecordButton(action: {
                 viewEnvironment.selectedTabItem = .running
+                viewEnvironment.selectedRunningMode = .goal
             }, text: "오늘의 러닝 챌린지 및 목표설정")
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 14) {
-                    ForEach(store.challenges) { challenge in
+                    ForEach(store.challenges.indices, id:\.self) { index in
                         Button {
                             viewEnvironment.selectedTabItem = .running
+                            viewEnvironment.selectedRunningMode = .challenge
+                            viewEnvironment.selectedChallengeIndex = index
                         } label: {
-                            TodayChallengeListItemView(challenge: challenge, hasShadowPadding: false, backgroundColor: .mainDeepDark)
+                            TodayChallengeListItemView(challenge: store.challenges[index], hasShadowPadding: false, backgroundColor: .mainDeepDark)
                         }
                     }
                 }

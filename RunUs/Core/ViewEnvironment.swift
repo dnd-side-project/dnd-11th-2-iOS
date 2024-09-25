@@ -9,10 +9,14 @@ import Foundation
 
 class ViewEnvironment: ObservableObject {
     @Published var selectedTabItem: TabItems = .home
+    @Published var selectedRunningMode: RunningMode = .normal
+    @Published var selectedChallengeIndex: Int = .zero
     @Published var navigationPath: [NavigationObject] = []
     
     func reset() {
         self.selectedTabItem = .home
+        self.selectedRunningMode = .normal
+        self.selectedChallengeIndex = .zero
         self.navigationPath = []
     }
 }
