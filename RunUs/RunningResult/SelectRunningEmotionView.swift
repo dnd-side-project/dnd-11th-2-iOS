@@ -18,6 +18,7 @@ struct SelectRunningEmotionView: View {
             VStack(spacing: 34) {
                 Text("오늘 달리기는 어떠셨나요?")
                 HStack(spacing: 12) {
+                    Spacer()
                     ForEach(Emotions.allCases, id: \.self) { emotion in
                         if emotion == .none {
                             EmptyView()
@@ -39,8 +40,10 @@ struct SelectRunningEmotionView: View {
                             }
                         }
                     }
-                }.padding(.horizontal, 46)
-            }.foregroundStyle(.white)
+                    Spacer()
+                }
+            }
+            .foregroundStyle(.white)
         }
     }
 }
