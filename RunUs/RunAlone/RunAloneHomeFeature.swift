@@ -85,8 +85,8 @@ struct RunAloneHomeFeature {
                 case .agree:
                     let runningStartInfo = RunningStartInfo(
                         challengeId: state.mode == .normal ? nil : state.selectedChallengeId,
-                        goalDistance: 0,
-                        goalTime: 0,
+                        goalDistance: nil,
+                        goalTime: nil,
                         achievementMode: state.mode
                     )
                     let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
