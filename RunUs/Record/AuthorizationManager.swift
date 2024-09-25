@@ -8,6 +8,18 @@
 import Combine
 import Foundation
 import AuthenticationServices
+import ComposableArchitecture
+
+extension DependencyValues {
+    var authorizationManager: AuthorizationManager {
+        get { self[AuthorizationManagerKey.self] }
+        set { self[AuthorizationManagerKey.self] = newValue }
+    }
+}
+
+struct AuthorizationManagerKey: DependencyKey {
+    static var liveValue: AuthorizationManager = AuthorizationManagerLive()
+}
 
 protocol AuthorizationManager {
     var authorizationPublisher: PassthroughSubject<WithdrawRequestModel, Never> { get }
@@ -16,7 +28,6 @@ protocol AuthorizationManager {
 final class AuthorizationManagerLive: AuthorizationManager {
     var authorizationPublisher = PassthroughSubject<WithdrawRequestModel, Never>()
 }
-
 
 final class AppleLoginDelegate: NSObject, ASAuthorizationControllerDelegate {
     let completion: (Result<(authorizationCode: String, idToken: String), Error>) -> Void

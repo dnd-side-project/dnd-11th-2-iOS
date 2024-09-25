@@ -1,5 +1,5 @@
 //
-//  RecordCalendarView.swift
+//  RunningRecordView.swift
 //  RunUs
 //
 //  Created by Ryeong on 8/28/24.
@@ -8,11 +8,11 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct RecordCalendarView: View {
+struct RunningRecordView: View {
     @EnvironmentObject var viewEnvironment: ViewEnvironment
-    let store: StoreOf<RecordCalendarFeature> = .init(
-        initialState: RecordCalendarFeature.State(),
-        reducer: { RecordCalendarFeature() })
+    let store: StoreOf<RunningRecordStore> = .init(
+        initialState: RunningRecordStore.State(),
+        reducer: { RunningRecordStore() })
     
     @State var selectedDay: Int = 0
     
@@ -21,9 +21,9 @@ struct RecordCalendarView: View {
             RUNavigationBar(buttonType: .back, title: "운동 기록")
                 .padding(.horizontal, Paddings.outsideHorizontalPadding)
             ViewThatFits(in: .vertical) {
-                recordCalendarView
+                runningRecordView
                 ScrollView {
-                    recordCalendarView
+                    runningRecordView
                 }
             }
         }
@@ -34,10 +34,10 @@ struct RecordCalendarView: View {
     }
 }
 
-extension RecordCalendarView {
-    private var recordCalendarView: some View {
+extension RunningRecordView {
+    private var runningRecordView: some View {
         VStack {
-            RUCalendarView(store: store)
+            RUCalendar(store: store)
             Spacer().frame(height: 53)
             dailyRecordView
             Spacer()
@@ -89,7 +89,7 @@ extension RecordCalendarView {
         }
     }
     
-    private func recordView(record: RunningRecord) -> some View {
+    private func recordView(record: RunningRecordDaily) -> some View {
         VStack(spacing: 20) {
             HStack(spacing: 11) {
                 Image(record.emoji.icon)
@@ -133,5 +133,5 @@ extension RecordCalendarView {
 }
 
 #Preview {
-    RecordCalendarView()
+    RunningRecordView()
 }

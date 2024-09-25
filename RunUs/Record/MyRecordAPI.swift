@@ -6,6 +6,19 @@
 //
 
 import Foundation
+import ComposableArchitecture
+
+extension DependencyValues {
+    var myRecordAPI: MyRecordAPI {
+        get { self[MyRecordAPIKey.self] }
+        set { self[MyRecordAPIKey.self] = newValue }
+    }
+}
+
+struct MyRecordAPIKey: DependencyKey {
+    static var liveValue: MyRecordAPI = MyRecordAPILive()
+    static var previewValue: MyRecordAPI = MyRecordAPIPreview()
+}
 
 protocol MyRecordAPI {
     func getProfiles() async throws -> ProfileResponseModel

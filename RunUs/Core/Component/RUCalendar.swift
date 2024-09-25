@@ -1,5 +1,5 @@
 //
-//  RUCalendarView.swift
+//  RUCalendar.swift
 //  RunUs
 //
 //  Created by Ryeong on 8/28/24.
@@ -8,8 +8,8 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct RUCalendarView: View {
-    let store: StoreOf<RecordCalendarFeature>
+struct RUCalendar: View {
+    let store: StoreOf<RunningRecordStore>
     
     var body: some View {
         VStack(spacing: 26) {
@@ -19,7 +19,7 @@ struct RUCalendarView: View {
     }
 }
 
-extension RUCalendarView {
+extension RUCalendar {
     private var headerView: some View {
             HStack {
                 Button {
@@ -98,11 +98,11 @@ extension RUCalendarView {
     
 }
 
-extension RUCalendarView {
+extension RUCalendar {
     static let weekdaySymbols = Calendar.current.veryShortWeekdaySymbols
 }
 
-private extension RUCalendarView {
+private extension RUCalendar {
     
     private func getWeekdaySymbols() -> [String] {
         var calendar = Calendar.current

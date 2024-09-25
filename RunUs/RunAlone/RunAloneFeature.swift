@@ -1,5 +1,5 @@
 //
-//  RunAloneHomeFeature.swift
+//  RunAloneFeature.swift
 //  RunUs
 //
 //  Created by Ryeong on 8/5/24.
@@ -11,8 +11,7 @@ import MapKit
 import ComposableArchitecture
 
 @Reducer
-struct RunAloneHomeFeature {
-    
+struct RunAloneFeature {
     @ObservableState
     struct State {
         var viewEnvironment: ViewEnvironment = ViewEnvironment()
@@ -35,7 +34,7 @@ struct RunAloneHomeFeature {
     }
     
     @Dependency(\.locationManager) var locationManager
-    @Dependency(\.runAloneAPI) var api
+    @Dependency(\.runAloneAPI) var runAloneAPI
     
     var body: some Reducer<State, Action> {
         BindingReducer()
@@ -101,7 +100,7 @@ struct RunAloneHomeFeature {
     
     private func onAppearEffect() -> Effect<Action> {
         .run { send in
-            let data = try await api.getTodayChallenge()
+            let data = try await runAloneAPI.getTodayChallenge()
             await send(.setTodayChallengeList(data))
             
             let status = locationManager.authorizationStatus

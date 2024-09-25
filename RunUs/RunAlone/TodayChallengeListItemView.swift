@@ -46,8 +46,7 @@ struct TodayChallengeListItemView: View {
 
 extension TodayChallengeListItemView {
     private var shadowPadding: some View {
-        Spacer()
-            .frame(height: 20)
+        Spacer().frame(height: 20)
     }
 }
 

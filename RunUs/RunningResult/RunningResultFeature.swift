@@ -42,7 +42,7 @@ struct RunningResultFeature {
         case setRunningRecord(RunningRecordResponseModel)
     }
     
-    @Dependency(\.runningRecordAPI) var api
+    @Dependency(\.runningResultAPI) var runningResultAPI
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -50,7 +50,7 @@ struct RunningResultFeature {
             case .onAppear:
                 let runningResult = state.runningResult
                 return .run { send in
-                    let record: RunningRecordResponseModel = try await api.postRunningRecord(result: runningResult)
+                    let record: RunningRecordResponseModel = try await runningResultAPI.postRunningRecord(result: runningResult)
                     await send(.setRunningRecord(record))
                 }
             case .setRunningRecord(let record):

@@ -1,5 +1,5 @@
 //
-//  RunAloneHomeView.swift
+//  RunAloneView.swift
 //  RunUs
 //
 //  Created by Ryeong on 8/5/24.
@@ -9,12 +9,12 @@ import SwiftUI
 import ComposableArchitecture
 import MapKit
 
-struct RunAloneHomeView: View {
+struct RunAloneView: View {
     @EnvironmentObject var alertEnvironment: AlertEnvironment
     @EnvironmentObject var viewEnvironment: ViewEnvironment
-    @State var store: StoreOf<RunAloneHomeFeature> = .init(
-        initialState: RunAloneHomeFeature.State(),
-        reducer: { RunAloneHomeFeature() })
+    @State var store: StoreOf<RunAloneFeature> = .init(
+        initialState: RunAloneFeature.State(),
+        reducer: { RunAloneFeature() })
     
     var body: some View {
         ZStack {
@@ -64,7 +64,7 @@ struct RunAloneHomeView: View {
     }
 }
 
-extension RunAloneHomeView {
+extension RunAloneView {
     private var runninModeView: some View {
         HStack(spacing: 7) {
             modeItem(.normal)
@@ -110,10 +110,9 @@ extension RunAloneHomeView {
                     }, label: {
                         TodayChallengeListItemView(challenge: list[index])
                     })
-                    .padding(.leading, index == 0 ? 47 : 0)
-                    .padding(.trailing, index == list.count-1 ? 47 : 0)
                 }
             }
+            .padding(.horizontal, 47)
         }
     }
     private var startButton: some View {
@@ -139,7 +138,7 @@ extension RunAloneHomeView {
 
 
 #Preview {
-    RunAloneHomeView()
+    RunAloneView()
         .environmentObject(AlertEnvironment())
         .environmentObject(ViewEnvironment())
 }

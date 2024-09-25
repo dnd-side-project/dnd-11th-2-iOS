@@ -1,5 +1,5 @@
 //
-//  RunningResultDependency.swift
+//  RunningResultAPI.swift
 //  RunUs
 //
 //  Created by Ryeong on 9/7/24.
@@ -9,13 +9,13 @@ import Foundation
 import ComposableArchitecture
 
 extension DependencyValues {
-    var runningRecordAPI: RunningResultAPI {
-        get { self[RunningRecordAPIKey.self] }
-        set { self[RunningRecordAPIKey.self]  = newValue }
+    var runningResultAPI: RunningResultAPI {
+        get { self[RunningResultAPIKey.self] }
+        set { self[RunningResultAPIKey.self]  = newValue }
     }
 }
 
-struct RunningRecordAPIKey: DependencyKey {
+struct RunningResultAPIKey: DependencyKey {
     static let liveValue: RunningResultAPI = RunningResultAPILive()
 }
 

@@ -7,6 +7,18 @@
 
 import Foundation
 import AuthenticationServices
+import ComposableArchitecture
+
+extension DependencyValues {
+    var loginAPI: LoginAPI {
+        get { self[LoginAPIKey.self] }
+        set { self[LoginAPIKey.self] = newValue }
+    }
+}
+
+struct LoginAPIKey: DependencyKey {
+    static var liveValue: LoginAPI = LoginAPILive()
+}
 
 protocol LoginAPI {
     func appleLogin(authorization: ASAuthorization) async throws -> LoginResponseModel?

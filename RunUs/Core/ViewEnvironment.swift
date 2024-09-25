@@ -37,6 +37,6 @@ enum ViewTypes {
     case setGoal
     case running
     case runningResult
-    case recordCalendar
+    case runningRecord
     case achieveRecord
 }

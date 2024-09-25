@@ -49,7 +49,7 @@ struct RecordMenu: View {
         Button {
             switch self.recordMenuObject.recordMenu {
             case .runningRecord:
-                let navigationObject = NavigationObject(viewType: .recordCalendar)
+                let navigationObject = NavigationObject(viewType: .runningRecord)
                 viewEnvironment.navigationPath.append(navigationObject)
                 break
             case .runningSummary:

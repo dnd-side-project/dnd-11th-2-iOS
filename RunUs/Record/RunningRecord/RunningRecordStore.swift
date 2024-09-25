@@ -1,5 +1,5 @@
 //
-//  RecordCalendarFeature.swift
+//  RunningRecordStore.swift
 //  RunUs
 //
 //  Created by Ryeong on 9/1/24.
@@ -9,20 +9,20 @@ import Foundation
 import ComposableArchitecture
 
 @Reducer
-struct RecordCalendarFeature {
+struct RunningRecordStore {
     @ObservableState
     struct State {
         var currentMonth: Date = .now
         var currentDay: Int = Calendar.current.component(.day, from: Date())
         var recordDays: Set<Int> = []
         var currentDaily: String = DateFormatter.yyyyMMdd_dot.string(from: Date())
-        var currentRecord: [RunningRecord] = []
+        var currentRecord: [RunningRecordDaily] = []
     }
     
     enum Action {
         case onAppear
         case binding(BindingAction<State>)
-        case updateRecord([RunningRecord])
+        case updateRecord([RunningRecordDaily])
         case tapLeftButton
         case tapRightButton
         case tapDay(Int)
@@ -33,7 +33,7 @@ struct RecordCalendarFeature {
     
     let calendar = Calendar.current
     
-    @Dependency(\.recordCalendarAPI) var api
+    @Dependency(\.runningRecordAPI) var runningRecordAPI
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -67,7 +67,7 @@ struct RecordCalendarFeature {
                     guard let date = dateFormatter(currentMonth: currentMonth, day: day, split: "-")
                     else { return }
                     do {
-                        let model = try await api.getDaily(date: date)
+                        let model = try await runningRecordAPI.getDaily(date: date)
                         await send(.updateRecord(model.records))
                     } catch(let error) {
                         print(error)
@@ -80,7 +80,7 @@ struct RecordCalendarFeature {
                 return .run { send in
                     let (year, month) = dateFormatter(date: date)
                     do {
-                        let model = try await api.getMonthly(year: year, month: month)
+                        let model = try await runningRecordAPI.getMonthly(year: year, month: month)
                         await send(.updateRecordDays(model.days))
                     } catch(let error) {
                         print(error)
@@ -95,7 +95,7 @@ struct RecordCalendarFeature {
     }
 }
 
-extension RecordCalendarFeature {
+extension RunningRecordStore {
     
     private func changeMonth(by value: Int, month: Date) -> Date {
         if let newMonth = calendar.date(byAdding: .month, value: value, to: month) {

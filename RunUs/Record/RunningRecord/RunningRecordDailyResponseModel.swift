@@ -1,5 +1,5 @@
 //
-//  RunningRecord.swift
+//  RunningRecordDailyResponseModel.swift
 //  RunUs
 //
 //  Created by Ryeong on 9/1/24.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct RunningRecordResponse: Codable {
-    let records: [RunningRecord]
+struct RunningRecordDailyResponseModel: Codable {
+    let records: [RunningRecordDaily]
 }
 
-struct RunningRecord: Codable, Identifiable {
+struct RunningRecordDaily: Codable, Identifiable {
     var id: Int {
         return runningRecordId
     }

@@ -8,6 +8,18 @@
 import Foundation
 import Combine
 import CoreLocation
+import ComposableArchitecture
+
+extension DependencyValues {
+    var runningStateManager: RunningStateManager {
+        get { self[RunningStateManagerKey.self] }
+        set { self[RunningStateManagerKey.self] = newValue }
+    }
+}
+
+struct RunningStateManagerKey: DependencyKey {
+    static var liveValue: RunningStateManager = RunningStateManagerImplements()
+}
 
 protocol RunningStateManager {
     var timePublisher: PassthroughSubject<Int, Never> { get }

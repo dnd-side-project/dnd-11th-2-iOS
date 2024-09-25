@@ -113,8 +113,7 @@ extension RunningView {
                             isStateHidden = true
                         }
                     } label: {
-                        CircleButtonView(size: 40,
-                                         .buttonMap)
+                        runningButton(size: 40, .buttonMap)
                     }
                 }
             }
@@ -140,22 +139,31 @@ extension RunningView {
                 Button(action: {
                     store.send(.isRunningChanged(false))
                 }, label: {
-                    CircleButtonView(.buttonPause)
+                    runningButton(.buttonPause)
                 })
             } else {
                 Button(action: {
                     store.send(.runningEnd)
                 }, label: {
-                    CircleButtonView(.buttonStop)
+                    runningButton(.buttonStop)
                 })
                 
                 Button(action: {
                     store.send(.isRunningChanged(true))
                 }, label: {
-                    CircleButtonView(.buttonResume)
+                    runningButton(.buttonResume)
                 })
             }
         }
+    }
+    
+    private func runningButton(size: CGFloat = 60, _ image: ImageResource) -> some View {
+        Circle()
+            .frame(width: size)
+            .foregroundStyle(.mainDeepDark)
+            .overlay {
+                Image(image)
+            }
     }
     
     private func smallText(_ string: String) -> some View {
