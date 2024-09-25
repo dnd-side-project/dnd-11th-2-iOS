@@ -20,27 +20,28 @@ struct RunningResultView: View {
             Color.background.ignoresSafeArea()
             VStack(alignment: .leading, spacing: 0) {
                 RUNavigationBar(buttonType: .home, title: "러닝결과")
-                    .padding(.bottom, 26)
+                Spacer().frame(height: 26)
                 Text("\(store.date)")
                     .font(Fonts.pretendardMedium(size: 14))
-                    .padding(.bottom, 20)
+                Spacer().frame(height: 15)
                 EmotionView
-                    .padding(.bottom, 28)
                 if let challengResult = store.challengeResult {
+                    Spacer().frame(height: 44)
                     Text("오늘의 러닝 챌린지")
                         .font(Fonts.pretendardBold(size: 20))
-                        .padding(.bottom, 18)
+                    Spacer().frame(height: 18)
                     challengeView(challengResult)
                 }
                 if let goalResult = store.goalResult {
+                    Spacer().frame(height: 44)
                     Text("오늘의 러닝 목표")
                         .font(Fonts.pretendardBold(size: 20))
-                        .padding(.bottom, 18)
+                    Spacer().frame(height: 18)
                     goalView(goalResult)
                 }
+                Spacer().frame(height: 46)
                 Text("오늘의 러닝 페이스")
                     .font(Fonts.pretendardBold(size: 20))
-                    .padding(.top, 36)
                 resultView
                 Spacer()
             }
@@ -59,7 +60,7 @@ extension RunningResultView {
             Image(store.state.emotion.icon)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 50, height: 50)
+                .frame(width: 60, height: 60)
             Text("\(store.state.emotion.text)")
                 .font(Fonts.pretendardBold(size: 16))
                 .foregroundStyle(.white)
@@ -127,25 +128,23 @@ extension RunningResultView {
             Text(String(format: "%.2f", store.distance))
                 .font(Fonts.pretendardBlack(size: 84))
             smallText("킬로미터")
-            
+            Spacer().frame(height: 32)
             HStack {
-                VStack {
+                VStack(spacing: 4) {
                     mediumText("\(store.averagePace)")
                     smallText("평균페이스")
                 }
                 Spacer()
-                VStack {
+                VStack(spacing: 4) {
                     mediumText("\(store.runningTime.formatToTime)")
                     smallText("시간")
                 }
                 Spacer()
-                VStack {
+                VStack(spacing: 4) {
                     mediumText("\(store.kcal)")
                     smallText("칼로리")
                 }
             }
-            .padding(.top, 32)
-            .padding(.bottom, 52)
         }
     }
     
