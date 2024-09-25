@@ -26,6 +26,15 @@ struct HomeView: View {
         }
         .padding(.top, 1)   // MARK: ViewThatFits에서 ScrollView를 사용하면 SafeArea를 유지하기 위해 필요
         .background(Color.background)
+        .onAppear {
+            store.send(.onAppear)
+            store.send(.mapGetWeatherPublisher)
+        }
+        .onChange(of: store.showLocationPermissionAlert) { oldValue, newValue in
+            if newValue {
+                alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
+            }
+        }
     }
 }
 
@@ -151,15 +160,6 @@ extension HomeView {
         }
         .foregroundStyle(.white)
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
-        .onAppear {
-            store.send(.onAppear)
-            store.send(.mapGetWeatherPublisher)
-        }
-        .onChange(of: store.showLocationPermissionAlert, { oldValue, newValue in
-            if newValue {
-                alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
-            }
-        })
     }
     
     private func subButtonAction() {
