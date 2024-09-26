@@ -36,7 +36,7 @@ struct RunAloneView: View {
                     case .normal:
                         EmptyView()
                     case .challenge:
-                        todayChallengeListView(store.todayChallengeList)
+                        RUChallengeList(challenges: store.todayChallengeList, listHorizontalPadding: 47)
                             .transition(.scale)
                     case .goal:
                         goalView
@@ -99,20 +99,6 @@ extension RunAloneView {
         HStack(spacing: 14) {
             TypeButton(GoalTypeObject(GoalTypes.time))
             TypeButton(GoalTypeObject(GoalTypes.distance))
-        }
-    }
-    private func todayChallengeListView(_ list: [TodayChallenge]) -> some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                ForEach(list.indices, id: \.self) { index in
-                    Button(action: {
-                        viewEnvironment.selectedChallengeIndex = index
-                    }, label: {
-                        TodayChallengeListItemView(challenge: list[index])
-                    })
-                }
-            }
-            .padding(.horizontal, 47)
         }
     }
     private var startButton: some View {

@@ -109,22 +109,14 @@ extension HomeView {
                 viewEnvironment.selectedTabItem = .running
                 viewEnvironment.selectedRunningMode = .goal
             }, text: "오늘의 러닝 챌린지 및 목표설정")
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 14) {
-                    ForEach(store.challenges.indices, id:\.self) { index in
-                        Button {
-                            viewEnvironment.selectedTabItem = .running
-                            viewEnvironment.selectedRunningMode = .challenge
-                            viewEnvironment.selectedChallengeIndex = index
-                        } label: {
-                            TodayChallengeListItemView(challenge: store.challenges[index], hasShadowPadding: false, backgroundColor: .mainDeepDark)
-                        }
-                    }
-                }
-                .padding(.horizontal, Paddings.outsideHorizontalPadding)
-            }
-            .padding(.horizontal, -Paddings.outsideHorizontalPadding)
-            .padding(.bottom, 36)
+            RUChallengeList(
+                challenges: store.challenges,
+                listHorizontalPadding: Paddings.outsideHorizontalPadding,
+                scrollHorizontalPadding: -Paddings.outsideHorizontalPadding,
+                itemHasShadow: false,
+                itemBackgroundColor: .mainDeepDark
+            )
+            Spacer().frame(height: 36)
             Text("이번 달 러닝 기록")
                 .font(Fonts.pretendardBold(size: 16))
                 .frame(height: 60)

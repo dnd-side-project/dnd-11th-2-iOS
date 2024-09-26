@@ -1,20 +1,48 @@
 //
-//  TodayChallengeListItemView.swift
+//  RUChallengeList.swift
 //  RunUs
 //
-//  Created by Ryeong on 8/7/24.
+//  Created by seungyooooong on 9/25/24.
 //
 
+import Foundation
 import SwiftUI
 
-struct TodayChallengeListItemView: View {
+struct RUChallengeList: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
+    var challenges: [TodayChallenge]
+    var listHorizontalPadding: CGFloat = 0
+    var scrollHorizontalPadding: CGFloat = 0
+    var itemHasShadow: Bool = true
+    var itemBackgroundColor: Color = .mainDark
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(challenges.indices, id: \.self) { index in
+                    Button(action: {
+                        viewEnvironment.selectedTabItem = .running
+                        viewEnvironment.selectedRunningMode = .challenge
+                        viewEnvironment.selectedChallengeIndex = index
+                    }, label: {
+                        RUChallengeItem(challenge: challenges[index], hasShadow: itemHasShadow, backgroundColor: itemBackgroundColor)
+                    })
+                }
+            }
+            .padding(.horizontal, listHorizontalPadding)
+        }
+        .padding(.horizontal, scrollHorizontalPadding)
+    }
+}
+
+struct RUChallengeItem: View {
     let challenge: TodayChallenge
-    var hasShadowPadding: Bool = true
+    var hasShadow: Bool = true
     var backgroundColor: Color = .mainDark
     
     var body: some View {
         VStack {
-            if hasShadowPadding { shadowPadding }
+            if hasShadow { shadowPadding }
             HStack(spacing: 16) {
                 AsyncImage(url: URL(string: challenge.icon)) { image in
                     image
@@ -39,17 +67,13 @@ struct TodayChallengeListItemView: View {
             .if(challenge.isSelected, transform: { view in
                 view.shadow(color: .black.opacity(0.7), radius: 10, x: 1, y: 1)
             })
-            if hasShadowPadding { shadowPadding }
+            if hasShadow { shadowPadding }
         }
     }
 }
 
-extension TodayChallengeListItemView {
+extension RUChallengeItem {
     private var shadowPadding: some View {
         Spacer().frame(height: 20)
     }
-}
-
-#Preview {
-    TodayChallengeListItemView(challenge: .init(id: 0, title: "어제보다 더뛰기", expectedTime: "10분", icon: "SampleImage"))
 }
