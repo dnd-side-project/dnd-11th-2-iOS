@@ -59,28 +59,22 @@ extension RunningRecordView {
             } else {
                 ForEach(store.currentRecord) { record in
                     Button {
-                        // TODO: runningRecordId로 API 추가되면 반영하기
-//                        let navigationObject = NavigationObject(
-//                            viewType: .runningResult,
-//                            data: RunningResult(
-//                                startAt: "",
-//                                endAt: "",
-//                                startLocation: record.startLocation,
-//                                endLocation: record.endLocation,
-//                                emotion: record.emoji.rawValue,
-//                                challengeId: nil,
-//                                goalDistance: 0,
-//                                goalTime: 0,
-//                                achievementMode: "",
-//                                runningData: RunningData(
-//                                    averagePace: record.averagePace,
-//                                    runningTime: record.duration,
-//                                    distanceMeter: record.distanceMeter,
-//                                    calorie: record.calorie
-//                                )
-//                            )
-//                        )
-//                        viewEnvironment.navigationPath.append(navigationObject)
+                        let navigationObject = NavigationObject(
+                            viewType: .runningResult,
+                            data: RunningRecord(
+                                runningRecordId: record.runningRecordId,
+                                startLocation: record.startLocation,
+                                endLocation: record.endLocation,
+                                emotion: record.emoji.entity,
+                                runningData: RunningData(
+                                    averagePace: record.averagePace,
+                                    runningTime: record.duration,
+                                    distanceMeter: record.distanceMeter,
+                                    calorie: record.calorie
+                                )
+                            )
+                        )
+                        viewEnvironment.navigationPath.append(navigationObject)
                     } label: {
                         recordView(record: record)
                     }
@@ -99,7 +93,7 @@ extension RunningRecordView {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(record.startLocation)
                         .font(Fonts.pretendardRegular(size: 15))
-                    Text("\(record.distanceMeter)km")
+                    Text("\(String(format: "%.2f", Double(record.distanceMeter) * 0.01))km")
                         .font(Fonts.pretendardSemiBold(size: 22))
                 }
                 Spacer()

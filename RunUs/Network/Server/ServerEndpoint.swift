@@ -19,6 +19,7 @@ enum ServerEndpoint: NetworkEndpoint {
     case getProfiles
     case getBadges
     case postRunningRecord(result: RunningResult)
+    case getRunningRecord(runningRecordId: Int)
     case getMonthly(year: Int, month: Int)
     case getDaily(String)
     case getChallenges
@@ -56,6 +57,8 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/badges/me"
         case .postRunningRecord:
             return APIversion.v1 + "/running-records"
+        case .getRunningRecord(let runningRecordId):
+            return APIversion.v1 + "/running-records/\(runningRecordId)"
         case .getMonthly:
             return APIversion.v1 + "/running-records/monthly-dates"
         case .getDaily:
@@ -73,7 +76,7 @@ enum ServerEndpoint: NetworkEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .testRequest, .testResponse, .testError, .testHeader, .getServerVersion, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
+        case .testRequest, .testResponse, .testError, .testHeader, .getServerVersion, .getProfiles, .getBadges, .getRunningRecord, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
             return .get
         case .signUp, .signIn, .withdraw, .postRunningRecord:
             return .post
@@ -102,7 +105,7 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .signUp, .signIn:
             return ["Content-Type": "application/json"]
-        case .testHeader, .getProfiles, .getBadges, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
+        case .testHeader, .getProfiles, .getBadges, .getRunningRecord, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
             guard let accessToken: String = UserDefaultManager.accessToken else {
                 return nil
             }

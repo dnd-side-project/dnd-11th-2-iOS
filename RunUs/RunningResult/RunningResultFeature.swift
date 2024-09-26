@@ -10,11 +10,11 @@ import ComposableArchitecture
 
 @Reducer
 struct RunningResultFeature {
-    
     @ObservableState
     struct State {
-        var runningResult: RunningResult
-        var date: String
+        var runningRecordId: Int? = nil
+        var runningResult: RunningResult? = nil
+        var date: String = ""
         var emotion: Emotions
         var hasChallenge: Bool = false
         var challengeResult: ChallengeResult?
@@ -35,6 +35,15 @@ struct RunningResultFeature {
             self.distance = Double(runningResult.runningData.distanceMeter) * 0.001
             self.kcal = runningResult.runningData.calorie
         }
+        
+        init(runningRecord: RunningRecord) {
+            self.runningRecordId = runningRecord.runningRecordId
+            self.emotion = runningRecord.emotion.getEmotion()
+            self.averagePace = runningRecord.runningData.averagePace
+            self.runningTime = runningRecord.runningData.runningTime
+            self.distance = Double(runningRecord.runningData.distanceMeter) * 0.001
+            self.kcal = runningRecord.runningData.calorie
+        }
     }
     
     enum Action {
@@ -48,10 +57,18 @@ struct RunningResultFeature {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                let runningResult = state.runningResult
-                return .run { send in
-                    let record: RunningRecordResponseModel = try await runningResultAPI.postRunningRecord(result: runningResult)
-                    await send(.setRunningRecord(record))
+                if state.runningRecordId == nil {
+                    let runningResult = state.runningResult!
+                    return .run { send in
+                        let record: RunningRecordResponseModel = try await runningResultAPI.postRunningRecord(result: runningResult)
+                        await send(.setRunningRecord(record))
+                    }
+                } else {
+                    let runningRecordId = state.runningRecordId!
+                    return .run { send in
+                        let record: RunningRecordResponseModel = try await runningResultAPI.getRunningRecord(runningRecordId: runningRecordId)
+                        await send(.setRunningRecord(record))
+                    }
                 }
             case .setRunningRecord(let record):
                 let startAt = record.startAt.formatDateHyphen().formatStringDot()

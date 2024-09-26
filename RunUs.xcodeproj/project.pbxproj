@@ -84,6 +84,7 @@
 		F66467112CA408BA00508369 /* RunningRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467102CA408BA00508369 /* RunningRecordAPI.swift */; };
 		F66467132CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */; };
 		F66467152CA411E200508369 /* RUChallengeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467142CA411E200508369 /* RUChallengeList.swift */; };
+		F66467172CA52E0600508369 /* RunningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467162CA52E0600508369 /* RunningRecord.swift */; };
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */; };
@@ -189,6 +190,7 @@
 		F66467102CA408BA00508369 /* RunningRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordAPI.swift; sourceTree = "<group>"; };
 		F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordMonthlyResponseModel.swift; sourceTree = "<group>"; };
 		F66467142CA411E200508369 /* RUChallengeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUChallengeList.swift; sourceTree = "<group>"; };
+		F66467162CA52E0600508369 /* RunningRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecord.swift; sourceTree = "<group>"; };
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordResponseModel.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				D9D4387B2C7F488E00F3E079 /* RunningRecordView.swift */,
 				D9842DD72C84646A002B145C /* RunningRecordStore.swift */,
 				F66467102CA408BA00508369 /* RunningRecordAPI.swift */,
+				F66467162CA52E0600508369 /* RunningRecord.swift */,
 				D9842DD92C8465A1002B145C /* RunningRecordDailyResponseModel.swift */,
 				F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */,
 			);
@@ -658,6 +661,7 @@
 				D93AC4B12C8C53A900C1570F /* RunningMode.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
+				F66467172CA52E0600508369 /* RunningRecord.swift in Sources */,
 				F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */,
 				D9D4387C2C7F488E00F3E079 /* RunningRecordView.swift in Sources */,
 				F69BFDA42C8968030073775C /* CoursesResponseModel.swift in Sources */,

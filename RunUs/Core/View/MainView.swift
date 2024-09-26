@@ -45,9 +45,14 @@ struct MainView: View {
                     RunningView(runningStartInfo)
                         .navigationBarHidden(true)
                 case .runningResult:
-                    let runningResult = navigationObject.data as! RunningResult
-                    RunningResultView(runningResult: runningResult)
-                        .navigationBarHidden(true)
+                    if let runningResult = navigationObject.data as? RunningResult {
+                        RunningResultView(runningResult: runningResult)
+                            .navigationBarHidden(true)
+                    }
+                    if let runningRecord = navigationObject.data as? RunningRecord {
+                        RunningResultView(runningRecord: runningRecord)
+                            .navigationBarHidden(true)
+                    }
                 case .runningRecord:
                     RunningRecordView()
                         .navigationBarHidden(true)

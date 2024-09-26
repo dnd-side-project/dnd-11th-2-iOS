@@ -10,16 +10,22 @@ import ComposableArchitecture
 
 struct RunningResultView: View {
     @State var store: StoreOf<RunningResultFeature>
+    let navigationButtonType: NavigationButtonType
     
     init(runningResult: RunningResult) {
         self.store = Store(initialState: RunningResultFeature.State(runningResult: runningResult), reducer: { RunningResultFeature() })
+        self.navigationButtonType = .home
+    }
+    init(runningRecord: RunningRecord) {
+        self.store = Store(initialState: RunningResultFeature.State(runningRecord: runningRecord), reducer: { RunningResultFeature() })
+        self.navigationButtonType = .back
     }
     
     var body: some View {
         ZStack {
             Color.background.ignoresSafeArea()
             VStack(alignment: .leading, spacing: 0) {
-                RUNavigationBar(buttonType: .home, title: "러닝결과")
+                RUNavigationBar(buttonType: navigationButtonType, title: "러닝결과")
                 Spacer().frame(height: 26)
                 Text("\(store.date)")
                     .font(Fonts.pretendardMedium(size: 14))

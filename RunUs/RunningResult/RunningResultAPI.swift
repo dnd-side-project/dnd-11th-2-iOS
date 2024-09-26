@@ -22,10 +22,14 @@ struct RunningResultAPIKey: DependencyKey {
 
 protocol RunningResultAPI {
     func postRunningRecord(result: RunningResult) async throws -> RunningRecordResponseModel
+    func getRunningRecord(runningRecordId: Int) async throws -> RunningRecordResponseModel
 }
 
 final class RunningResultAPILive: RunningResultAPI {
     func postRunningRecord(result: RunningResult) async throws -> RunningRecordResponseModel {
         try await ServerNetwork.shared.request(.postRunningRecord(result: result))
+    }
+    func getRunningRecord(runningRecordId: Int) async throws -> RunningRecordResponseModel {
+        try await ServerNetwork.shared.request(.getRunningRecord(runningRecordId: runningRecordId))
     }
 }
