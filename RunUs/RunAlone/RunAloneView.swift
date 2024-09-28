@@ -39,7 +39,7 @@ struct RunAloneView: View {
                         RUChallengeList(challenges: store.todayChallengeList, listHorizontalPadding: 47)
                             .transition(.scale)
                     case .goal:
-                        goalView
+                        RUTypeButtons()
                             .transition(.scale)
                     }
                 }
@@ -94,12 +94,6 @@ extension RunAloneView {
             }
         }
         .animation(.easeInOut, value: viewEnvironment.selectedRunningMode)
-    }
-    private var goalView: some View {
-        HStack(spacing: 14) {
-            TypeButton(GoalTypeObject(GoalTypes.time))
-            TypeButton(GoalTypeObject(GoalTypes.distance))
-        }
     }
     private var startButton: some View {
         Button {

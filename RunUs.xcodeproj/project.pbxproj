@@ -85,6 +85,7 @@
 		F66467132CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */; };
 		F66467152CA411E200508369 /* RUChallengeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467142CA411E200508369 /* RUChallengeList.swift */; };
 		F66467172CA52E0600508369 /* RunningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467162CA52E0600508369 /* RunningRecord.swift */; };
+		F66467192CA7E4A900508369 /* RUTypeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467182CA7E4A900508369 /* RUTypeButtons.swift */; };
 		F66C5C872C5B3C0700EE695A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F66C5C862C5B3C0700EE695A /* ComposableArchitecture */; };
 		F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66C5C892C5B3CD500EE695A /* LoginStore.swift */; };
 		F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */; };
@@ -105,8 +106,6 @@
 		F6F085652C58C4BE00994E34 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */; };
 		F6F085732C59FAF700994E34 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F085722C59FAF700994E34 /* Fonts.swift */; };
 		F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */; };
-		F6F41B742C69BCE1002EA1F5 /* TypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */; };
-		F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */; };
 		F6F41B782C69C85A002EA1F5 /* GoalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +190,7 @@
 		F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordMonthlyResponseModel.swift; sourceTree = "<group>"; };
 		F66467142CA411E200508369 /* RUChallengeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUChallengeList.swift; sourceTree = "<group>"; };
 		F66467162CA52E0600508369 /* RunningRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecord.swift; sourceTree = "<group>"; };
+		F66467182CA7E4A900508369 /* RUTypeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUTypeButtons.swift; sourceTree = "<group>"; };
 		F66C5C842C5B30F400EE695A /* RunUs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunUs.entitlements; sourceTree = "<group>"; };
 		F66C5C892C5B3CD500EE695A /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordResponseModel.swift; sourceTree = "<group>"; };
@@ -211,8 +211,6 @@
 		F6F085642C58C4BE00994E34 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
 		F6F085722C59FAF700994E34 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
-		F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeButton.swift; sourceTree = "<group>"; };
-		F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTypes.swift; sourceTree = "<group>"; };
 		F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -480,6 +478,7 @@
 				D97950A32C62831B00BDCD44 /* RUNavigationBar.swift */,
 				D9D4387D2C7F506B00F3E079 /* RUCalendar.swift */,
 				F66467142CA411E200508369 /* RUChallengeList.swift */,
+				F66467182CA7E4A900508369 /* RUTypeButtons.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -496,11 +495,9 @@
 		F6F41B6C2C690091002EA1F5 /* SetGoal */ = {
 			isa = PBXGroup;
 			children = (
-				F6F41B732C69BCE1002EA1F5 /* TypeButton.swift */,
 				F6F41B6D2C6900B6002EA1F5 /* SetGoalView.swift */,
 				F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */,
 				F6F41B772C69C85A002EA1F5 /* GoalTextField.swift */,
-				F6F41B752C69BD05002EA1F5 /* GoalTypes.swift */,
 			);
 			path = SetGoal;
 			sourceTree = "<group>";
@@ -593,7 +590,6 @@
 			files = (
 				F69BFDA22C8967540073775C /* AchieveRecordAPI.swift in Sources */,
 				F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */,
-				F6F41B762C69BD05002EA1F5 /* GoalTypes.swift in Sources */,
 				F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */,
 				F65033C52C731EC500C81DA6 /* RecordMenus.swift in Sources */,
 				F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */,
@@ -657,7 +653,6 @@
 				D90BE6672C6B6F7100999858 /* RunningView.swift in Sources */,
 				D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */,
 				F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */,
-				F6F41B742C69BCE1002EA1F5 /* TypeButton.swift in Sources */,
 				D93AC4B12C8C53A900C1570F /* RunningMode.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
@@ -672,6 +667,7 @@
 				F69BFDAA2C8B64070073775C /* VersionResponseModel.swift in Sources */,
 				D95F830D2C6F5C9A000DCAA3 /* RunningFeature.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,
+				F66467192CA7E4A900508369 /* RUTypeButtons.swift in Sources */,
 				D9417AD72C8C000C008F8075 /* RunningResultAPI.swift in Sources */,
 				D9417AD42C8BFDD7008F8075 /* RunningData.swift in Sources */,
 				F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */,

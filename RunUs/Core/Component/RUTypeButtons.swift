@@ -1,11 +1,21 @@
 //
-//  TypeButton.swift
+//  RUTypeButtons.swift
 //  RunUs
 //
-//  Created by seungyooooong on 8/12/24.
+//  Created by seungyooooong on 9/28/24.
 //
 
+import Foundation
 import SwiftUI
+
+struct RUTypeButtons: View {
+    var body: some View {
+        HStack(spacing: 14) {
+            TypeButton(GoalTypeObject(GoalTypes.time))
+            TypeButton(GoalTypeObject(GoalTypes.distance))
+        }
+    }
+}
 
 struct TypeButton: View {
     @EnvironmentObject var viewEnvironment: ViewEnvironment
@@ -37,6 +47,25 @@ struct TypeButton: View {
     }
 }
 
-#Preview {
-    TypeButton(GoalTypeObject(GoalTypes.distance))
+enum GoalTypes: String {
+    case time
+    case distance
+}
+
+struct GoalTypeObject: Equatable, Navigatable {
+    let type: GoalTypes
+    let text: String
+    let icon: ImageResource
+    
+    init(_ goalType: GoalTypes) {
+        self.type = goalType
+        switch goalType {
+        case .time:
+            self.text = "시간"
+            self.icon = .timeIcon
+        case .distance:
+            self.text = "거리"
+            self.icon = .distanceIcon
+        }
+    }
 }
