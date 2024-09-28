@@ -13,9 +13,9 @@ struct SetGoalView: View {
     @EnvironmentObject var viewEnvironment: ViewEnvironment
     @State var store: StoreOf<SetGoalStore>
     
-    init(_ goalTypeObject: GoalTypeObject) {
+    init(_ goalType: GoalTypes) {
         self.store = Store(
-            initialState: SetGoalStore.State(goalTypeObject: goalTypeObject),
+            initialState: SetGoalStore.State(goalType: goalType),
             reducer: { SetGoalStore() }
         )
     }
@@ -28,10 +28,10 @@ struct SetGoalView: View {
                 Text("목표 설정하기 🏃")
                     .font(Fonts.pretendardBold(size: 24))
                 Spacer().frame(height: 25)
-                Text("오늘 달리며 달성할 \(goalTypeString(store.goalTypeObject)) 직접 설정해보세요.")
+                Text("오늘 달리며 달성할 \(goalTypeString(store.goalType)) 직접 설정해보세요.")
                     .font(Fonts.pretendardRegular(size: 16))
                 Spacer().frame(height: 87)
-                Text(store.goalTypeObject.text)
+                Text(store.goalType.text)
                     .font(Fonts.pretendardSemiBold(size: 16))
                 Spacer().frame(height: 12)
                 HStack(spacing: 8) {
@@ -74,18 +74,18 @@ struct SetGoalView: View {
 }
 
 #Preview {
-    SetGoalView(GoalTypeObject(GoalTypes.distance))
+    SetGoalView(.distance)
         .environmentObject(AlertEnvironment())
         .environmentObject(ViewEnvironment())
 }
 
 extension SetGoalView {
-    private func goalTypeString(_ typeObject: GoalTypeObject) -> String {
-        return typeObject.type == .time ? typeObject.text + "을" : typeObject.text + "를"
+    private func goalTypeString(_ goalType: GoalTypes) -> String {
+        return goalType == .time ? goalType.text + "을" : goalType.text + "를"
     }
     private var goalText: some View {
         if store.bigGoal.count > 0 || store.smallGoal.count > 0 {
-            switch store.goalTypeObject.type {
+            switch store.goalType {
             case .time:
                 Text("\(store.bigGoal.count > 0 ? store.bigGoal + "시간 " : "")\(store.smallGoal.count > 0 ? store.smallGoal + "분" : "")")
                     .font(Fonts.pretendardSemiBold(size: 20))

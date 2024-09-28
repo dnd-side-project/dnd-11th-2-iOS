@@ -12,28 +12,28 @@ struct RUTabBar: View {
     
     var body: some View {
         HStack {
-            RUDefualtTabItem(TabItemObject(TabItems.home))
-            RUDefualtTabItem(TabItemObject(TabItems.running))
-            RUDefualtTabItem(TabItemObject(TabItems.myRecord))
+            RUDefualtTabItem(.home)
+            RUDefualtTabItem(.running)
+            RUDefualtTabItem(.myRecord)
         }
         .frame(maxWidth: .infinity)
         .frame(height: 83)
         .background(.white)
     }
     
-    private func RUDefualtTabItem(_ tabItemObject: TabItemObject) -> some View {
+    private func RUDefualtTabItem(_ tabItem: TabItems) -> some View {
         Button {
-            if viewEnvironment.selectedTabItem != tabItemObject.tabItem {
-                viewEnvironment.selectedTabItem = tabItemObject.tabItem
+            if viewEnvironment.selectedTabItem != tabItem {
+                viewEnvironment.selectedTabItem = tabItem
             }
         } label: {
             VStack(spacing: 4) {
-                Image(tabItemObject.icon)
+                Image(tabItem.icon)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 24)
                     .foregroundStyle(.mainGreen)
-                Text(tabItemObject.name)
+                Text(tabItem.name)
             }
         }
         .font(Fonts.pretendardMedium(size: 10))
@@ -46,29 +46,26 @@ enum TabItems: String {
     case home
     case running
     case myRecord
-}
-
-struct TabItemObject {
-    let tabItem: TabItems
-    let icon: ImageResource
-    let name: String
     
-    init(_ tabItem: TabItems) {
-        self.tabItem = tabItem
-        switch tabItem {
+    var icon: ImageResource {
+        switch self {
         case .home:
-            self.icon = .home
-            self.name = "HOME"
+            return .home
         case .running:
-            self.icon = .running
-            self.name = "러닝"
+            return .running
         case .myRecord:
-            self.icon = .chart
-            self.name = "나의기록"
+            return .chart
         }
     }
-}
-
-#Preview {
-    RUTabBar()
+    
+    var name: String {
+        switch self {
+        case .home:
+            return "HOME"
+        case .running:
+            return "러닝"
+        case .myRecord:
+            return "나의기록"
+        }
+    }
 }

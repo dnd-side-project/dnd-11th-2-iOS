@@ -11,15 +11,11 @@ import ComposableArchitecture
 struct SetGoalStore: Reducer {
     @ObservableState
     struct State {
-        var goalTypeObject: GoalTypeObject
+        var goalType: GoalTypes
         var viewEnvironment: ViewEnvironment = ViewEnvironment()
         var showLocationPermissionAlert: Bool = false
         var bigGoal: String = ""
         var smallGoal: String = ""
-
-        init(goalTypeObject: GoalTypeObject) {
-            self.goalTypeObject = goalTypeObject
-        }
     }
     
     enum Action: BindableAction {
@@ -52,11 +48,11 @@ struct SetGoalStore: Reducer {
                 let status = locationManager.authorizationStatus
                 switch status {
                 case .agree:
-                    let goal = calcGoal(type: state.goalTypeObject.type, bigGoal: Int(state.bigGoal), smallGoal: Int(state.smallGoal))
+                    let goal = calcGoal(type: state.goalType, bigGoal: Int(state.bigGoal), smallGoal: Int(state.smallGoal))
                     let runningStartInfo = RunningStartInfo(
                         challengeId: nil,
-                        goalDistance: state.goalTypeObject.type == .distance ? goal : nil,
-                        goalTime: state.goalTypeObject.type == .time ? goal : nil,
+                        goalDistance: state.goalType == .distance ? goal : nil,
+                        goalTime: state.goalType == .time ? goal : nil,
                         achievementMode: .goal
                     )
                     let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)

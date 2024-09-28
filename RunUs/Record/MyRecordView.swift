@@ -92,11 +92,11 @@ extension MyRecordView {
     
     private var recordMenus: some View {
         HStack {
-            RecordMenu(RecordMenuObject(RecordMenus.runningRecord))
+            RecordMenu(.runningRecord)
             recordDivider
-            RecordMenu(RecordMenuObject(RecordMenus.runningSummary))
+            RecordMenu(.runningSummary)
             recordDivider
-            RecordMenu(RecordMenuObject(RecordMenus.achieveRecord), store.profile)
+            RecordMenu(.achieveRecord, store.profile)
         }
         .frame(height: 102)
         .background(.mainDeepDark)

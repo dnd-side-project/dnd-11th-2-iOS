@@ -37,8 +37,8 @@ struct MainView: View {
             .navigationDestination(for: NavigationObject.self) { navigationObject in
                 switch navigationObject.viewType {
                 case .setGoal:
-                    let goalTypeObject = navigationObject.data as! GoalTypeObject
-                    SetGoalView(goalTypeObject)
+                    let goalType = navigationObject.data as! GoalTypes
+                    SetGoalView(goalType)
                         .navigationBarHidden(true)
                 case .running:
                     let runningStartInfo = navigationObject.data as! RunningStartInfo

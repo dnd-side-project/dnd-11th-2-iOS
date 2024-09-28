@@ -12,42 +12,43 @@ enum RecordMenus {
     case runningRecord
     case runningSummary
     case achieveRecord
-}
-
-struct RecordMenuObject {
-    let recordMenu: RecordMenus
-    let text: String
-    let icon: ImageResource
     
-    init(_ recordMenu: RecordMenus) {
-        self.recordMenu = recordMenu
-        switch recordMenu {
+    var text: String {
+        switch self {
         case .runningRecord:
-            self.text = "운동기록"
-            self.icon = .runningRecord
+            return "운동기록"
         case .runningSummary:
-            self.text = "활동요약"
-            self.icon = .runningSummary
+            return "활동요약"
         case .achieveRecord:
-            self.text = "달성기록"
-            self.icon = .achieveRecord
+            return "달성기록"
+        }
+    }
+    
+    var icon: ImageResource {
+        switch self {
+        case .runningRecord:
+            return .runningRecord
+        case .runningSummary:
+            return .runningSummary
+        case .achieveRecord:
+            return .achieveRecord
         }
     }
 }
 
 struct RecordMenu: View {
     @EnvironmentObject var viewEnvironment: ViewEnvironment
-    let recordMenuObject: RecordMenuObject
+    let recordMenu: RecordMenus
     let profile: ProfileResponseModel
     
-    init(_ recordMenuObject: RecordMenuObject, _ profile: ProfileResponseModel = ProfileResponseModel()) {
-        self.recordMenuObject = recordMenuObject
+    init(_ recordMenu: RecordMenus, _ profile: ProfileResponseModel = ProfileResponseModel()) {
+        self.recordMenu = recordMenu
         self.profile = profile
     }
     
     var body: some View {
         Button {
-            switch self.recordMenuObject.recordMenu {
+            switch self.recordMenu {
             case .runningRecord:
                 let navigationObject = NavigationObject(viewType: .runningRecord)
                 viewEnvironment.navigationPath.append(navigationObject)
@@ -61,11 +62,11 @@ struct RecordMenu: View {
             }
         } label: {
             VStack {
-                Image(recordMenuObject.icon)
+                Image(recordMenu.icon)
                     .resizable()
                     .frame(width: 24, height: 24)
                     .padding(.bottom, 19)
-                Text(recordMenuObject.text)
+                Text(recordMenu.text)
                     .font(Fonts.pretendardMedium(size: 14))
                     .foregroundColor(.gray200)
             }

@@ -9,33 +9,26 @@ import Foundation
 import SwiftUI
 
 struct RUTypeButtons: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
+    
     var body: some View {
         HStack(spacing: 14) {
-            TypeButton(GoalTypeObject(GoalTypes.time))
-            TypeButton(GoalTypeObject(GoalTypes.distance))
+            RUTypeButton(goalType: .time)
+            RUTypeButton(goalType: .distance)
         }
     }
-}
-
-struct TypeButton: View {
-    @EnvironmentObject var viewEnvironment: ViewEnvironment
-    let goalTypeObject: GoalTypeObject
     
-    init(_ goalTypeObject: GoalTypeObject) {
-        self.goalTypeObject = goalTypeObject
-    }
-    
-    var body: some View {
+    private func RUTypeButton(goalType: GoalTypes) -> some View {
         Button {
-            let navigationObject = NavigationObject(viewType: .setGoal, data: goalTypeObject)
+            let navigationObject = NavigationObject(viewType: .setGoal, data: goalType)
             viewEnvironment.navigationPath.append(navigationObject)
         } label: {
             VStack(spacing: 8) {
-                Image(goalTypeObject.icon)
+                Image(goalType.icon)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
-                Text(goalTypeObject.text)
+                Text(goalType.text)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -47,25 +40,25 @@ struct TypeButton: View {
     }
 }
 
-enum GoalTypes: String {
+enum GoalTypes: String, Navigatable {
     case time
     case distance
-}
-
-struct GoalTypeObject: Equatable, Navigatable {
-    let type: GoalTypes
-    let text: String
-    let icon: ImageResource
     
-    init(_ goalType: GoalTypes) {
-        self.type = goalType
-        switch goalType {
+    var text: String {
+        switch self {
         case .time:
-            self.text = "시간"
-            self.icon = .timeIcon
+            return "시간"
         case .distance:
-            self.text = "거리"
-            self.icon = .distanceIcon
+            return "거리"
+        }
+    }
+    
+    var icon: ImageResource {
+        switch self {
+        case .time:
+            return .timeIcon
+        case .distance:
+            return .distanceIcon
         }
     }
 }
