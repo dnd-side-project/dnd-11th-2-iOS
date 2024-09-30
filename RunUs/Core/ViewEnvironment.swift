@@ -37,6 +37,16 @@ enum ViewTypes {
     case setGoal
     case running
     case runningResult
+    case recordResult
     case runningRecord
     case achieveRecord
+    
+    var navigationType: NavigationButtonType {
+        switch self {
+        case .running, .runningResult:
+            return .home
+        default:
+            return .back
+        }
+    }
 }

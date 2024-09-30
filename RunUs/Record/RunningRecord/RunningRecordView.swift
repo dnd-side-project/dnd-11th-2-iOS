@@ -60,7 +60,7 @@ extension RunningRecordView {
                 ForEach(store.currentRecord) { record in
                     Button {
                         let navigationObject = NavigationObject(
-                            viewType: .runningResult,
+                            viewType: .recordResult,
                             data: RunningRecord(
                                 runningRecordId: record.runningRecordId,
                                 startLocation: record.startLocation,

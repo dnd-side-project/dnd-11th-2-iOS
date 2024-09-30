@@ -35,35 +35,30 @@ struct MainView: View {
                 }
             }
             .navigationDestination(for: NavigationObject.self) { navigationObject in
-                switch navigationObject.viewType {
-                case .setGoal:
-                    let goalType = navigationObject.data as! GoalTypes
-                    SetGoalView(goalType)
-                        .navigationBarHidden(true)
-                        .dismissGesture(viewEnvironment: viewEnvironment)
-                case .running:
-                    let runningStartInfo = navigationObject.data as! RunningStartInfo
-                    RunningView(runningStartInfo)
-                        .navigationBarHidden(true)
-                case .runningResult:
-                    if let runningResult = navigationObject.data as? RunningResult {
+                Group {
+                    switch navigationObject.viewType {
+                    case .setGoal:
+                        let goalType = navigationObject.data as! GoalTypes
+                        SetGoalView(goalType)
+                    case .running:
+                        let runningStartInfo = navigationObject.data as! RunningStartInfo
+                        RunningView(runningStartInfo)
+                    case .runningResult:
+                        let runningResult = navigationObject.data as! RunningResult
                         RunningResultView(runningResult: runningResult)
-                            .navigationBarHidden(true)
-                    }
-                    if let runningRecord = navigationObject.data as? RunningRecord {
+                    case .recordResult:
+                        let runningRecord = navigationObject.data as! RunningRecord
                         RunningResultView(runningRecord: runningRecord)
-                            .navigationBarHidden(true)
-                            .dismissGesture(viewEnvironment: viewEnvironment)
+                    case .runningRecord:
+                        RunningRecordView()
+                    case .achieveRecord:
+                        let profile = navigationObject.data as! ProfileResponseModel
+                        AchieveRecordView(profile: profile)
                     }
-                case .runningRecord:
-                    RunningRecordView()
-                        .navigationBarHidden(true)
-                        .dismissGesture(viewEnvironment: viewEnvironment)
-                case .achieveRecord:
-                    let profile = navigationObject.data as! ProfileResponseModel
-                    AchieveRecordView(profile: profile)
-                        .navigationBarHidden(true)
-                        .dismissGesture(viewEnvironment: viewEnvironment)
+                }
+                .navigationBarHidden(true)
+                .if(navigationObject.viewType.navigationType == .back) { view in
+                    view.dismissGesture(viewEnvironment: viewEnvironment)
                 }
             }
         }
