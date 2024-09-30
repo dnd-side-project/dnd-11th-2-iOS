@@ -20,6 +20,8 @@ struct MyRecordStore: Reducer {
         case onAppear
         case mapAuthorizationPublisher
         
+        case getProfile
+        case getBadges
         case setProfile(profile: ProfileResponseModel)
         case setBadges(badges: [Badge])
         
@@ -35,16 +37,24 @@ struct MyRecordStore: Reducer {
         switch action {
         case .onAppear:
             return .run { send in
-                let profile = try await myRecordAPI.getProfiles()
-                await send(.setProfile(profile: profile))
-                let badges = try await myRecordAPI.getBadges()
-                await send(.setBadges(badges: badges))
+                await send(.getProfile)
+                await send(.getBadges)
             }
         case .mapAuthorizationPublisher:
             return Effect.publisher({
                 authorizationManager.authorizationPublisher
                     .map { Action.withdraw(withdrawRequest: $0) }
             })
+        case .getProfile:
+            return .run { send in
+                let profile = try await myRecordAPI.getProfiles()
+                await send(.setProfile(profile: profile))
+            }
+        case .getBadges:
+            return .run { send in
+                let badges = try await myRecordAPI.getBadges()
+                await send(.setBadges(badges: badges))
+            }
         case let .setProfile(profile):
             state.profile = profile
             return .none
