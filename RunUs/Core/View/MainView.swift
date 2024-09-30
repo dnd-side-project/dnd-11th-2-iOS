@@ -31,7 +31,7 @@ struct MainView: View {
             .ignoresSafeArea(.container, edges: .bottom)    // MARK: 홈버튼UI와 홈바UI에서 탭바를 동일하게 표현하기 위한 장치
             .onChange(of: isLogin) { oldValue, newValue in  // MARK: logout & withdraw 완료 후 viewEnvironment 초기화
                 if !newValue {
-                    viewEnvironment.selectedTabItem = .home
+                    viewEnvironment.reset()
                 }
             }
             .navigationDestination(for: NavigationObject.self) { navigationObject in
