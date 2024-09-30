@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct RunningRecordView: View {
     @EnvironmentObject var viewEnvironment: ViewEnvironment
-    let store: StoreOf<RunningRecordStore> = .init(
+    @State var store: StoreOf<RunningRecordStore> = .init(
         initialState: RunningRecordStore.State(),
         reducer: { RunningRecordStore() })
     

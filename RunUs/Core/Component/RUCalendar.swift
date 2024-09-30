@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct RUCalendar: View {
-    let store: StoreOf<RunningRecordStore>
+    @State var store: StoreOf<RunningRecordStore>
     
     var body: some View {
         VStack(spacing: 26) {
