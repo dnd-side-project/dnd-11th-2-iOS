@@ -8,10 +8,6 @@
 import Foundation
 
 enum ServerEndpoint: NetworkEndpoint {
-    case testRequest(string: String)
-    case testResponse
-    case testError
-    case testHeader
     case getServerVersion(version: String)
     case signUp(signUpRequest: SignUpRequestModel)
     case signIn(signInRequest: SignInRequestModel)
@@ -35,14 +31,6 @@ enum ServerEndpoint: NetworkEndpoint {
     
     var path: String {
         switch self {
-        case .testRequest:
-            return APIversion.v1 + "/examples/input"
-        case .testResponse:
-            return APIversion.v1 + "/examples/empty"
-        case .testError:
-            return APIversion.v1 + "/examples/errors"
-        case .testHeader:
-            return APIversion.v1 + "/examples/headers"
         case .getServerVersion:
             return APIversion.v1 + "/servers/versions"
         case .signUp:
@@ -76,7 +64,7 @@ enum ServerEndpoint: NetworkEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .testRequest, .testResponse, .testError, .testHeader, .getServerVersion, .getProfiles, .getBadges, .getRunningRecord, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
+        case .getServerVersion, .getProfiles, .getBadges, .getRunningRecord, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
             return .get
         case .signUp, .signIn, .withdraw, .postRunningRecord:
             return .post
@@ -85,8 +73,6 @@ enum ServerEndpoint: NetworkEndpoint {
     
     var parameters: [URLQueryItem]? {
         switch self {
-        case .testRequest(let string):
-            return [.init(name: "input", value: string)]
         case .getMonthly(let year, let month):
             return [.init(name: "year", value: String(year)),
                     .init(name: "month", value: String(month))]
@@ -105,7 +91,7 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .signUp, .signIn:
             return ["Content-Type": "application/json"]
-        case .testHeader, .getProfiles, .getBadges, .getRunningRecord, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
+        case .getProfiles, .getBadges, .getRunningRecord, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
             guard let accessToken: String = UserDefaultManager.accessToken else {
                 return nil
             }
