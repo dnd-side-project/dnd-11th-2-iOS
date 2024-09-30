@@ -84,7 +84,7 @@ extension RunningResultView {
             }
             .frame(width: 48, height: 48)
             .padding(.leading, 14)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("\(challengeResult.title)")
                     .font(Fonts.pretendardSemiBold(size: 16))
                 Text("\(challengeResult.subTitle)")
@@ -115,7 +115,7 @@ extension RunningResultView {
             }
             .frame(width: 56, height: 56)
             .padding(.leading, 14)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("\(goalResult.title)")
                     .font(Fonts.pretendardSemiBold(size: 16))
                 Text("\(goalResult.subTitle)")

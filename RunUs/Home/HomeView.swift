@@ -64,8 +64,8 @@ extension HomeView {
                 } placeholder: {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .aspectRatio(1, contentMode: .fit)
                 }
+                .frame(width: 136, height: 102)
             }
             .frame(height: 102)
             Spacer().frame(height: 39)

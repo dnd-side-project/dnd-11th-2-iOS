@@ -40,6 +40,7 @@ struct MainView: View {
                     let goalType = navigationObject.data as! GoalTypes
                     SetGoalView(goalType)
                         .navigationBarHidden(true)
+                        .dismissGesture(viewEnvironment: viewEnvironment)
                 case .running:
                     let runningStartInfo = navigationObject.data as! RunningStartInfo
                     RunningView(runningStartInfo)
@@ -52,14 +53,17 @@ struct MainView: View {
                     if let runningRecord = navigationObject.data as? RunningRecord {
                         RunningResultView(runningRecord: runningRecord)
                             .navigationBarHidden(true)
+                            .dismissGesture(viewEnvironment: viewEnvironment)
                     }
                 case .runningRecord:
                     RunningRecordView()
                         .navigationBarHidden(true)
+                        .dismissGesture(viewEnvironment: viewEnvironment)
                 case .achieveRecord:
                     let profile = navigationObject.data as! ProfileResponseModel
                     AchieveRecordView(profile: profile)
                         .navigationBarHidden(true)
+                        .dismissGesture(viewEnvironment: viewEnvironment)
                 }
             }
         }
