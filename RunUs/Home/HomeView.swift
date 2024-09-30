@@ -83,17 +83,8 @@ extension HomeView {
                     Text(store.weather.weatherName)
                         .font(Fonts.pretendardSemiBold(size: 16))
                     HStack(spacing: 4) {
-                        HStack(spacing: 0) {
-                            Text("체감온도 ")
-                            Text("\(store.weather.apparentTemperature)")
-                            Text("℃")
-                        }
-                        HStack(spacing: 0) {
-                            Text("\(store.weather.maxTemperature)")
-                            Text("℃/")
-                            Text("\(store.weather.minTemperature)")
-                            Text("℃")
-                        }
+                        Text("체감온도 \(store.weather.apparentTemperature)℃")
+                        Text("\(store.weather.maxTemperature)℃/\(store.weather.minTemperature)℃")
                         .foregroundStyle(.gray300)
                         .font(Fonts.pretendardRegular(size: 10))
                     }
@@ -121,10 +112,7 @@ extension HomeView {
                 .font(Fonts.pretendardBold(size: 16))
                 .frame(height: 60)
             VStack(alignment: .leading, spacing: 0) {
-                HStack(spacing: 0) {
-                    Text(store.monthlySummary.month)
-                    Text("에는")
-                }
+                Text("\(store.monthlySummary.month)에는")
                 Spacer().frame(height: 4)
                 HStack(spacing: 0) {
                     Text(store.monthlySummary.monthlyKm)
@@ -134,13 +122,8 @@ extension HomeView {
                     Spacer()
                 }
                 Spacer().frame(height: 10)
-                HStack(spacing: 0) {
-                    Text(store.monthlySummary.nextLevelName)
-                    Text("까지 ")
-                    Text(store.monthlySummary.nextLevelKm)
-                    Text(" 남았어요!")
-                }
-                .font(Fonts.pretendardRegular(size: 12))
+                Text("\(store.monthlySummary.nextLevelName)까지 \(store.monthlySummary.nextLevelKm) 남았어요!")
+                    .font(Fonts.pretendardRegular(size: 12))
             }
             .font(Fonts.pretendardMedium(size: 16))
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
