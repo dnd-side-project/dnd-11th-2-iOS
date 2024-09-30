@@ -34,7 +34,7 @@ struct MyBadges: View {
                 }
             }
         }
-        .padding(.bottom, 24)
+        Spacer().frame(height: 24)
     }
 }
 

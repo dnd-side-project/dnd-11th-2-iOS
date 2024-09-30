@@ -36,7 +36,7 @@ struct RunningRecordView: View {
 
 extension RunningRecordView {
     private var runningRecordView: some View {
-        VStack {
+        VStack(spacing: 0) {
             RUCalendar(store: store)
             Spacer().frame(height: 53)
             dailyRecordView
@@ -51,11 +51,11 @@ extension RunningRecordView {
                 .font(Fonts.pretendardSemiBold(size: 16))
                 .foregroundStyle(.white)
             if store.currentRecord.isEmpty {
+                Spacer().frame(height: 40)
                 Text("운동 기록이 없습니다.")
                     .font(Fonts.pretendardMedium(size: 14))
                     .foregroundStyle(.gray200)
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 40)
             } else {
                 ForEach(store.currentRecord) { record in
                     Button {

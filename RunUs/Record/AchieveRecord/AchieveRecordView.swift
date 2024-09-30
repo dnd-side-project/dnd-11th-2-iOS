@@ -21,6 +21,7 @@ struct AchieveRecordView: View {
                 .padding(.horizontal, Paddings.outsideHorizontalPadding)
                 .background(.mainDeepDark)
             VStack(spacing: 0) {
+                Spacer().frame(height: 30)
                 HStack(spacing: 13) {
                     AsyncImage(url: URL(string: profile.profileImageUrl)) { image in
                         image
@@ -41,13 +42,12 @@ struct AchieveRecordView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 50)
-                .padding(.top, 30)
-                .padding(.bottom, 28)
+                Spacer().frame(height: 28)
                 RoundedRectangle(cornerRadius: 5)
                     .fill(.gray300)
                     .frame(maxWidth: .infinity)
                     .frame(height: 1)
-                    .padding(.bottom, 29)
+                Spacer().frame(height: 29)
                 HStack {
                     VStack(alignment: .leading, spacing: 3) {
                         Text(store.state.courses.currentCourse.name)
@@ -65,7 +65,7 @@ struct AchieveRecordView: View {
                         .cornerRadius(6)
                 }
                 .padding(.horizontal, 11)
-                .padding(.bottom, 30)
+                Spacer().frame(height: 30)
             }
             .foregroundColor(.white)
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
@@ -193,7 +193,7 @@ struct AchieveRecordCardView: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 69)
-        .padding(.bottom, 18)
+        Spacer().frame(height: 18)
     }
 }
 

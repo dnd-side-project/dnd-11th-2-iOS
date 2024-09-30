@@ -31,7 +31,7 @@ struct RUButton: View {
             RoundedRectangle(cornerRadius: 24)
                 .fill(disableCondition ? .mainDeepDark : .mainGreen)
         }
-        .padding(.bottom, 24)
+        Spacer().frame(height: 24)
     }
 }
 

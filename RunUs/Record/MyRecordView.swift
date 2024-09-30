@@ -36,6 +36,7 @@ struct MyRecordView: View {
 extension MyRecordView {
     private var myRecordView: some View {
         VStack(spacing: 0) {
+            Spacer().frame(height: 48)
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("\(userName)님")
@@ -63,21 +64,20 @@ extension MyRecordView {
                 }
             }
             .frame(maxHeight: 86)
-            .padding(.top, 48)
-            .padding(.bottom, 30)
+            Spacer().frame(height: 30)
             recordMenus
-                .padding(.bottom, 30)
+            Spacer().frame(height: 30)
             MyRecordButton(action: {
                 // TODO: 나의 뱃지 화면으로 이동
             }, text: "나의 뱃지")
-            .padding(.bottom, 12)
+            Spacer().frame(height: 12)
             MyBadges(badges: store.badges)
             Rectangle()
                 .fill(.mainDeepDark)
                 .frame(maxWidth: .infinity)
                 .frame(height: 8)
                 .padding(.horizontal, -Paddings.outsideHorizontalPadding)
-                .padding(.bottom, 12)
+            Spacer().frame(height: 12)
             MyRecordButton(action: {
                 alertEnvironment.showAlert(title: "로그아웃 하시겠습니까?", mainButtonText: "로그아웃", mainButtonAction: logout)
             }, text: "로그아웃")

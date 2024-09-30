@@ -21,28 +21,28 @@ struct RUCalendar: View {
 
 extension RUCalendar {
     private var headerView: some View {
-            HStack {
-                Button {
-                    store.send(.tapLeftButton)
-                } label: {
-                    Image(.chevronLeft)
-                        .resizable()
-                        .frame(width: 11, height: 11)
-                        .padding(10)
-                }
+        HStack {
+            Button {
+                store.send(.tapLeftButton)
+            } label: {
+                Image(.chevronLeft)
+                    .resizable()
+                    .frame(width: 11, height: 11)
+                    .padding(10)
+            }
 
-                Text(store.currentMonth, formatter: DateFormatter.yyyyMM_kr)
-                    .font(Fonts.pretendardSemiBold(size: 16))
-                
-                Button {
-                    store.send(.tapRightButton)
-                } label: {
-                    Image(.chevronRight)
-                        .resizable()
-                        .frame(width: 11, height: 11)
-                        .padding(10)
-                }
-            }.foregroundStyle(.white)
+            Text(store.currentMonth, formatter: DateFormatter.yyyyMM_kr)
+                .font(Fonts.pretendardSemiBold(size: 16))
+            
+            Button {
+                store.send(.tapRightButton)
+            } label: {
+                Image(.chevronRight)
+                    .resizable()
+                    .frame(width: 11, height: 11)
+                    .padding(10)
+            }
+        }.foregroundStyle(.white)
     }
     
     private var calendarGridView: some View {
@@ -67,10 +67,10 @@ extension RUCalendar {
                     } else {
                         let day = index - firstWeekday + 1
                         DayComponent(day: day, hasRecord: store.recordDays.contains(day))
-                        .padding(.top, 13)
-                        .onTapGesture {
-                            store.send(.tapDay(day))
-                        }
+                            .padding(.top, 13)
+                            .onTapGesture {
+                                store.send(.tapDay(day))
+                            }
                     }
                 }
             }

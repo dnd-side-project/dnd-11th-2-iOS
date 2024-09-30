@@ -41,11 +41,11 @@ struct HomeView: View {
 extension HomeView {
     private var homeView: some View {
         VStack(alignment: .leading, spacing: 0) {
+            Spacer().frame(height: 20)
             Image(.runus)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 20)
-                .padding(.top, 20)
             HStack(alignment: .bottom, spacing: 0) {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 0) {
@@ -68,7 +68,7 @@ extension HomeView {
                 }
             }
             .frame(height: 102)
-            .padding(.bottom, 39)
+            Spacer().frame(height: 39)
             HStack(alignment: .bottom, spacing: 20) {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 0) {
@@ -104,7 +104,7 @@ extension HomeView {
                     .foregroundStyle(.gray100)
                     .font(Fonts.pretendardRegular(size: 12))
             }
-            .padding(.bottom, 28)
+            Spacer().frame(height: 28)
             MyRecordButton(action: {
                 viewEnvironment.selectedTabItem = .running
                 viewEnvironment.selectedRunningMode = .goal
@@ -125,7 +125,7 @@ extension HomeView {
                     Text(store.monthlySummary.month)
                     Text("에는")
                 }
-                .padding(.bottom, 4)
+                Spacer().frame(height: 4)
                 HStack(spacing: 0) {
                     Text(store.monthlySummary.monthlyKm)
                         .foregroundStyle(.mainGreen)
@@ -133,7 +133,7 @@ extension HomeView {
                     Text(" 달렸어요")
                     Spacer()
                 }
-                .padding(.bottom, 10)
+                Spacer().frame(height: 10)
                 HStack(spacing: 0) {
                     Text(store.monthlySummary.nextLevelName)
                     Text("까지 ")

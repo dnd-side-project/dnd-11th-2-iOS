@@ -61,11 +61,11 @@ struct RecordMenu: View {
                 viewEnvironment.navigationPath.append(navigationObject)
             }
         } label: {
-            VStack {
+            VStack(spacing: 0) {
                 Image(recordMenu.icon)
                     .resizable()
                     .frame(width: 24, height: 24)
-                    .padding(.bottom, 19)
+                Spacer().frame(height: 19)
                 Text(recordMenu.text)
                     .font(Fonts.pretendardMedium(size: 14))
                     .foregroundColor(.gray200)
