@@ -26,8 +26,8 @@ struct RunningFeature {
         var time: Int = 0
         var location: CLLocation?
         var distance: Double = 0.00
-        var kcal: Int = 0
-        var pace: String = "0’00”"
+        var kcal: Float = 0
+        var pace: String = "-’--”"
         var isRunningEnd: Bool = false
         fileprivate var beforeLocation: CLLocation?
         var startAt: String
@@ -59,12 +59,8 @@ struct RunningFeature {
                   achievementMode: achievementMode.rawValue,
                   runningData: .init(averagePace: self.pace,
                                      runningTime: self.time.toTimeString(),
-                                     distanceMeter: distanceKMtoM(km: self.distance),
-                                     calorie: self.kcal))
-        }
-        
-        private func distanceKMtoM(km: Double) -> Int {
-            return Int(km*1000)
+                                     distanceMeter: Int(self.distance * 1000),  // MARK: km -> m
+                                     calorie: Int(self.kcal)))  // MARK: Float -> Int
         }
     }
     
@@ -75,9 +71,10 @@ struct RunningFeature {
         case timeUpdated(Int)
         case locationUpdated(CLLocation?)
         case distanceUpdated(Double)
-        case kcalUpdated(Int)
+        case kcalUpdated(Float)
         case paceUpdated
         case runningEnd
+        case resetRunningState
         case setStartLocation(String)
         case setEndLocation(String)
     }
@@ -100,10 +97,6 @@ struct RunningFeature {
                         runningStateManager.timePublisher
                             .map(Action.timeUpdated)
                     },
-                    Effect.publisher({
-                        runningStateManager.kcalPublisher
-                            .map(Action.kcalUpdated)
-                    }),
                     Effect.run { send in
                         let address = await LocationManager.shared.getAddress()
                         await send(.setStartLocation(address))
@@ -121,21 +114,22 @@ struct RunningFeature {
                 state.time = time
                 // 5초에 한 번씩 pace check
                 if time%5 == 0 {
-                    return .send(.paceUpdated)
+                    return .merge(
+                        .send(.paceUpdated),
+                        .send(.kcalUpdated(calculateKcal(pace: state.pace)))
+                    )
                 }
-                return .none
+                return .send(.kcalUpdated(calculateKcal(pace: state.pace)))
             case .locationUpdated(let location):
                 let before = state.location
                 state.location = location
                 if state.time == 0 { state.beforeLocation = location }
-                return .send(.distanceUpdated(calculateDistance(before: before,
-                                                                after: location)))
+                return .send(.distanceUpdated(calculateDistance(before: before, after: location)))
             case .distanceUpdated(let distance):
-                let distance = formatDistance(distance: state.distance, newDistance: distance)
-                state.distance = distance
+                state.distance = state.distance + distance
                 return .none
             case .kcalUpdated(let kcal):
-                state.kcal = kcal
+                state.kcal = state.kcal + kcal
                 return .none
             case .paceUpdated:
                 let distance = calculateDistance(before: state.beforeLocation, after: state.location)
@@ -149,6 +143,12 @@ struct RunningFeature {
                     let address = await LocationManager.shared.getAddress()
                     await send(.setEndLocation(address))
                 }
+            case .resetRunningState:
+                state.time = 0
+                state.distance = 0.00
+                state.kcal = 0
+                state.pace = "-’--”"
+                return .none
             case .setStartLocation(let address):
                 state.startLocation = address
                 return .none
@@ -163,18 +163,30 @@ struct RunningFeature {
 extension RunningFeature {
     private func calculateDistance(before: CLLocation?, after: CLLocation?) -> Double {
         guard let before = before, let after = after else { return 0 }
-        return after.distance(from: before)
-    }
-    
-    private func formatDistance(distance: Double, newDistance: Double) -> Double {
-        return distance + newDistance/1000
+        return after.distance(from: before) / 1000  // MARK: m -> km
     }
     
     private func calculatePace(distance: Double) -> String {
-        if distance == 0 { return "0’00”" }
-        let time = Int(5000 / distance)
-        let paceMin: Int = time / 60
-        let paceSec: Int = time % 60
+        if distance < 0.0014 { return "-’--”" }    // MARK: 시속 약 1km 미만에서 페이스를 계산하지 않음
+        let pace = Int(5 / distance)
+        let paceMin: Int = pace / 60
+        let paceSec: Int = pace % 60
         return "\(paceMin)’\(String(format: "%02d", paceSec))”"
+    }
+    
+    private func calculateKcal(pace: String) -> Float {
+        if pace == "-’--”" { return 0 }
+        else {
+            let runningPace = Int(pace.trimmingCharacters(in: ["”"]).split(separator: "’").joined())!
+            if runningPace > 2000 { // MARK: walk (27kcal per 5min)
+                return 27 / 300
+            } else if runningPace > 1000 {  // MARK: running slowly (47kcal per 5min)
+                return 47 / 300
+            } else if runningPace > 640 {   // MARK: running normal (76kcal per 5min)
+                return 76 / 300
+            } else {    // MARK: running fast (113kcal per 5min)
+                return 113 / 300
+            }
+        }
     }
 }

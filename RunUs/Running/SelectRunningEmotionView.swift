@@ -29,6 +29,7 @@ struct SelectRunningEmotionView: View {
                                     data: store.state.getRunningResult(emotion: emotion)
                                 )
                                 viewEnvironment.navigationPath.append(navigationObject)
+                                store.send(.resetRunningState)
                             } label: {
                                 VStack(spacing: 14) {
                                     Image(emotion.icon)
