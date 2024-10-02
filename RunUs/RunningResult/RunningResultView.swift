@@ -131,27 +131,35 @@ extension RunningResultView {
 
     private var resultView: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(String(format: "%.2f", store.distance))
-                .font(Fonts.pretendardBlack(size: 84))
-            smallText("킬로미터")
+            Group {
+                Text(String(format: "%.2f", store.distance))
+                    .font(Fonts.pretendardBlack(size: 84))
+                smallText("킬로미터")
+            }
+            .padding(.horizontal, Paddings.outsideHorizontalPadding)
             Spacer().frame(height: 32)
             HStack {
+                Spacer()
                 VStack(spacing: 4) {
                     mediumText("\(store.averagePace)")
                     smallText("평균페이스")
                 }
+                Spacer()
                 Spacer()
                 VStack(spacing: 4) {
                     mediumText("\(store.runningTime.formatToTime)")
                     smallText("시간")
                 }
                 Spacer()
+                Spacer()
                 VStack(spacing: 4) {
                     mediumText("\(store.kcal)")
                     smallText("칼로리")
                 }
+                Spacer()
             }
         }
+        .padding(.horizontal, -Paddings.outsideHorizontalPadding)
     }
     
     private func smallText(_ string: String) -> some View {

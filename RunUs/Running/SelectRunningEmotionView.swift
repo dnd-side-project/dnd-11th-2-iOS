@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct SelectRunningEmotionView: View {
     @EnvironmentObject var viewEnvironment: ViewEnvironment
-    let store: StoreOf<RunningFeature>
+    @State var store: StoreOf<RunningFeature>
     
     var body: some View {
         ZStack {
