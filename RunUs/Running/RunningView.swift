@@ -98,7 +98,7 @@ extension RunningView {
                 }
                 Spacer()
                 VStack(spacing: 6) {
-                    mediumText("\(store.kcal)")
+                    mediumText("\(Int(store.kcal))")
                     smallText("칼로리")
                 }
             }

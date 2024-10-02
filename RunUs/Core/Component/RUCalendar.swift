@@ -27,8 +27,9 @@ extension RUCalendar {
             } label: {
                 Image(.chevronLeft)
                     .resizable()
-                    .frame(width: 11, height: 11)
-                    .padding(10)
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
+                    .frame(width: 20, height: 20)
             }
 
             Text(store.currentMonth, formatter: DateFormatter.yyyyMM_kr)
@@ -39,10 +40,12 @@ extension RUCalendar {
             } label: {
                 Image(.chevronRight)
                     .resizable()
-                    .frame(width: 11, height: 11)
-                    .padding(10)
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
+                    .frame(width: 20, height: 20)
             }
-        }.foregroundStyle(.white)
+        }
+        .foregroundStyle(.white)
     }
     
     private var calendarGridView: some View {

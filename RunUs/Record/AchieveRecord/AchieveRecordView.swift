@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct AchieveRecordView: View {
     let profile: ProfileResponseModel
-    let store: StoreOf<AchieveRecordStore> = Store(
+    @State var store: StoreOf<AchieveRecordStore> = Store(
         initialState: AchieveRecordStore.State(),
         reducer: { AchieveRecordStore() }
     )

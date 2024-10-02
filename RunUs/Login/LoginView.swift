@@ -10,7 +10,7 @@ import ComposableArchitecture
 import AuthenticationServices
 
 struct LoginView: View {
-    let store: StoreOf<LoginStore> = Store(
+    @State var store: StoreOf<LoginStore> = Store(
         initialState: LoginStore.State(),
         reducer: { LoginStore() }
     )

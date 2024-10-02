@@ -59,6 +59,10 @@ extension RUNavigationBar {
             dismiss()
         } label: {
             Image(.chevronLeft)
+                .resizable()
+                .renderingMode(.template)
+                .foregroundColor(.white)
+                .frame(width: 36, height: 36)
         }
     }
     

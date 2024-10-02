@@ -20,8 +20,6 @@ struct MyRecordButton: View {
                 Spacer()
                 Image(.chevronRight)
                     .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(.gray300)
                     .frame(width: 24, height: 24)
             }
             .font(Fonts.pretendardBold(size: 16))
