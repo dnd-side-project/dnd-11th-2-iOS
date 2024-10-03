@@ -54,6 +54,7 @@ struct RunAloneView: View {
                 .animation(.easeInOut, value: viewEnvironment.selectedRunningMode)
             }
         }
+        .navigationBarHidden(true)  // MARK: iOS 18 이후 NavigationStack + Map UI에서 나타나는 NavigationBar 영역을 지우기 위해 필요
         .onAppear {
             store.send(.onAppear(viewEnvironment))
         }

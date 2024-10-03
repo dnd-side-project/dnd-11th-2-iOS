@@ -16,19 +16,17 @@ struct MainView: View {
         NavigationStack(path: $viewEnvironment.navigationPath) {
             VStack(spacing: 0) {
                 if isLogin {
-                    ZStack {    // TODO: 추후 LazyHStack을 사용하거나.. 더 좋은 방법으로 수정
-                        HomeView()
-                            .opacity(viewEnvironment.selectedTabItem == .home ? 1 : 0)
-                        RunAloneView()
-                            .opacity(viewEnvironment.selectedTabItem == .running ? 1 : 0)
-                        MyRecordView()
-                            .opacity(viewEnvironment.selectedTabItem == .myRecord ? 1 : 0)
+                    TabView(selection: $viewEnvironment.selectedTabItem) {
+                        HomeView().tag(TabItems.home)
+                        RunAloneView().tag(TabItems.running)
+                        MyRecordView().tag(TabItems.myRecord)
                     }
-                    .navigationBarHidden(true)  // MARK: iOS 18 이후 NavigationStack + Map UI에서 나타나는 NavigationBar 영역을 지우기 위해 필요
+                    .tabViewStyle(.page(indexDisplayMode: .never))
                     RUTabBar()
                 } else { LoginView() }
             }
             .ignoresSafeArea(.container, edges: .bottom)    // MARK: 홈버튼UI와 홈바UI에서 탭바를 동일하게 표현하기 위한 장치
+            .background(Color.background)
             .onChange(of: isLogin) { oldValue, newValue in  // MARK: logout & withdraw 완료 후 viewEnvironment 초기화
                 if !newValue {
                     viewEnvironment.reset()
@@ -58,7 +56,7 @@ struct MainView: View {
                         AchieveRecordView(profile: profile)
                     }
                 }
-                .navigationBarHidden(true)
+                .navigationBarHidden(true)  // MARK: iOS 18 이후 NavigationStack + Map UI에서 나타나는 NavigationBar 영역을 지우기 위해 필요
                 .if(navigationObject.viewType.navigationType == .back) { view in
                     view.dismissGesture(viewEnvironment: viewEnvironment)
                 }
