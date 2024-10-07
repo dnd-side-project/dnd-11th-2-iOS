@@ -96,7 +96,7 @@ extension HomeView {
                     .font(Fonts.pretendardRegular(size: 12))
             }
             Spacer().frame(height: 28)
-            MyRecordButton(action: {
+            RUTitleButton(action: {
                 viewEnvironment.selectedTabItem = .running
                 viewEnvironment.selectedRunningMode = .goal
             }, text: "오늘의 러닝 챌린지 및 목표설정")
@@ -108,9 +108,7 @@ extension HomeView {
                 itemBackgroundColor: .mainDeepDark
             )
             Spacer().frame(height: 36)
-            Text("이번 달 러닝 기록")
-                .font(Fonts.pretendardBold(size: 16))
-                .frame(height: 60)
+            RUTitle(text: "이번 달 러닝 기록")
             VStack(alignment: .leading, spacing: 0) {
                 Text("\(store.monthlySummary.month)에는")
                 Spacer().frame(height: 4)

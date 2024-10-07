@@ -10,7 +10,6 @@ import ComposableArchitecture
 
 struct MyRecordView: View {
     @EnvironmentObject var alertEnvironment: AlertEnvironment
-    @EnvironmentObject var viewEnvironment: ViewEnvironment
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
     @State var store: StoreOf<MyRecordStore> = Store(
         initialState: MyRecordStore.State(),
@@ -67,9 +66,7 @@ extension MyRecordView {
             Spacer().frame(height: 30)
             recordMenus
             Spacer().frame(height: 30)
-            MyRecordButton(action: {
-                // TODO: 나의 뱃지 화면으로 이동
-            }, text: "나의 뱃지")
+            RUTitle(text: "나의 뱃지")  // TODO: 추후 RUTitle -> RUTitleButton 수정 필요 (나의 뱃지 화면으로 이동)
             Spacer().frame(height: 12)
             MyBadges(badges: store.badges)
             Rectangle()
@@ -78,10 +75,10 @@ extension MyRecordView {
                 .frame(height: 8)
                 .padding(.horizontal, -Paddings.outsideHorizontalPadding)
             Spacer().frame(height: 12)
-            MyRecordButton(action: {
+            RUTitleButton(action: {
                 alertEnvironment.showAlert(title: "로그아웃 하시겠습니까?", mainButtonText: "로그아웃", mainButtonAction: logout)
             }, text: "로그아웃")
-            MyRecordButton(action: {
+            RUTitleButton(action: {
                 alertEnvironment.showAlert(title: "정말 탈퇴 하시겠습니까?", subTitle: "탈퇴할 경우 모든 데이터가 삭제되고\n복구가 불가능합니다.", mainButtonText: "탈퇴하기", mainButtonColor: .red, mainButtonAction: withdraw)
             }, text: "회원 탈퇴")
             Spacer()
