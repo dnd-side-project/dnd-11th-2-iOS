@@ -78,15 +78,11 @@ struct RunningResultFeature {
                 state.challengeResult = record.challenge
                 state.goalResult = record.goal
                 state.averagePace = record.runningData.averagePace
-                state.distance = distanceMtoKM(m: record.runningData.distanceMeter)
+                state.distance = Double(record.runningData.distanceMeter) * 0.001
                 state.runningTime = record.runningData.runningTime
                 state.kcal = record.runningData.calorie
                 return .none
             }
         }
-    }
-    
-    func distanceMtoKM(m: Int) -> Double {
-        Double(m) * 0.001
     }
 }
