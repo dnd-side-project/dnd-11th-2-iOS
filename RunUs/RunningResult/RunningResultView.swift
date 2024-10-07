@@ -32,22 +32,17 @@ struct RunningResultView: View {
                 Spacer().frame(height: 15)
                 EmotionView
                 if let challengResult = store.challengeResult {
-                    Spacer().frame(height: 44)
-                    Text("오늘의 러닝 챌린지")
-                        .font(Fonts.pretendardBold(size: 20))
-                    Spacer().frame(height: 18)
+                    Spacer().frame(height: 26)
+                    RUTitle(text: "오늘의 러닝 챌린지", textSize: 20)
                     challengeView(challengResult)
                 }
                 if let goalResult = store.goalResult {
-                    Spacer().frame(height: 44)
-                    Text("오늘의 러닝 목표")
-                        .font(Fonts.pretendardBold(size: 20))
-                    Spacer().frame(height: 18)
+                    Spacer().frame(height: 26)
+                    RUTitle(text: "오늘의 러닝 목표", textSize: 20)
                     goalView(goalResult)
                 }
-                Spacer().frame(height: 46)
-                Text("오늘의 러닝 페이스")
-                    .font(Fonts.pretendardBold(size: 20))
+                Spacer().frame(height: 28)
+                RUTitle(text: "오늘의 러닝 페이스", textSize: 20)
                 resultView
                 Spacer()
             }
@@ -134,6 +129,7 @@ extension RunningResultView {
             Group {
                 Text(String(format: "%.2f", store.distance))
                     .font(Fonts.pretendardBlack(size: 84))
+                    .padding(.top, -10) // MARK: 텍스트 윗 공간 여백을 줄여 UI를 맞추기 위한 임시 처리
                 smallText("킬로미터")
             }
             .padding(.horizontal, Paddings.outsideHorizontalPadding)

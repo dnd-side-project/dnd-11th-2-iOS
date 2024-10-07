@@ -70,7 +70,6 @@
 		F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE302C566AE10024E920 /* Pretendard-Light.otf */; };
 		F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */; };
 		F65033C52C731EC500C81DA6 /* RecordMenus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033C42C731EC500C81DA6 /* RecordMenus.swift */; };
-		F65033C72C73232D00C81DA6 /* MyRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033C62C73232D00C81DA6 /* MyRecordButton.swift */; };
 		F65033CB2C7457F900C81DA6 /* MyBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033CA2C7457F900C81DA6 /* MyBadges.swift */; };
 		F65033CD2C74585500C81DA6 /* BadgesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */; };
 		F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D02C747DB000C81DA6 /* MyRecordStore.swift */; };
@@ -99,6 +98,7 @@
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
 		F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */; };
 		F6B9A33E2C63287400743FBE /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33D2C63287400743FBE /* LoginResponseModel.swift */; };
+		F6DAD3C02CB38DB400B459E6 /* RUTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DAD3BF2CB38DB400B459E6 /* RUTitle.swift */; };
 		F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88732C4E7FF5008EF2FD /* SplashView.swift */; };
 		F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88752C4E802E008EF2FD /* MainView.swift */; };
 		F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88772C4E839A008EF2FD /* LoginView.swift */; };
@@ -175,7 +175,6 @@
 		F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		F64FBE3B2C566B110024E920 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F65033C42C731EC500C81DA6 /* RecordMenus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMenus.swift; sourceTree = "<group>"; };
-		F65033C62C73232D00C81DA6 /* MyRecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordButton.swift; sourceTree = "<group>"; };
 		F65033CA2C7457F900C81DA6 /* MyBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadges.swift; sourceTree = "<group>"; };
 		F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesResponseModel.swift; sourceTree = "<group>"; };
 		F65033D02C747DB000C81DA6 /* MyRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordStore.swift; sourceTree = "<group>"; };
@@ -204,6 +203,7 @@
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		F6B9A33D2C63287400743FBE /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
+		F6DAD3BF2CB38DB400B459E6 /* RUTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUTitle.swift; sourceTree = "<group>"; };
 		F6EF88732C4E7FF5008EF2FD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F6EF88752C4E802E008EF2FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F6EF88772C4E839A008EF2FD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -420,7 +420,6 @@
 				F65033D02C747DB000C81DA6 /* MyRecordStore.swift */,
 				F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */,
 				F611B2192C7CB04100797470 /* AuthorizationManager.swift */,
-				F65033C62C73232D00C81DA6 /* MyRecordButton.swift */,
 				F65033CA2C7457F900C81DA6 /* MyBadges.swift */,
 				F65033C42C731EC500C81DA6 /* RecordMenus.swift */,
 				F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */,
@@ -479,6 +478,7 @@
 				D9D4387D2C7F506B00F3E079 /* RUCalendar.swift */,
 				F66467142CA411E200508369 /* RUChallengeList.swift */,
 				F66467182CA7E4A900508369 /* RUTypeButtons.swift */,
+				F6DAD3BF2CB38DB400B459E6 /* RUTitle.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -639,7 +639,6 @@
 				F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,
 				F611B2202C7E1FBE00797470 /* WeatherResponseModel.swift in Sources */,
-				F65033C72C73232D00C81DA6 /* MyRecordButton.swift in Sources */,
 				F65033D52C747ECA00C81DA6 /* MyRecordAPI.swift in Sources */,
 				F66467112CA408BA00508369 /* RunningRecordAPI.swift in Sources */,
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
@@ -653,6 +652,7 @@
 				D90BE6672C6B6F7100999858 /* RunningView.swift in Sources */,
 				D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */,
 				F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */,
+				F6DAD3C02CB38DB400B459E6 /* RUTitle.swift in Sources */,
 				D93AC4B12C8C53A900C1570F /* RunningMode.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
