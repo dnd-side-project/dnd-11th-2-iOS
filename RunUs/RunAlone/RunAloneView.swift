@@ -17,38 +17,42 @@ struct RunAloneView: View {
         reducer: { RunAloneFeature() })
     
     var body: some View {
-        ZStack {
-            Map(position: $store.userLocation) {
-                UserAnnotation {
-                    Image(.userLocationMark)
-                }
-            }
-            VStack(spacing: 0) {
-                RUNavigationBar(buttonType: nil, title: "혼자뛰기")
-                runninModeView
-                    .shadow(radius: 4, x: 0, y: 4)
-                
-                Spacer().frame(height: 64)
-                
-                VStack {
-                    // MARK: 모드에 따라 전환되는 화면
-                    switch viewEnvironment.selectedRunningMode {
-                    case .normal:
-                        EmptyView()
-                    case .challenge:
-                        RUChallengeList(challenges: store.todayChallengeList, listHorizontalPadding: 47)
-                            .transition(.scale)
-                    case .goal:
-                        RUTypeButtons()
-                            .transition(.scale)
+        VStack(spacing: 0) {
+            RUNavigationBar(buttonType: nil, title: "혼자뛰기")
+            runninModeView
+                .shadow(radius: 4, x: 0, y: 4)
+                .zIndex(1)
+            ZStack {
+                Map(position: $store.userLocation) {
+                    UserAnnotation {
+                        Image(.userLocationMark)
                     }
                 }
-                
-                Spacer()
-                if viewEnvironment.selectedRunningMode != .goal { startButton.transition(.scale) }
-                Spacer().frame(height: 48)
+                .mapControls {
+                    MapUserLocationButton()
+                    MapCompass()
+                }
+                VStack(spacing: 0) {
+                    Spacer().frame(height: 64)
+                    VStack {
+                        // MARK: 모드에 따라 전환되는 화면
+                        switch viewEnvironment.selectedRunningMode {
+                        case .normal:
+                            EmptyView()
+                        case .challenge:
+                            RUChallengeList(challenges: store.todayChallengeList, listHorizontalPadding: 47)
+                                .transition(.scale)
+                        case .goal:
+                            RUTypeButtons()
+                                .transition(.scale)
+                        }
+                    }
+                    Spacer()
+                    if viewEnvironment.selectedRunningMode != .goal { startButton.transition(.scale) }
+                    Spacer().frame(height: 48)
+                }
+                .animation(.easeInOut, value: viewEnvironment.selectedRunningMode)
             }
-            .animation(.easeInOut, value: viewEnvironment.selectedRunningMode)
         }
         .onAppear {
             store.send(.onAppear(viewEnvironment))
@@ -103,10 +107,12 @@ extension RunAloneView {
                 Circle()
                     .frame(width: 92, height: 92)
                     .foregroundStyle(Color.mainGreen)
-                    .shadow(color: .black.opacity(0.25), radius: 10, x: 1, y: 1)
+                    .shadow(color: .black.opacity(0.7),radius: 10, x: 0, y: 0)
+                    .zIndex(1)
                 Text("start")
                     .font(Fonts.pretendardBold(size: 24))
                     .foregroundStyle(Color.background)
+                    .zIndex(2)
             }
         }
     }
