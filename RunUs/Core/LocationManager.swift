@@ -40,6 +40,7 @@ final class LocationManager: NSObject {
     override init() {
         super.init()
         locationManager.delegate = self
+        locationManager.allowsBackgroundLocationUpdates = true
     }
     
     var authorizationStatus: LocationAuthorizationStatus {

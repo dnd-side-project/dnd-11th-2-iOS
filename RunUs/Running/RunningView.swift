@@ -34,9 +34,13 @@ struct RunningView: View {
                         Image(.userLocationMark)
                     }
                 }
-                .padding(.bottom, isStateHidden ? 0 : 350)
+                .mapControls {
+                    MapUserLocationButton()
+                    MapCompass()
+                }
+                .padding(.bottom, isStateHidden ? 60 : 381)
                 
-                VStack() {
+                VStack(spacing: 0) {
                     Spacer()
                     if isStateHidden {
                         Button(action: {
@@ -44,8 +48,7 @@ struct RunningView: View {
                                 isStateHidden = false
                             }
                         }, label: {
-                            Image(.buttonRunningStateUp)
-                                .padding([.top,.horizontal])
+                            Image(.buttonRunningStateUp).padding()
                         })
                     }
                     VStack(spacing:0) {
@@ -59,14 +62,15 @@ struct RunningView: View {
                     .frame(height: isStateHidden ? 85 : 406)
                     .background(Color.background)
                     .cornerRadius(12, corners: [.topLeft, .topRight])
-                    .shadow(color: .black.opacity(0.5), radius: 30, x: 1, y: 1)
+                    .shadow(color: .black.opacity(0.5), radius: 30, x: 0, y: -10)
+                    .zIndex(1)
                 }
-                .ignoresSafeArea()
                 if store.isRunningEnd {
                     SelectRunningEmotionView(store: store)
                 }
             }
-            .onAppear{
+            .ignoresSafeArea(.all, edges: .bottom)
+            .onAppear {
                 store.send(.onAppear)
             }
         }

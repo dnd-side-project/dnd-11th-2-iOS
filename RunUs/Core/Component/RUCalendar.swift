@@ -21,7 +21,7 @@ struct RUCalendar: View {
 
 extension RUCalendar {
     private var headerView: some View {
-        HStack {
+        HStack(spacing: 6) {
             Button {
                 store.send(.tapLeftButton)
             } label: {
@@ -29,11 +29,12 @@ extension RUCalendar {
                     .resizable()
                     .renderingMode(.template)
                     .foregroundColor(.white)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 24, height: 24)
             }
 
             Text(store.currentMonth, formatter: DateFormatter.yyyyMM_kr)
                 .font(Fonts.pretendardSemiBold(size: 16))
+                .padding(.bottom, 3)    // MARK: 양 이미지들과 높이를 맞추기 위한 임시 처리
             
             Button {
                 store.send(.tapRightButton)
@@ -42,7 +43,7 @@ extension RUCalendar {
                     .resizable()
                     .renderingMode(.template)
                     .foregroundColor(.white)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 24, height: 24)
             }
         }
         .foregroundStyle(.white)
