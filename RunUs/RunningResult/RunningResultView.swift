@@ -132,30 +132,24 @@ extension RunningResultView {
                     .padding(.top, -10) // MARK: 텍스트 윗 공간 여백을 줄여 UI를 맞추기 위한 임시 처리
                 smallText("킬로미터")
             }
-            .padding(.horizontal, Paddings.outsideHorizontalPadding)
             Spacer().frame(height: 32)
             HStack {
-                Spacer()
                 VStack(spacing: 4) {
                     mediumText("\(store.averagePace)")
                     smallText("평균페이스")
                 }
-                Spacer()
-                Spacer()
+                Spacer().frame(width: 36)
                 VStack(spacing: 4) {
                     mediumText("\(store.runningTime.formatToTime)")
                     smallText("시간")
                 }
-                Spacer()
-                Spacer()
+                Spacer().frame(width: 36)
                 VStack(spacing: 4) {
                     mediumText("\(store.kcal)")
                     smallText("칼로리")
                 }
-                Spacer()
             }
         }
-        .padding(.horizontal, -Paddings.outsideHorizontalPadding)
     }
     
     private func smallText(_ string: String) -> some View {

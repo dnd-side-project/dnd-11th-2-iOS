@@ -68,6 +68,7 @@ extension HomeView {
                 .frame(width: 136, height: 102)
             }
             .frame(height: 102)
+            .padding(.trailing, -Paddings.outsideHorizontalPadding)
             Spacer().frame(height: 39)
             HStack(alignment: .bottom, spacing: 20) {
                 VStack(alignment: .leading, spacing: 6) {
