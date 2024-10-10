@@ -59,6 +59,7 @@
 		F634D2C62CB781210014EDB6 /* RunningSummaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2C52CB781210014EDB6 /* RunningSummaryAPI.swift */; };
 		F634D2C82CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2C72CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift */; };
 		F634D2CA2CB784EE0014EDB6 /* SummaryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2C92CB784EE0014EDB6 /* SummaryTypes.swift */; };
+		F634D2CE2CB78A450014EDB6 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2CD2CB78A450014EDB6 /* ChartData.swift */; };
 		F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */; };
 		F63B81672C710573002F45F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81662C710573002F45F4 /* String+extension.swift */; };
 		F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81692C71F50C002F45F4 /* MyRecordView.swift */; };
@@ -169,6 +170,7 @@
 		F634D2C52CB781210014EDB6 /* RunningSummaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningSummaryAPI.swift; sourceTree = "<group>"; };
 		F634D2C72CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryResponseModel.swift; sourceTree = "<group>"; };
 		F634D2C92CB784EE0014EDB6 /* SummaryTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTypes.swift; sourceTree = "<group>"; };
+		F634D2CD2CB78A450014EDB6 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalStore.swift; sourceTree = "<group>"; };
 		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		F63B81692C71F50C002F45F4 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				F634D2C52CB781210014EDB6 /* RunningSummaryAPI.swift */,
 				F634D2C92CB784EE0014EDB6 /* SummaryTypes.swift */,
 				F634D2C72CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift */,
+				F634D2CD2CB78A450014EDB6 /* ChartData.swift */,
 			);
 			path = RunningSummary;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */,
 				F63BAA4B2C84A9A700DCE9EC /* AchieveRecordView.swift in Sources */,
 				D90CDD792C6A623F00197214 /* CountDownView.swift in Sources */,
+				F634D2CE2CB78A450014EDB6 /* ChartData.swift in Sources */,
 				F611B2262C7E275C00797470 /* MonthlySummaryResponseModel.swift in Sources */,
 				D9D0B71C2C4F566E00D13160 /* NetworkService.swift in Sources */,
 				D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */,

@@ -14,6 +14,24 @@ struct RunningSummaryStore {
     struct State {
         var distanceSummary: WeeklySummaryResponseModel = WeeklySummaryResponseModel()
         var timeSummary: WeeklySummaryResponseModel = WeeklySummaryResponseModel()
+        var distanceChartDatas: [ChartData] = [
+            ChartData(day: "월", rating: 0),
+            ChartData(day: "화", rating: 0),
+            ChartData(day: "수", rating: 0),
+            ChartData(day: "목", rating: 0),
+            ChartData(day: "금", rating: 0),
+            ChartData(day: "토", rating: 0),
+            ChartData(day: "일", rating: 0)
+            ]
+        var timeChartDatas: [ChartData] = [
+            ChartData(day: "월", rating: 0),
+            ChartData(day: "화", rating: 0),
+            ChartData(day: "수", rating: 0),
+            ChartData(day: "목", rating: 0),
+            ChartData(day: "금", rating: 0),
+            ChartData(day: "토", rating: 0),
+            ChartData(day: "일", rating: 0)
+            ]
     }
     
     enum Action {
@@ -43,12 +61,16 @@ struct RunningSummaryStore {
                     }
                 }
             case .setDistanceSummary(let summary):
-                print(summary)
                 state.distanceSummary = summary
+                for index in 0 ..< state.distanceChartDatas.count {
+                    state.distanceChartDatas[index].rating = summary.weeklyValues[index]
+                }
                 return .none
             case .setTimeSummary(let summary):
-                print(summary)
                 state.timeSummary = summary
+                for index in 0 ..< state.timeChartDatas.count {
+                    state.timeChartDatas[index].rating = summary.weeklyValues[index]
+                }
                 return .none
             }
         }
