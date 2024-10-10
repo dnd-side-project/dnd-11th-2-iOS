@@ -7,8 +7,14 @@
 
 import SwiftUI
 import Charts
+import ComposableArchitecture
 
 struct RunningSummaryView: View {
+    @State var store: StoreOf<RunningSummaryStore> = Store(
+        initialState: RunningSummaryStore.State(),
+        reducer: { RunningSummaryStore() }
+    )
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             RUNavigationBar(buttonType: .back, title: "활동 요약")
@@ -67,6 +73,9 @@ struct RunningSummaryView: View {
         }
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
         .background(Color.background)
+        .onAppear {
+            store.send(.onAppear)
+        }
     }
 }
 

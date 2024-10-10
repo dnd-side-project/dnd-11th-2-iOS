@@ -55,6 +55,10 @@
 		F62A4A012C9807D700E1B011 /* RunningStartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A4A002C9807D700E1B011 /* RunningStartInfo.swift */; };
 		F634D2D42CBF6A2C0014EDB6 /* Double+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2D32CBF6A2C0014EDB6 /* Double+extension.swift */; };
 		F634D2C22CB778D20014EDB6 /* RunningSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2C12CB778D20014EDB6 /* RunningSummaryView.swift */; };
+		F634D2C42CB780E80014EDB6 /* RunningSummaryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2C32CB780E80014EDB6 /* RunningSummaryStore.swift */; };
+		F634D2C62CB781210014EDB6 /* RunningSummaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2C52CB781210014EDB6 /* RunningSummaryAPI.swift */; };
+		F634D2C82CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2C72CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift */; };
+		F634D2CA2CB784EE0014EDB6 /* SummaryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2C92CB784EE0014EDB6 /* SummaryTypes.swift */; };
 		F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */; };
 		F63B81672C710573002F45F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81662C710573002F45F4 /* String+extension.swift */; };
 		F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81692C71F50C002F45F4 /* MyRecordView.swift */; };
@@ -161,6 +165,10 @@
 		F62A4A002C9807D700E1B011 /* RunningStartInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStartInfo.swift; sourceTree = "<group>"; };
 		F634D2D32CBF6A2C0014EDB6 /* Double+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+extension.swift"; sourceTree = "<group>"; };
 		F634D2C12CB778D20014EDB6 /* RunningSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningSummaryView.swift; sourceTree = "<group>"; };
+		F634D2C32CB780E80014EDB6 /* RunningSummaryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningSummaryStore.swift; sourceTree = "<group>"; };
+		F634D2C52CB781210014EDB6 /* RunningSummaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningSummaryAPI.swift; sourceTree = "<group>"; };
+		F634D2C72CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryResponseModel.swift; sourceTree = "<group>"; };
+		F634D2C92CB784EE0014EDB6 /* SummaryTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTypes.swift; sourceTree = "<group>"; };
 		F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalStore.swift; sourceTree = "<group>"; };
 		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		F63B81692C71F50C002F45F4 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
@@ -422,6 +430,10 @@
 			isa = PBXGroup;
 			children = (
 				F634D2C12CB778D20014EDB6 /* RunningSummaryView.swift */,
+				F634D2C32CB780E80014EDB6 /* RunningSummaryStore.swift */,
+				F634D2C52CB781210014EDB6 /* RunningSummaryAPI.swift */,
+				F634D2C92CB784EE0014EDB6 /* SummaryTypes.swift */,
+				F634D2C72CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift */,
 			);
 			path = RunningSummary;
 			sourceTree = "<group>";
@@ -641,6 +653,7 @@
 				D9A65D102C7CCD9400FA33BF /* Emotions.swift in Sources */,
 				F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
+				F634D2C62CB781210014EDB6 /* RunningSummaryAPI.swift in Sources */,
 				D9417AD02C8BFCC2008F8075 /* RunningResult.swift in Sources */,
 				F63B81672C710573002F45F4 /* String+extension.swift in Sources */,
 				D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */,
@@ -650,6 +663,7 @@
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */,
 				F634D2D42CBF6A2C0014EDB6 /* Double+extension.swift in Sources */,
+				F634D2CA2CB784EE0014EDB6 /* SummaryTypes.swift in Sources */,
 				F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */,
 				F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,
@@ -662,6 +676,7 @@
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
 				D93975912C78D33B00507BAF /* RunningResultView.swift in Sources */,
 				F611B2242C7E23EE00797470 /* HomeAPI.swift in Sources */,
+				F634D2C42CB780E80014EDB6 /* RunningSummaryStore.swift in Sources */,
 				F69BFD9E2C8966C70073775C /* AchieveRecordStore.swift in Sources */,
 				D9E704B02C649AFE00212FF0 /* TodayChallenge.swift in Sources */,
 				F634D2C22CB778D20014EDB6 /* RunningSummaryView.swift in Sources */,
@@ -669,6 +684,7 @@
 				D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */,
 				F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */,
 				F6DAD3C02CB38DB400B459E6 /* RUTitle.swift in Sources */,
+				F634D2C82CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift in Sources */,
 				D93AC4B12C8C53A900C1570F /* RunningMode.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
