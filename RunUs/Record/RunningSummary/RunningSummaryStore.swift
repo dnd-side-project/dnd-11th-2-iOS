@@ -32,6 +32,24 @@ struct RunningSummaryStore {
             ChartData(day: "토", rating: 0),
             ChartData(day: "일", rating: 0)
             ]
+        
+        func summary(for summaryType: SummaryTypes) -> WeeklySummaryResponseModel {
+            switch summaryType {
+            case .distance:
+                return self.distanceSummary
+            case .time:
+                return self.timeSummary
+            }
+        }
+        
+        func chartDatas(for summaryType: SummaryTypes) -> [ChartData] {
+            switch summaryType {
+            case .distance:
+                return self.distanceChartDatas
+            case .time:
+                return self.timeChartDatas
+            }
+        }
     }
     
     enum Action {
