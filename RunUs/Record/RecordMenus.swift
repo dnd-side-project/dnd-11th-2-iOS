@@ -54,7 +54,8 @@ struct RecordMenu: View {
                 viewEnvironment.navigationPath.append(navigationObject)
                 break
             case .runningSummary:
-                // TODO: 활동요약화면으로 이동
+                let navigationObject = NavigationObject(viewType: .runningSummary)
+                viewEnvironment.navigationPath.append(navigationObject)
                 break
             case .achieveRecord:
                 let navigationObject = NavigationObject(viewType: .achieveRecord, data: profile)
