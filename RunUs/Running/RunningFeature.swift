@@ -140,6 +140,7 @@ struct RunningFeature {
                 state.endAt = Date().formatStringHyphen()
                 state.isRunningEnd = true
                 return .run { send in
+                    await send(.isRunningChanged(false))
                     let address = await LocationManager.shared.getAddress()
                     await send(.setEndLocation(address))
                 }
