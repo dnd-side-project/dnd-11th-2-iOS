@@ -51,23 +51,41 @@ struct RunningSummaryView: View {
                         y: .value("Rating", date.rating),
                         width: 18
                     )
-    //                    .annotation(position: .top, alignment: .center) {
-    //                        Text(date.rating.percentFormat())
-    //                            .font(.system(size: CGFloat.fontSize * 1.5))
-    //                    }
+                    .annotation(position: .top, alignment: .center) {
+                        if date.rating > 0 {
+                            Text(String(format: "%.0f", date.rating))
+                                .font(Fonts.pretendardSemiBold(size: 10))
+                                .foregroundStyle(.gray300)
+                        }
+                    }
                     if summary.lastWeekAvgValue > 0 {
                         RuleMark(
                             y: .value("lastWeekAvgValue", summary.lastWeekAvgValue)
                         )
                         .lineStyle(StrokeStyle(lineWidth: 2))
-                        .foregroundStyle(.gray100)
-    //                        .annotation(position: .top, alignment: .leading) {
-    //                            Text(store.distanceSummary.lastWeekAvgValue)
-    //                        }
+                        .foregroundStyle(.gray200)
+                        .annotation(position: .top, alignment: .trailing) {
+                            Text(String(format: "%.0f", summary.lastWeekAvgValue) + summaryType.labelString)
+                                .font(Fonts.pretendardSemiBold(size: 12))
+                                .foregroundStyle(.gray200)
+                        }
                     }
                 }
             }
-            .RUChartAxisLabel(summaryType: summaryType)
+            .chartXAxis {
+                AxisMarks { value in
+                    AxisValueLabel().foregroundStyle(.gray300)
+                }
+            }
+            .chartYAxis {
+                AxisMarks { value in
+                    if let yValue = value.as(Double.self) {
+                        AxisValueLabel(
+                            String(format: "%.0f", yValue) + summaryType.labelString
+                        ).foregroundStyle(.gray300)
+                    }
+                }
+            }
             .foregroundStyle(summaryType.chartColor)
             .padding(.top, 40)
             .padding(.bottom, 20)
@@ -77,25 +95,6 @@ struct RunningSummaryView: View {
                     .fill(.mainDeepDark)
             }
             .frame(height: 227)
-        }
-    }
-}
-
-extension Chart {
-    func RUChartAxisLabel(summaryType: SummaryTypes) -> some View {
-        self.chartXAxis {
-            AxisMarks { value in
-                AxisValueLabel().foregroundStyle(.gray300)
-            }
-        }
-        .chartYAxis {
-            AxisMarks { value in
-                if let yValue = value.as(Double.self) {
-                    AxisValueLabel(
-                        "\(String(format: "%.0f", Double(yValue)))\(summaryType.labelString)"
-                    ).foregroundStyle(.gray300)
-                }
-            }
         }
     }
 }
