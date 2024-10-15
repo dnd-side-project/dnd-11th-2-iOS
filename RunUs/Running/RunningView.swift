@@ -93,7 +93,7 @@ extension RunningView {
             HStack {
                 VStack(spacing: 6) {
                     mediumText("\(store.pace)")
-                    smallText("평균페이스")
+                    smallText("실시간 페이스")
                 }
                 Spacer()
                 VStack(spacing: 6) {

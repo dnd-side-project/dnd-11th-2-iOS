@@ -56,8 +56,7 @@ struct RunningFeature {
                   goalDistance: self.goalDistance,
                   goalTime: self.goalTime,
                   achievementMode: achievementMode.rawValue,
-                  runningData: .init(averagePace: self.pace,
-                                     runningTime: self.time.toTimeString(),
+                  runningData: .init(runningTime: self.time.toTimeString(),
                                      distanceMeter: Int(self.distance * 1000),  // MARK: km -> m
                                      calorie: Int(self.kcal)))  // MARK: Float -> Int
         }

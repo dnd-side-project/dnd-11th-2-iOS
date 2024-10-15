@@ -136,7 +136,7 @@ extension RunningResultView {
             HStack {
                 VStack(spacing: 4) {
                     mediumText("\(store.averagePace)")
-                    smallText("평균페이스")
+                    smallText("평균 페이스")
                 }
                 Spacer().frame(width: 36)
                 VStack(spacing: 4) {

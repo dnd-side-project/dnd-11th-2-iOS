@@ -66,7 +66,7 @@ extension RunningRecordView {
                                 startLocation: record.startLocation,
                                 endLocation: record.endLocation,
                                 emotion: record.emoji.entity,
-                                runningData: RunningData(
+                                runningData: RunningResultData(
                                     averagePace: record.averagePace,
                                     runningTime: record.duration,
                                     distanceMeter: record.distanceMeter,
@@ -99,7 +99,7 @@ extension RunningRecordView {
                 Spacer()
             }.padding(.horizontal, 15)
             HStack {
-                recordText(title: "평균페이스", data: record.averagePace)
+                recordText(title: "평균 페이스", data: record.averagePace)
                 Spacer()
                 recordText(title: "시간", data: record.duration.formatToTime)
                 Spacer()

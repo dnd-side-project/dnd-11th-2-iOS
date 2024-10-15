@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct RunningData: Codable, Navigatable {
-    let averagePace: String
+struct RunningData: Encodable, Navigatable {
     let runningTime: String
     let distanceMeter: Int
     let calorie: Int
