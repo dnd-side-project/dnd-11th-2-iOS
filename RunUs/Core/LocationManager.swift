@@ -83,6 +83,11 @@ extension LocationManager {
         if stopLocation == locations.last {
             return
         }
+        if stopLocation != nil {
+            delegate?.runningRestart(locations.last)
+            stopLocation = nil
+            return
+        }
         delegate?.locationUpdated(locations.last)
     }
 }

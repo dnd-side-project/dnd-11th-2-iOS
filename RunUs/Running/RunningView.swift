@@ -65,7 +65,7 @@ struct RunningView: View {
                     .shadow(color: .black.opacity(0.5), radius: 30, x: 0, y: -10)
                     .zIndex(1)
                 }
-                if store.isRunningEnd {
+                if store.runningState == .stop {
                     SelectRunningEmotionView(store: store)
                 }
             }
@@ -93,7 +93,7 @@ extension RunningView {
             HStack {
                 VStack(spacing: 6) {
                     mediumText("\(store.pace)")
-                    smallText("평균페이스")
+                    smallText("실시간 페이스")
                 }
                 Spacer()
                 VStack(spacing: 6) {
@@ -139,21 +139,22 @@ extension RunningView {
     
     private var runningButtons: some View {
         HStack(spacing: 22) {
-            if store.isRunning {
+            if store.runningState == .running {
                 Button(action: {
-                    store.send(.isRunningChanged(false))
+                    store.send(.setRunningState(.pause))
                 }, label: {
                     runningButton(.buttonPause)
                 })
             } else {
                 Button(action: {
                     store.send(.runningEnd)
+                    store.send(.setRunningState(.stop))
                 }, label: {
                     runningButton(.buttonStop)
                 })
                 
                 Button(action: {
-                    store.send(.isRunningChanged(true))
+                    store.send(.setRunningState(.running))
                 }, label: {
                     runningButton(.buttonResume)
                 })

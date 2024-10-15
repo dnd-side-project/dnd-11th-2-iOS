@@ -81,7 +81,7 @@ struct SetGoalStore: Reducer {
     private func calcGoal(type: GoalTypes, bigGoal: Int?, smallGoal: Int?) -> Int {
         let big = bigGoal == nil ? 0 : bigGoal!
         let small = smallGoal == nil ? 0 : smallGoal!
-        switch(type) {
+        switch type {
         case .distance:
             return big * 1000 + small
         case .time:

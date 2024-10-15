@@ -19,7 +19,7 @@ struct RunningResultFeature {
         var hasChallenge: Bool = false
         var challengeResult: ChallengeResult?
         var goalResult: GoalResult?
-        var averagePace: String
+        var averagePace: String = "-’--”"
         var runningTime: String
         var distance: Double
         var kcal: Int
@@ -30,7 +30,6 @@ struct RunningResultFeature {
             let endAt = runningResult.endAt.formatDateHyphen().formatStringDot()
             self.date = "\(startAt) ~ \(endAt)"
             self.emotion = runningResult.emotion.getEmotion()
-            self.averagePace = runningResult.runningData.averagePace
             self.runningTime = runningResult.runningData.runningTime
             self.distance = Double(runningResult.runningData.distanceMeter) * 0.001
             self.kcal = runningResult.runningData.calorie

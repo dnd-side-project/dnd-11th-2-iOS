@@ -24,25 +24,26 @@ struct RunningStateManagerKey: DependencyKey {
 protocol RunningStateManager {
     var timePublisher: PassthroughSubject<Int, Never> { get }
     var locationPublisher: PassthroughSubject<CLLocation?, Never> { get }
+    var restartPublisher: PassthroughSubject<CLLocation?, Never> { get }
     func start()
     func pause()
+    func stop()
 }
 
 class RunningStateManagerImplements: RunningStateManager {
-    
     private var timer: Timer?
     
     private var time: Int = 0
     
     private(set) var timePublisher = PassthroughSubject<Int, Never>()
     private(set) var locationPublisher = PassthroughSubject<CLLocation?, Never>()
+    private(set) var restartPublisher = PassthroughSubject<CLLocation?, Never>()
     
     init() {
         LocationManager.shared.delegate = self
     }
     
     func start() {
-        self.timePublisher.send(self.time)
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
             self.time += 1
             self.timePublisher.send(self.time)
@@ -56,8 +57,13 @@ class RunningStateManagerImplements: RunningStateManager {
         LocationManager.shared.stopUpdatingLocation()
     }
     
+    func stop() {
+        self.time = 0
+        self.pause()
+    }
+    
     deinit {
-        pause()
+        stop()
         LocationManager.shared.delegate = nil
     }
 }
@@ -66,4 +72,13 @@ extension RunningStateManagerImplements: LocationManagerDelegate {
     func locationUpdated(_ location: CLLocation?) {
         self.locationPublisher.send(location)
     }
+    func runningRestart(_ location: CLLocation?) {
+        self.restartPublisher.send(location)
+    }
+}
+
+enum RunningState {
+    case running
+    case pause
+    case stop
 }

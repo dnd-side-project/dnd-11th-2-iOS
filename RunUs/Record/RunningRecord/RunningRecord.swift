@@ -12,5 +12,5 @@ struct RunningRecord: Navigatable {
     let startLocation: String
     let endLocation: String
     let emotion: String
-    let runningData: RunningData
+    let runningData: RunningResultData
 }
