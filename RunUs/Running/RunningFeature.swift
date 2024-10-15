@@ -70,6 +70,7 @@ struct RunningFeature {
         case isRunningChanged(Bool)
         case timeUpdated(Int)
         case locationUpdated(CLLocation?)
+        case runningRestart(CLLocation?)
         case distanceUpdated(Double)
         case kcalUpdated(Float)
         case paceUpdated
@@ -96,6 +97,10 @@ struct RunningFeature {
                     Effect.publisher {
                         runningStateManager.timePublisher
                             .map(Action.timeUpdated)
+                    },
+                    Effect.publisher {
+                        runningStateManager.restartPublisher
+                            .map(Action.runningRestart)
                     },
                     Effect.run { send in
                         let address = await LocationManager.shared.getAddress()
@@ -125,6 +130,9 @@ struct RunningFeature {
                 state.location = location
                 if state.time == 0 { state.beforeLocation = location }
                 return .send(.distanceUpdated(calculateDistance(before: before, after: location)))
+            case .runningRestart(let location):
+                state.location = location
+                return .none
             case .distanceUpdated(let distance):
                 state.distance = state.distance + distance
                 return .none

@@ -10,4 +10,5 @@ import CoreLocation
 
 protocol LocationManagerDelegate {
     func locationUpdated(_ location: CLLocation?)
+    func runningRestart(_ location: CLLocation?)
 }
