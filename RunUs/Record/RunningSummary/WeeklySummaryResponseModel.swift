@@ -8,19 +8,32 @@
 import Foundation
 
 struct WeeklySummaryResponseModel: Decodable {
-    var date: String
-    var weeklyValues: [Double]
+    var weeklyDate: String
+    var weeklyValues: [ChartData]
     var lastWeekAvgValue: Double
     
     init() {
-        self.date = "20xx.xx.xx ~ 20xx.xx.xx"
-        self.weeklyValues = [0, 0, 0, 0, 0, 0, 0]
+        self.weeklyDate = "20xx.xx.xx ~ 20xx.xx.xx"
+        self.weeklyValues = [
+            ChartData(day: "월", rating: 0),
+            ChartData(day: "화", rating: 0),
+            ChartData(day: "수", rating: 0),
+            ChartData(day: "목", rating: 0),
+            ChartData(day: "금", rating: 0),
+            ChartData(day: "토", rating: 0),
+            ChartData(day: "일", rating: 0)
+        ]
         self.lastWeekAvgValue = 0
     }
     
-    init(date: String, weeklyValues: [Double], lastWeekAvgValue: Double) {
-        self.date = date
+    init(weeklyDate: String, weeklyValues: [ChartData], lastWeekAvgValue: Double) {
+        self.weeklyDate = weeklyDate
         self.weeklyValues = weeklyValues
         self.lastWeekAvgValue = lastWeekAvgValue
     }
+}
+
+struct ChartData: Decodable {
+    var day: String
+    var rating: Double
 }

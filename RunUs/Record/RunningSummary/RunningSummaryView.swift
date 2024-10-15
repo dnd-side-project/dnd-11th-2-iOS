@@ -33,19 +33,18 @@ struct RunningSummaryView: View {
     
     private func runningSummaryChart(summaryType: SummaryTypes) -> some View {
         let summary = store.state.summary(for: summaryType)
-        let chartDatas = store.state.chartDatas(for: summaryType)
         return VStack(alignment: .leading, spacing: 0) {
             Text(summaryType.titleString)
                 .font(Fonts.pretendardSemiBold(size: 20))
                 .foregroundStyle(.white)
             Spacer().frame(height: 12)
-            Text(summary.date)
+            Text(summary.weeklyDate)
                 .font(Fonts.pretendardSemiBold(size: 12))
                 .foregroundStyle(.gray300)
             Spacer().frame(height: 20)
             
             Chart {
-                ForEach(chartDatas) { date in
+                ForEach(summary.weeklyValues, id: \.self.day) { date in
                     BarMark(
                         x: .value("Day", date.day),
                         y: .value("Rating", date.rating),

@@ -14,24 +14,6 @@ struct RunningSummaryStore {
     struct State {
         var distanceSummary: WeeklySummaryResponseModel = WeeklySummaryResponseModel()
         var timeSummary: WeeklySummaryResponseModel = WeeklySummaryResponseModel()
-        var distanceChartDatas: [ChartData] = [
-            ChartData(day: "월", rating: 0),
-            ChartData(day: "화", rating: 0),
-            ChartData(day: "수", rating: 0),
-            ChartData(day: "목", rating: 0),
-            ChartData(day: "금", rating: 0),
-            ChartData(day: "토", rating: 0),
-            ChartData(day: "일", rating: 0)
-            ]
-        var timeChartDatas: [ChartData] = [
-            ChartData(day: "월", rating: 0),
-            ChartData(day: "화", rating: 0),
-            ChartData(day: "수", rating: 0),
-            ChartData(day: "목", rating: 0),
-            ChartData(day: "금", rating: 0),
-            ChartData(day: "토", rating: 0),
-            ChartData(day: "일", rating: 0)
-            ]
         
         func summary(for summaryType: SummaryTypes) -> WeeklySummaryResponseModel {
             switch summaryType {
@@ -39,15 +21,6 @@ struct RunningSummaryStore {
                 return self.distanceSummary
             case .time:
                 return self.timeSummary
-            }
-        }
-        
-        func chartDatas(for summaryType: SummaryTypes) -> [ChartData] {
-            switch summaryType {
-            case .distance:
-                return self.distanceChartDatas
-            case .time:
-                return self.timeChartDatas
             }
         }
     }
@@ -80,15 +53,9 @@ struct RunningSummaryStore {
                 }
             case .setDistanceSummary(let summary):
                 state.distanceSummary = summary
-                for index in 0 ..< state.distanceChartDatas.count {
-                    state.distanceChartDatas[index].rating = summary.weeklyValues[index]
-                }
                 return .none
             case .setTimeSummary(let summary):
                 state.timeSummary = summary
-                for index in 0 ..< state.timeChartDatas.count {
-                    state.timeChartDatas[index].rating = summary.weeklyValues[index]
-                }
                 return .none
             }
         }

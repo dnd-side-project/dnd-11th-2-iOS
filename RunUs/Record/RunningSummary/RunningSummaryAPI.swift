@@ -32,7 +32,19 @@ final class RunningSummaryAPILive: RunningSummaryAPI {
 
 final class RunningSummaryAPIPreview: RunningSummaryAPI {
     func getWeeklySummary(summaryType: String) async throws -> WeeklySummaryResponseModel {
-        return WeeklySummaryResponseModel(date: "2024.09.09 ~ 2024.09.15", weeklyValues: [0, 0, 2, 5, 0, 3, 1], lastWeekAvgValue: 3)
+        return WeeklySummaryResponseModel(
+            weeklyDate: "2024.09.09 ~ 2024.09.15",
+            weeklyValues: [
+                ChartData(day: "월", rating: 0),
+                ChartData(day: "화", rating: 0),
+                ChartData(day: "수", rating: 2),
+                ChartData(day: "목", rating: 5),
+                ChartData(day: "금", rating: 0),
+                ChartData(day: "토", rating: 3),
+                ChartData(day: "일", rating: 1)
+                ],
+            lastWeekAvgValue: 3
+        )
     }
 }
 
