@@ -27,6 +27,7 @@ protocol RunningStateManager {
     var restartPublisher: PassthroughSubject<CLLocation?, Never> { get }
     func start()
     func pause()
+    func stop()
 }
 
 class RunningStateManagerImplements: RunningStateManager {
@@ -43,7 +44,6 @@ class RunningStateManagerImplements: RunningStateManager {
     }
     
     func start() {
-        self.timePublisher.send(self.time)
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
             self.time += 1
             self.timePublisher.send(self.time)
@@ -57,8 +57,13 @@ class RunningStateManagerImplements: RunningStateManager {
         LocationManager.shared.stopUpdatingLocation()
     }
     
+    func stop() {
+        self.time = 0
+        self.pause()
+    }
+    
     deinit {
-        pause()
+        stop()
         LocationManager.shared.delegate = nil
     }
 }
@@ -70,4 +75,10 @@ extension RunningStateManagerImplements: LocationManagerDelegate {
     func runningRestart(_ location: CLLocation?) {
         self.restartPublisher.send(location)
     }
+}
+
+enum RunningState {
+    case running
+    case pause
+    case stop
 }

@@ -22,13 +22,12 @@ struct RunningFeature {
                 span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             )
         )
-        var isRunning: Bool = true
+        var runningState: RunningState = .running
         var time: Int = 0
         var location: CLLocation?
         var distance: Double = 0.00
         var kcal: Float = 0
         var pace: String = "-’--”"
-        var isRunningEnd: Bool = false
         fileprivate var beforeLocation: CLLocation?
         var startAt: String
         var endAt: String = ""
@@ -67,7 +66,7 @@ struct RunningFeature {
     enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
         case onAppear
-        case isRunningChanged(Bool)
+        case setRunningState(RunningState)
         case timeUpdated(Int)
         case locationUpdated(CLLocation?)
         case runningRestart(CLLocation?)
@@ -75,7 +74,7 @@ struct RunningFeature {
         case kcalUpdated(Float)
         case paceUpdated
         case runningEnd
-        case resetRunningState
+        case resetRunningData
         case setStartLocation(String)
         case setEndLocation(String)
     }
@@ -89,7 +88,7 @@ struct RunningFeature {
                 return .none
             case .onAppear:
                 return .merge(
-                    .send(.isRunningChanged(true)),
+                    .send(.setRunningState(.running)),
                     Effect.publisher {
                         runningStateManager.locationPublisher
                             .map(Action.locationUpdated)
@@ -107,12 +106,15 @@ struct RunningFeature {
                         await send(.setStartLocation(address))
                     }
                 )
-            case .isRunningChanged(let isRunning):
-                state.isRunning = isRunning
-                if isRunning {
+            case .setRunningState(let runningState):
+                state.runningState = runningState
+                switch runningState {
+                case .running:
                     runningStateManager.start()
-                } else {
+                case .pause:
                     runningStateManager.pause()
+                case .stop:
+                    runningStateManager.stop()
                 }
                 return .none
             case .timeUpdated(let time):
@@ -146,13 +148,11 @@ struct RunningFeature {
                 return .none
             case .runningEnd:
                 state.endAt = Date().formatStringHyphen()
-                state.isRunningEnd = true
                 return .run { send in
-                    await send(.isRunningChanged(false))
                     let address = await LocationManager.shared.getAddress()
                     await send(.setEndLocation(address))
                 }
-            case .resetRunningState:
+            case .resetRunningData:
                 state.time = 0
                 state.distance = 0.00
                 state.kcal = 0
