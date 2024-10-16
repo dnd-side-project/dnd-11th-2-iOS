@@ -18,13 +18,12 @@ struct HomeView: View {
     )
     
     var body: some View {
-        ViewThatFits(in: .vertical) {
+        ScrollView {
             homeView
-            ScrollView {
-                homeView
-            }
         }
-        .padding(.top, 1)   // MARK: ViewThatFits에서 ScrollView를 사용하면 SafeArea를 유지하기 위해 필요
+        .refreshable {
+            store.send(.onAppear)
+        }
         .background(Color.background)
         .onAppear {
             store.send(.onAppear)
@@ -42,10 +41,14 @@ extension HomeView {
     private var homeView: some View {
         VStack(alignment: .leading, spacing: 0) {
             Spacer().frame(height: 20)
-            Image(.runus)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 20)
+            Button {
+                store.send(.onAppear)
+            } label: {
+                Image(.runus)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 20)
+            }
             HStack(alignment: .bottom, spacing: 0) {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 0) {
