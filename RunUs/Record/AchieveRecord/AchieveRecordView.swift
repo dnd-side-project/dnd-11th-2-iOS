@@ -100,7 +100,7 @@ extension AchieveRecordView {
                     HStack(spacing: 8) {
                         Text("코스: \(store.state.courses.info.totalCourses)코스")
                         Text("런어스 총 거리: \(store.state.courses.info.totalDistance)")
-                        Text("지구 한 바퀴: 40.075km")
+                        Text("지구 한 바퀴: 40,075km")
                     }
                     .foregroundStyle(.gray300)
                     .font(Fonts.pretendardSemiBold(size: 10))
@@ -114,7 +114,7 @@ extension AchieveRecordView {
             // TODO: 컴포넌트별 조건 정의 필요
             AchieveRecordCardView(distance: store.state.courses.currentCourse.totalDistance, title: store.state.courses.currentCourse.name, subTitle: store.state.courses.currentCourse.message)
             AchieveRecordCardView(isEmptyView: true)
-            AchieveRecordCardView(distance: "40.075km", title: "지구한바퀴 완주!", subTitle: "축하합니다! 지구한바퀴 완주하셨네요!")
+            AchieveRecordCardView(distance: "40,075km", title: "지구한바퀴 완주!", subTitle: "축하합니다! 지구한바퀴 완주하셨네요!")
             Spacer()
         }
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
