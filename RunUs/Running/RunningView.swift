@@ -84,7 +84,7 @@ extension RunningView {
                 .matchedGeometryEffect(id: "runnningStateTitleView", in: namespace)
             
             VStack(spacing: 6) {
-                Text(String(format: "%.2f", store.distance))
+                Text(store.distance.kmDistanceFormat)
                     .font(Fonts.pretendardBlack(size: 84))
                     .foregroundStyle(.white)
                 smallText("킬로미터")

@@ -25,7 +25,7 @@ struct RunningFeature {
         var runningState: RunningState = .running
         var time: Int = 0
         var location: CLLocation?
-        var distance: Double = 0.00
+        var distance: Double = 0.000
         var kcal: Float = 0
         var pace: String = "-’--”"
         fileprivate var beforeLocation: CLLocation?
@@ -153,7 +153,7 @@ struct RunningFeature {
                 }
             case .resetRunningData:
                 state.time = 0
-                state.distance = 0.00
+                state.distance = 0.000
                 state.kcal = 0
                 state.pace = "-’--”"
                 return .none
