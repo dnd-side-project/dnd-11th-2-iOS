@@ -21,12 +21,14 @@ struct MainView: View {
                         RunAloneView().tag(TabItems.running)
                         MyRecordView().tag(TabItems.myRecord)
                     }
-                    .tabViewStyle(.page(indexDisplayMode: .never))
                     RUTabBar()
                 } else { LoginView() }
             }
             .ignoresSafeArea(.container, edges: .bottom)    // MARK: 홈버튼UI와 홈바UI에서 탭바를 동일하게 표현하기 위한 장치
             .background(Color.background)
+            .onAppear {
+                UITabBar.appearance().isHidden = true   // MARK: 기본 TabBar를 숨김
+            }
             .onChange(of: isLogin) { oldValue, newValue in  // MARK: logout & withdraw 완료 후 viewEnvironment 초기화
                 if !newValue {
                     viewEnvironment.reset()
