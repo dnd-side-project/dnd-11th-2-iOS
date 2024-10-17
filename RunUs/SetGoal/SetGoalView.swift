@@ -45,11 +45,13 @@ struct SetGoalView: View {
                     Spacer()
                     goalText
                 }
+                .blur(radius: store.isShowValidateToast ? 5.5 : 0)
                 .overlay {
                     if store.isShowValidateToast {
                         validateToast
                     }
                 }
+                .animation(.easeInOut, value: store.isShowValidateToast)
                 Spacer().frame(height: 36)
             }
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
@@ -117,7 +119,7 @@ extension SetGoalView {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 55)
-        .background(.mainDeepDark)
+        .background(.black.opacity(0.7))
         .cornerRadius(8)
     }
 }

@@ -23,8 +23,8 @@ struct GoalTextField: View {
                     // MARK: 첫 자리가 0이거나 입력 값중에 숫자 이외의 값이 있는 예외 처리
                     if newValue == "0" || !newValue.allSatisfy({ $0.isNumber }) { store.send(.setGoal(goal: "", isBigGoal: isBigGoal)) }
                     if newValue.count > lengthOfTextField(type: store.goalType, isBigGoal: isBigGoal) {
-                        store.isShowValidateToast = true
                         store.send(.setGoal(goal: oldValue, isBigGoal: isBigGoal))  // MARK: 자리수 제한
+                        store.send(.showValidateToast)
                     }
                 }
             Text(unitOfTextField(type: store.goalType, isBigGoal: isBigGoal))

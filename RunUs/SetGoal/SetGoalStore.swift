@@ -17,12 +17,15 @@ struct SetGoalStore: Reducer {
         var bigGoal: String = ""
         var smallGoal: String = ""
         var isShowValidateToast: Bool = false
+        var toastTimer: Timer? = nil
     }
     
     enum Action: BindableAction {
         case binding(BindingAction<State>)
         case onAppear(ViewEnvironment)
         case setGoal(goal: String, isBigGoal: Bool)
+        case showValidateToast
+        case setIsShowValidateToast(isShowValidateToast: Bool)
         case runningStart
         case requestLocationPermission
         case locationPermissionAlertChanged(Bool)
@@ -44,6 +47,18 @@ struct SetGoalStore: Reducer {
                 return .none
             case let .onAppear(viewEnvironment):
                 state.viewEnvironment = viewEnvironment
+                return .none
+            case .showValidateToast:
+                if state.isShowValidateToast { return .none }
+                return .merge (
+                    .send(.setIsShowValidateToast(isShowValidateToast: true)),
+                    .run { send in
+                        try await Task.sleep(for: .seconds(3))
+                        await send(.setIsShowValidateToast(isShowValidateToast: false))
+                    }
+                )
+            case let .setIsShowValidateToast(isShowValidateToast):
+                state.isShowValidateToast = isShowValidateToast
                 return .none
             case .runningStart:
                 let status = locationManager.authorizationStatus
