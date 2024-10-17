@@ -93,7 +93,7 @@ extension RunningRecordView {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(record.startLocation)
                         .font(Fonts.pretendardRegular(size: 15))
-                    Text("\(String(format: "%.2f", Double(record.distanceMeter) * 0.001))km")
+                    Text("\(Double(record.distanceMeter).mDistanceFormat)km")
                         .font(Fonts.pretendardSemiBold(size: 22))
                 }
                 Spacer()

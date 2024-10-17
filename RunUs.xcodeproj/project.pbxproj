@@ -53,6 +53,7 @@
 		F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A94E72C4A372600BCCD00 /* RunUsApp.swift */; };
 		F6133EAE2C6DB29600F3ECE5 /* RUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */; };
 		F62A4A012C9807D700E1B011 /* RunningStartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A4A002C9807D700E1B011 /* RunningStartInfo.swift */; };
+		F634D2D42CBF6A2C0014EDB6 /* Double+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634D2D32CBF6A2C0014EDB6 /* Double+extension.swift */; };
 		F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */; };
 		F63B81672C710573002F45F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81662C710573002F45F4 /* String+extension.swift */; };
 		F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B81692C71F50C002F45F4 /* MyRecordView.swift */; };
@@ -157,6 +158,7 @@
 		F611B2252C7E275C00797470 /* MonthlySummaryResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryResponseModel.swift; sourceTree = "<group>"; };
 		F6133EAD2C6DB29600F3ECE5 /* RUButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUButton.swift; sourceTree = "<group>"; };
 		F62A4A002C9807D700E1B011 /* RunningStartInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStartInfo.swift; sourceTree = "<group>"; };
+		F634D2D32CBF6A2C0014EDB6 /* Double+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+extension.swift"; sourceTree = "<group>"; };
 		F63B81612C6F1A7E002F45F4 /* SetGoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalStore.swift; sourceTree = "<group>"; };
 		F63B81662C710573002F45F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		F63B81692C71F50C002F45F4 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */,
 				D97950A52C62917400BDCD44 /* View+extension.swift */,
 				D95F83122C6FAC76000DCAA3 /* Int+extension.swift */,
+				F634D2D32CBF6A2C0014EDB6 /* Double+extension.swift */,
 				F63B81662C710573002F45F4 /* String+extension.swift */,
 				D9417AD82C8C2B6B008F8075 /* Date+extension.swift */,
 				D9842DDF2C84AFE3002B145C /* DateFormatter+extension.swift */,
@@ -635,6 +638,7 @@
 				F66467152CA411E200508369 /* RUChallengeList.swift in Sources */,
 				D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */,
 				D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */,
+				F634D2D42CBF6A2C0014EDB6 /* Double+extension.swift in Sources */,
 				F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */,
 				F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,

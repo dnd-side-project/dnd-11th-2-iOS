@@ -127,7 +127,7 @@ extension RunningResultView {
     private var resultView: some View {
         VStack(alignment: .leading, spacing: 0) {
             Group {
-                Text(String(format: "%.2f", store.distance))
+                Text(store.distance.kmDistanceFormat)
                     .font(Fonts.pretendardBlack(size: 84))
                     .padding(.top, -10) // MARK: 텍스트 윗 공간 여백을 줄여 UI를 맞추기 위한 임시 처리
                 smallText("킬로미터")
