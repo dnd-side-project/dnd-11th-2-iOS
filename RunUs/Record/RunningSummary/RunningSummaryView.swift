@@ -60,7 +60,7 @@ struct RunningSummaryView: View {
                     )
                     .annotation(position: .top, alignment: .center) {
                         if date.rating > 0 {
-                            Text(String(format: "%.0f", date.rating))
+                            Text(String(format: "%.1f", date.rating))
                                 .font(Fonts.pretendardSemiBold(size: 10))
                                 .foregroundStyle(.gray300)
                         }
@@ -72,7 +72,7 @@ struct RunningSummaryView: View {
                         .lineStyle(StrokeStyle(lineWidth: 2))
                         .foregroundStyle(.gray200)
                         .annotation(position: .top, alignment: .trailing) {
-                            Text(String(format: "%.0f", summary.lastWeekAvgValue) + summaryType.labelString)
+                            Text(String(format: "%.1f", summary.lastWeekAvgValue) + summaryType.labelString)
                                 .font(Fonts.pretendardSemiBold(size: 12))
                                 .foregroundStyle(.gray200)
                         }
@@ -87,9 +87,11 @@ struct RunningSummaryView: View {
             .chartYAxis {
                 AxisMarks { value in
                     if let yValue = value.as(Double.self) {
-                        AxisValueLabel(
-                            String(format: "%.0f", yValue) + summaryType.labelString
-                        ).foregroundStyle(.gray300)
+                        if yValue > 0 {
+                            AxisValueLabel(
+                                String(format: yValue < 1  ? "%.1f" : "%.0f", yValue) + summaryType.labelString
+                            ).foregroundStyle(.gray300)
+                        }
                     }
                 }
             }
