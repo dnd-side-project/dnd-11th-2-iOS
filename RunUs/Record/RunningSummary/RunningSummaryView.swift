@@ -18,11 +18,19 @@ struct RunningSummaryView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             RUNavigationBar(buttonType: .back, title: "활동 요약")
-            Spacer().frame(height: 20)
-            runningSummaryChart(summaryType: .distance)
-            Spacer()
-            runningSummaryChart(summaryType: .time)
-            Spacer()
+            if store.state.isNoData() {
+                Text("활동요약 확인을 위해서는\n러닝 데이터가 필요합니다!")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .multilineTextAlignment(.center)
+                    .font(Fonts.pretendardMedium(size: 14))
+                    .foregroundStyle(.gray200)
+            } else {
+                Spacer().frame(height: 20)
+                runningSummaryChart(summaryType: .distance)
+                Spacer()
+                runningSummaryChart(summaryType: .time)
+                Spacer()
+            }
         }
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
         .background(Color.background)
