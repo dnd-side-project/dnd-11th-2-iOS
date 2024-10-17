@@ -45,6 +45,11 @@ struct SetGoalView: View {
                     Spacer()
                     goalText
                 }
+                .overlay {
+                    if store.isShowValidateToast {
+                        validateToast
+                    }
+                }
                 Spacer().frame(height: 36)
             }
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
@@ -101,4 +106,19 @@ extension SetGoalView {
         store.send(.locationPermissionAlertChanged(false))
         alertEnvironment.dismiss()
     }
+    private var validateToast: some View {
+        HStack(spacing: 4) {
+            Image(.warning)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 17, height: 17)
+            Text("\(store.goalType.text)\(store.goalType.suffix) 최대 두 자리 수까지 입력 가능합니다")
+                .font(Fonts.pretendardRegular(size: 12))
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 55)
+        .background(.mainDeepDark)
+        .cornerRadius(8)
+    }
 }
+    

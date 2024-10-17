@@ -16,6 +16,7 @@ struct SetGoalStore: Reducer {
         var showLocationPermissionAlert: Bool = false
         var bigGoal: String = ""
         var smallGoal: String = ""
+        var isShowValidateToast: Bool = false
     }
     
     enum Action: BindableAction {
