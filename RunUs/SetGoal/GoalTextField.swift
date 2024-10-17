@@ -15,16 +15,15 @@ struct GoalTextField: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            Text(String(format: "%0" + String(lengthOfTextField(type: store.goalType, isBigGoal: isBigGoal)) + "d", Int(isBigGoal ? store.bigGoal : store.smallGoal) ?? 0))
             TextField("", text: isBigGoal ? $store.bigGoal : $store.smallGoal)
-            // MARK: focus 되어있을 때만 cursor를 표시하기 위해 width 1 부여
-                .frame(width: isFocus ?? false ? 1 : 0)
+                .multilineTextAlignment(.trailing)
                 .focused($isFocus, equals: true)
                 .keyboardType(.decimalPad)
                 .onChange(of: isBigGoal ? store.bigGoal : store.smallGoal) { oldValue, newValue in
                     // MARK: 첫 자리가 0이거나 입력 값중에 숫자 이외의 값이 있는 예외 처리
                     if newValue == "0" || !newValue.allSatisfy({ $0.isNumber }) { store.send(.setGoal(goal: "", isBigGoal: isBigGoal)) }
                     if newValue.count > lengthOfTextField(type: store.goalType, isBigGoal: isBigGoal) {
+                        store.isShowValidateToast = true
                         store.send(.setGoal(goal: oldValue, isBigGoal: isBigGoal))  // MARK: 자리수 제한
                     }
                 }
@@ -34,7 +33,7 @@ struct GoalTextField: View {
         .font(Fonts.pretendardMedium(size: 16))
         .padding(.vertical, 16)
         .padding(.horizontal, 12)
-        .foregroundColor(.gray200)
+        .foregroundColor(.white)
         .background(.mainDeepDark)
         .cornerRadius(8)
         .frame(height: 48)
@@ -54,5 +53,5 @@ private func unitOfTextField(type: GoalTypes, isBigGoal: Bool) -> String {
 }
 
 private func lengthOfTextField(type: GoalTypes, isBigGoal: Bool) -> Int {
-    return isBigGoal ? 1 : type == .time ? 2 : 3
+    return isBigGoal ? 2 : type == .time ? 2 : 3
 }
