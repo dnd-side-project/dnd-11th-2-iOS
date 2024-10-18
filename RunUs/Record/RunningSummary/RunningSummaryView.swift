@@ -19,13 +19,13 @@ struct RunningSummaryView: View {
         VStack(alignment: .leading, spacing: 0) {
             RUNavigationBar(buttonType: .back, title: "활동 요약")
             if store.state.isNoData() {
-                Text("활동요약 확인을 위해서는\n러닝 데이터가 필요합니다!")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .multilineTextAlignment(.center)
-                    .font(Fonts.pretendardMedium(size: 14))
-                    .foregroundStyle(.gray200)
+                noData
             } else {
-                Spacer().frame(height: 20)
+                Spacer().frame(height: 8)
+                Text(store.distanceSummary.weeklyDate)  // TODO: 추후 API 형식이 바뀌면 수정
+                    .font(Fonts.pretendardSemiBold(size: 14))
+                    .foregroundStyle(.gray300)
+                Spacer().frame(height: 31)
                 runningSummaryChart(summaryType: .distance)
                 Spacer()
                 runningSummaryChart(summaryType: .time)
@@ -45,11 +45,7 @@ struct RunningSummaryView: View {
             Text(summaryType.titleString)
                 .font(Fonts.pretendardSemiBold(size: 20))
                 .foregroundStyle(.white)
-            Spacer().frame(height: 12)
-            Text(summary.weeklyDate)
-                .font(Fonts.pretendardSemiBold(size: 12))
-                .foregroundStyle(.gray300)
-            Spacer().frame(height: 20)
+            Spacer().frame(height: 16)
             
             Chart {
                 ForEach(summary.weeklyValues, id: \.self.day) { date in
@@ -60,8 +56,8 @@ struct RunningSummaryView: View {
                     )
                     .annotation(position: .top, alignment: .center) {
                         if date.rating > 0 {
-                            Text(String(format: "%.1f", date.rating))
-                                .font(Fonts.pretendardSemiBold(size: 10))
+                            Text(String(format: "%.1f", date.rating) + summaryType.labelString)
+                                .font(Fonts.pretendardRegular(size: 10))
                                 .foregroundStyle(.gray300)
                         }
                     }
@@ -69,19 +65,31 @@ struct RunningSummaryView: View {
                         RuleMark(
                             y: .value("lastWeekAvgValue", summary.lastWeekAvgValue)
                         )
-                        .lineStyle(StrokeStyle(lineWidth: 2))
-                        .foregroundStyle(.gray200)
+                        .lineStyle(StrokeStyle(lineWidth: 1))
+                        .foregroundStyle(.white)
                         .annotation(position: .top, alignment: .trailing) {
-                            Text(String(format: "%.1f", summary.lastWeekAvgValue) + summaryType.labelString)
-                                .font(Fonts.pretendardSemiBold(size: 12))
-                                .foregroundStyle(.gray200)
+                            VStack(spacing: 0) {
+                                Text(String(format: "%.1f", summary.lastWeekAvgValue) + summaryType.labelString)
+                                    .font(Fonts.pretendardSemiBold(size: 10))
+                                    .foregroundStyle(.black)
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 6)
+                                    .background(.white)
+                                    .cornerRadius(4)
+                                Triangle()
+                                    .fill(.white)
+                                    .frame(width: 5, height: 5)
+                                    .rotationEffect(.degrees(180))
+                            }
                         }
                     }
                 }
             }
             .chartXAxis {
                 AxisMarks { value in
-                    AxisValueLabel().foregroundStyle(.gray300)
+                    AxisValueLabel()
+                        .foregroundStyle(.gray300)
+                        .font(Fonts.pretendardSemiBold(size: 12))
                 }
             }
             .chartYAxis {
@@ -90,7 +98,9 @@ struct RunningSummaryView: View {
                         if yValue > 0 {
                             AxisValueLabel(
                                 String(format: yValue < 1  ? "%.1f" : "%.0f", yValue) + summaryType.labelString
-                            ).foregroundStyle(.gray300)
+                            )
+                            .foregroundStyle(.gray300)
+                            .font(Fonts.pretendardSemiBold(size: 10))
                         }
                     }
                 }
@@ -105,6 +115,34 @@ struct RunningSummaryView: View {
             }
             .frame(height: 227)
         }
+    }
+}
+
+extension RunningSummaryView {
+    var noData: some View {
+        VStack(spacing: 13) {
+            Image(.warning)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 27, height: 27)
+            Text("주간 러닝 데이터가 없습니다.")
+                .font(Fonts.pretendardMedium(size: 14))
+                .foregroundStyle(.gray200)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.closeSubpath()
+
+        return path
     }
 }
 
