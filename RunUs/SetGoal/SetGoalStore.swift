@@ -17,14 +17,14 @@ struct SetGoalStore: Reducer {
         var bigGoal: String = ""
         var smallGoal: String = ""
         var isShowValidateToast: Bool = false
-        var toastTimer: Timer? = nil
+        var validateString: String = ""
     }
     
     enum Action: BindableAction {
         case binding(BindingAction<State>)
         case onAppear(ViewEnvironment)
         case setGoal(goal: String, isBigGoal: Bool)
-        case showValidateToast
+        case showValidateToast(isBigGoal: Bool)
         case setIsShowValidateToast(isShowValidateToast: Bool)
         case runningStart
         case requestLocationPermission
@@ -48,7 +48,18 @@ struct SetGoalStore: Reducer {
             case let .onAppear(viewEnvironment):
                 state.viewEnvironment = viewEnvironment
                 return .none
-            case .showValidateToast:
+            case let .showValidateToast(isBigGoal):
+                let (unit, suffix, max): (String, String, String)
+                if state.goalType == .distance {
+                    unit = isBigGoal ? "km" : "m"
+                    suffix = "는"
+                    max = isBigGoal ? "두" : "세"
+                } else {
+                    unit = isBigGoal ? "시간" : "분"
+                    suffix = "은"
+                    max = "두"
+                }
+                state.validateString = "\(unit)\(suffix) 최대 \(max) 자리 수 까지 입력 가능합니다."
                 if state.isShowValidateToast { return .none }
                 return .merge (
                     .send(.setIsShowValidateToast(isShowValidateToast: true)),

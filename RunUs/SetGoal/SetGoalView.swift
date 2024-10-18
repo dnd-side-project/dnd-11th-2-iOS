@@ -114,7 +114,7 @@ extension SetGoalView {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 17, height: 17)
-            Text("\(store.goalType.text)\(store.goalType.suffix) 최대 두 자리 수까지 입력 가능합니다")
+            Text(store.validateString)
                 .font(Fonts.pretendardRegular(size: 12))
         }
         .frame(maxWidth: .infinity)

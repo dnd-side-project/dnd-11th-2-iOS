@@ -24,7 +24,7 @@ struct GoalTextField: View {
                     if newValue == "0" || !newValue.allSatisfy({ $0.isNumber }) { store.send(.setGoal(goal: "", isBigGoal: isBigGoal)) }
                     if newValue.count > lengthOfTextField(type: store.goalType, isBigGoal: isBigGoal) {
                         store.send(.setGoal(goal: oldValue, isBigGoal: isBigGoal))  // MARK: 자리수 제한
-                        store.send(.showValidateToast)
+                        store.send(.showValidateToast(isBigGoal: isBigGoal))
                     }
                 }
             Text(unitOfTextField(type: store.goalType, isBigGoal: isBigGoal))

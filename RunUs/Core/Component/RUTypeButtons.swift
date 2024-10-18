@@ -53,15 +53,6 @@ enum GoalTypes: String, Navigatable {
         }
     }
     
-    var suffix: String {
-        switch self {
-        case .time:
-            return "은"
-        case .distance:
-            return "는"
-        }
-    }
-    
     var icon: ImageResource {
         switch self {
         case .time:
