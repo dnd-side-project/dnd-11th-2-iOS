@@ -11,87 +11,47 @@ import ComposableArchitecture
 struct HomeStore: Reducer {
     @ObservableState
     struct State: Equatable {
-        var currentLocatoin: String = ""
-        var showLocationPermissionAlert: Bool = false
-        var weather: WeatherResponseModel = WeatherResponseModel()
+        var selectedChallengeId: Int = -1
         var challenges: [TodayChallenge] = []
+        
+        var currentLocatoin: String = ""
+        var weather: WeatherResponseModel = WeatherResponseModel()
+        
         var monthlySummary: MonthlySummaryResponseModel = MonthlySummaryResponseModel()
     }
     
-    enum Action {
-        case onAppear
+    enum Action: BindableAction {
+        case binding(BindingAction<State>)
         case mapGetWeatherPublisher
-        case requestLocationPermission
-        case locationPermissionAlertChanged(Bool)
-        
-        case getWeather(WeatherParametersModel)
-        case getChallenges
-        case getMonthlySummary
-        
-        case setWeather(weather: WeatherResponseModel)
-        case setChallenges(challenges: [TodayChallenge])
-        case setMonthlySummary(monthlySummary: MonthlySummaryResponseModel)
+        case setAddress(WeatherParametersModel)
+        case refresh
+        case selectChallenge(Int)
     }
     
     @Dependency(\.locationManager) var locationManager
-    @Dependency(\.homeAPI) var homeAPI
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
-        case .onAppear:
-            return .run { send in
-                let status = locationManager.authorizationStatus
-                switch status {
-                case .agree:
-                    break
-                case .disagree:
-                    await send(.locationPermissionAlertChanged(true))
-                case .notyet:
-                    await send(.requestLocationPermission)
-                }
-                locationManager.sendGetWeatherPublisher()
-                await send(.getChallenges)
-                await send(.getMonthlySummary)
+    var body: some Reducer<State, Action> {
+        BindingReducer()
+        
+        Reduce { state, action in
+            switch action {
+            case .binding(_):
+                return .none
+            case .mapGetWeatherPublisher:
+                return Effect.publisher({
+                    locationManager.getWeatherPublisher
+                        .map { Action.setAddress($0) }
+                        .receive(on: DispatchQueue.main)
+                })
+            case .refresh:
+                return .none
+            case let .setAddress(weatherParameters):
+                state.currentLocatoin = weatherParameters.address
+                return .none
+            case let .selectChallenge(selectedChallengeId):
+                state.selectedChallengeId = selectedChallengeId
+                return .none
             }
-        case .mapGetWeatherPublisher:
-            return Effect.publisher({
-                locationManager.getWeatherPublisher
-                    .map { Action.getWeather($0) }
-                    .receive(on: DispatchQueue.main)
-            })
-        case .requestLocationPermission:
-            locationManager.requestLocationPermission()
-            return .none
-        case .locationPermissionAlertChanged(let alert):
-            state.showLocationPermissionAlert = alert
-            return .none
-            
-        case let .getWeather(weatherParameters):
-            state.currentLocatoin = weatherParameters.address
-            return .run { send in
-                let weather = try await homeAPI.getWeathers(weatherParameters: weatherParameters)
-                await send(.setWeather(weather: weather))
-            }
-        case .getChallenges:
-            return .run { send in
-                let challenges = try await homeAPI.getChallenges()
-                await send(.setChallenges(challenges: challenges))
-            }
-        case .getMonthlySummary:
-            return .run { send in
-                let monthlySummary = try await homeAPI.getMonthlySummary()
-                await send(.setMonthlySummary(monthlySummary: monthlySummary))
-            }
-            
-        case let .setWeather(weather):
-            state.weather = weather
-            return .none
-        case let .setChallenges(challenges):
-            state.challenges = challenges
-            return .none
-        case let .setMonthlySummary(monthlySummary):
-            state.monthlySummary = monthlySummary
-            return .none
         }
     }
 }

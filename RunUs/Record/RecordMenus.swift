@@ -51,15 +51,15 @@ struct RecordMenu: View {
             switch self.recordMenu {
             case .runningRecord:
                 let navigationObject = NavigationObject(viewType: .runningRecord)
-                viewEnvironment.navigationPath.append(navigationObject)
+                viewEnvironment.navigate(navigationObject)
                 break
             case .runningSummary:
                 let navigationObject = NavigationObject(viewType: .runningSummary)
-                viewEnvironment.navigationPath.append(navigationObject)
+                viewEnvironment.navigate(navigationObject)
                 break
             case .achieveRecord:
                 let navigationObject = NavigationObject(viewType: .achieveRecord, data: profile)
-                viewEnvironment.navigationPath.append(navigationObject)
+                viewEnvironment.navigate(navigationObject)
             }
         } label: {
             VStack(spacing: 0) {

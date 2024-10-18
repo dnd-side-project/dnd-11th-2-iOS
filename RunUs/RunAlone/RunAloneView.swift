@@ -10,11 +10,8 @@ import ComposableArchitecture
 import MapKit
 
 struct RunAloneView: View {
-    @EnvironmentObject var alertEnvironment: AlertEnvironment
     @EnvironmentObject var viewEnvironment: ViewEnvironment
-    @State var store: StoreOf<RunAloneFeature> = .init(
-        initialState: RunAloneFeature.State(),
-        reducer: { RunAloneFeature() })
+    @State var store: StoreOf<RunAloneFeature>
     
     var body: some View {
         VStack(spacing: 0) {
@@ -40,8 +37,13 @@ struct RunAloneView: View {
                         case .normal:
                             EmptyView()
                         case .challenge:
-                            RUChallengeList(challenges: store.todayChallengeList, listHorizontalPadding: 47)
-                                .transition(.scale)
+                            RUChallengeList(
+                                selectedChallengeId: $store.selectedChallengeId,
+                                challenges: $store.challenges,
+                                selectAction: selectAction,
+                                listHorizontalPadding: 47
+                            )
+                            .transition(.scale)
                         case .goal:
                             RUTypeButtons()
                                 .transition(.scale)
@@ -54,16 +56,9 @@ struct RunAloneView: View {
                 .animation(.easeInOut, value: viewEnvironment.selectedRunningMode)
             }
         }
+        .navigationBarHidden(true)  // MARK: iOS 18 이후 NavigationStack + Map UI에서 나타나는 NavigationBar 영역을 지우기 위해 필요
         .onAppear {
-            store.send(.onAppear(viewEnvironment))
-        }
-        .onChange(of: store.showLocationPermissionAlert) { oldValue, newValue in
-            if newValue {
-                alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
-            }
-        }
-        .onChange(of: viewEnvironment.selectedChallengeIndex) { oldValue, newValue in
-            store.send(.selectChallenge(store.todayChallengeList[newValue].id))  // TODO: todayChallengeList에 isSelected 삭제 후 변경
+            store.send(.onAppear(viewEnvironment: viewEnvironment))
         }
     }
 }
@@ -116,15 +111,7 @@ extension RunAloneView {
             }
         }
     }
-    private func subButtonAction() {
-        store.send(.locationPermissionAlertChanged(false))
-        alertEnvironment.dismiss()
+    private func selectAction(selectedChallengeId: Int) {
+        store.send(.selectChallenge(selectedChallengeId))
     }
-}
-
-
-#Preview {
-    RunAloneView()
-        .environmentObject(AlertEnvironment())
-        .environmentObject(ViewEnvironment())
 }

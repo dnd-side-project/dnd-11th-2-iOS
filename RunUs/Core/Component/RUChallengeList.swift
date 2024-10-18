@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 struct RUChallengeList: View {
-    @EnvironmentObject var viewEnvironment: ViewEnvironment
-    var challenges: [TodayChallenge]
+    @Binding var selectedChallengeId: Int
+    @Binding var challenges: [TodayChallenge]
+    let selectAction: (Int) -> Void
     var listHorizontalPadding: CGFloat = 0
     var scrollHorizontalPadding: CGFloat = 0
     var itemHasShadow: Bool = true
@@ -19,14 +20,17 @@ struct RUChallengeList: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                ForEach(challenges.indices, id: \.self) { index in
-                    Button(action: {
-                        viewEnvironment.selectedTabItem = .running
-                        viewEnvironment.selectedRunningMode = .challenge
-                        viewEnvironment.selectedChallengeIndex = index
-                    }, label: {
-                        RUChallengeItem(challenge: challenges[index], hasShadow: itemHasShadow, backgroundColor: itemBackgroundColor)
-                    })
+                ForEach(challenges) { challenge in
+                    Button {
+                        selectAction(challenge.id)
+                    } label: {
+                        RUChallengeItem(
+                            selectedChallengeId: $selectedChallengeId,
+                            challenge: challenge,
+                            hasShadow: itemHasShadow,
+                            backgroundColor: itemBackgroundColor
+                        )
+                    }
                 }
             }
             .padding(.horizontal, listHorizontalPadding)
@@ -36,17 +40,17 @@ struct RUChallengeList: View {
 }
 
 struct RUChallengeItem: View {
+    @Binding var selectedChallengeId: Int
     let challenge: TodayChallenge
-    var hasShadow: Bool = true
-    var backgroundColor: Color = .mainDark
+    let hasShadow: Bool
+    let backgroundColor: Color
     
     var body: some View {
         VStack {
             if hasShadow { shadowPadding }
             HStack(spacing: 16) {
                 AsyncImage(url: URL(string: challenge.icon)) { image in
-                    image
-                        .resizable()
+                    image.resizable()
                 } placeholder: {
                     ProgressView()
                 }
@@ -62,9 +66,9 @@ struct RUChallengeItem: View {
                 Spacer()
             }
             .frame(width: 280, height: 91)
-            .background(challenge.isSelected ? .background : backgroundColor)
-            .cornerRadius(12, corners: .allCorners)
-            .if(challenge.isSelected, transform: { view in
+            .background(challenge.id == selectedChallengeId && hasShadow ? .background : backgroundColor)
+            .cornerRadius(12)
+            .if(challenge.id == selectedChallengeId , transform: { view in
                 view.shadow(color: .black.opacity(0.7), radius: 10, x: 1, y: 1)
             })
             if hasShadow { shadowPadding }

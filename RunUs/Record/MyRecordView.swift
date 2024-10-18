@@ -11,10 +11,7 @@ import ComposableArchitecture
 struct MyRecordView: View {
     @EnvironmentObject var alertEnvironment: AlertEnvironment
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
-    @State var store: StoreOf<MyRecordStore> = Store(
-        initialState: MyRecordStore.State(),
-        reducer: { MyRecordStore() }
-    )
+    @State var store: StoreOf<MyRecordStore>
     
     var body: some View {
         ViewThatFits(in: .vertical) {
@@ -26,7 +23,6 @@ struct MyRecordView: View {
         .padding(.top, 1)   // MARK: ViewThatFits에서 ScrollView를 사용하면 SafeArea를 유지하기 위해 필요
         .background(Color.background)
         .onAppear {
-            store.send(.onAppear)
             store.send(.mapAuthorizationPublisher)
         }
     }
@@ -115,8 +111,4 @@ extension MyRecordView {
         store.send(.appleLoginForWithdraw)
         alertEnvironment.dismiss()
     }
-}
-
-#Preview {
-    MyRecordView()
 }

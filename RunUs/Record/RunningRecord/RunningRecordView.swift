@@ -74,7 +74,7 @@ extension RunningRecordView {
                                 )
                             )
                         )
-                        viewEnvironment.navigationPath.append(navigationObject)
+                        viewEnvironment.navigate(navigationObject)
                     } label: {
                         recordView(record: record)
                     }

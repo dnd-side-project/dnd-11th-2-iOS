@@ -21,7 +21,7 @@ struct RUTypeButtons: View {
     private func RUTypeButton(goalType: GoalTypes) -> some View {
         Button {
             let navigationObject = NavigationObject(viewType: .setGoal, data: goalType)
-            viewEnvironment.navigationPath.append(navigationObject)
+            viewEnvironment.navigate(navigationObject)
         } label: {
             VStack(spacing: 8) {
                 Image(goalType.icon)

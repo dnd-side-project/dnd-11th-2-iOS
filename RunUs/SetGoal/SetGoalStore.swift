@@ -83,7 +83,7 @@ struct SetGoalStore: Reducer {
                         achievementMode: .goal
                     )
                     let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
-                    state.viewEnvironment.navigationPath.append(navigationObject)
+                    state.viewEnvironment.navigate(navigationObject)
                     return .none
                 case .disagree:
                     return .send(.locationPermissionAlertChanged(true))
