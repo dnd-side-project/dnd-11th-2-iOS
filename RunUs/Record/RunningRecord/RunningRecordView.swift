@@ -18,7 +18,7 @@ struct RunningRecordView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            RUNavigationBar(buttonType: .back, title: "운동 기록")
+            RUNavigationBar(buttonType: .back, title: "운동기록")
                 .padding(.horizontal, Paddings.outsideHorizontalPadding)
             ViewThatFits(in: .vertical) {
                 runningRecordView

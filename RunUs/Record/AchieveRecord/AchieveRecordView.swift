@@ -63,6 +63,7 @@ struct AchieveRecordView: View {
                         .padding(.horizontal, 11)
                         .background(.mainBlue)
                         .cornerRadius(6)
+                        .foregroundStyle(.black)
                 }
                 .padding(.horizontal, 11)
                 Spacer().frame(height: 30)

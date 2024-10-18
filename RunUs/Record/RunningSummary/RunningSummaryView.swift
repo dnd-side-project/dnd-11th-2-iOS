@@ -17,7 +17,7 @@ struct RunningSummaryView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            RUNavigationBar(buttonType: .back, title: "활동 요약")
+            RUNavigationBar(buttonType: .back, title: "활동요약")
             if store.state.isNoData() {
                 noData
             } else {
