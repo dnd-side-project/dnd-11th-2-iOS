@@ -21,6 +21,7 @@ enum ServerEndpoint: NetworkEndpoint {
     case getChallenges
     case getWeathers(longitude: Double, latitude: Double)
     case getMonthlySummary
+    case getWeeklySummary(summaryType: String)
     case getCourses
     
     var baseURL: URL? { URL(string: "https://api.runus.site") }
@@ -57,6 +58,8 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/weathers"
         case .getMonthlySummary:
             return APIversion.v1 + "/running-records/monthly-summary"
+        case .getWeeklySummary:
+            return APIversion.v1 + "/running-records/weekly-summary"
         case .getCourses:
             return APIversion.v1 + "/scale/courses"
         }
@@ -64,7 +67,17 @@ enum ServerEndpoint: NetworkEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .getServerVersion, .getProfiles, .getBadges, .getRunningRecord, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
+        case .getServerVersion,
+                .getProfiles,
+                .getBadges,
+                .getRunningRecord,
+                .getMonthly,
+                .getDaily,
+                .getChallenges,
+                .getWeathers,
+                .getMonthlySummary,
+                .getWeeklySummary,
+                .getCourses:
             return .get
         case .signUp, .signIn, .withdraw, .postRunningRecord:
             return .post
@@ -83,6 +96,8 @@ enum ServerEndpoint: NetworkEndpoint {
         case .getWeathers(let longitude, let latitude):
             return [.init(name: "longitude", value: String(longitude)),
                     .init(name: "latitude", value: String(latitude))]
+        case .getWeeklySummary(let summaryType):
+            return [.init(name: "summaryType", value: summaryType)]
         default:
             return nil
         }
@@ -91,7 +106,16 @@ enum ServerEndpoint: NetworkEndpoint {
         switch self {
         case .signUp, .signIn:
             return ["Content-Type": "application/json"]
-        case .getProfiles, .getBadges, .getRunningRecord, .getMonthly, .getDaily, .getChallenges, .getWeathers, .getMonthlySummary, .getCourses:
+        case .getProfiles,
+                .getBadges,
+                .getRunningRecord,
+                .getMonthly,
+                .getDaily,
+                .getChallenges,
+                .getWeathers,
+                .getMonthlySummary,
+                .getWeeklySummary,
+                .getCourses:
             guard let accessToken: String = UserDefaultManager.accessToken else {
                 return nil
             }

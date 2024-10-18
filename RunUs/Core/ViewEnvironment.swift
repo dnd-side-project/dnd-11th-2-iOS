@@ -39,6 +39,7 @@ enum ViewTypes {
     case runningResult
     case recordResult
     case runningRecord
+    case runningSummary
     case achieveRecord
     
     var navigationType: NavigationButtonType {

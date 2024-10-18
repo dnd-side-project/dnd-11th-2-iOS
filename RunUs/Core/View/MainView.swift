@@ -51,6 +51,8 @@ struct MainView: View {
                         RunningResultView(runningRecord: runningRecord)
                     case .runningRecord:
                         RunningRecordView()
+                    case .runningSummary:
+                        RunningSummaryView()
                     case .achieveRecord:
                         let profile = navigationObject.data as! ProfileResponseModel
                         AchieveRecordView(profile: profile)
