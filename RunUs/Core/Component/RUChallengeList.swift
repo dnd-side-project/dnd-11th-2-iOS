@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct RUChallengeList: View {
-    @Binding var selectedChallengeId: Int
+    @Binding var selectedChallengeIndex: Int
     @Binding var challenges: [TodayChallenge]
     let selectAction: (Int) -> Void
     var listHorizontalPadding: CGFloat = 0
@@ -20,13 +20,13 @@ struct RUChallengeList: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                ForEach(challenges) { challenge in
+                ForEach(challenges.indices, id: \.self) { index in
                     Button {
-                        selectAction(challenge.id)
+                        selectAction(index)
                     } label: {
                         RUChallengeItem(
-                            selectedChallengeId: $selectedChallengeId,
-                            challenge: challenge,
+                            isSelected: .constant(index == selectedChallengeIndex),
+                            challenge: challenges[index],
                             hasShadow: itemHasShadow,
                             backgroundColor: itemBackgroundColor
                         )
@@ -40,7 +40,7 @@ struct RUChallengeList: View {
 }
 
 struct RUChallengeItem: View {
-    @Binding var selectedChallengeId: Int
+    @Binding var isSelected: Bool
     let challenge: TodayChallenge
     let hasShadow: Bool
     let backgroundColor: Color
@@ -66,9 +66,9 @@ struct RUChallengeItem: View {
                 Spacer()
             }
             .frame(width: 280, height: 91)
-            .background(challenge.id == selectedChallengeId && hasShadow ? .background : backgroundColor)
+            .background(isSelected && hasShadow ? .background : backgroundColor)
             .cornerRadius(12)
-            .if(challenge.id == selectedChallengeId , transform: { view in
+            .if(isSelected , transform: { view in
                 view.shadow(color: .black.opacity(0.7), radius: 10, x: 1, y: 1)
             })
             if hasShadow { shadowPadding }

@@ -17,7 +17,7 @@ struct RunAloneFeature {
         var viewEnvironment: ViewEnvironment = ViewEnvironment()
         var userLocation: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
         
-        var selectedChallengeId: Int = -1
+        var selectedChallengeIndex: Int = 0
         var challenges: [TodayChallenge] = []
         
         var selectedGoalType: GoalTypes?
@@ -63,7 +63,7 @@ struct RunAloneFeature {
             case .startButtonTapped:
                 if locationManager.authorizationStatus == .agree {
                     let runningStartInfo = RunningStartInfo(
-                        challengeId: state.viewEnvironment.selectedRunningMode == .normal ? nil : state.selectedChallengeId,
+                        challengeId: state.viewEnvironment.selectedRunningMode == .normal ? nil : state.challenges[state.selectedChallengeIndex].id,
                         goalDistance: nil,
                         goalTime: nil,
                         achievementMode: state.viewEnvironment.selectedRunningMode
@@ -78,8 +78,8 @@ struct RunAloneFeature {
                 state.selectedGoalType = goal
                 return .none
                 
-            case let .selectChallenge(selectedChallengeId):
-                state.selectedChallengeId = selectedChallengeId
+            case let .selectChallenge(selectedChallengeIndex):
+                state.selectedChallengeIndex = selectedChallengeIndex
                 return .none
             }
         }

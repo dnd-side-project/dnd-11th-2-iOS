@@ -11,7 +11,7 @@ import ComposableArchitecture
 struct HomeStore: Reducer {
     @ObservableState
     struct State: Equatable {
-        var selectedChallengeId: Int = -1
+        var selectedChallengeIndex: Int = 0
         var challenges: [TodayChallenge] = []
         
         var currentLocatoin: String = ""
@@ -48,8 +48,8 @@ struct HomeStore: Reducer {
             case let .setAddress(weatherParameters):
                 state.currentLocatoin = weatherParameters.address
                 return .none
-            case let .selectChallenge(selectedChallengeId):
-                state.selectedChallengeId = selectedChallengeId
+            case let .selectChallenge(selectedChallengeIndex):
+                state.selectedChallengeIndex = selectedChallengeIndex
                 return .none
             }
         }

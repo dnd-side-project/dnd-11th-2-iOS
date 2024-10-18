@@ -129,8 +129,6 @@ struct MainStore {
             case let .setChallenges(challenges):
                 state.homeState.challenges = challenges
                 state.runAloneState.challenges = challenges
-                state.homeState.selectedChallengeId = challenges[0].id
-                state.runAloneState.selectedChallengeId = challenges[0].id
                 return .none
             case let .setWeather(weather):
                 state.homeState.weather = weather
@@ -167,8 +165,8 @@ struct MainStore {
                 return .send(.getWeather(weatherParameters))
             case .homeAction(.refresh):
                 return .send(.homeRefresh)
-            case let .homeAction(.selectChallenge(selectedChallengeId)):
-                state.runAloneState.selectedChallengeId = selectedChallengeId
+            case let .homeAction(.selectChallenge(selectedChallengeIndex)):
+                state.runAloneState.selectedChallengeIndex = selectedChallengeIndex
                 return .none
             case let .homeAction(homeAction):
                 return HomeStore().reduce(into: &state.homeState, action: homeAction)
@@ -177,8 +175,8 @@ struct MainStore {
                 // MARK: abour runAlone scope
             case .runAloneAction(.checkLocationPermission):
                 return .send(.checkLocationPermission)
-            case let .runAloneAction(.selectChallenge(selectedChallengeId)):
-                state.homeState.selectedChallengeId = selectedChallengeId
+            case let .runAloneAction(.selectChallenge(selectedChallengeIndex)):
+                state.homeState.selectedChallengeIndex = selectedChallengeIndex
                 return .none
             case let .runAloneAction(runAloneAction):
                 return RunAloneFeature().reduce(into: &state.runAloneState, action: runAloneAction)

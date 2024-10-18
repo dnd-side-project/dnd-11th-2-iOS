@@ -95,7 +95,7 @@ extension HomeView {
                 viewEnvironment.selectedRunningMode = .goal
             }, text: "오늘의 러닝 챌린지 및 목표설정")
             RUChallengeList(
-                selectedChallengeId: $store.selectedChallengeId,
+                selectedChallengeIndex: $store.selectedChallengeIndex,
                 challenges: $store.challenges,
                 selectAction: selectAction,
                 listHorizontalPadding: Paddings.outsideHorizontalPadding,
@@ -131,9 +131,9 @@ extension HomeView {
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
     }
     
-    private func selectAction(selectedChallengeId: Int) {
+    private func selectAction(selectedChallengeIndex: Int) {
         viewEnvironment.selectedTabItem = .running
         viewEnvironment.selectedRunningMode = .challenge
-        store.send(.selectChallenge(selectedChallengeId))
+        store.send(.selectChallenge(selectedChallengeIndex))
     }
 }

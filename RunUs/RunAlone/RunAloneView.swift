@@ -38,7 +38,7 @@ struct RunAloneView: View {
                             EmptyView()
                         case .challenge:
                             RUChallengeList(
-                                selectedChallengeId: $store.selectedChallengeId,
+                                selectedChallengeIndex: $store.selectedChallengeIndex,
                                 challenges: $store.challenges,
                                 selectAction: selectAction,
                                 listHorizontalPadding: 47
@@ -111,7 +111,7 @@ extension RunAloneView {
             }
         }
     }
-    private func selectAction(selectedChallengeId: Int) {
-        store.send(.selectChallenge(selectedChallengeId))
+    private func selectAction(selectedChallengeIndex: Int) {
+        store.send(.selectChallenge(selectedChallengeIndex))
     }
 }
