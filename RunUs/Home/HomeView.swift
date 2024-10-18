@@ -9,30 +9,20 @@ import SwiftUI
 import ComposableArchitecture
 
 struct HomeView: View {
-    @EnvironmentObject var alertEnvironment: AlertEnvironment
     @EnvironmentObject var viewEnvironment: ViewEnvironment
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
-    @State var store: StoreOf<HomeStore> = Store(
-        initialState: HomeStore.State(),
-        reducer: { HomeStore() }
-    )
+    @State var store: StoreOf<HomeStore>
     
     var body: some View {
         ScrollView {
             homeView
         }
         .refreshable {
-            store.send(.onAppear)
+            store.send(.refresh)
         }
         .background(Color.background)
         .onAppear {
-            store.send(.onAppear)
             store.send(.mapGetWeatherPublisher)
-        }
-        .onChange(of: store.showLocationPermissionAlert) { oldValue, newValue in
-            if newValue {
-                alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
-            }
         }
     }
 }
@@ -42,7 +32,7 @@ extension HomeView {
         VStack(alignment: .leading, spacing: 0) {
             Spacer().frame(height: 20)
             Button {
-                store.send(.onAppear)
+                store.send(.refresh)
             } label: {
                 Image(.runus)
                     .resizable()
@@ -105,7 +95,9 @@ extension HomeView {
                 viewEnvironment.selectedRunningMode = .goal
             }, text: "오늘의 러닝 챌린지 및 목표설정")
             RUChallengeList(
-                challenges: store.challenges,
+                selectedChallengeId: $store.selectedChallengeId,
+                challenges: $store.challenges,
+                selectAction: selectAction,
                 listHorizontalPadding: Paddings.outsideHorizontalPadding,
                 scrollHorizontalPadding: -Paddings.outsideHorizontalPadding,
                 itemHasShadow: false,
@@ -139,15 +131,9 @@ extension HomeView {
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
     }
     
-    private func subButtonAction() {
-        store.send(.locationPermissionAlertChanged(false))
-        alertEnvironment.dismiss()
+    private func selectAction(selectedChallengeId: Int) {
+        viewEnvironment.selectedTabItem = .running
+        viewEnvironment.selectedRunningMode = .challenge
+        store.send(.selectChallenge(selectedChallengeId))
     }
-}
-    
-
-#Preview {
-    HomeView()
-        .environmentObject(AlertEnvironment())
-        .environmentObject(ViewEnvironment())
 }

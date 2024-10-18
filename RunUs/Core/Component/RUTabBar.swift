@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct RUTabBar: View {
     @EnvironmentObject var viewEnvironment: ViewEnvironment
+    @State var store: StoreOf<MainStore>
     
     var body: some View {
         HStack {
@@ -23,7 +25,16 @@ struct RUTabBar: View {
     
     private func RUDefualtTabItem(_ tabItem: TabItems) -> some View {
         Button {
-            if viewEnvironment.selectedTabItem != tabItem {
+            if viewEnvironment.selectedTabItem == tabItem {
+                switch tabItem {
+                case .home:
+                    store.send(.homeRefresh)
+                case .running:
+                    store.send(.runAloneRefresh)
+                case .myRecord:
+                    store.send(.myRecordRefresh)
+                }
+            } else {
                 viewEnvironment.selectedTabItem = tabItem
             }
         } label: {

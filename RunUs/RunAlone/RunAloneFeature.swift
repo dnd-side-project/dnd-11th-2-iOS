@@ -16,25 +16,25 @@ struct RunAloneFeature {
     struct State {
         var viewEnvironment: ViewEnvironment = ViewEnvironment()
         var userLocation: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
-        var showLocationPermissionAlert: Bool = false
-        var todayChallengeList: [TodayChallenge] = []
+        
+        var selectedChallengeId: Int = -1
+        var challenges: [TodayChallenge] = []
+        
         var selectedGoalType: GoalTypes?
     }
     
     enum Action: BindableAction {
         case binding(BindingAction<State>)
-        case onAppear(ViewEnvironment)
+        case onAppear(viewEnvironment: ViewEnvironment)
+        case checkLocationPermission
         case setUserLocation
-        case requestLocationPermission
-        case locationPermissionAlertChanged(Bool)
-        case setTodayChallengeList([TodayChallenge])
-        case selectChallenge(Int)
         case selectGoal(GoalTypes)
         case startButtonTapped
+        
+        case selectChallenge(Int)
     }
     
     @Dependency(\.locationManager) var locationManager
-    @Dependency(\.runAloneAPI) var runAloneAPI
     
     var body: some Reducer<State, Action> {
         BindingReducer()
@@ -45,72 +45,42 @@ struct RunAloneFeature {
                 return .none
             case let .onAppear(viewEnvironment):
                 state.viewEnvironment = viewEnvironment
-                return onAppearEffect()
+                return .run { send in
+                    if locationManager.authorizationStatus == .agree {
+                        await send(.setUserLocation)
+                    }
+                }
+            case .checkLocationPermission:
+                return .none
             case .setUserLocation:
                 state.userLocation = .region(
-                        MKCoordinateRegion(
-                            center: LocationManager.shared.getCurrentLocationCoordinator(),
-                            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                        )
+                    MKCoordinateRegion(
+                        center: LocationManager.shared.getCurrentLocationCoordinator(),
+                        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
                     )
-                return .none
-            case .requestLocationPermission:
-                locationManager.requestLocationPermission()
-                return .none
-            case .locationPermissionAlertChanged(let alert):
-                state.showLocationPermissionAlert = alert
-                return .none
-            case .setTodayChallengeList(let list):
-                state.todayChallengeList = list
-                state.todayChallengeList[0].isSelected = true
-                return .none
-            case .selectChallenge(let id):
-                state.todayChallengeList = state.todayChallengeList.map {
-                    .init(id: $0.id,
-                          title: $0.title,
-                          expectedTime: $0.expectedTime,
-                          icon: $0.icon,
-                          isSelected: id == $0.id)
-                }
+                )
                 return .none
             case .startButtonTapped:
-                let status = locationManager.authorizationStatus
-                switch status {
-                case .agree:
+                if locationManager.authorizationStatus == .agree {
                     let runningStartInfo = RunningStartInfo(
-                        challengeId: state.viewEnvironment.selectedRunningMode == .normal ? nil : state.todayChallengeList[state.viewEnvironment.selectedChallengeIndex].id,
+                        challengeId: state.viewEnvironment.selectedRunningMode == .normal ? nil : state.selectedChallengeId,
                         goalDistance: nil,
                         goalTime: nil,
                         achievementMode: state.viewEnvironment.selectedRunningMode
                     )
                     let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
-                    state.viewEnvironment.navigationPath.append(navigationObject)
+                    state.viewEnvironment.navigate(navigationObject)
                     return .none
-                case .disagree:
-                    return .send(.locationPermissionAlertChanged(true))
-                case .notyet:
-                    return .send(.requestLocationPermission)
+                } else {
+                    return .send(.checkLocationPermission)
                 }
             case .selectGoal(let goal):
                 state.selectedGoalType = goal
                 return .none
-            }
-        }
-    }
-    
-    private func onAppearEffect() -> Effect<Action> {
-        .run { send in
-            let data = try await runAloneAPI.getTodayChallenge()
-            await send(.setTodayChallengeList(data))
-            
-            let status = locationManager.authorizationStatus
-            switch status {
-            case .agree:
-                await send(.setUserLocation)
-            case .disagree:
-                await send(.locationPermissionAlertChanged(true))
-            case .notyet:
-                await send(.requestLocationPermission)
+                
+            case let .selectChallenge(selectedChallengeId):
+                state.selectedChallengeId = selectedChallengeId
+                return .none
             }
         }
     }

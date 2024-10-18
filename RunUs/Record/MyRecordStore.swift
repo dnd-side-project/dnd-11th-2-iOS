@@ -17,13 +17,7 @@ struct MyRecordStore: Reducer {
     }
     
     enum Action {
-        case onAppear
         case mapAuthorizationPublisher
-        
-        case getProfile
-        case getBadges
-        case setProfile(profile: ProfileResponseModel)
-        case setBadges(badges: [Badge])
         
         case logout
         case appleLoginForWithdraw
@@ -35,32 +29,11 @@ struct MyRecordStore: Reducer {
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case .onAppear:
-            return .run { send in
-                await send(.getProfile)
-                await send(.getBadges)
-            }
         case .mapAuthorizationPublisher:
             return Effect.publisher({
                 authorizationManager.authorizationPublisher
                     .map { Action.withdraw(withdrawRequest: $0) }
             })
-        case .getProfile:
-            return .run { send in
-                let profile = try await myRecordAPI.getProfiles()
-                await send(.setProfile(profile: profile))
-            }
-        case .getBadges:
-            return .run { send in
-                let badges = try await myRecordAPI.getBadges()
-                await send(.setBadges(badges: badges))
-            }
-        case let .setProfile(profile):
-            state.profile = profile
-            return .none
-        case let .setBadges(badges):
-            state.badges = badges
-            return .none
         case .logout:
             resetUserDefaults()
             return .none

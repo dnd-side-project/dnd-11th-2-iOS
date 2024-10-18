@@ -21,5 +21,8 @@
 	<array>
 		<string>location</string>
 	</array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>런어스 서비스를 위해서는
+위치정보 권한이 필요합니다.</string>
 </dict>
 </plist>
