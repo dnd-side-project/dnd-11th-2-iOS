@@ -30,7 +30,6 @@ struct RunAloneFeature {
         case setUserLocation
         case selectGoal(GoalTypes)
         case startButtonTapped
-        
         case selectChallenge(Int)
     }
     

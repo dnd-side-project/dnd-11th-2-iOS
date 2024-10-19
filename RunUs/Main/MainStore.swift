@@ -161,6 +161,8 @@ struct MainStore {
                 }
                 
                 // MARK: about home scope
+            case .homeAction(.mapGetWeatherPublisher):
+                return .none
             case let .homeAction(.setAddress(weatherParameters)):
                 return .send(.getWeather(weatherParameters))
             case .homeAction(.refresh):
@@ -172,9 +174,17 @@ struct MainStore {
                 return HomeStore().reduce(into: &state.homeState, action: homeAction)
                     .map(MainStore.Action.homeAction)
                 
-                // MARK: abour runAlone scope
+                // MARK: about runAlone scope
+            case .runAloneAction(.onAppear(_)):
+                return .none
             case .runAloneAction(.checkLocationPermission):
                 return .send(.checkLocationPermission)
+            case .runAloneAction(.setUserLocation):
+                return .none
+            case .runAloneAction(.selectGoal(_)):
+                return .none
+            case .runAloneAction(.startButtonTapped):
+                return .none
             case let .runAloneAction(.selectChallenge(selectedChallengeIndex)):
                 state.homeState.selectedChallengeIndex = selectedChallengeIndex
                 return .none
@@ -182,6 +192,15 @@ struct MainStore {
                 return RunAloneFeature().reduce(into: &state.runAloneState, action: runAloneAction)
                     .map(MainStore.Action.runAloneAction)
                 
+                // MARK: about myRecord scope
+            case .myRecordAction(.mapAuthorizationPublisher):
+                return .none
+            case .myRecordAction(.logout):
+                return .none
+            case .myRecordAction(.withdraw(_)):
+                return .none
+            case .myRecordAction(.appleLoginForWithdraw):
+                return .none
             case let .myRecordAction(myRecordAction):
                 return MyRecordStore().reduce(into: &state.myRecordState, action: myRecordAction)
                     .map(MainStore.Action.myRecordAction)
