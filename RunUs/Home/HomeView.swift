@@ -79,8 +79,7 @@ extension HomeView {
                     HStack(spacing: 4) {
                         Text("체감온도 \(store.weather.apparentTemperature)℃")
                         Text("\(store.weather.maxTemperature)℃/\(store.weather.minTemperature)℃")
-                        .foregroundStyle(.gray300)
-                        .font(Fonts.pretendardRegular(size: 10))
+                            .foregroundStyle(.gray300)
                     }
                     .font(Fonts.pretendardRegular(size: 12))
                 }

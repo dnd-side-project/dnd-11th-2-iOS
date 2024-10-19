@@ -60,7 +60,7 @@ struct RUChallengeItem: View {
                     Text(challenge.title)
                         .font(Fonts.pretendardSemiBold(size: 16))
                     Text("소요시간 • \(challenge.expectedTime)")
-                        .font(Fonts.pretendardMedium(size: 10))
+                        .font(Fonts.pretendardMedium(size: 14))
                 }
                 .foregroundStyle(.white)
                 Spacer()

@@ -138,23 +138,24 @@ extension RunningResultView {
                     mediumText("\(store.averagePace)")
                     smallText("평균 페이스")
                 }
-                Spacer().frame(width: 36)
+                Spacer()
                 VStack(spacing: 4) {
                     mediumText("\(store.runningTime.formatToTime)")
                     smallText("시간")
                 }
-                Spacer().frame(width: 36)
+                Spacer()
                 VStack(spacing: 4) {
                     mediumText("\(store.kcal)")
                     smallText("칼로리")
                 }
+                Spacer()
             }
         }
     }
     
     private func smallText(_ string: String) -> some View {
         Text(string)
-            .font(Fonts.pretendardRegular(size: 12))
+            .font(Fonts.pretendardRegular(size: 14))
             .foregroundStyle(.gray200)
     }
     

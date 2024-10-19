@@ -54,11 +54,11 @@ struct AchieveRecordView: View {
                             .foregroundStyle(.mainGreen)
                             .font(Fonts.pretendardBold(size: 15))
                         Text(store.state.courses.currentCourse.message)
-                            .font(Fonts.pretendardMedium(size: 10))
+                            .font(Fonts.pretendardMedium(size: 12))
                     }
                     Spacer()
                     Text("현재 \(store.state.courses.currentCourse.achievedDistance) 달성")
-                        .font(Fonts.pretendardSemiBold(size: 10))
+                        .font(Fonts.pretendardSemiBold(size: 12))
                         .padding(.vertical, 8)
                         .padding(.horizontal, 11)
                         .background(.mainBlue)
@@ -94,7 +94,7 @@ extension AchieveRecordView {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: 6) {
                     Text("런어스랑 지구한바퀴 달리기")
                         .foregroundStyle(.white)
                         .font(Fonts.pretendardSemiBold(size: 16))
