@@ -21,15 +21,18 @@ struct MyRecordAPIKey: DependencyKey {
 }
 
 protocol MyRecordAPI {
-    func withdraw(withdrawRequest: WithdrawRequestModel) async throws
+    func withdraw(withdrawRequest: WithdrawRequestModel) async throws -> WithdrawResponseModel
 }
 
 final class MyRecordAPILive: MyRecordAPI {
-    func withdraw(withdrawRequest: WithdrawRequestModel) async throws {
-        try await ServerNetwork.shared.request(.withdraw(withdrawRequest: withdrawRequest))
+    func withdraw(withdrawRequest: WithdrawRequestModel) async throws -> WithdrawResponseModel {
+        let result: WithdrawResponseModel = try await ServerNetwork.shared.request(.withdraw(withdrawRequest: withdrawRequest))
+        return result
     }
 }
 
 final class MyRecordAPIPreview: MyRecordAPI {
-    func withdraw(withdrawRequest: WithdrawRequestModel) async throws {}
+    func withdraw(withdrawRequest: WithdrawRequestModel) async throws -> WithdrawResponseModel {
+        return WithdrawResponseModel()
+    }
 }

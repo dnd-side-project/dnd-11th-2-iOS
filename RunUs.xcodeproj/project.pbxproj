@@ -44,6 +44,7 @@
 		D9F5B8572C60D151009CEB19 /* Bundle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */; };
 		D9F5B85A2C60EDD0009CEB19 /* RunAloneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B8592C60EDD0009CEB19 /* RunAloneView.swift */; };
 		D9F5B85C2C60EE1E009CEB19 /* RunAloneFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5B85B2C60EE1E009CEB19 /* RunAloneFeature.swift */; };
+		F6016DC52CC51F2600FB637F /* WithdrawResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6016DC42CC51F2600FB637F /* WithdrawResponseModel.swift */; };
 		F611B21A2C7CB04100797470 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B2192C7CB04100797470 /* AuthorizationManager.swift */; };
 		F611B21C2C7E1A7300797470 /* HomeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B21B2C7E1A7300797470 /* HomeStore.swift */; };
 		F611B2202C7E1FBE00797470 /* WeatherResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B21F2C7E1FBE00797470 /* WeatherResponseModel.swift */; };
@@ -155,6 +156,7 @@
 		D9F5B8562C60D151009CEB19 /* Bundle+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+extension.swift"; sourceTree = "<group>"; };
 		D9F5B8592C60EDD0009CEB19 /* RunAloneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneView.swift; sourceTree = "<group>"; };
 		D9F5B85B2C60EE1E009CEB19 /* RunAloneFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAloneFeature.swift; sourceTree = "<group>"; };
+		F6016DC42CC51F2600FB637F /* WithdrawResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawResponseModel.swift; sourceTree = "<group>"; };
 		F611B2192C7CB04100797470 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
 		F611B21B2C7E1A7300797470 /* HomeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStore.swift; sourceTree = "<group>"; };
 		F611B21F2C7E1FBE00797470 /* WeatherResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponseModel.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */,
 				F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */,
 				F65033D82C75D21800C81DA6 /* WithdrawRequestModel.swift */,
+				F6016DC42CC51F2600FB637F /* WithdrawResponseModel.swift */,
 				D9842DD62C846450002B145C /* RunningRecord */,
 				F634D2BD2CB778A20014EDB6 /* RunningSummary */,
 				F63BAA492C84A98900DCE9EC /* AchieveRecord */,
@@ -710,6 +713,7 @@
 				F66467192CA7E4A900508369 /* RUTypeButtons.swift in Sources */,
 				D9417AD72C8C000C008F8075 /* RunningResultAPI.swift in Sources */,
 				D9417AD42C8BFDD7008F8075 /* RunningData.swift in Sources */,
+				F6016DC52CC51F2600FB637F /* WithdrawResponseModel.swift in Sources */,
 				F63B81622C6F1A7E002F45F4 /* SetGoalStore.swift in Sources */,
 				D9842DD82C84646A002B145C /* RunningRecordStore.swift in Sources */,
 				F6F41B6E2C6900B6002EA1F5 /* SetGoalView.swift in Sources */,
@@ -869,9 +873,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = site.runus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -904,9 +912,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = site.runus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

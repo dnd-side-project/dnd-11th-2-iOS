@@ -58,8 +58,8 @@ struct MyRecordStore: Reducer {
             return .none
         case let .withdraw(withdrawRequest):
             return .run { _ in
-                try await myRecordAPI.withdraw(withdrawRequest: withdrawRequest)
-                resetUserDefaults()
+                let withdrawResponse = try await myRecordAPI.withdraw(withdrawRequest: withdrawRequest)
+                if withdrawResponse.isWithdrawSuccess { resetUserDefaults() }
             }
         }
     }
