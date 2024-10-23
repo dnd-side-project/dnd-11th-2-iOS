@@ -88,6 +88,9 @@
 		F65ACDCA2CC752E200C67DD1 /* RUProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDC92CC752E200C67DD1 /* RUProgress.swift */; };
 		F65ACDCD2CC8C76600C67DD1 /* MyBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDCC2CC8C76600C67DD1 /* MyBadgeView.swift */; };
 		F65ACDCF2CC8CF8300C67DD1 /* RUBadgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDCE2CC8CF8300C67DD1 /* RUBadgeList.swift */; };
+		F65ACDD12CC8D70C00C67DD1 /* MyBadgeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDD02CC8D70C00C67DD1 /* MyBadgeStore.swift */; };
+		F65ACDD32CC8D74200C67DD1 /* MyBadgeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDD22CC8D74200C67DD1 /* MyBadgeAPI.swift */; };
+		F65ACDD52CC8D7D200C67DD1 /* BadgeListsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDD42CC8D7D200C67DD1 /* BadgeListsResponseModel.swift */; };
 		F664670B2CA3F01500508369 /* GoalResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F664670A2CA3F01500508369 /* GoalResult.swift */; };
 		F66467112CA408BA00508369 /* RunningRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467102CA408BA00508369 /* RunningRecordAPI.swift */; };
 		F66467132CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */; };
@@ -206,6 +209,9 @@
 		F65ACDC92CC752E200C67DD1 /* RUProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUProgress.swift; sourceTree = "<group>"; };
 		F65ACDCC2CC8C76600C67DD1 /* MyBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeView.swift; sourceTree = "<group>"; };
 		F65ACDCE2CC8CF8300C67DD1 /* RUBadgeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUBadgeList.swift; sourceTree = "<group>"; };
+		F65ACDD02CC8D70C00C67DD1 /* MyBadgeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeStore.swift; sourceTree = "<group>"; };
+		F65ACDD22CC8D74200C67DD1 /* MyBadgeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeAPI.swift; sourceTree = "<group>"; };
+		F65ACDD42CC8D7D200C67DD1 /* BadgeListsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeListsResponseModel.swift; sourceTree = "<group>"; };
 		F664670A2CA3F01500508369 /* GoalResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResult.swift; sourceTree = "<group>"; };
 		F66467102CA408BA00508369 /* RunningRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordAPI.swift; sourceTree = "<group>"; };
 		F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordMonthlyResponseModel.swift; sourceTree = "<group>"; };
@@ -515,6 +521,9 @@
 			isa = PBXGroup;
 			children = (
 				F65ACDCC2CC8C76600C67DD1 /* MyBadgeView.swift */,
+				F65ACDD02CC8D70C00C67DD1 /* MyBadgeStore.swift */,
+				F65ACDD22CC8D74200C67DD1 /* MyBadgeAPI.swift */,
+				F65ACDD42CC8D7D200C67DD1 /* BadgeListsResponseModel.swift */,
 			);
 			path = MyBadge;
 			sourceTree = "<group>";
@@ -693,6 +702,7 @@
 				F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
 				F634D2C62CB781210014EDB6 /* RunningSummaryAPI.swift in Sources */,
+				F65ACDD32CC8D74200C67DD1 /* MyBadgeAPI.swift in Sources */,
 				D9417AD02C8BFCC2008F8075 /* RunningResult.swift in Sources */,
 				F63B81672C710573002F45F4 /* String+extension.swift in Sources */,
 				D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */,
@@ -728,6 +738,7 @@
 				F65ACDCA2CC752E200C67DD1 /* RUProgress.swift in Sources */,
 				F634D2C82CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift in Sources */,
 				D93AC4B12C8C53A900C1570F /* RunningMode.swift in Sources */,
+				F65ACDD52CC8D7D200C67DD1 /* BadgeListsResponseModel.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
 				F66467172CA52E0600508369 /* RunningRecord.swift in Sources */,
@@ -739,6 +750,7 @@
 				D9842DDA2C8465A1002B145C /* RunningRecordDailyResponseModel.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,
 				D9A65D0E2C7CCCE700FA33BF /* RunningResultFeature.swift in Sources */,
+				F65ACDD12CC8D70C00C67DD1 /* MyBadgeStore.swift in Sources */,
 				F69BFDAA2C8B64070073775C /* VersionResponseModel.swift in Sources */,
 				D95F830D2C6F5C9A000DCAA3 /* RunningFeature.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,

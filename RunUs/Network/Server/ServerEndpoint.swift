@@ -23,6 +23,7 @@ enum ServerEndpoint: NetworkEndpoint {
     case getMonthlySummary
     case getWeeklySummary(summaryType: String)
     case getCourses
+    case getBadgeLists
     
     var baseURL: URL? { URL(string: "https://api.runus.site") }
     
@@ -62,6 +63,8 @@ enum ServerEndpoint: NetworkEndpoint {
             return APIversion.v1 + "/running-records/weekly-summary"
         case .getCourses:
             return APIversion.v1 + "/scale/courses"
+        case .getBadgeLists:
+            return APIversion.v1 + "/badges/me/lists"
         }
     }
     
@@ -77,7 +80,8 @@ enum ServerEndpoint: NetworkEndpoint {
                 .getWeathers,
                 .getMonthlySummary,
                 .getWeeklySummary,
-                .getCourses:
+                .getCourses,
+                .getBadgeLists:
             return .get
         case .signUp, .signIn, .withdraw, .postRunningRecord:
             return .post
@@ -115,7 +119,8 @@ enum ServerEndpoint: NetworkEndpoint {
                 .getWeathers,
                 .getMonthlySummary,
                 .getWeeklySummary,
-                .getCourses:
+                .getCourses,
+                .getBadgeLists:
             guard let accessToken: String = UserDefaultManager.accessToken else {
                 return nil
             }
