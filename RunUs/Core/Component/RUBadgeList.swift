@@ -22,7 +22,7 @@ struct RUBadgeList: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            if badges.count == 0 && rowLimit == 1 {
+            if badges.count == 0 {
                 Text("달리기를 시작하고 뱃지를 받아보세요!")
                     .font(.system(size: 13))
                     .foregroundStyle(.gray200)
