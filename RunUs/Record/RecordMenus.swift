@@ -27,11 +27,11 @@ enum RecordMenus {
     var icon: ImageResource {
         switch self {
         case .runningRecord:
-            return .runningRecord
+            return .Record.calendar
         case .runningSummary:
-            return .runningSummary
+            return .Record.chart
         case .achieveRecord:
-            return .achieveRecord
+            return .Record.badge
         }
     }
 }

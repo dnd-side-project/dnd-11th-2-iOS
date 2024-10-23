@@ -13,7 +13,7 @@ struct SplashView: View {
     
     var body: some View {
         VStack {
-            Image(.splash)
+            Image(.runusSplash)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 79)

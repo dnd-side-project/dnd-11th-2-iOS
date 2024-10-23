@@ -70,10 +70,10 @@ extension RUNavigationBar {
         Button {
             viewEnvironment.reset()
         } label: {
-            Image(.home)
+            Image(.tabHome)
                 .resizable()
                 .frame(width: 24, height: 24)
-                .tint(.white)
+                .foregroundStyle(.white)
         }
     }
     

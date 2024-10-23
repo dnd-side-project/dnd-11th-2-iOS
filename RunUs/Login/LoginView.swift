@@ -34,7 +34,7 @@ struct LoginView: View {
             }
             .foregroundStyle(.mainGreen)
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
-            Image(.login)
+            Image(.runusLogin)
                 .resizable()
                 .scaledToFit()
             Spacer()

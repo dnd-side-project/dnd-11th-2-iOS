@@ -35,7 +35,7 @@ extension HomeView {
             Button {
                 store.send(.refresh)
             } label: {
-                Image(.runus)
+                Image(.Home.runus)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 20)
@@ -67,7 +67,7 @@ extension HomeView {
             HStack(alignment: .bottom, spacing: 20) {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 0) {
-                        Image(.location)
+                        Image(.Home.location)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 18)
