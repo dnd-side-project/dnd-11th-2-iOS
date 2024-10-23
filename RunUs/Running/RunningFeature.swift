@@ -185,15 +185,16 @@ extension RunningFeature {
     private func calculateKcal(pace: String) -> Float {
         if pace == "-’--”" { return 0 }
         else {
+            // TODO: 1.0.0 피드백 (칼로리 값이 다른 앱들에 비해 튀는 현상) 임시 조치, 추후 디테일한 로직을 수정 예정
             let runningPace = Int(pace.trimmingCharacters(in: ["”"]).split(separator: "’").joined())!
             if runningPace > 2000 { // MARK: walk (27kcal per 5min)
-                return 27 / 300
+                return 27 / 300 / 2
             } else if runningPace > 1000 {  // MARK: running slowly (47kcal per 5min)
-                return 47 / 300
+                return 47 / 300 / 2
             } else if runningPace > 640 {   // MARK: running normal (76kcal per 5min)
-                return 76 / 300
+                return 76 / 300 / 2
             } else {    // MARK: running fast (113kcal per 5min)
-                return 113 / 300
+                return 113 / 300 / 2
             }
         }
     }
