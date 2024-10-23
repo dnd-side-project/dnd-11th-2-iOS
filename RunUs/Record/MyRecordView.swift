@@ -62,9 +62,9 @@ extension MyRecordView {
             Spacer().frame(height: 30)
             recordMenus
             Spacer().frame(height: 30)
-            RUTitle(text: "나의 뱃지")  // TODO: 추후 RUTitle -> RUTitleButton 수정 필요 (나의 뱃지 화면으로 이동)
+            RUTitle(text: "나의뱃지")  // TODO: 추후 조건에 맞게 RUTitle -> RUTitleButton 수정 필요 (나의뱃지 화면으로 이동)
             Spacer().frame(height: 12)
-            MyBadges(badges: store.badges)
+            RUBadgeList(badges: store.badges)   // TODO: 추후 rowLimit: 1 추가
             Rectangle()
                 .fill(.mainDeepDark)
                 .frame(maxWidth: .infinity)
