@@ -1,18 +1,28 @@
 //
-//  MyBadges.swift
+//  RUBadgeList.swift
 //  RunUs
 //
-//  Created by seungyooooong on 8/20/24.
+//  Created by seungyooooong on 10/23/24.
 //
 
 import SwiftUI
 
-struct MyBadges: View {
+struct RUBadgeList: View {
     let badges: [Badge]
+    let rowLimit: Int
+    
+    init(badges: [Badge], rowLimit: Int? = nil) {
+        self.badges = badges
+        if let rowLimit = rowLimit {
+            self.rowLimit = rowLimit
+        } else {
+            self.rowLimit = (badges.count - 1) / 3 + 1
+        }
+    }
     
     var body: some View {
         HStack(spacing: 0) {
-            if badges.count == 0 {
+            if badges.count == 0 && rowLimit == 1 {
                 Text("달리기를 시작하고 뱃지를 받아보세요!")
                     .font(.system(size: 13))
                     .foregroundStyle(.gray200)
@@ -24,11 +34,11 @@ struct MyBadges: View {
             } else {
                 // TODO: 미리 보기 뱃지 갯수 정의 (ex: 미리 보기 뱃지는 3개로 고정) 이후 수정
                 VStack {
-                    ForEach (0 ... ((badges.count - 1) / 3), id: \.self) { rowIndex in
+                    ForEach (0 ..< rowLimit, id: \.self) { rowIndex in
                         HStack(spacing: 3) {
-                            MyBadge(badge: badges[rowIndex * 3])
-                            MyBadge(badge: badges.count > rowIndex * 3 + 1 ? badges[rowIndex * 3 + 1] : nil)
-                            MyBadge(badge: badges.count > rowIndex * 3 + 2 ? badges[rowIndex * 3 + 2] : nil)
+                            RUBadge(badge: badges[rowIndex * 3])
+                            RUBadge(badge: badges.count > rowIndex * 3 + 1 ? badges[rowIndex * 3 + 1] : nil)
+                            RUBadge(badge: badges.count > rowIndex * 3 + 2 ? badges[rowIndex * 3 + 2] : nil)
                         }
                     }
                 }
@@ -38,7 +48,7 @@ struct MyBadges: View {
     }
 }
 
-struct MyBadge: View {
+struct RUBadge: View {
     let badge: Badge?
     
     var body: some View {
@@ -67,6 +77,6 @@ struct MyBadge: View {
 }
 
 #Preview {
-    MyBadges(badges: [])
+    RUBadgeList(badges: [])
         .background(Color.background)
 }
