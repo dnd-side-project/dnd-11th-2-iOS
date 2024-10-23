@@ -90,7 +90,7 @@ extension AchieveRecordView {
     private var achieveRecordView: some View {
         VStack(spacing: 0) {
             HStack(spacing: 14) {
-                Image(.runEarthWithRunUs)
+                Image(.Record.go)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)

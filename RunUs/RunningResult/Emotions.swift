@@ -19,17 +19,17 @@ enum Emotions: String, CaseIterable, Codable, CodingKey {
     var icon: ImageResource {
         switch self {
         case .veryBad:
-            return .veryBadEmotion
+            return .emotionVeryBad
         case .bad:
-            return .badEmotion
+            return .emotionBad
         case .soso:
-            return .sosoEmotion
+            return .emotionSoso
         case .good:
-            return .goodEmotion
+            return .emotionGood
         case .veryGood:
-            return .veryGoodEmotion
+            return .emotionVeryGood
         case .none:
-            return .xmark
+            return .menuXmark
         }
     }
     

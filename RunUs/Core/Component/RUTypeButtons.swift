@@ -56,9 +56,9 @@ enum GoalTypes: String, Navigatable {
     var icon: ImageResource {
         switch self {
         case .time:
-            return .timeIcon
+            return .TypeButton.time
         case .distance:
-            return .distanceIcon
+            return .TypeButton.distance
         }
     }
 }
