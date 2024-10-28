@@ -105,6 +105,7 @@
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
 		F6AC52E02C662DEE00654820 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */; };
 		F6B9A33E2C63287400743FBE /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9A33D2C63287400743FBE /* LoginResponseModel.swift */; };
+		F6CE8A1C2CCF51EE0050A25A /* UINavigationController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE8A1B2CCF51EE0050A25A /* UINavigationController+extension.swift */; };
 		F6DAD3C02CB38DB400B459E6 /* RUTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DAD3BF2CB38DB400B459E6 /* RUTitle.swift */; };
 		F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88732C4E7FF5008EF2FD /* SplashView.swift */; };
 		F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF88752C4E802E008EF2FD /* MainView.swift */; };
@@ -217,6 +218,7 @@
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		F6B9A33D2C63287400743FBE /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
+		F6CE8A1B2CCF51EE0050A25A /* UINavigationController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+extension.swift"; sourceTree = "<group>"; };
 		F6DAD3BF2CB38DB400B459E6 /* RUTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUTitle.swift; sourceTree = "<group>"; };
 		F6EF88732C4E7FF5008EF2FD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F6EF88752C4E802E008EF2FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				F63B81662C710573002F45F4 /* String+extension.swift */,
 				D9417AD82C8C2B6B008F8075 /* Date+extension.swift */,
 				D9842DDF2C84AFE3002B145C /* DateFormatter+extension.swift */,
+				F6CE8A1B2CCF51EE0050A25A /* UINavigationController+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				D9842DE02C84AFE3002B145C /* DateFormatter+extension.swift in Sources */,
 				D95F83172C6FB079000DCAA3 /* LocationManagerDelegate.swift in Sources */,
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
+				F6CE8A1C2CCF51EE0050A25A /* UINavigationController+extension.swift in Sources */,
 				D93975912C78D33B00507BAF /* RunningResultView.swift in Sources */,
 				F634D2C42CB780E80014EDB6 /* RunningSummaryStore.swift in Sources */,
 				F69BFD9E2C8966C70073775C /* AchieveRecordStore.swift in Sources */,

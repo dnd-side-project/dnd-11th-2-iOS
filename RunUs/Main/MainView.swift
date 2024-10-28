@@ -96,8 +96,8 @@ struct MainView: View {
                     }
                 }
                 .navigationBarHidden(true)
-                .if(navigationObject.viewType.navigationType == .back) { view in
-                    view.dismissGesture(viewEnvironment: viewEnvironment)
+                .if(navigationObject.viewType.navigationType == .home) { view in
+                    view.blockDismissGesture()
                 }
             }
         }

@@ -40,15 +40,7 @@ extension View {
 }
 
 extension View {
-    func dismissGesture(viewEnvironment: ViewEnvironment) -> some View {
-        self.gesture(
-            DragGesture().onEnded { value in
-                if value.translation.width > 100 {  // MARK: 스와이프 동작의 기준을 임의로 100으로 설정
-                    if value.startLocation.x < Paddings.outsideHorizontalPadding {
-                        viewEnvironment.navigationPath.removeLast()
-                    }
-                }
-            }
-        )
+    func blockDismissGesture() -> some View {
+        self.gesture(DragGesture())
     }
 }
