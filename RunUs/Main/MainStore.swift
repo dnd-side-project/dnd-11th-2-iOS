@@ -179,8 +179,6 @@ struct MainStore {
                 return .none
             case .runAloneAction(.checkLocationPermission):
                 return .send(.checkLocationPermission)
-            case .runAloneAction(.setUserLocation):
-                return .none
             case .runAloneAction(.selectGoal(_)):
                 return .none
             case .runAloneAction(.startButtonTapped):

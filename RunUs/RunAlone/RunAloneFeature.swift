@@ -27,7 +27,6 @@ struct RunAloneFeature {
         case binding(BindingAction<State>)
         case onAppear(viewEnvironment: ViewEnvironment)
         case checkLocationPermission
-        case setUserLocation
         case selectGoal(GoalTypes)
         case startButtonTapped
         case selectChallenge(Int)
@@ -44,20 +43,8 @@ struct RunAloneFeature {
                 return .none
             case let .onAppear(viewEnvironment):
                 state.viewEnvironment = viewEnvironment
-                return .run { send in
-                    if locationManager.authorizationStatus == .agree {
-                        await send(.setUserLocation)
-                    }
-                }
-            case .checkLocationPermission:
                 return .none
-            case .setUserLocation:
-                state.userLocation = .region(
-                    MKCoordinateRegion(
-                        center: LocationManager.shared.getCurrentLocationCoordinator(),
-                        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                    )
-                )
+            case .checkLocationPermission:
                 return .none
             case .startButtonTapped:
                 if locationManager.authorizationStatus == .agree {

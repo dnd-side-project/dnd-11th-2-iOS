@@ -16,12 +16,7 @@ import CoreLocation
 struct RunningFeature {
     @ObservableState
     struct State {
-        var userLocation: MapCameraPosition = .region(
-            MKCoordinateRegion(
-                center: LocationManager.shared.getCurrentLocationCoordinator(),
-                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            )
-        )
+        var userLocation: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
         var runningState: RunningState = .running
         var time: Int = 0
         var location: CLLocation?
