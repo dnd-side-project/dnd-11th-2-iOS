@@ -17,6 +17,10 @@ struct RunningFeature {
     @ObservableState
     struct State {
         var userLocation: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
+        var routeCoordinates: [CLLocationCoordinate2D] = []
+        var polyline: MKPolyline?
+        var routeSegments: [RouteSegment] = []
+        var reStartCoordinate: CLLocationCoordinate2D? = nil
         var runningState: RunningState = .running
         var time: Int = 0
         var location: CLLocation?
@@ -57,13 +61,17 @@ struct RunningFeature {
         }
     }
     
-    enum Action: Equatable, BindableAction {
+    enum Action: BindableAction {
         case binding(BindingAction<State>)
         case onAppear
         case setRunningState(RunningState)
         case timeUpdated(Int)
         case locationUpdated(CLLocation?)
         case runningRestart(CLLocation?)
+        case updateRouteSegments(CLLocation?)
+        case updateSegment(CLLocationCoordinate2D, CLLocationCoordinate2D)
+        case resetReStartCoordinate
+        case drawPolyline
         case distanceUpdated(Double)
         case kcalUpdated(Float)
         case paceUpdated
@@ -125,9 +133,44 @@ struct RunningFeature {
                 let before = state.location
                 state.location = location
                 if state.time == 0 { state.beforeLocation = location }
-                return .send(.distanceUpdated(calculateDistance(before: before, after: location)))
+                return .run { send in
+                    await send(.updateRouteSegments(location))
+                    await send(.drawPolyline)
+                    await send(.distanceUpdated(calculateDistance(before: before, after: location)))
+                }
             case .runningRestart(let location):
                 state.location = location
+                state.reStartCoordinate = location?.coordinate
+                return .none
+            case .updateRouteSegments(let location):
+                guard let location = location else { return .none }
+                let newCoordinate = location.coordinate
+                let startCoordinate = state.reStartCoordinate == nil ? state.routeCoordinates.last : state.reStartCoordinate
+                
+                guard let startCoordinate = startCoordinate else {
+                    state.routeCoordinates.append(newCoordinate)
+                    return .none
+                }
+                
+                return .run { send in
+                    await send(.updateSegment(startCoordinate, newCoordinate))
+                    await send(.resetReStartCoordinate)
+                }
+            case .updateSegment(let start, let end):
+                let newSegment = RouteSegment(start: start, end: end)
+                
+                if let index = state.routeSegments.firstIndex(of: newSegment) {
+                    state.routeSegments[index].passCount += 1
+                } else {
+                    state.routeSegments.append(newSegment)
+                }
+                state.routeCoordinates.append(end)
+                return .none
+            case .resetReStartCoordinate:
+                if state.reStartCoordinate != nil { state.reStartCoordinate = nil }
+                return .none
+            case .drawPolyline:
+                state.polyline = MKPolyline(coordinates: state.routeCoordinates, count: state.routeCoordinates.count)
                 return .none
             case .distanceUpdated(let distance):
                 state.distance = state.distance + distance
@@ -151,6 +194,7 @@ struct RunningFeature {
                 state.distance = 0.000
                 state.kcal = 0
                 state.pace = "-’--”"
+                state.reStartCoordinate = nil
                 return .none
             case .setStartLocation(let address):
                 state.startLocation = address
