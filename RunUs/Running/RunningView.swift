@@ -47,6 +47,7 @@ extension RunningView {
                 UserAnnotation {
                     Image(.userLocationMark)
                 }
+                HeatMapPolylineContent(segments: store.routeSegments)
             }
             .padding(.bottom, -80)
             .mapControls {
