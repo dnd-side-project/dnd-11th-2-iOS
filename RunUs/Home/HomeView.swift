@@ -20,6 +20,7 @@ struct HomeView: View {
         .refreshable {
             store.send(.refresh)
         }
+        .padding(.top, 1)   // MARK: SafeArea를 유지하기 위해 필요
         .background(Color.background)
         .onAppear {
             store.send(.mapGetWeatherPublisher)

@@ -20,7 +20,7 @@ struct MyRecordView: View {
                 myRecordView
             }
         }
-        .padding(.top, 1)   // MARK: ViewThatFits에서 ScrollView를 사용하면 SafeArea를 유지하기 위해 필요
+        .padding(.top, 1)   // MARK: SafeArea를 유지하기 위해 필요
         .background(Color.background)
         .onAppear {
             store.send(.mapAuthorizationPublisher)
