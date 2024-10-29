@@ -9,16 +9,6 @@ import SwiftUI
 
 struct RUBadgeList: View {
     let badges: [Badge]
-    let rowLimit: Int
-    
-    init(badges: [Badge], rowLimit: Int? = nil) {
-        self.badges = badges
-        if let rowLimit = rowLimit {
-            self.rowLimit = rowLimit
-        } else {
-            self.rowLimit = (badges.count - 1) / 3 + 1
-        }
-    }
     
     var body: some View {
         HStack(spacing: 0) {
@@ -32,7 +22,7 @@ struct RUBadgeList: View {
                     .scaledToFit()
                     .frame(height: 82)
             } else {
-                // TODO: 미리 보기 뱃지 갯수 정의 (ex: 미리 보기 뱃지는 3개로 고정) 이후 수정
+                let rowLimit = (badges.count - 1) / 3 + 1
                 VStack {
                     ForEach (0 ..< rowLimit, id: \.self) { rowIndex in
                         HStack(spacing: 3) {
@@ -53,13 +43,8 @@ struct RUBadge: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            if badge == nil {
-                Image(.menuXmark)  // MARK: empty Image
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .opacity(0)
-            } else {
-                AsyncImage(url: URL(string: badge!.imageUrl)) { image in
+            if let badge = badge {
+                AsyncImage(url: URL(string: badge.imageUrl)) { image in
                     image
                         .resizable()
                 } placeholder: {
@@ -68,9 +53,14 @@ struct RUBadge: View {
                 }
                 .aspectRatio(1, contentMode: .fit)
                 .padding(13)
-                Text(badge!.name)
+                Text(badge.name)
                     .font(.system(size: 12))
                     .foregroundStyle(.gray200)
+            } else {
+                Image(.xmark)  // MARK: empty Image
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .opacity(0)
             }
         }
     }
