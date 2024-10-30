@@ -69,8 +69,6 @@ struct RunningFeature {
         case locationUpdated(CLLocation?)
         case runningRestart(CLLocation?)
         case updateRouteSegments(CLLocation?)
-        case updateSegment(CLLocationCoordinate2D, CLLocationCoordinate2D)
-        case resetReStartCoordinate
         case drawPolyline
         case distanceUpdated(Double)
         case kcalUpdated(Float)
@@ -144,30 +142,15 @@ struct RunningFeature {
                 return .none
             case .updateRouteSegments(let location):
                 guard let location = location else { return .none }
+                
                 let newCoordinate = location.coordinate
                 let startCoordinate = state.reStartCoordinate == nil ? state.routeCoordinates.last : state.reStartCoordinate
-                
-                guard let startCoordinate = startCoordinate else {
-                    state.routeCoordinates.append(newCoordinate)
-                    return .none
-                }
-                
-                return .run { send in
-                    await send(.updateSegment(startCoordinate, newCoordinate))
-                    await send(.resetReStartCoordinate)
-                }
-            case .updateSegment(let start, let end):
-                let newSegment = RouteSegment(start: start, end: end)
-                
-                if let index = state.routeSegments.firstIndex(of: newSegment) {
-                    state.routeSegments[index].passCount += 1
-                } else {
-                    state.routeSegments.append(newSegment)
-                }
-                state.routeCoordinates.append(end)
-                return .none
-            case .resetReStartCoordinate:
                 if state.reStartCoordinate != nil { state.reStartCoordinate = nil }
+                
+                state.routeCoordinates.append(newCoordinate)
+                guard let startCoordinate = startCoordinate else { return .none }
+                
+                state.routeSegments.append(RouteSegment(start: startCoordinate, end: newCoordinate))
                 return .none
             case .drawPolyline:
                 state.polyline = MKPolyline(coordinates: state.routeCoordinates, count: state.routeCoordinates.count)

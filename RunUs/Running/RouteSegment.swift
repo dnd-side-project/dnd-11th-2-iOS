@@ -12,20 +12,12 @@ import MapKit
 struct HeatMapPolylineContent: MapContent {
     let segments: [RouteSegment]
     
-    func colorForPassCount(_ count: Int) -> Color {
-        switch count {
-        case 1: return .mainGreen.opacity(0.6)
-        case 2: return .mainGreen.opacity(0.8)
-        default: return .mainGreen
-        }
-    }
-    
     var body: some MapContent {
         ForEach(segments.indices, id: \.self) { index in
             let segment = segments[index]
             let coordinates = [segment.start, segment.end]
             MapPolyline(MKPolyline(coordinates: coordinates, count: 2))
-                .stroke(colorForPassCount(segment.passCount), lineWidth: 6)
+                .stroke(.mainGreen, style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
         }
     }
 }
@@ -33,7 +25,6 @@ struct HeatMapPolylineContent: MapContent {
 struct RouteSegment: Hashable {
     let start: CLLocationCoordinate2D
     let end: CLLocationCoordinate2D
-    var passCount: Int = 1
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(start.latitude)
