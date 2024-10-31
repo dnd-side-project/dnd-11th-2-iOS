@@ -71,8 +71,8 @@ extension MyRecordView {
                     viewEnvironment.navigate(navigationObject)
                 }, text: "나의뱃지")
             }
-            Spacer().frame(height: 12)
             RUBadgeList(badges: store.badges)
+            Spacer().frame(height: 24)
             Rectangle()
                 .fill(.mainDeepDark)
                 .frame(maxWidth: .infinity)

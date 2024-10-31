@@ -34,7 +34,6 @@ struct RUBadgeList: View {
                 }
             }
         }
-        Spacer().frame(height: 24)
     }
 }
 

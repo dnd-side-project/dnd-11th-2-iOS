@@ -7,30 +7,23 @@
 
 import Foundation
 
-struct BadgeListsResponseModel: Decodable, Equatable {
+struct BadgeListsResponseModel: Decodable, Equatable, Hashable {
     var recencyBadges: [Badge]
-    var personalBadges: [Badge]
-    var distanceBadges: [Badge]
-    var streakBadges: [Badge]
-    var durationBadges: [Badge]
-    var levelBadges: [Badge]
+    var badgesList: [BadgeList]
     
     init() {
         self.recencyBadges = []
-        self.personalBadges = []
-        self.distanceBadges = []
-        self.streakBadges = []
-        self.durationBadges = []
-        self.levelBadges = []
+        self.badgesList = []
     }
     
     init(badgeLists: BadgeListsResponseModel) {
         self.recencyBadges = badgeLists.recencyBadges
-        self.personalBadges = badgeLists.personalBadges
-        self.distanceBadges = badgeLists.distanceBadges
-        self.streakBadges = badgeLists.streakBadges
-        self.durationBadges = badgeLists.durationBadges
-        self.levelBadges = badgeLists.levelBadges
+        self.badgesList = badgeLists.badgesList
     }
+}
+
+struct BadgeList: Decodable, Equatable, Hashable {
+    var category: String
+    var badges: [Badge]
 }
 

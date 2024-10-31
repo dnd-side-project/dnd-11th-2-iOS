@@ -15,13 +15,16 @@ struct MyBadgeView: View {
     )
     
     var body: some View {
-        ViewThatFits(in: .vertical) {
-            myBadgeView
-            ScrollView {
+        VStack(spacing: .zero) {
+            RUNavigationBar(buttonType: .back, title: "나의뱃지")
+            ViewThatFits(in: .vertical) {
                 myBadgeView
+                ScrollView {
+                    myBadgeView
+                }
             }
         }
-        .padding(.top, 1)   // MARK: ViewThatFits에서 ScrollView를 사용하면 SafeArea를 유지하기 위해 필요
+        .padding(.horizontal, Paddings.outsideHorizontalPadding)
         .background(Color.background)
         .onAppear {
             store.send(.onAppear)
@@ -31,23 +34,15 @@ struct MyBadgeView: View {
 
 extension MyBadgeView {
     private var myBadgeView: some View {
-        VStack(spacing: 0) {
-            RUNavigationBar(buttonType: .back, title: "나의뱃지")
+        VStack(spacing: .zero) {
             RUTitle(text: "신규 뱃지")
             RUBadgeList(badges: store.badgeLists.recencyBadges)
-            RUTitle(text: "개인 기록")
-            RUBadgeList(badges: store.badgeLists.personalBadges)
-            RUTitle(text: "러닝 거리")
-            RUBadgeList(badges: store.badgeLists.distanceBadges)
-            RUTitle(text: "streak")
-            RUBadgeList(badges: store.badgeLists.streakBadges)
-            RUTitle(text: "duration")
-            RUBadgeList(badges: store.badgeLists.durationBadges)
-            RUTitle(text: "level")
-            RUBadgeList(badges: store.badgeLists.levelBadges)
+            ForEach(store.badgeLists.badgesList, id: \.self) { badgeList in
+                RUTitle(text: badgeList.category)
+                RUBadgeList(badges: badgeList.badges)
+            }
             Spacer()
         }
-        .padding(.horizontal, Paddings.outsideHorizontalPadding)
     }
 }
 
