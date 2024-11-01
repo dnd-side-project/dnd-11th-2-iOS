@@ -57,7 +57,7 @@ extension RunningView {
             Button {
                 isShowStateBody = true
             } label: {
-                Image(.buttonRunningStateUp).padding()
+                Image(.Running.chevronUp).padding()
             }
             .opacity(isShowStateBody ? 0 : 1)
             runningStateView
@@ -83,7 +83,7 @@ extension RunningView {
     
     private var runningStateTitleView: some View {
         HStack(spacing: 8) {
-            Image(.runningStateShoes)
+            Image(.Running.shoes)
                 .resizable()
                 .frame(width: 25, height: 25)
             Text("현재 러닝 현황")
@@ -127,7 +127,7 @@ extension RunningView {
                     Button {
                         isShowStateBody = false
                     } label: {
-                        runningButton(.buttonMap)
+                        runningButton(.Running.map)
                     }
                 }
             }
@@ -141,27 +141,27 @@ extension RunningView {
                 Button(action: {
                     store.send(.setRunningState(.pause))
                 }, label: {
-                    runningButton(.buttonPause)
+                    runningButton(.Running.pause)
                 })
             } else {
                 Button(action: {
                     store.send(.runningEnd)
                     store.send(.setRunningState(.stop))
                 }, label: {
-                    runningButton(.buttonStop)
+                    runningButton(.Running.stop)
                 })
                 
                 Button(action: {
                     store.send(.setRunningState(.running))
                 }, label: {
-                    runningButton(.buttonResume)
+                    runningButton(.Running.resume)
                 })
             }
         }
     }
     
     private func runningButton(_ image: ImageResource) -> some View {
-        let isMap = image == .buttonMap
+        let isMap = image == .Running.map
         let size: CGFloat = isMap ? 24 : 20
         let padding: CGFloat = isMap ? 8 : 20
         return Image(image)

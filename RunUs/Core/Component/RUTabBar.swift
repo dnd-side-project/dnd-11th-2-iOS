@@ -61,11 +61,11 @@ enum TabItems: String {
     var icon: ImageResource {
         switch self {
         case .home:
-            return .home
+            return .tabHome
         case .running:
-            return .running
+            return .tabRunning
         case .myRecord:
-            return .chart
+            return .tabChart
         }
     }
     

@@ -17,7 +17,7 @@ struct MyBadges: View {
                     .font(.system(size: 13))
                     .foregroundStyle(.gray200)
                     .padding(8)
-                Image(.noBadgeIcon)
+                Image(.Record.noBadge)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 82)
@@ -44,7 +44,7 @@ struct MyBadge: View {
     var body: some View {
         VStack(spacing: 0) {
             if badge == nil {
-                Image(.xmark)  // MARK: empty Image
+                Image(.menuXmark)  // MARK: empty Image
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .opacity(0)
