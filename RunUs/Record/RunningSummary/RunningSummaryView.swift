@@ -42,11 +42,15 @@ struct RunningSummaryView: View {
     private func runningSummaryChart(summaryType: SummaryTypes) -> some View {
         let summary = store.state.summary(for: summaryType)
         return VStack(alignment: .leading, spacing: 0) {
-            Text(summaryType.titleString)
-                .font(Fonts.pretendardSemiBold(size: 20))
-                .foregroundStyle(.white)
+            HStack(alignment: .bottom) {
+                Text(summaryType.titleString)
+                    .font(Fonts.pretendardSemiBold(size: 20))
+                Spacer()
+                Text("지난주 평균 \(String(format: summary.lastWeekAvgValue == 0 ? "%.0f" : "%.1f", summary.lastWeekAvgValue) + summaryType.labelString)")
+                    .font(Fonts.pretendardSemiBold(size: 12))
+            }
+            .foregroundStyle(.white)
             Spacer().frame(height: 16)
-            
             Chart {
                 ForEach(summary.weeklyValues, id: \.self.day) { date in
                     BarMark(
@@ -61,28 +65,6 @@ struct RunningSummaryView: View {
                                 .foregroundStyle(.gray300)
                         }
                     }
-                    if summary.lastWeekAvgValue > 0 {
-                        RuleMark(
-                            y: .value("lastWeekAvgValue", summary.lastWeekAvgValue)
-                        )
-                        .lineStyle(StrokeStyle(lineWidth: 1))
-                        .foregroundStyle(.white)
-                        .annotation(position: .top, alignment: .trailing) {
-                            VStack(spacing: 0) {
-                                Text(String(format: "%.1f", summary.lastWeekAvgValue) + summaryType.labelString)
-                                    .font(Fonts.pretendardSemiBold(size: 10))
-                                    .foregroundStyle(.black)
-                                    .padding(.vertical, 5)
-                                    .padding(.horizontal, 6)
-                                    .background(.white)
-                                    .cornerRadius(4)
-                                Triangle()
-                                    .fill(.white)
-                                    .frame(width: 5, height: 5)
-                                    .rotationEffect(.degrees(180))
-                            }
-                        }
-                    }
                 }
             }
             .chartXAxis {
@@ -93,12 +75,17 @@ struct RunningSummaryView: View {
                 }
             }
             .chartYAxis {
-                AxisMarks { value in
+                let topRating = summary.weeklyValues.max(by: { $0.rating < $1.rating })?.rating ?? 0
+                let strideValue = topRating > 0 ? topRating * 0.6 : 1   // MARK: 거리와 시간 API 응답 시간 차이가 있을 수 있어 1이라는 임시 값을 설정
+                AxisMarks(values: .stride(by: strideValue)) { value in
                     if let yValue = value.as(Double.self) {
+                        AxisGridLine(stroke: StrokeStyle(lineWidth: 1))
+                            .foregroundStyle(.gray300)
                         if yValue > 0 {
                             AxisValueLabel(
                                 String(format: yValue < 1  ? "%.1f" : "%.0f", yValue) + summaryType.labelString
                             )
+                            .offset(y: -2)
                             .foregroundStyle(.gray300)
                             .font(Fonts.pretendardSemiBold(size: 10))
                         }
@@ -130,19 +117,6 @@ extension RunningSummaryView {
                 .foregroundStyle(.gray200)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-}
-
-struct Triangle: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.closeSubpath()
-
-        return path
     }
 }
 

@@ -26,7 +26,7 @@ struct RunningSummaryStore {
         func isNoData() -> Bool {
             let distanceNoData = distanceSummary.weeklyValues.allSatisfy { $0.rating == 0 }
             let timeNoData = timeSummary.weeklyValues.allSatisfy { $0.rating == 0 }
-            return distanceSummary.lastWeekAvgValue == 0 && timeSummary.lastWeekAvgValue == 0 && distanceNoData && timeNoData
+            return distanceNoData && timeNoData
         }
     }
     
