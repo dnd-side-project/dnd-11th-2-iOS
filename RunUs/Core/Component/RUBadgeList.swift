@@ -56,7 +56,7 @@ struct RUBadge: View {
                     .font(.system(size: 12))
                     .foregroundStyle(.gray200)
             } else {
-                Image(.xmark)  // MARK: empty Image
+                Image(.menuXmark)  // MARK: empty Image
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .opacity(0)
