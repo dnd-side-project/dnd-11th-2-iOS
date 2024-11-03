@@ -71,10 +71,10 @@ extension MyRecordView {
                 .frame(height: 8)
                 .padding(.horizontal, -Paddings.outsideHorizontalPadding)
             Spacer().frame(height: 12)
-            RUTitleButton(action: {
+            RUTitle(action: {
                 alertEnvironment.showAlert(title: "로그아웃 하시겠습니까?", mainButtonText: "로그아웃", mainButtonAction: logout)
             }, text: "로그아웃")
-            RUTitleButton(action: {
+            RUTitle(action: {
                 alertEnvironment.showAlert(title: "정말 탈퇴 하시겠습니까?", subTitle: "탈퇴할 경우 모든 데이터가 삭제되고\n복구가 불가능합니다.", mainButtonText: "탈퇴하기", mainButtonColor: .red, mainButtonAction: withdraw)
             }, text: "회원 탈퇴")
             Spacer()

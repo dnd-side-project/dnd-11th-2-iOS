@@ -90,7 +90,7 @@ extension HomeView {
                     .font(Fonts.pretendardRegular(size: 12))
             }
             Spacer().frame(height: 28)
-            RUTitleButton(action: {
+            RUTitle(action: {
                 viewEnvironment.selectedTabItem = .running
                 viewEnvironment.selectedRunningMode = .goal
             }, text: "오늘의 러닝 챌린지 및 목표설정")

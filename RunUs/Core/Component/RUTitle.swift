@@ -8,24 +8,32 @@
 import SwiftUI
 
 struct RUTitle: View {
-    let text: String
-    var textSize: CGFloat = 16
-    
-    var body: some View {
-        ruTitle(text: text, textSize: textSize, isButton: false)
-    }
-}
-    // TODO: 추후 RUTitle & RUTitleButton 통합
-struct RUTitleButton: View {
     let action: () -> Void
     let text: String
-    var textSize: CGFloat = 16
+    let textSize: CGFloat
+    let isButton: Bool
+    
+    init(action: (() -> Void)? = nil, text: String, textSize: CGFloat = 16) {
+        self.text = text
+        self.textSize = textSize
+        if let action = action {
+            self.isButton = true
+            self.action = action
+        } else {
+            self.isButton = false
+            self.action = { }
+        }
+    }
     
     var body: some View {
-        Button {
-            action()
-        } label: {
-            ruTitle(text: text, textSize: textSize, isButton: true)
+        if isButton {
+            Button {
+                action()
+            } label: {
+                ruTitle(text: text, textSize: textSize, isButton: isButton)
+            }
+        } else {
+            ruTitle(text: text, textSize: textSize, isButton: isButton)
         }
     }
 }
