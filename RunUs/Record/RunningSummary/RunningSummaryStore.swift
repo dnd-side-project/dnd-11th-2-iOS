@@ -33,8 +33,7 @@ struct RunningSummaryStore {
     enum Action {
         case onAppear
         case getWeeklySummary(summaryType: SummaryTypes)
-        case setDistanceSummary(summary: WeeklySummaryResponseModel)
-        case setTimeSummary(summary: WeeklySummaryResponseModel)
+        case setSummary(summaryType: SummaryTypes, summary: WeeklySummaryResponseModel)
     }
     
     @Dependency(\.runningSummaryAPI) var runningSummaryAPI
@@ -49,18 +48,19 @@ struct RunningSummaryStore {
                 }
             case .getWeeklySummary(let summaryType):
                 return .run { send in
-                    let summary = try await runningSummaryAPI.getWeeklySummary(summaryType: summaryType.rawValue)
-                    if summaryType == .distance {
-                        await send(.setDistanceSummary(summary: summary))
-                    } else {
-                        await send(.setTimeSummary(summary: summary))
-                    }
+                    await RUNetworkManager.task(
+                        action: { try await runningSummaryAPI.getWeeklySummary(summaryType: summaryType.rawValue) },
+                        successAction: { await send(.setSummary(summaryType: summaryType, summary: $0)) },
+                        retryAction: { await send(.getWeeklySummary(summaryType: summaryType)) }
+                    )
                 }
-            case .setDistanceSummary(let summary):
-                state.distanceSummary = summary
-                return .none
-            case .setTimeSummary(let summary):
-                state.timeSummary = summary
+            case .setSummary(let summaryType, let summary):
+                switch summaryType {
+                case .distance:
+                    state.distanceSummary = summary
+                case .time:
+                    state.timeSummary = summary
+                }
                 return .none
             }
         }

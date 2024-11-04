@@ -98,28 +98,43 @@ struct MainStore {
                 // MARK: getter
             case .getChallenges:
                 return .run { send in
-                    let challenges = try await mainAPI.getChallenges()
-                    await send(.setChallenges(challenges: challenges))
+                    await RUNetworkManager.task(
+                        action: { try await mainAPI.getChallenges() },
+                        successAction: { await send(.setChallenges(challenges: $0)) },
+                        retryAction: { await send(.getChallenges) }
+                    )
                 }
             case let .getWeather(weatherParameters):
                 return .run { send in
-                    let weather = try await mainAPI.getWeathers(weatherParameters: weatherParameters)
-                    await send(.setWeather(weather: weather))
+                    await RUNetworkManager.task(
+                        action: { try await mainAPI.getWeathers(weatherParameters: weatherParameters) },
+                        successAction: { await send(.setWeather(weather: $0)) },
+                        retryAction: { await send(.getWeather(weatherParameters)) }
+                    )
                 }
             case .getMonthlySummary:
                 return .run { send in
-                    let monthlySummary = try await mainAPI.getMonthlySummary()
-                    await send(.setMonthlySummary(monthlySummary: monthlySummary))
+                    await RUNetworkManager.task(
+                        action: { try await mainAPI.getMonthlySummary() },
+                        successAction: { await send(.setMonthlySummary(monthlySummary: $0)) },
+                        retryAction: { await send(.getMonthlySummary) }
+                    )
                 }
             case .getProfile:
                 return .run { send in
-                    let profile = try await mainAPI.getProfiles()
-                    await send(.setProfile(profile: profile))
+                    await RUNetworkManager.task(
+                        action: { try await mainAPI.getProfiles() },
+                        successAction: { await send(.setProfile(profile: $0)) },
+                        retryAction: { await send(.getProfile) }
+                    )
                 }
             case .getBadges:
                 return .run { send in
-                    let badges = try await mainAPI.getBadges()
-                    await send(.setBadges(badges: badges))
+                    await RUNetworkManager.task(
+                        action: { try await mainAPI.getBadges() },
+                        successAction: { await send(.setBadges(badges: $0)) },
+                        retryAction: { await send(.getBadges) }
+                    )
                 }
                 
                 // MARK: setter

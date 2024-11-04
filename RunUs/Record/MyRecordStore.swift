@@ -57,9 +57,12 @@ struct MyRecordStore: Reducer {
             controller.performRequests()
             return .none
         case let .withdraw(withdrawRequest):
-            return .run { _ in
-                let withdrawResponse = try await myRecordAPI.withdraw(withdrawRequest: withdrawRequest)
-                if withdrawResponse.isWithdrawSuccess { resetUserDefaults() }
+            return .run { send in
+                await RUNetworkManager.task(
+                    action: { try await myRecordAPI.withdraw(withdrawRequest: withdrawRequest) },
+                    successAction: { if $0.isWithdrawSuccess { resetUserDefaults() } },
+                    retryAction: { await send(.withdraw(withdrawRequest: withdrawRequest)) }
+                )
             }
         }
     }
