@@ -13,6 +13,7 @@ struct RunUsApp: App {
     @StateObject private var alertEnvironment = AlertEnvironment()
     @StateObject private var viewEnvironment = ViewEnvironment()
     @StateObject private var loadingManager = LoadingManager.shared
+    @StateObject private var alertManager = AlertManager.shared
     
     var body: some Scene {
         WindowGroup {
@@ -29,6 +30,7 @@ extension RunUsApp {
             else { MainView().environmentObject(viewEnvironment) }
             if alertEnvironment.isShowAlert { alertEnvironment.ruAlert }
             if loadingManager.isLoading { LoadingView() }
+            if alertManager.isShowAlert { alertManager.ruAlert }
         }
         .onAppear{
             _ = LocationManager.shared

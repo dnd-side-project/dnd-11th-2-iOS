@@ -70,12 +70,9 @@ struct MainStore {
             case .onAppear:
                 return .run { send in
                     await send(.checkLocationPermission)
-                    
-                    await send(.getChallenges)
-                    
                     locationManager.sendGetWeatherPublisher()
+                    await send(.getChallenges)
                     await send(.getMonthlySummary)
-                    
                     await send(.getProfile)
                     await send(.getBadges)
                 }
