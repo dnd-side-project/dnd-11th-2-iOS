@@ -60,7 +60,7 @@ struct RUAlert: View {
         }
         .foregroundStyle(.white)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.black.opacity(0.7))
+        .background(.black.opacity(0.6))
         .ignoresSafeArea()
     }
 }
