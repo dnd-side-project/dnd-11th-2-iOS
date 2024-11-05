@@ -63,7 +63,7 @@ extension MyRecordView {
             Spacer().frame(height: 30)
             recordMenus
             Spacer().frame(height: 30)
-            RUTitle(action: store.badges.count < 3 ? nil : {
+            RUTitle(action: {
                 let navigationObject = NavigationObject(viewType: .myBadge)
                 viewEnvironment.navigate(navigationObject)
             }, text: "나의뱃지")

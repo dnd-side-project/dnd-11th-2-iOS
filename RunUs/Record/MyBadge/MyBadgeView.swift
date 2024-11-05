@@ -22,6 +22,7 @@ struct MyBadgeView: View {
                 ScrollView {
                     myBadgeView
                 }
+                .scrollIndicators(.hidden)
             }
         }
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
@@ -37,9 +38,11 @@ extension MyBadgeView {
         VStack(spacing: .zero) {
             RUTitle(text: "신규 뱃지")
             RUBadgeList(badges: store.badgeLists.recencyBadges)
+            Spacer().frame(height: 14)
             ForEach(store.badgeLists.badgesList, id: \.self) { badgeList in
                 RUTitle(text: badgeList.category)
                 RUBadgeList(badges: badgeList.badges)
+                Spacer().frame(height: 14)
             }
             Spacer()
         }

@@ -17,9 +17,6 @@ struct RUBadgeList: View {
                     .font(.system(size: 13))
                     .foregroundStyle(.gray200)
                     .padding(8)
-                Image(.Record.noBadge)
-                    .resizable()
-                    .scaledToFit()
                     .frame(height: 82)
             } else {
                 let rowLimit = (badges.count - 1) / 3 + 1
@@ -38,9 +35,24 @@ struct RUBadgeList: View {
 }
 
 struct RUBadge: View {
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     let badge: Badge?
     
     var body: some View {
+        let isShowDetail = viewEnvironment.navigationPath.last?.viewType == .myBadge
+        if isShowDetail {
+            ruBadge // TODO: 추후 뱃지 획득일 등 상세 내용을 보여주도록 수정
+        } else {
+            Button {
+                let navigationObject = NavigationObject(viewType: .myBadge)
+                viewEnvironment.navigate(navigationObject)
+            } label: {
+                ruBadge
+            }
+        }
+    }
+    
+    private var ruBadge: some View {
         VStack(spacing: 0) {
             if let badge = badge {
                 AsyncImage(url: URL(string: badge.imageUrl)) { image in
