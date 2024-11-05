@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct MyRecordView: View {
     @EnvironmentObject var alertEnvironment: AlertEnvironment
+    @EnvironmentObject var viewEnvironment: ViewEnvironment
     @AppStorage(UserDefaultKey.name.rawValue) var userName: String = "런어스"
     @State var store: StoreOf<MyRecordStore>
     
@@ -62,9 +63,12 @@ extension MyRecordView {
             Spacer().frame(height: 30)
             recordMenus
             Spacer().frame(height: 30)
-            RUTitle(text: "나의 뱃지")  // TODO: 추후 RUTitle -> RUTitleButton 수정 필요 (나의 뱃지 화면으로 이동)
-            Spacer().frame(height: 12)
-            MyBadges(badges: store.badges)
+            RUTitle(action: {
+                let navigationObject = NavigationObject(viewType: .myBadge)
+                viewEnvironment.navigate(navigationObject)
+            }, text: "나의뱃지")
+            RUBadgeList(badges: store.badges)
+            Spacer().frame(height: 24)
             Rectangle()
                 .fill(.mainDeepDark)
                 .frame(maxWidth: .infinity)

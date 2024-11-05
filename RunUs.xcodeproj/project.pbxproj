@@ -77,7 +77,6 @@
 		F64FBE392C566AE10024E920 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE302C566AE10024E920 /* Pretendard-Light.otf */; };
 		F64FBE3A2C566AE10024E920 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */; };
 		F65033C52C731EC500C81DA6 /* RecordMenus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033C42C731EC500C81DA6 /* RecordMenus.swift */; };
-		F65033CB2C7457F900C81DA6 /* MyBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033CA2C7457F900C81DA6 /* MyBadges.swift */; };
 		F65033CD2C74585500C81DA6 /* BadgesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */; };
 		F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D02C747DB000C81DA6 /* MyRecordStore.swift */; };
 		F65033D52C747ECA00C81DA6 /* MyRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */; };
@@ -87,6 +86,11 @@
 		F65033DF2C7856AA00C81DA6 /* SignUpRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033DE2C7856AA00C81DA6 /* SignUpRequestModel.swift */; };
 		F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65033E02C7856B300C81DA6 /* SignInRequestModel.swift */; };
 		F65ACDCA2CC752E200C67DD1 /* RUProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDC92CC752E200C67DD1 /* RUProgress.swift */; };
+		F65ACDCD2CC8C76600C67DD1 /* MyBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDCC2CC8C76600C67DD1 /* MyBadgeView.swift */; };
+		F65ACDCF2CC8CF8300C67DD1 /* RUBadgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDCE2CC8CF8300C67DD1 /* RUBadgeList.swift */; };
+		F65ACDD12CC8D70C00C67DD1 /* MyBadgeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDD02CC8D70C00C67DD1 /* MyBadgeStore.swift */; };
+		F65ACDD32CC8D74200C67DD1 /* MyBadgeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDD22CC8D74200C67DD1 /* MyBadgeAPI.swift */; };
+		F65ACDD52CC8D7D200C67DD1 /* BadgeListsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDD42CC8D7D200C67DD1 /* BadgeListsResponseModel.swift */; };
 		F664670B2CA3F01500508369 /* GoalResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F664670A2CA3F01500508369 /* GoalResult.swift */; };
 		F66467112CA408BA00508369 /* RunningRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467102CA408BA00508369 /* RunningRecordAPI.swift */; };
 		F66467132CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */; };
@@ -194,7 +198,6 @@
 		F64FBE312C566AE10024E920 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		F64FBE3B2C566B110024E920 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F65033C42C731EC500C81DA6 /* RecordMenus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMenus.swift; sourceTree = "<group>"; };
-		F65033CA2C7457F900C81DA6 /* MyBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadges.swift; sourceTree = "<group>"; };
 		F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesResponseModel.swift; sourceTree = "<group>"; };
 		F65033D02C747DB000C81DA6 /* MyRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordStore.swift; sourceTree = "<group>"; };
 		F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordAPI.swift; sourceTree = "<group>"; };
@@ -204,6 +207,11 @@
 		F65033DE2C7856AA00C81DA6 /* SignUpRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestModel.swift; sourceTree = "<group>"; };
 		F65033E02C7856B300C81DA6 /* SignInRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequestModel.swift; sourceTree = "<group>"; };
 		F65ACDC92CC752E200C67DD1 /* RUProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUProgress.swift; sourceTree = "<group>"; };
+		F65ACDCC2CC8C76600C67DD1 /* MyBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeView.swift; sourceTree = "<group>"; };
+		F65ACDCE2CC8CF8300C67DD1 /* RUBadgeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUBadgeList.swift; sourceTree = "<group>"; };
+		F65ACDD02CC8D70C00C67DD1 /* MyBadgeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeStore.swift; sourceTree = "<group>"; };
+		F65ACDD22CC8D74200C67DD1 /* MyBadgeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeAPI.swift; sourceTree = "<group>"; };
+		F65ACDD42CC8D7D200C67DD1 /* BadgeListsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeListsResponseModel.swift; sourceTree = "<group>"; };
 		F664670A2CA3F01500508369 /* GoalResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResult.swift; sourceTree = "<group>"; };
 		F66467102CA408BA00508369 /* RunningRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordAPI.swift; sourceTree = "<group>"; };
 		F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordMonthlyResponseModel.swift; sourceTree = "<group>"; };
@@ -459,7 +467,6 @@
 				F65033D02C747DB000C81DA6 /* MyRecordStore.swift */,
 				F65033D42C747ECA00C81DA6 /* MyRecordAPI.swift */,
 				F611B2192C7CB04100797470 /* AuthorizationManager.swift */,
-				F65033CA2C7457F900C81DA6 /* MyBadges.swift */,
 				F65033C42C731EC500C81DA6 /* RecordMenus.swift */,
 				F65033D62C747F1E00C81DA6 /* ProfileResponseModel.swift */,
 				F65033CC2C74585500C81DA6 /* BadgesResponseModel.swift */,
@@ -468,6 +475,7 @@
 				D9842DD62C846450002B145C /* RunningRecord */,
 				F634D2BD2CB778A20014EDB6 /* RunningSummary */,
 				F63BAA492C84A98900DCE9EC /* AchieveRecord */,
+				F65ACDCB2CC8C72400C67DD1 /* MyBadge */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -509,6 +517,17 @@
 			path = Pretendard;
 			sourceTree = "<group>";
 		};
+		F65ACDCB2CC8C72400C67DD1 /* MyBadge */ = {
+			isa = PBXGroup;
+			children = (
+				F65ACDCC2CC8C76600C67DD1 /* MyBadgeView.swift */,
+				F65ACDD02CC8D70C00C67DD1 /* MyBadgeStore.swift */,
+				F65ACDD22CC8D74200C67DD1 /* MyBadgeAPI.swift */,
+				F65ACDD42CC8D7D200C67DD1 /* BadgeListsResponseModel.swift */,
+			);
+			path = MyBadge;
+			sourceTree = "<group>";
+		};
 		F664670C2CA3F06100508369 /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +540,7 @@
 				F66467182CA7E4A900508369 /* RUTypeButtons.swift */,
 				F6DAD3BF2CB38DB400B459E6 /* RUTitle.swift */,
 				F65ACDC92CC752E200C67DD1 /* RUProgress.swift */,
+				F65ACDCE2CC8CF8300C67DD1 /* RUBadgeList.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -642,11 +662,11 @@
 			files = (
 				F69BFDA22C8967540073775C /* AchieveRecordAPI.swift in Sources */,
 				F6133EA82C6C77B000F3ECE5 /* RunUsApp.swift in Sources */,
+				F65ACDCF2CC8CF8300C67DD1 /* RUBadgeList.swift in Sources */,
 				F65033D12C747DB000C81DA6 /* MyRecordStore.swift in Sources */,
 				F65033C52C731EC500C81DA6 /* RecordMenus.swift in Sources */,
 				F66C5C8A2C5B3CD500EE695A /* LoginStore.swift in Sources */,
 				F65033CD2C74585500C81DA6 /* BadgesResponseModel.swift in Sources */,
-				F65033CB2C7457F900C81DA6 /* MyBadges.swift in Sources */,
 				D9D4387E2C7F506B00F3E079 /* RUCalendar.swift in Sources */,
 				F65033D72C747F1E00C81DA6 /* ProfileResponseModel.swift in Sources */,
 				F63BAA4B2C84A9A700DCE9EC /* AchieveRecordView.swift in Sources */,
@@ -682,6 +702,7 @@
 				F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
 				F634D2C62CB781210014EDB6 /* RunningSummaryAPI.swift in Sources */,
+				F65ACDD32CC8D74200C67DD1 /* MyBadgeAPI.swift in Sources */,
 				D9417AD02C8BFCC2008F8075 /* RunningResult.swift in Sources */,
 				F63B81672C710573002F45F4 /* String+extension.swift in Sources */,
 				D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */,
@@ -702,6 +723,7 @@
 				F6EF88762C4E802E008EF2FD /* MainView.swift in Sources */,
 				D9842DE02C84AFE3002B145C /* DateFormatter+extension.swift in Sources */,
 				D95F83172C6FB079000DCAA3 /* LocationManagerDelegate.swift in Sources */,
+				F65ACDCD2CC8C76600C67DD1 /* MyBadgeView.swift in Sources */,
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
 				F6CE8A1C2CCF51EE0050A25A /* UINavigationController+extension.swift in Sources */,
 				D93975912C78D33B00507BAF /* RunningResultView.swift in Sources */,
@@ -716,6 +738,7 @@
 				F65ACDCA2CC752E200C67DD1 /* RUProgress.swift in Sources */,
 				F634D2C82CB7819F0014EDB6 /* WeeklySummaryResponseModel.swift in Sources */,
 				D93AC4B12C8C53A900C1570F /* RunningMode.swift in Sources */,
+				F65ACDD52CC8D7D200C67DD1 /* BadgeListsResponseModel.swift in Sources */,
 				F6EF88782C4E839A008EF2FD /* LoginView.swift in Sources */,
 				F6EF887D2C4F7E46008EF2FD /* HomeView.swift in Sources */,
 				F66467172CA52E0600508369 /* RunningRecord.swift in Sources */,
@@ -727,6 +750,7 @@
 				D9842DDA2C8465A1002B145C /* RunningRecordDailyResponseModel.swift in Sources */,
 				D97D9FE42C6078BD00C663BD /* LocationManager.swift in Sources */,
 				D9A65D0E2C7CCCE700FA33BF /* RunningResultFeature.swift in Sources */,
+				F65ACDD12CC8D70C00C67DD1 /* MyBadgeStore.swift in Sources */,
 				F69BFDAA2C8B64070073775C /* VersionResponseModel.swift in Sources */,
 				D95F830D2C6F5C9A000DCAA3 /* RunningFeature.swift in Sources */,
 				F6EF88742C4E7FF5008EF2FD /* SplashView.swift in Sources */,

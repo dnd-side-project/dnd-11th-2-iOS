@@ -93,6 +93,8 @@ struct MainView: View {
                     case .achieveRecord:
                         let profile = navigationObject.data as! ProfileResponseModel
                         AchieveRecordView(profile: profile)
+                    case .myBadge:
+                        MyBadgeView()
                     }
                 }
                 .navigationBarHidden(true)

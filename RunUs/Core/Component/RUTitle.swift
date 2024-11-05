@@ -36,19 +36,20 @@ struct RUTitle: View {
             ruTitle(text: text, textSize: textSize, isButton: isButton)
         }
     }
-}
-
-private func ruTitle(text: String, textSize: CGFloat, isButton: Bool) -> some View {
-    HStack {
-        Text(text)
-        Spacer()
-        if isButton {
-            Image(.chevronRight)
-                .resizable()
-                .frame(width: 24, height: 24)
+    
+    private func ruTitle(text: String, textSize: CGFloat, isButton: Bool) -> some View {
+        HStack {
+            Text(text)
+            Spacer()
+            if isButton {
+                Image(.chevronRight)
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            }
         }
+        .font(Fonts.pretendardBold(size: textSize))
+        .foregroundColor(.white)
+        .frame(height: 60)
     }
-    .font(Fonts.pretendardBold(size: textSize))
-    .foregroundColor(.white)
-    .frame(height: 60)
+
 }
