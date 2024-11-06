@@ -62,7 +62,7 @@ final class MainAPIPreview: MainAPI {
         return MonthlySummaryResponseModel("7월", "32km", "Level 2", "18km")
     }
     func getProfiles() async throws -> ProfileResponseModel {
-        return ProfileResponseModel("", "Level 1", "20Km", "Level 2", "5Km")
+        return ProfileResponseModel("", "Level 1", "20Km", "Level 2", "5Km", 0)
     }
     func getBadges() async throws -> [Badge] {
         return []
