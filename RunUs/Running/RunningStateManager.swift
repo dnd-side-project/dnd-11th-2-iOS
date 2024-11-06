@@ -31,8 +31,7 @@ protocol RunningStateManager {
 }
 
 class RunningStateManagerImplements: RunningStateManager {
-    private var timer: Timer?
-    
+    private var timer: DispatchSourceTimer?
     private var time: Int = 0
     
     private(set) var timePublisher = PassthroughSubject<Int, Never>()
@@ -44,15 +43,21 @@ class RunningStateManagerImplements: RunningStateManager {
     }
     
     func start() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
-            self.time += 1
-            self.timePublisher.send(self.time)
-        })
+        timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
+        timer?.schedule(deadline: .now() + .seconds(1), repeating: .seconds(1))
+        timer?.setEventHandler { [weak self] in
+            DispatchQueue.main.async {
+                self?.time += 1
+                self?.timePublisher.send(self?.time ?? 0)
+            }
+        }
+        timer?.resume()
+        
         LocationManager.shared.startUpdatingLocation()
     }
     
     func pause() {
-        timer?.invalidate()
+        timer?.cancel()
         timer = nil
         LocationManager.shared.stopUpdatingLocation()
     }
