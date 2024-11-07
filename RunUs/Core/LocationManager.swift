@@ -39,8 +39,16 @@ final class LocationManager: NSObject {
     
     override init() {
         super.init()
+        setupLocationManager()
+    }
+    
+    private func setupLocationManager() {
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
+        locationManager.activityType = .fitness
+//        locationManager.distanceFilter = 10   // TODO: 백그라운드에서만이라도 적용할지 고민중, 추후 배터리 타임 이슈 나오면 재조명
     }
     
     var authorizationStatus: LocationAuthorizationStatus {
