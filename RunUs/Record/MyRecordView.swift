@@ -60,6 +60,8 @@ extension MyRecordView {
                 }
             }
             .frame(maxHeight: 86)
+            Spacer().frame(height: 11)
+            RUProgress(percent: store.profile.percentage)
             Spacer().frame(height: 30)
             recordMenus
             Spacer().frame(height: 30)

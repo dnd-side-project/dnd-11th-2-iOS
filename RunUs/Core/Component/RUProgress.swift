@@ -42,6 +42,7 @@ struct RUProgress: View {
                 .frame(maxWidth: .infinity)
             }
         }
+        .frame(height: 27)
     }
     
     private var RUProgressCircle: some View {

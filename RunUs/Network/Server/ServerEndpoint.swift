@@ -29,6 +29,7 @@ enum ServerEndpoint: NetworkEndpoint {
     
     enum APIversion {
         static let v1 = "/api/v1"
+        static let v2 = "/api/v2"
     }
     
     var path: String {
