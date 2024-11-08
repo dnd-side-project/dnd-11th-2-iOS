@@ -113,17 +113,10 @@ extension HomeView {
                     Spacer()
                 }
                 Spacer().frame(height: 6.5)
-                Text("대전까지 00km 남았어요!") // TODO: API 수정 후 적용
+                Text(store.monthlySummary.message)
                     .font(Fonts.pretendardRegular(size: 12))
                 Spacer().frame(height: 21)
-                RUProgress(percent: 0)  // TODO: API 수정 후 적용
-                Spacer().frame(height: 3)
-                HStack {    // TODO: API 수정 후 적용
-                    Text("인천")
-                    Spacer()
-                    Text("대전")
-                }
-                .font(Fonts.pretendardRegular(size: 12))
+                RUProgress(percent: store.monthlySummary.percentage, startName: store.monthlySummary.startName, endName: store.monthlySummary.endName)
             }
             .font(Fonts.pretendardMedium(size: 20))
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
