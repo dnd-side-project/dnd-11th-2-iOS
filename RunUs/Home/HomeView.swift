@@ -90,10 +90,7 @@ extension HomeView {
                     .font(Fonts.pretendardRegular(size: 12))
             }
             Spacer().frame(height: 28)
-            RUTitle(action: {
-                viewEnvironment.selectedTabItem = .running
-                viewEnvironment.selectedRunningMode = .goal
-            }, text: "오늘의 러닝 챌린지 및 목표설정")
+            RUTitle(text: "오늘의 러닝 챌린지")
             RUChallengeList(
                 selectedChallengeIndex: $store.selectedChallengeIndex,
                 challenges: $store.challenges,
@@ -104,24 +101,26 @@ extension HomeView {
                 itemBackgroundColor: .mainDeepDark
             )
             Spacer().frame(height: 36)
-            RUTitle(text: "이번 달 러닝 기록")
+            RUTitle(text: "\(userName)님의 러닝 현황")
             VStack(alignment: .leading, spacing: 0) {
                 Text("\(store.monthlySummary.month)에는")
-                Spacer().frame(height: 4)
+                Spacer().frame(height: 2.5)
                 HStack(spacing: 0) {
                     Text(store.monthlySummary.monthlyKm)
                         .foregroundStyle(.mainGreen)
-                        .font(Fonts.pretendardSemiBold(size: 16))
+                        .font(Fonts.pretendardSemiBold(size: 20))
                     Text(" 달렸어요")
                     Spacer()
                 }
-                Spacer().frame(height: 10)
-                Text("\(store.monthlySummary.nextLevelName)까지 \(store.monthlySummary.nextLevelKm) 남았어요!")
+                Spacer().frame(height: 6.5)
+                Text(store.monthlySummary.message)
                     .font(Fonts.pretendardRegular(size: 12))
+                Spacer().frame(height: 21)
+                RUProgress(percent: store.monthlySummary.percentage, startName: store.monthlySummary.startName, endName: store.monthlySummary.endName)
             }
-            .font(Fonts.pretendardMedium(size: 16))
+            .font(Fonts.pretendardMedium(size: 20))
             .padding(.horizontal, Paddings.outsideHorizontalPadding)
-            .padding(.vertical, 12)
+            .padding(.vertical, 18)
             .frame(maxWidth: .infinity)
             .background(.mainDeepDark)
             .cornerRadius(12)

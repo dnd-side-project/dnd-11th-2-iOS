@@ -59,7 +59,7 @@ enum ServerEndpoint: NetworkEndpoint {
         case .getWeathers:
             return APIversion.v1 + "/weathers"
         case .getMonthlySummary:
-            return APIversion.v1 + "/running-records/monthly-summary"
+            return APIversion.v2 + "/running-records/monthly-summary"
         case .getWeeklySummary:
             return APIversion.v1 + "/running-records/weekly-summary"
         case .getCourses:
