@@ -43,7 +43,7 @@ enum ServerEndpoint: NetworkEndpoint {
         case .withdraw:
             return APIversion.v1 + "/auth/oauth/withdraw"
         case .getProfiles:
-            return APIversion.v2 + "/members/profiles/me"
+            return APIversion.v1 + "/members/profiles/me"
         case .getBadges:
             return APIversion.v1 + "/badges/me"
         case .postRunningRecord:
