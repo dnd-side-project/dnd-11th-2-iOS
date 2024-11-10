@@ -31,8 +31,11 @@ struct LoginStore: Reducer {
             switch result {
             case .success(let authorization):
                 return .run { send in
-                    let response: LoginResponseModel? = try await loginAPI.appleLogin(authorization: authorization)
-                    await send(.appleLoginResponse(response))
+                    await RUNetworkManager.task(
+                        action: { try await loginAPI.appleLogin(authorization: authorization) },
+                        successAction: { await send(.appleLoginResponse($0)) },
+                        retryAction: { await send(.appleLoginResult(result)) }
+                    )
                 }
             case .failure(_):
                 return .none

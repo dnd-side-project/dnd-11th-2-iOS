@@ -30,8 +30,11 @@ struct MyBadgeStore: Reducer {
             }
         case .getBadgeLists:
             return .run { send in
-                let badgeLists = try await myBadgeAPI.getBadgeLists()
-                await send(.setBadgeLists(badgeLists: badgeLists))
+                await RUNetworkManager.task(
+                    action: { try await myBadgeAPI.getBadgeLists() },
+                    successAction: { await send(.setBadgeLists(badgeLists: $0)) },
+                    retryAction: { await send(.getBadgeLists) }
+                )
             }
         case let .setBadgeLists(badgeLists):
             state.badgeLists = badgeLists

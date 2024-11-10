@@ -10,7 +10,6 @@ import Combine
 
 class ServerNetwork {
     static let shared = ServerNetwork()
-    
     private init() { }
     
     func request<T: Decodable>(_ endpoint: ServerEndpoint) -> AnyPublisher<T, NetworkError> {

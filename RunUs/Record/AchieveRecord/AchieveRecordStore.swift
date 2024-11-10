@@ -30,8 +30,11 @@ struct AchieveRecordStore: Reducer {
             }
         case .getCourses:
             return .run { send in
-                let courses = try await achieveRecordAPI.getCourses()
-                await send(.setCourses(courses: courses))
+                await RUNetworkManager.task(
+                    action: { try await achieveRecordAPI.getCourses() },
+                    successAction: { await send(.setCourses(courses: $0)) },
+                    retryAction: { await send(.getCourses) }
+                )
             }
         case let .setCourses(courses):
             state.courses = courses
