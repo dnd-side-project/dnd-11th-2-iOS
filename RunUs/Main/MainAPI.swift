@@ -59,10 +59,10 @@ final class MainAPIPreview: MainAPI {
         return WeatherResponseModel("비내리는 날", "빗물이 고인 곳이 많을 수 있으니 달리며 미끄러지지 않도록 조심하세요", "", 28, 20, 30)
     }
     func getMonthlySummary() async throws -> MonthlySummaryResponseModel {
-        return MonthlySummaryResponseModel("7월", "32km", "Level 2", "18km")
+        return MonthlySummaryResponseModel("7월", "32km", "OO까지 00km 남았어요!", "OO", "OO", 0)
     }
     func getProfiles() async throws -> ProfileResponseModel {
-        return ProfileResponseModel("", "Level 1", "20Km", "Level 2", "5Km")
+        return ProfileResponseModel("", "Level 1", "20Km", "Level 2", "5Km", 0)
     }
     func getBadges() async throws -> [Badge] {
         return []

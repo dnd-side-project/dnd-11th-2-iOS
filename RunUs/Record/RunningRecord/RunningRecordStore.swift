@@ -60,18 +60,14 @@ struct RunningRecordStore {
             case .tapDay(let day):
                 let currentMonth = state.currentMonth
                 state.currentDay = day
-                state.currentDaily = dateFormatter(currentMonth: currentMonth,
-                                                   day: day,
-                                                   split: ".") ?? DateFormatter.yyyyMMdd_dot.string(from: Date())
+                state.currentDaily = dateFormatter(currentMonth: currentMonth, day: day, split: ".") ?? DateFormatter.yyyyMMdd_dot.string(from: Date())
                 return .run { send in
-                    guard let date = dateFormatter(currentMonth: currentMonth, day: day, split: "-")
-                    else { return }
-                    do {
-                        let model = try await runningRecordAPI.getDaily(date: date)
-                        await send(.updateRecord(model.records))
-                    } catch(let error) {
-                        print(error)
-                    }
+                    guard let date = dateFormatter(currentMonth: currentMonth, day: day, split: "-") else { return }
+                    await RUNetworkManager.task(
+                        action: { try await runningRecordAPI.getDaily(date: date) },
+                        successAction: { await send(.updateRecord($0.records)) },
+                        retryAction: { await send(.tapDay(day)) }
+                    )
                 }
             case .tapRecord:
                 return .none
@@ -79,12 +75,11 @@ struct RunningRecordStore {
                 let date = state.currentMonth
                 return .run { send in
                     let (year, month) = dateFormatter(date: date)
-                    do {
-                        let model = try await runningRecordAPI.getMonthly(year: year, month: month)
-                        await send(.updateRecordDays(model.days))
-                    } catch(let error) {
-                        print(error)
-                    }
+                    await RUNetworkManager.task(
+                        action: { try await runningRecordAPI.getMonthly(year: year, month: month) },
+                        successAction: { await send(.updateRecordDays($0.days)) },
+                        retryAction: { await send(.getRecordDays) }
+                    )
                 }
             case .updateRecordDays(let date):
                 let days = date.compactMap { getDay(date: $0) }

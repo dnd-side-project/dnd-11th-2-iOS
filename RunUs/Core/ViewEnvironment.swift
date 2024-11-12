@@ -46,6 +46,7 @@ enum ViewTypes {
     case runningRecord
     case runningSummary
     case achieveRecord
+    case myBadge
     
     var navigationType: NavigationButtonType {
         switch self {

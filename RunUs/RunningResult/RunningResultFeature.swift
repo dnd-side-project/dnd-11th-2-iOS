@@ -59,14 +59,20 @@ struct RunningResultFeature {
                 if state.runningRecordId == nil {
                     let runningResult = state.runningResult!
                     return .run { send in
-                        let record: RunningRecordResponseModel = try await runningResultAPI.postRunningRecord(result: runningResult)
-                        await send(.setRunningRecord(record))
+                        await RUNetworkManager.task(
+                            action: { try await runningResultAPI.postRunningRecord(result: runningResult) },
+                            successAction: { await send(.setRunningRecord($0)) },
+                            retryAction: { await send(.onAppear) }
+                        )
                     }
                 } else {
                     let runningRecordId = state.runningRecordId!
                     return .run { send in
-                        let record: RunningRecordResponseModel = try await runningResultAPI.getRunningRecord(runningRecordId: runningRecordId)
-                        await send(.setRunningRecord(record))
+                        await RUNetworkManager.task(
+                            action: { try await runningResultAPI.getRunningRecord(runningRecordId: runningRecordId) },
+                            successAction: { await send(.setRunningRecord($0)) },
+                            retryAction: { await send(.onAppear) }
+                        )
                     }
                 }
             case .setRunningRecord(let record):

@@ -10,7 +10,6 @@ import Combine
 
 class ServerNetwork {
     static let shared = ServerNetwork()
-    
     private init() { }
     
     func request<T: Decodable>(_ endpoint: ServerEndpoint) -> AnyPublisher<T, NetworkError> {
@@ -56,6 +55,9 @@ class ServerNetwork {
     }
     
     func request<T: Decodable>(_ endpoint: ServerEndpoint) async throws -> T {
+        LoadingManager.shared.startLoading()
+        defer { LoadingManager.shared.stopLoading() }
+        
         do {
             let response: ServerResponse<T> = try await NetworkService.shared.request(endpoint)
             
@@ -72,6 +74,9 @@ class ServerNetwork {
     }
     
     func request(_ endpoint: ServerEndpoint) async throws -> Void {
+        LoadingManager.shared.startLoading()
+        defer { LoadingManager.shared.stopLoading() }
+        
         do {
             let response: ServerResponse<EmptyData> = try await NetworkService.shared.request(endpoint)
             

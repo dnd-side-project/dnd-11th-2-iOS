@@ -11,7 +11,7 @@ struct BadgesResponseModel: Decodable {
     let badges: [Badge]
 }
 
-struct Badge: Decodable, Equatable {
+struct Badge: Decodable, Equatable, Hashable {
     var badgeId: Int = 0
     var name: String = ""
     var imageUrl: String = ""
