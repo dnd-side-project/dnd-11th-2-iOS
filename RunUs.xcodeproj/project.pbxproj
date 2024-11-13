@@ -49,6 +49,7 @@
 		F605C0D62CD6683400562EAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605C0D52CD6683400562EAF /* LoadingView.swift */; };
 		F605C0D82CD73C7B00562EAF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605C0D72CD73C7B00562EAF /* AlertManager.swift */; };
 		F605C0DC2CD8ADEC00562EAF /* RUNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605C0DB2CD8ADEC00562EAF /* RUNetworkManager.swift */; };
+		F605C0E42CE4810500562EAF /* RUUserLocationMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605C0E32CE4810500562EAF /* RUUserLocationMark.swift */; };
 		F611B21A2C7CB04100797470 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B2192C7CB04100797470 /* AuthorizationManager.swift */; };
 		F611B21C2C7E1A7300797470 /* HomeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B21B2C7E1A7300797470 /* HomeStore.swift */; };
 		F611B2202C7E1FBE00797470 /* WeatherResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B21F2C7E1FBE00797470 /* WeatherResponseModel.swift */; };
@@ -172,6 +173,7 @@
 		F605C0D52CD6683400562EAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F605C0D72CD73C7B00562EAF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		F605C0DB2CD8ADEC00562EAF /* RUNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUNetworkManager.swift; sourceTree = "<group>"; };
+		F605C0E32CE4810500562EAF /* RUUserLocationMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUUserLocationMark.swift; sourceTree = "<group>"; };
 		F611B2192C7CB04100797470 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
 		F611B21B2C7E1A7300797470 /* HomeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStore.swift; sourceTree = "<group>"; };
 		F611B21F2C7E1FBE00797470 /* WeatherResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponseModel.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				F6DAD3BF2CB38DB400B459E6 /* RUTitle.swift */,
 				F65ACDC92CC752E200C67DD1 /* RUProgress.swift */,
 				F65ACDCE2CC8CF8300C67DD1 /* RUBadgeList.swift */,
+				F605C0E32CE4810500562EAF /* RUUserLocationMark.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 				D9417AD92C8C2B6B008F8075 /* Date+extension.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
 				D9A65D102C7CCD9400FA33BF /* Emotions.swift in Sources */,
+				F605C0E42CE4810500562EAF /* RUUserLocationMark.swift in Sources */,
 				F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */,
 				F605C0DC2CD8ADEC00562EAF /* RUNetworkManager.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
