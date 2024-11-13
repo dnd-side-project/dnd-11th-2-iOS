@@ -25,4 +25,13 @@ enum NetworkError: RUError {
             return "문제가 발생했습니다"
         }
     }
+    
+    var isLoginError: Bool {
+        switch self {
+        case .server(let error):
+            return error.code == "AUTH_001" || error.code == "AUTH_003"
+        default:
+            return false
+        }
+    }
 }

@@ -58,6 +58,7 @@ struct RUAlert: View {
                 .font(Fonts.pretendardBold(size: 14))
             }
             .padding(Paddings.outsideHorizontalPadding)
+            .frame(width: 284)
             .background(.mainDeepDark)
             .cornerRadius(16)
         }
