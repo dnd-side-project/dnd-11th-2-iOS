@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SetGoalView: View {
-    @EnvironmentObject var alertEnvironment: AlertEnvironment
     @EnvironmentObject var viewEnvironment: ViewEnvironment
     @State var store: StoreOf<SetGoalStore>
     
@@ -72,17 +71,11 @@ struct SetGoalView: View {
         .onAppear {
             store.send(.onAppear(viewEnvironment))
         }
-        .onChange(of: store.showLocationPermissionAlert, { oldValue, newValue in
-            if newValue {
-                alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
-            }
-        })
     }
 }
 
 #Preview {
     SetGoalView(.distance)
-        .environmentObject(AlertEnvironment())
         .environmentObject(ViewEnvironment())
 }
 
@@ -103,10 +96,6 @@ extension SetGoalView {
         } else {
             Text("")
         }
-    }
-    private func subButtonAction() {
-        store.send(.locationPermissionAlertChanged(false))
-        alertEnvironment.dismiss()
     }
     private var validateToast: some View {
         HStack(spacing: 4) {

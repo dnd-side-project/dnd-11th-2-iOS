@@ -15,6 +15,7 @@ struct RUAlert: View {
     var mainButtonColor: Color
     var mainButtonAction: () -> Void
     var subButtonAction: () -> Void
+    var isSingleButtonAlert: Bool
     
     var body: some View {
         Group {
@@ -32,15 +33,17 @@ struct RUAlert: View {
                     .font(Fonts.pretendardRegular(size: 12))
                 Spacer().frame(height: 20)
                 HStack(spacing: 11) {
-                    Button {
-                        subButtonAction()
-                    } label: {
-                        Text(subButtonText)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    if !isSingleButtonAlert {
+                        Button {
+                            subButtonAction()
+                        } label: {
+                            Text(subButtonText)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
+                        .frame(width: 121, height: 40)
+                        .background(.mainDark)
+                        .cornerRadius(6)
                     }
-                    .frame(width: 121, height: 40)
-                    .background(.mainDark)
-                    .cornerRadius(6)
                     Button {
                         mainButtonAction()
                     } label: {
@@ -66,5 +69,5 @@ struct RUAlert: View {
 }
 
 #Preview {
-    RUAlert(title: "정말 탈퇴 하시겠습니까?", subTitle: "탈퇴할 경우 모든 데이터가 삭제되고\n복구가 불가능합니다.", mainButtonText: "탈퇴하기", subButtonText: "취소", mainButtonColor: .red, mainButtonAction: {}, subButtonAction: {})
+    RUAlert(title: "정말 탈퇴 하시겠습니까?", subTitle: "탈퇴할 경우 모든 데이터가 삭제되고\n복구가 불가능합니다.", mainButtonText: "탈퇴하기", subButtonText: "취소", mainButtonColor: .red, mainButtonAction: {}, subButtonAction: {}, isSingleButtonAlert: false)
 }

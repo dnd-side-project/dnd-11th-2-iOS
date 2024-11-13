@@ -109,7 +109,6 @@
 		F69BFDA22C8967540073775C /* AchieveRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */; };
 		F69BFDA42C8968030073775C /* CoursesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA32C8968030073775C /* CoursesResponseModel.swift */; };
 		F69BFDA62C89703E0073775C /* RUAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA52C89703E0073775C /* RUAlert.swift */; };
-		F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA72C897DA90073775C /* AlertEnvironment.swift */; };
 		F69BFDAA2C8B64070073775C /* VersionResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA92C8B64070073775C /* VersionResponseModel.swift */; };
 		F69BFDAC2C8B64DF0073775C /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDAB2C8B64DF0073775C /* SystemManager.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
@@ -233,7 +232,6 @@
 		F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordAPI.swift; sourceTree = "<group>"; };
 		F69BFDA32C8968030073775C /* CoursesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesResponseModel.swift; sourceTree = "<group>"; };
 		F69BFDA52C89703E0073775C /* RUAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUAlert.swift; sourceTree = "<group>"; };
-		F69BFDA72C897DA90073775C /* AlertEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEnvironment.swift; sourceTree = "<group>"; };
 		F69BFDA92C8B64070073775C /* VersionResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionResponseModel.swift; sourceTree = "<group>"; };
 		F69BFDAB2C8B64DF0073775C /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
@@ -422,7 +420,6 @@
 				F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */,
 				D97D9FE32C6078BD00C663BD /* LocationManager.swift */,
 				D95F83162C6FB079000DCAA3 /* LocationManagerDelegate.swift */,
-				F69BFDA72C897DA90073775C /* AlertEnvironment.swift */,
 				F63BAA502C86C8E900DCE9EC /* ViewEnvironment.swift */,
 				F69BFDA92C8B64070073775C /* VersionResponseModel.swift */,
 				F605C0D32CD6644200562EAF /* LoadingManager.swift */,
@@ -724,7 +721,6 @@
 				D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */,
 				F634D2D42CBF6A2C0014EDB6 /* Double+extension.swift in Sources */,
 				F634D2CA2CB784EE0014EDB6 /* SummaryTypes.swift in Sources */,
-				F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */,
 				F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,
 				F611B2202C7E1FBE00797470 /* WeatherResponseModel.swift in Sources */,

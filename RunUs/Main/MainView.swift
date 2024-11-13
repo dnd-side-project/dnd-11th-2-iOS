@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct MainView: View {
-    @EnvironmentObject var alertEnvironment: AlertEnvironment
     @EnvironmentObject var viewEnvironment: ViewEnvironment
     @AppStorage(UserDefaultKey.isLogin.rawValue) var isLogin: Bool = false
     @State var store: StoreOf<MainStore> = Store(
@@ -57,11 +56,6 @@ struct MainView: View {
                             store.send(.myRecordRefresh)
                         }
                     }
-                    .onChange(of: store.showLocationPermissionAlert) { oldValue, newValue in
-                        if newValue {
-                            alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
-                        }
-                    }
                 } else { LoginView() }
             }
             .ignoresSafeArea(.container, edges: .bottom)    // MARK: 홈버튼UI와 홈바UI에서 탭바를 동일하게 표현하기 위한 장치
@@ -103,11 +97,6 @@ struct MainView: View {
                 }
             }
         }
-    }
-    
-    private func subButtonAction() {
-        store.send(.locationPermissionAlertChanged(false))
-        alertEnvironment.dismiss()
     }
 }
 
