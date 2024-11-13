@@ -108,7 +108,7 @@ extension RunningResultView {
             } placeholder: {
                 ProgressView()
             }
-            .frame(width: 56, height: 56)
+            .frame(width: 48, height: 48)
             .padding(.leading, 14)
             VStack(alignment: .leading, spacing: 8) {
                 Text("\(goalResult.title)")
