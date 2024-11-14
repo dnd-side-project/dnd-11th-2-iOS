@@ -45,7 +45,7 @@ extension RunningView {
         VStack(spacing: 0) {
             Map(position: $store.userLocation) {
                 UserAnnotation {
-                    Image(.userLocationMark)
+                    RUUserLocationMark()
                 }
                 HeatMapPolylineContent(segments: store.routeSegments)
             }
