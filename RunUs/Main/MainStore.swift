@@ -24,7 +24,7 @@ struct MainStore {
         case onAppear
         case checkLocationPermission
         case requestLocationPermission
-        case locationPermissionAlertChanged(Bool)
+        case showLocationPermissionAlert
         
         // MARK: getter
         case getChallenges
@@ -77,22 +77,20 @@ struct MainStore {
                     await send(.getBadges)
                 }
             case .checkLocationPermission:
-                return .run { send in
-                    let status = locationManager.authorizationStatus
-                    switch status {
-                    case .agree:
-                        break
-                    case .disagree:
-                        await send(.locationPermissionAlertChanged(true))
-                    case .notyet:
-                        await send(.requestLocationPermission)
-                    }
+                let status = locationManager.authorizationStatus
+                switch status {
+                case .agree:
+                    return .none
+                case .disagree:
+                    return .send(.showLocationPermissionAlert)
+                case .notyet:
+                    return .send(.requestLocationPermission)
                 }
             case .requestLocationPermission:
                 locationManager.requestLocationPermission()
                 return .none
-            case .locationPermissionAlertChanged(let alert):
-                state.showLocationPermissionAlert = alert
+            case .showLocationPermissionAlert:
+                AlertManager.shared.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting)
                 return .none
                 
                 // MARK: getter

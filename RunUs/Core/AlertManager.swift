@@ -13,7 +13,7 @@ class AlertManager: ObservableObject {
     private init() { }
     
     @Published private(set) var isShowAlert = false
-    @Published var ruAlert: RUAlert = RUAlert(title: "", subTitle: "", mainButtonText: "확인", subButtonText: "취소", mainButtonColor: .mainGreen, mainButtonAction: {}, subButtonAction: {})
+    @Published var ruAlert: RUAlert = RUAlert(title: "", subTitle: "", mainButtonText: "확인", subButtonText: "취소", mainButtonColor: .mainGreen, mainButtonAction: {}, subButtonAction: {}, isSingleButtonAlert: false)
     
     private var retryAPIs: Array<() -> Void> = []
     
@@ -24,7 +24,8 @@ class AlertManager: ObservableObject {
         subButtonText: String = "취소",
         mainButtonColor: Color = .mainGreen,
         mainButtonAction: (() -> Void)? = nil,
-        subButtonAction: (() -> Void)? = nil
+        subButtonAction: (() -> Void)? = nil,
+        isSingleButtonAlert: Bool = false
     ) {
         DispatchQueue.main.async {
             self.ruAlert = RUAlert(
@@ -34,7 +35,8 @@ class AlertManager: ObservableObject {
                 subButtonText: subButtonText,
                 mainButtonColor: mainButtonColor,
                 mainButtonAction: mainButtonAction ?? self.dismiss,
-                subButtonAction: subButtonAction ?? self.dismiss
+                subButtonAction: subButtonAction ?? self.dismiss,
+                isSingleButtonAlert: isSingleButtonAlert
             )
             self.isShowAlert = true
         }

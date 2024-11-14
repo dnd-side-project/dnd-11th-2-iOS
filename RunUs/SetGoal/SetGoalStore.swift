@@ -28,7 +28,7 @@ struct SetGoalStore: Reducer {
         case setIsShowValidateToast(isShowValidateToast: Bool)
         case runningStart
         case requestLocationPermission
-        case locationPermissionAlertChanged(Bool)
+        case showLocationPermissionAlert
     }
     
     @Dependency(\.locationManager) var locationManager
@@ -86,15 +86,15 @@ struct SetGoalStore: Reducer {
                     state.viewEnvironment.navigate(navigationObject)
                     return .none
                 case .disagree:
-                    return .send(.locationPermissionAlertChanged(true))
+                    return .send(.showLocationPermissionAlert)
                 case .notyet:
                     return .send(.requestLocationPermission)
                 }
             case .requestLocationPermission:
                 locationManager.requestLocationPermission()
                 return .none
-            case .locationPermissionAlertChanged(let alert):
-                state.showLocationPermissionAlert = alert
+            case .showLocationPermissionAlert:
+                AlertManager.shared.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting)
                 return .none
             case .binding(\.bigGoal):
                 return .none

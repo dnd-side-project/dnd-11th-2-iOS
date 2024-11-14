@@ -12,6 +12,13 @@ class UserDefaultManager {
     @UserDefault(key: .name, defaultValue: nil) static var name: String?
     @UserDefault(key: .email, defaultValue: nil) static var email: String?
     @UserDefault(key: .accessToken, defaultValue: nil) static var accessToken: String?
+    
+    static func logout() {
+        isLogin = false
+        name = nil
+        email = nil
+        accessToken = nil
+    }
 }
 
 enum UserDefaultKey: String {
