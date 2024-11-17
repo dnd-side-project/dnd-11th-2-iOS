@@ -28,7 +28,7 @@ struct RUProgress: View {
             GeometryReader { geometry in
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: -4) {
-                        Spacer().frame(width: geometry.size.width * CGFloat(percent * 0.01))
+                        Spacer().frame(width: geometry.size.width * CGFloat(percent))
                         Image(.pin)
                             .resizable()
                             .scaledToFit()
@@ -39,7 +39,7 @@ struct RUProgress: View {
                             .frame(width: geometry.size.width, height: 5)
                             .foregroundStyle(.gray100)
                         RoundedRectangle(cornerRadius: 8)
-                            .frame(width: geometry.size.width * CGFloat(percent * 0.01), height: 7)
+                            .frame(width: geometry.size.width * CGFloat(percent), height: 7)
                             .foregroundStyle(gradient)
                     }
                     .frame(maxWidth: .infinity)
