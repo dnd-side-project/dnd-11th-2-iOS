@@ -119,8 +119,16 @@ struct RunningFeature {
                 return .none
             case .timeUpdated(let time):
                 state.time = time
+                if state.time == 10 { // TODO: 추후 조건화 및 텍스트 수정
+                    return .run { _ in
+                        let settings = await UNUserNotificationCenter.current().notificationSettings()
+                        if settings.authorizationStatus == .authorized {
+                            try await NotificationManager.shared.pushNotification(title: "오늘의 챌린지 달성 성공!")
+                        }
+                    }
+                }
                 // 5초에 한 번씩 pace check
-                if time%5 == 0 {
+                if time % 5 == 0 {
                     return .merge(
                         .send(.paceUpdated),
                         .send(.kcalUpdated(calculateKcal(pace: state.pace)))

@@ -193,8 +193,6 @@ struct MainStore {
                 return .none
             case .runAloneAction(.startButtonTapped):
                 return .none
-            case .runAloneAction(.runningStart(_)):
-                return .none
             case let .runAloneAction(.selectChallenge(selectedChallengeIndex)):
                 state.homeState.selectedChallengeIndex = selectedChallengeIndex
                 return .none

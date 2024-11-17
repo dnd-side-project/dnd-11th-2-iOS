@@ -12,13 +12,11 @@ struct RunningStartInfo: Navigatable {
     let goalDistance: Int?
     let goalTime: Int?
     let achievementMode: RunningMode
-    let isNotificationAuthorized: Bool
     
-    init (challengeId: Int? = nil, goalDistance: Int?, goalTime: Int?, achievementMode: RunningMode, isNotificationAuthorized: Bool) {
+    init (challengeId: Int? = nil, goalDistance: Int?, goalTime: Int?, achievementMode: RunningMode) {
         self.challengeId = challengeId
         self.goalDistance = goalDistance
         self.goalTime = goalTime
         self.achievementMode = achievementMode
-        self.isNotificationAuthorized = isNotificationAuthorized
     }
 }

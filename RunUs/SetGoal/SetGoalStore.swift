@@ -27,7 +27,6 @@ struct SetGoalStore: Reducer {
         case showValidateToast(isBigGoal: Bool)
         case setIsShowValidateToast(isShowValidateToast: Bool)
         case startButtonTapped
-        case runningStart(isNotificationAuthorized: Bool)
         case checkLocationPermission
         case requestLocationPermission
         case showLocationPermissionAlert
@@ -76,26 +75,12 @@ struct SetGoalStore: Reducer {
                 
             case .startButtonTapped:
                 if locationManager.authorizationStatus == .agree {
-                    return .run { send in
-                        try await NotificationManager.shared.checkNotificationPermission(
-                            action: { await send(.runningStart(isNotificationAuthorized: $0)) }
-                        )
+                    return .run { [state] send in
+                        try await NotificationManager.shared.checkNotificationPermission { runningStart(state: state) }
                     }
                 } else {
                     return .send(.checkLocationPermission)
                 }
-            case let .runningStart(isNotificationAuthorized):
-                let goal = calcGoal(type: state.goalType, bigGoal: Int(state.bigGoal), smallGoal: Int(state.smallGoal))
-                let runningStartInfo = RunningStartInfo(
-                    challengeId: nil,
-                    goalDistance: state.goalType == .distance ? goal : nil,
-                    goalTime: state.goalType == .time ? goal : nil,
-                    achievementMode: .goal,
-                    isNotificationAuthorized: isNotificationAuthorized
-                )
-                let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
-                state.viewEnvironment.navigate(navigationObject)
-                return .none
                 
             case .checkLocationPermission:
                 let status = locationManager.authorizationStatus
@@ -122,6 +107,7 @@ struct SetGoalStore: Reducer {
             }
         }
     }
+    
     private func calcGoal(type: GoalTypes, bigGoal: Int?, smallGoal: Int?) -> Int {
         let big = bigGoal == nil ? 0 : bigGoal!
         let small = smallGoal == nil ? 0 : smallGoal!
@@ -131,5 +117,16 @@ struct SetGoalStore: Reducer {
         case .time:
             return big * 3600 + small * 60
         }
+    }
+    private func runningStart(state: State) {
+        let goal = calcGoal(type: state.goalType, bigGoal: Int(state.bigGoal), smallGoal: Int(state.smallGoal))
+        let runningStartInfo = RunningStartInfo(
+            challengeId: nil,
+            goalDistance: state.goalType == .distance ? goal : nil,
+            goalTime: state.goalType == .time ? goal : nil,
+            achievementMode: .goal
+        )
+        let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
+        state.viewEnvironment.navigate(navigationObject)
     }
 }
