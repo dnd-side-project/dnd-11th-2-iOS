@@ -29,6 +29,7 @@ struct RunAloneFeature {
         case checkLocationPermission
         case selectGoal(GoalTypes)
         case startButtonTapped
+        case runningStart(isNotificationAuthorized: Bool)
         case selectChallenge(Int)
     }
     
@@ -46,22 +47,29 @@ struct RunAloneFeature {
                 return .none
             case .checkLocationPermission:
                 return .none
+            case .selectGoal(let goal):
+                state.selectedGoalType = goal
+                return .none
             case .startButtonTapped:
                 if locationManager.authorizationStatus == .agree {
-                    let runningStartInfo = RunningStartInfo(
-                        challengeId: state.viewEnvironment.selectedRunningMode == .normal ? nil : state.challenges[state.selectedChallengeIndex].id,
-                        goalDistance: nil,
-                        goalTime: nil,
-                        achievementMode: state.viewEnvironment.selectedRunningMode
-                    )
-                    let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
-                    state.viewEnvironment.navigate(navigationObject)
-                    return .none
+                    return .run { send in
+                        try await NotificationManager.shared.checkNotificationPermission(
+                            action: { await send(.runningStart(isNotificationAuthorized: $0)) }
+                        )
+                    }
                 } else {
                     return .send(.checkLocationPermission)
                 }
-            case .selectGoal(let goal):
-                state.selectedGoalType = goal
+            case let .runningStart(isNotificationAuthorized):
+                let runningStartInfo = RunningStartInfo(
+                    challengeId: state.viewEnvironment.selectedRunningMode == .normal ? nil : state.challenges[state.selectedChallengeIndex].id,
+                    goalDistance: nil,
+                    goalTime: nil,
+                    achievementMode: state.viewEnvironment.selectedRunningMode,
+                    isNotificationAuthorized: isNotificationAuthorized
+                )
+                let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
+                state.viewEnvironment.navigate(navigationObject)
                 return .none
                 
             case let .selectChallenge(selectedChallengeIndex):

@@ -90,7 +90,7 @@ struct MainStore {
                 locationManager.requestLocationPermission()
                 return .none
             case .showLocationPermissionAlert:
-                AlertManager.shared.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting)
+                AlertManager.shared.showAlert(title: Bundle.main.locationRequestDescription, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting)
                 return .none
                 
                 // MARK: getter
@@ -192,6 +192,8 @@ struct MainStore {
             case .runAloneAction(.selectGoal(_)):
                 return .none
             case .runAloneAction(.startButtonTapped):
+                return .none
+            case .runAloneAction(.runningStart(_)):
                 return .none
             case let .runAloneAction(.selectChallenge(selectedChallengeIndex)):
                 state.homeState.selectedChallengeIndex = selectedChallengeIndex

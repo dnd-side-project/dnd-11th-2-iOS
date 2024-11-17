@@ -26,7 +26,9 @@ struct SetGoalStore: Reducer {
         case setGoal(goal: String, isBigGoal: Bool)
         case showValidateToast(isBigGoal: Bool)
         case setIsShowValidateToast(isShowValidateToast: Bool)
-        case runningStart
+        case startButtonTapped
+        case runningStart(isNotificationAuthorized: Bool)
+        case checkLocationPermission
         case requestLocationPermission
         case showLocationPermissionAlert
     }
@@ -71,19 +73,34 @@ struct SetGoalStore: Reducer {
             case let .setIsShowValidateToast(isShowValidateToast):
                 state.isShowValidateToast = isShowValidateToast
                 return .none
-            case .runningStart:
+                
+            case .startButtonTapped:
+                if locationManager.authorizationStatus == .agree {
+                    return .run { send in
+                        try await NotificationManager.shared.checkNotificationPermission(
+                            action: { await send(.runningStart(isNotificationAuthorized: $0)) }
+                        )
+                    }
+                } else {
+                    return .send(.checkLocationPermission)
+                }
+            case let .runningStart(isNotificationAuthorized):
+                let goal = calcGoal(type: state.goalType, bigGoal: Int(state.bigGoal), smallGoal: Int(state.smallGoal))
+                let runningStartInfo = RunningStartInfo(
+                    challengeId: nil,
+                    goalDistance: state.goalType == .distance ? goal : nil,
+                    goalTime: state.goalType == .time ? goal : nil,
+                    achievementMode: .goal,
+                    isNotificationAuthorized: isNotificationAuthorized
+                )
+                let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
+                state.viewEnvironment.navigate(navigationObject)
+                return .none
+                
+            case .checkLocationPermission:
                 let status = locationManager.authorizationStatus
                 switch status {
                 case .agree:
-                    let goal = calcGoal(type: state.goalType, bigGoal: Int(state.bigGoal), smallGoal: Int(state.smallGoal))
-                    let runningStartInfo = RunningStartInfo(
-                        challengeId: nil,
-                        goalDistance: state.goalType == .distance ? goal : nil,
-                        goalTime: state.goalType == .time ? goal : nil,
-                        achievementMode: .goal
-                    )
-                    let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
-                    state.viewEnvironment.navigate(navigationObject)
                     return .none
                 case .disagree:
                     return .send(.showLocationPermissionAlert)
@@ -94,7 +111,7 @@ struct SetGoalStore: Reducer {
                 locationManager.requestLocationPermission()
                 return .none
             case .showLocationPermissionAlert:
-                AlertManager.shared.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting)
+                AlertManager.shared.showAlert(title: Bundle.main.locationRequestDescription, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting)
                 return .none
             case .binding(\.bigGoal):
                 return .none

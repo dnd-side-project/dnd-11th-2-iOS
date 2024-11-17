@@ -60,7 +60,7 @@ struct SetGoalView: View {
             }
             RUButton(
                 action: {
-                    store.send(.runningStart)
+                    store.send(.startButtonTapped)
                 }, text: "목표 설정 완료"
                 , disableCondition: store.bigGoal.count == 0 && store.smallGoal.count == 0
             )
