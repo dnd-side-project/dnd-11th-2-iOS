@@ -48,12 +48,13 @@ struct AchieveRecordView: View {
                     .frame(height: 1)
                     .padding(.horizontal, -14)
                 Spacer().frame(height: 15)
-                HStack {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("현재 \(store.state.courses.currentCourse.achievedDistance) 달성")
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Spacer().frame(height: 10)
+                        Text("현재 \(store.state.courses.myAchievedStatus.achievedDistance) 달성")
                             .font(Fonts.pretendardBold(size: 16))
                             .foregroundStyle(.mainGreen)
-                        Text("완주까지 43,800km 남았어요!") // TODO: API 나오면 수정
+                        Text(store.state.courses.myAchievedStatus.remainingTotalDistance)
                     }
                     Spacer()
                     Image(.Record.go)
@@ -62,12 +63,12 @@ struct AchieveRecordView: View {
                         .padding(8)
                         .frame(width: 76, height: 76)
                 }
-//                RUProgress(percent: 90) // TODO: #84 머지 & API 나오면 수정
+                RUProgress(percent: store.state.courses.myAchievedStatus.percentage)
                 Spacer().frame(height: 8)
                 HStack {
-                    Text("현재 17코스") // TODO: API 나오면 수정
+                    Text("현재 \(store.state.courses.currentCourse.courseOrder)코스")
                     Spacer()
-                    Text("지구 한바퀴 완주")   // TODO: API 나오면 수정
+                    Text(store.state.courses.currentCourse.name)
                 }
                 Spacer().frame(height: 25)
             }
@@ -92,24 +93,26 @@ struct AchieveRecordView: View {
 
 extension AchieveRecordView {
     private var achieveRecordView: some View {
-        VStack(alignment: .leading, spacing: .zero) {
+        let courses = store.state.courses
+        return VStack(alignment: .leading, spacing: .zero) {
             Spacer().frame(height: 30)
             Text("런어스랑 지구한바퀴 달리기")
                 .foregroundStyle(.white)
                 .font(Fonts.pretendardSemiBold(size: 16))
+            Spacer().frame(height: 4)
             HStack(spacing: 8) {
-                Text("코스: \(store.state.courses.info.totalCourses)코스")
-                Text("런어스 총 거리: \(store.state.courses.info.totalDistance)")
+                Text("코스: \(courses.info.totalCourses)코스")
+                Text("런어스 총 거리: \(courses.info.totalDistance)")
             }
             .foregroundStyle(.gray300)
             .font(Fonts.pretendardSemiBold(size: 12))
             Spacer().frame(height: 25)
-            ForEach (store.state.courses.achievedCourses, id: \.self.name) { course in
-                AchieveRecordCardView(distance: course.totalDistance, title: course.name, subTitle: course.achievedAt, recordType: .achieved)  // TODO: 완주 코스
+            ForEach (courses.achievedCourses, id: \.self.name) { course in
+                AchieveRecordCardView(recordType: .achieved, distance: course.totalDistance, title: course.name, subTitle: course.achievedAt)
             }
-            AchieveRecordCardView(distance: store.state.courses.currentCourse.totalDistance, title: store.state.courses.currentCourse.name, subTitle: store.state.courses.currentCourse.message, recordType: .running) // TODO: 현재 코스
-            // TODO: 다음 코스 (회색) recordType: .next
-            if true {   // TODO: 현재 달리는 코스가 마지막 코스보다 적으면
+            AchieveRecordCardView(recordType: .current, courseOrder: courses.currentCourse.courseOrder, distance: courses.currentCourse.totalDistance, title: courses.currentCourse.name, subTitle: courses.currentCourse.message)
+            AchieveRecordCardView(recordType: .next, courseOrder: courses.nextCourse.courseOrder, distance: courses.nextCourse.totalDistance, title: courses.nextCourse.name, subTitle: courses.nextCourse.message)
+            if courses.currentCourse.courseOrder < courses.info.totalCourses {
                 AchieveRecordCardView(hasNextCourse: true)
             }
             Spacer()
@@ -119,27 +122,30 @@ extension AchieveRecordView {
 }
 
 struct AchieveRecordCardView: View {
+    var recordType: RecordTypes
+    var courseOrder: Int
     var distance: String
     var title: String
     var subTitle: String
-    var recordType: RecordTypes
     var hasNextCourse: Bool
     var gradient: LinearGradient
     
-    init(distance: String, title: String, subTitle: String, recordType: RecordTypes) {
+    init(recordType: RecordTypes, courseOrder: Int? = nil, distance: String, title: String, subTitle: String) {
+        self.recordType = recordType
+        self.courseOrder = courseOrder ?? 0
         self.distance = distance
         self.title = title
         self.subTitle = subTitle
-        self.recordType = recordType
         self.hasNextCourse = false
-        gradient = LinearGradient(colors: [.white, recordType == .running ? .mainGreen : .mainDeepDark], startPoint: .top, endPoint: .bottom)
+        gradient = LinearGradient(colors: [.white, recordType == .current ? .mainGreen : .mainDeepDark], startPoint: .top, endPoint: .bottom)
     }
     
     init(hasNextCourse: Bool) {
+        self.recordType = .next
+        self.courseOrder = 0
         self.distance = ""
         self.title = ""
         self.subTitle = ""
-        self.recordType = .next
         self.hasNextCourse = hasNextCourse
         gradient = LinearGradient(colors: [.white, .mainDeepDark], startPoint: .top, endPoint: .bottom)
     }
@@ -148,15 +154,15 @@ struct AchieveRecordCardView: View {
         HStack(spacing: 12) {
             VStack(spacing: 4) {
                 ZStack {
-                    if recordType == .running {
+                    if recordType == .current {
                         Circle()
                             .stroke(.mainGreen, lineWidth: 1)
                     }
                     Circle()
-                        .fill(recordType == .running ? .mainGreen : .mainDeepDark)
-                        .frame(width: recordType == .running ? 16 : 10)
-                    if recordType == .running {
-                        Text("17")  // TODO: API 나오면 수정
+                        .fill(recordType == .current ? .mainGreen : .mainDeepDark)
+                        .frame(width: recordType == .current ? 16 : 10)
+                    if recordType == .current {
+                        Text("\(courseOrder)")
                             .font(Fonts.pretendardSemiBold(size: 10))
                             .foregroundStyle(.black)
                     }
@@ -173,7 +179,7 @@ struct AchieveRecordCardView: View {
                 } else {
                     Text(distance)
                         .font(Fonts.pretendardBold(size: 12))
-                        .foregroundStyle(recordType == .achieved ? .black : recordType == .running ? .white : .gray300)
+                        .foregroundStyle(recordType == .achieved ? .black : recordType == .current ? .white : .gray300)
                         .padding(.vertical, 13)
                         .frame(width: 76)
                         .background(recordType == .achieved ? .mainGreen : Color.background)
@@ -187,10 +193,10 @@ struct AchieveRecordCardView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
-            .foregroundStyle(recordType == .achieved ? .white : recordType == .running ? .black : .gray300)
+            .foregroundStyle(recordType == .achieved ? .white : recordType == .current ? .black : .gray300)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 17)
-            .background(recordType == .running ? .mainGreen : .mainDeepDark)
+            .background(recordType == .current ? .mainGreen : .mainDeepDark)
             .cornerRadius(12)
         }
         .frame(maxWidth: .infinity)
@@ -213,7 +219,7 @@ struct DottedLine: View {
 
 enum RecordTypes {
     case achieved
-    case running
+    case current
     case next
 }
 
