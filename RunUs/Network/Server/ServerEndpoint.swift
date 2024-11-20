@@ -63,7 +63,7 @@ enum ServerEndpoint: NetworkEndpoint {
         case .getWeeklySummary:
             return APIversion.v1 + "/running-records/weekly-summary"
         case .getCourses:
-            return APIversion.v1 + "/scale/courses"
+            return APIversion.v2 + "/scale/courses"
         case .getBadgeLists:
             return APIversion.v1 + "/badges/me/lists"
         }

@@ -68,5 +68,5 @@ enum ProgressTypes {
 }
 
 #Preview {
-    RUProgress(percent: 72.8).padding().background(Color.background)
+    RUProgress(percent: 0.72).padding().background(Color.background)
 }

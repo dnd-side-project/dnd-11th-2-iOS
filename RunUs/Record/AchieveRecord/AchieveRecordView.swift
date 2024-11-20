@@ -20,7 +20,7 @@ struct AchieveRecordView: View {
             RUNavigationBar(buttonType: .back, title: "달성기록", backgroundColor: .mainDeepDark)
                 .padding(.horizontal, Paddings.outsideHorizontalPadding)
                 .background(.mainDeepDark)
-            VStack(spacing: 0) {
+            VStack(spacing: .zero) {
                 Spacer().frame(height: 30)
                 HStack(spacing: 13) {
                     AsyncImage(url: URL(string: profile.profileImageUrl)) { image in
@@ -36,7 +36,6 @@ struct AchieveRecordView: View {
                         Text(profile.currentLevelName)
                             .font(Fonts.pretendardBold(size: 24))
                         Text("\(profile.nextLevelKm) 추가 달성 시 \(profile.nextLevelName) 달성")
-                            .font(Fonts.pretendardMedium(size: 12))
                     }
                     Spacer()
                 }
@@ -47,29 +46,35 @@ struct AchieveRecordView: View {
                     .fill(.gray300)
                     .frame(maxWidth: .infinity)
                     .frame(height: 1)
-                Spacer().frame(height: 29)
-                HStack {
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(store.state.courses.currentCourse.name)
+                    .padding(.horizontal, -14)
+                Spacer().frame(height: 15)
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Spacer().frame(height: 10)
+                        Text("현재 \(store.state.courses.myAchievedStatus.achievedDistance) 달성")
+                            .font(Fonts.pretendardBold(size: 16))
                             .foregroundStyle(.mainGreen)
-                            .font(Fonts.pretendardBold(size: 15))
-                        Text(store.state.courses.currentCourse.message)
-                            .font(Fonts.pretendardMedium(size: 12))
+                        Text(store.state.courses.myAchievedStatus.remainingTotalDistance)
                     }
                     Spacer()
-                    Text("현재 \(store.state.courses.currentCourse.achievedDistance) 달성")
-                        .font(Fonts.pretendardSemiBold(size: 12))
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 11)
-                        .background(.mainBlue)
-                        .cornerRadius(6)
-                        .foregroundStyle(.black)
+                    Image(.Record.go)
+                        .resizable()
+                        .scaledToFit()
+                        .padding(8)
+                        .frame(width: 76, height: 76)
                 }
-                .padding(.horizontal, 11)
-                Spacer().frame(height: 30)
+                RUProgress(percent: store.state.courses.myAchievedStatus.percentage)
+                Spacer().frame(height: 8)
+                HStack {
+                    Text("현재 \(store.state.courses.currentCourse.courseOrder)코스")
+                    Spacer()
+                    Text(store.state.courses.currentCourse.name)
+                }
+                Spacer().frame(height: 25)
             }
-            .foregroundColor(.white)
-            .padding(.horizontal, Paddings.outsideHorizontalPadding)
+            .foregroundStyle(.white)
+            .font(Fonts.pretendardMedium(size: 12))
+            .padding(.horizontal, 30)
             .background(.mainDeepDark)
             .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
             ViewThatFits(in: .vertical) {
@@ -88,34 +93,28 @@ struct AchieveRecordView: View {
 
 extension AchieveRecordView {
     private var achieveRecordView: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 14) {
-                Image(.Record.go)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 24, height: 24)
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("런어스랑 지구한바퀴 달리기")
-                        .foregroundStyle(.white)
-                        .font(Fonts.pretendardSemiBold(size: 16))
-                    HStack(spacing: 8) {
-                        Text("코스: \(store.state.courses.info.totalCourses)코스")
-                        Text("런어스 총 거리: \(store.state.courses.info.totalDistance)")
-                        Text("지구 한 바퀴: 40,075km")
-                    }
-                    .foregroundStyle(.gray300)
-                    .font(Fonts.pretendardSemiBold(size: 10))
-                }
-                Spacer()
+        let courses = store.state.courses
+        return VStack(alignment: .leading, spacing: .zero) {
+            Spacer().frame(height: 30)
+            Text("런어스랑 지구한바퀴 달리기")
+                .foregroundStyle(.white)
+                .font(Fonts.pretendardSemiBold(size: 16))
+            Spacer().frame(height: 4)
+            HStack(spacing: 8) {
+                Text("코스: \(courses.info.totalCourses)코스")
+                Text("런어스 총 거리: \(courses.info.totalDistance)")
             }
-            .padding(.vertical, 26)
-            ForEach (store.state.courses.achievedCourses, id: \.self.name) { course in
-                AchieveRecordCardView(distance: course.totalDistance, title: course.name, subTitle: course.achievedAt, isCurrentAchieve: true)
+            .foregroundStyle(.gray300)
+            .font(Fonts.pretendardSemiBold(size: 12))
+            Spacer().frame(height: 25)
+            ForEach (courses.achievedCourses, id: \.self.name) { course in
+                AchieveRecordCardView(recordType: .achieved, distance: course.totalDistance, title: course.name, subTitle: course.achievedAt)
             }
-            // TODO: 컴포넌트별 조건 정의 필요
-            AchieveRecordCardView(distance: store.state.courses.currentCourse.totalDistance, title: store.state.courses.currentCourse.name, subTitle: store.state.courses.currentCourse.message)
-            AchieveRecordCardView(isEmptyView: true)
-            AchieveRecordCardView(distance: "40,075km", title: "지구한바퀴 완주!", subTitle: "축하합니다! 지구한바퀴 완주하셨네요!")
+            AchieveRecordCardView(recordType: .current, courseOrder: courses.currentCourse.courseOrder, distance: courses.currentCourse.totalDistance, title: courses.currentCourse.name, subTitle: courses.currentCourse.message)
+            AchieveRecordCardView(recordType: .next, courseOrder: courses.nextCourse.courseOrder, distance: courses.nextCourse.totalDistance, title: courses.nextCourse.name, subTitle: courses.nextCourse.message)
+            if courses.currentCourse.courseOrder < courses.info.totalCourses {
+                AchieveRecordCardView(hasNextCourse: true)
+            }
             Spacer()
         }
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
@@ -123,28 +122,31 @@ extension AchieveRecordView {
 }
 
 struct AchieveRecordCardView: View {
+    var recordType: RecordTypes
+    var courseOrder: Int
     var distance: String
     var title: String
     var subTitle: String
-    var isCurrentAchieve: Bool
-    var isEmptyView: Bool
+    var hasNextCourse: Bool
     var gradient: LinearGradient
     
-    init(distance: String, title: String, subTitle: String, isCurrentAchieve: Bool = false) {
+    init(recordType: RecordTypes, courseOrder: Int? = nil, distance: String, title: String, subTitle: String) {
+        self.recordType = recordType
+        self.courseOrder = courseOrder ?? 0
         self.distance = distance
         self.title = title
         self.subTitle = subTitle
-        self.isCurrentAchieve = isCurrentAchieve
-        self.isEmptyView = false
-        gradient = LinearGradient(colors: [.white, isCurrentAchieve ? .mainGreen : .mainDeepDark], startPoint: .top, endPoint: .bottom)
+        self.hasNextCourse = false
+        gradient = LinearGradient(colors: [.white, recordType == .current ? .mainGreen : .mainDeepDark], startPoint: .top, endPoint: .bottom)
     }
     
-    init(isEmptyView: Bool) {
+    init(hasNextCourse: Bool) {
+        self.recordType = .next
+        self.courseOrder = 0
         self.distance = ""
         self.title = ""
         self.subTitle = ""
-        self.isCurrentAchieve = false
-        self.isEmptyView = isEmptyView
+        self.hasNextCourse = hasNextCourse
         gradient = LinearGradient(colors: [.white, .mainDeepDark], startPoint: .top, endPoint: .bottom)
     }
     
@@ -152,30 +154,35 @@ struct AchieveRecordCardView: View {
         HStack(spacing: 12) {
             VStack(spacing: 4) {
                 ZStack {
-                    if isCurrentAchieve {
+                    if recordType == .current {
                         Circle()
                             .stroke(.mainGreen, lineWidth: 1)
                     }
                     Circle()
-                        .fill(isCurrentAchieve ? .mainGreen : .mainDeepDark)
-                        .frame(width: isCurrentAchieve ? 8 : 10)
+                        .fill(recordType == .current ? .mainGreen : .mainDeepDark)
+                        .frame(width: recordType == .current ? 16 : 10)
+                    if recordType == .current {
+                        Text("\(courseOrder)")
+                            .font(Fonts.pretendardSemiBold(size: 10))
+                            .foregroundStyle(.black)
+                    }
                 }
-                .frame(width: 14, height: 14)
+                .frame(width: 20, height: 20)
                 DottedLine()
                     .frame(maxWidth: 1, maxHeight: .infinity)
                     .foregroundStyle(gradient)
             }
             HStack(spacing: 10) {
-                if isEmptyView {
+                if hasNextCourse {
                     Text("다음 코스 공개까지 RUN with RUNUS!")
                         .font(Fonts.pretendardMedium(size: 12))
                 } else {
                     Text(distance)
                         .font(Fonts.pretendardBold(size: 12))
-                        .foregroundStyle(isCurrentAchieve ? .white : .gray300)
+                        .foregroundStyle(recordType == .achieved ? .black : recordType == .current ? .white : .gray300)
                         .padding(.vertical, 13)
                         .frame(width: 76)
-                        .background(Color.background)
+                        .background(recordType == .achieved ? .mainGreen : Color.background)
                         .cornerRadius(6)
                     VStack(alignment: .leading, spacing: 2) {
                         Text(title)
@@ -186,10 +193,10 @@ struct AchieveRecordCardView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
-            .foregroundStyle(isCurrentAchieve ? .black : .gray300)
+            .foregroundStyle(recordType == .achieved ? .white : recordType == .current ? .black : .gray300)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 17)
-            .background(isCurrentAchieve ? .mainGreen : .mainDeepDark)
+            .background(recordType == .current ? .mainGreen : .mainDeepDark)
             .cornerRadius(12)
         }
         .frame(maxWidth: .infinity)
@@ -208,6 +215,12 @@ struct DottedLine: View {
             .stroke(style: StrokeStyle(lineWidth: 1, dash: [3, 1]))
         }
     }
+}
+
+enum RecordTypes {
+    case achieved
+    case current
+    case next
 }
 
 #Preview {
