@@ -9,8 +9,6 @@ import Combine
 import Foundation
 import CoreLocation
 import ComposableArchitecture
-import Combine
-import MapKit
 
 extension DependencyValues {
     var locationManager: LocationManager {
