@@ -21,6 +21,8 @@ struct RUNetworkManager {
             if error.isLoginError {
                 UserDefaultManager.logout()
                 AlertManager.shared.showAlert(title: "런어스 서비스 이용을 위해서는\n회원 가입이 필요합니다.", isSingleButtonAlert: true)
+            } else if error.needRevokeError {
+                AlertManager.shared.showAlert(title: "런어스 서비스 재이용을 위해서는\n설정 > Apple 계정 > Apple로 로그인 > RunUs > 삭제\n작업을 먼저 수행해주세요.", isSingleButtonAlert: true)
             } else {
                 await showNetworkAlert(retryAction)
             }
