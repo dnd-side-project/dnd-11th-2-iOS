@@ -53,13 +53,13 @@ struct SetGoalStore: Reducer {
                 if state.goalType == .distance {
                     unit = isBigGoal ? "km" : "m"
                     suffix = "는"
-                    max = isBigGoal ? "두" : "세"
+                    max = "1000"
                 } else {
                     unit = isBigGoal ? "시간" : "분"
                     suffix = "은"
-                    max = "두"
+                    max = "60"
                 }
-                state.validateString = "\(unit)\(suffix) 최대 \(max) 자리 수 까지 입력 가능합니다."
+                state.validateString = "\(unit)\(suffix) \(max) 미만의 숫자만 입력 가능합니다."
                 if state.isShowValidateToast { return .none }
                 return .merge (
                     .send(.setIsShowValidateToast(isShowValidateToast: true)),
