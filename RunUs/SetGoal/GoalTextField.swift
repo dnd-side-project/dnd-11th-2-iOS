@@ -22,8 +22,8 @@ struct GoalTextField: View {
                 .onChange(of: isBigGoal ? store.bigGoal : store.smallGoal) { oldValue, newValue in
                     // MARK: 첫 자리가 0이거나 입력 값중에 숫자 이외의 값이 있는 예외 처리
                     if newValue == "0" || !newValue.allSatisfy({ $0.isNumber }) { store.send(.setGoal(goal: "", isBigGoal: isBigGoal)) }
-                    if newValue.count > lengthOfTextField(type: store.goalType, isBigGoal: isBigGoal) {
-                        store.send(.setGoal(goal: oldValue, isBigGoal: isBigGoal))  // MARK: 자리수 제한
+                    if let newValue = Int(newValue), newValue > maxOfNum(type: store.goalType) {
+                        store.send(.setGoal(goal: String(maxOfNum(type: store.goalType)), isBigGoal: isBigGoal))
                         store.send(.showValidateToast(isBigGoal: isBigGoal))
                     }
                 }
@@ -52,6 +52,6 @@ private func unitOfTextField(type: GoalTypes, isBigGoal: Bool) -> String {
     }
 }
 
-private func lengthOfTextField(type: GoalTypes, isBigGoal: Bool) -> Int {
-    return isBigGoal ? 2 : type == .time ? 2 : 3
+private func maxOfNum(type: GoalTypes) -> Int {
+    return type == .distance ? 999 : 59
 }
