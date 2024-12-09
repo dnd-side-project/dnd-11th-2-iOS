@@ -123,7 +123,7 @@ struct RunningFeature {
                     return .run { _ in
                         let settings = await UNUserNotificationCenter.current().notificationSettings()
                         if settings.authorizationStatus == .authorized {
-                            try await NotificationManager.shared.pushNotification(title: "오늘의 챌린지 달성 성공!")
+                            try await NotificationManager.shared.pushSuccessNotification(title: "오늘 30분 동안 뛰기 성공!")
                         }
                     }
                 }

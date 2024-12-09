@@ -62,6 +62,10 @@ actor NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
+    func pushSuccessNotification(title: String) async throws {
+        try await self.pushNotification(title: title, body: "정말 대단해요! 잘하셨어요")
+    }
+    
     func pushNotification(title: String, body: String = "") async throws {
         let content = UNMutableNotificationContent()
         content.title = title
