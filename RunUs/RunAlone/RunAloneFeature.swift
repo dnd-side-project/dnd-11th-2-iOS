@@ -66,12 +66,20 @@ struct RunAloneFeature {
     }
     
     private func runningStart(state: State) {
-        let runningStartInfo = RunningStartInfo(
-            challengeId: state.viewEnvironment.selectedRunningMode == .normal ? nil : state.challenges[state.selectedChallengeIndex].id,
+        var runningStartInfo = RunningStartInfo(
+            challengeId: nil,
+            goalType: nil,
             goalDistance: nil,
             goalTime: nil,
             achievementMode: state.viewEnvironment.selectedRunningMode
         )
+        if state.viewEnvironment.selectedRunningMode == .challenge {
+            let challenge = state.challenges[state.selectedChallengeIndex]
+            runningStartInfo.challengeId = challenge.id
+            runningStartInfo.goalType = challenge.type
+            runningStartInfo.goalDistance = challenge.goalDistance
+            runningStartInfo.goalTime = challenge.goalTime
+        }
         let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
         state.viewEnvironment.navigate(navigationObject)
     }

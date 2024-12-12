@@ -108,24 +108,33 @@ struct SetGoalStore: Reducer {
         }
     }
     
-    private func calcGoal(type: GoalTypes, bigGoal: Int?, smallGoal: Int?) -> Int {
-        let big = bigGoal == nil ? 0 : bigGoal!
-        let small = smallGoal == nil ? 0 : smallGoal!
+    private func calcGoal(type: GoalTypes, bigGoal: Int?, smallGoal: Int?) -> Double {
+        let big = Double(bigGoal ?? 0)
+        let small = Double(smallGoal ?? 0)
         switch type {
         case .distance:
-            return big * 1000 + small
+            return big + small * 0.001
         case .time:
             return big * 3600 + small * 60
         }
     }
     private func runningStart(state: State) {
         let goal = calcGoal(type: state.goalType, bigGoal: Int(state.bigGoal), smallGoal: Int(state.smallGoal))
-        let runningStartInfo = RunningStartInfo(
+        var runningStartInfo = RunningStartInfo(
             challengeId: nil,
-            goalDistance: state.goalType == .distance ? goal : nil,
-            goalTime: state.goalType == .time ? goal : nil,
+            goalType: state.goalType,
+            goalDistance: nil,
+            goalTime: nil,
             achievementMode: .goal
         )
+        
+        switch state.goalType {
+        case .distance:
+            runningStartInfo.goalDistance = goal
+        case .time:
+            runningStartInfo.goalTime = Int(goal)
+        }
+        
         let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
         state.viewEnvironment.navigate(navigationObject)
     }

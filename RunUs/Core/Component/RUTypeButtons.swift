@@ -40,7 +40,7 @@ struct RUTypeButtons: View {
     }
 }
 
-enum GoalTypes: String, Navigatable {
+enum GoalTypes: String, Decodable, Navigatable {
     case time
     case distance
     

@@ -33,13 +33,15 @@ struct RunningFeature {
         var startLocation: String = ""
         var endLocation: String = ""
         var challengeId: Int?
-        var goalDistance: Int?
+        var goalType: GoalTypes?
+        var goalDistance: Double?
         var goalTime: Int?
         var achievementMode: RunningMode
         
         init(runningStartInfo: RunningStartInfo) {
             self.startAt = Date().formatStringHyphen()
             self.challengeId = runningStartInfo.challengeId
+            self.goalType = runningStartInfo.goalType
             self.goalDistance = runningStartInfo.goalDistance
             self.goalTime = runningStartInfo.goalTime
             self.achievementMode = runningStartInfo.achievementMode
@@ -52,7 +54,7 @@ struct RunningFeature {
                   endLocation: self.endLocation,
                   emotion: emotion.entity,
                   challengeId: self.challengeId,
-                  goalDistance: self.goalDistance,
+                  goalDistance: self.goalDistance.map { Int($0 * 1000) },
                   goalTime: self.goalTime,
                   achievementMode: achievementMode.rawValue,
                   runningData: .init(runningTime: self.time.toTimeString(),
@@ -119,7 +121,7 @@ struct RunningFeature {
                 return .none
             case .timeUpdated(let time):
                 state.time = time
-                if state.time == 10 { // TODO: 추후 조건화 및 텍스트 수정
+                if state.time == 3 { // TODO: 추후 조건화 및 텍스트 수정
                     return .run { _ in
                         let settings = await UNUserNotificationCenter.current().notificationSettings()
                         if settings.authorizationStatus == .authorized {

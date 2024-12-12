@@ -8,13 +8,15 @@
 import Foundation
 
 struct RunningStartInfo: Navigatable {
-    let challengeId: Int?
-    let goalDistance: Int?
-    let goalTime: Int?
+    var challengeId: Int?
+    var goalType: GoalTypes?
+    var goalDistance: Double?
+    var goalTime: Int?
     let achievementMode: RunningMode
     
-    init (challengeId: Int? = nil, goalDistance: Int?, goalTime: Int?, achievementMode: RunningMode) {
+    init (challengeId: Int? = nil, goalType: GoalTypes? = nil, goalDistance: Double?, goalTime: Int?, achievementMode: RunningMode) {
         self.challengeId = challengeId
+        self.goalType = goalType
         self.goalDistance = goalDistance
         self.goalTime = goalTime
         self.achievementMode = achievementMode
