@@ -76,6 +76,7 @@ struct RunAloneFeature {
         if state.viewEnvironment.selectedRunningMode == .challenge {
             let challenge = state.challenges[state.selectedChallengeIndex]
             runningStartInfo.challengeId = challenge.id
+            runningStartInfo.challengeTitle = challenge.title
             runningStartInfo.goalType = challenge.type
             runningStartInfo.goalDistance = challenge.goalDistance
             runningStartInfo.goalTime = challenge.goalTime

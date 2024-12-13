@@ -121,7 +121,6 @@ struct SetGoalStore: Reducer {
     private func runningStart(state: State) {
         let goal = calcGoal(type: state.goalType, bigGoal: Int(state.bigGoal), smallGoal: Int(state.smallGoal))
         var runningStartInfo = RunningStartInfo(
-            challengeId: nil,
             goalType: state.goalType,
             goalDistance: nil,
             goalTime: nil,
