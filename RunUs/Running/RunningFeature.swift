@@ -33,21 +33,32 @@ struct RunningFeature {
         var startLocation: String = ""
         var endLocation: String = ""
         var challengeId: Int?
-        var challengeTitle: String?
+        var goalString: String = ""
+        var goalPercent: Double = 0.0
         var goalType: GoalTypes?
         var goalDistance: Double?
         var goalTime: Int?
         var achievementMode: RunningMode
-        var isSuccess: Bool = false
         
         init(runningStartInfo: RunningStartInfo) {
             self.startAt = Date().formatStringHyphen()
             self.challengeId = runningStartInfo.challengeId
-            self.challengeTitle = runningStartInfo.challengeTitle
             self.goalType = runningStartInfo.goalType
             self.goalDistance = runningStartInfo.goalDistance
             self.goalTime = runningStartInfo.goalTime
             self.achievementMode = runningStartInfo.achievementMode
+            
+            // MARK: init goalString
+            if let challengeTitle = runningStartInfo.challengeTitle { self.goalString = challengeTitle }
+            else {
+                if let goalDistance = runningStartInfo.goalDistance { self.goalString = "\(goalDistance)KM 뛰기" }
+                if let goalTime = runningStartInfo.goalTime {
+                    let hour = goalTime / 3600
+                    let minute = goalTime % 3600 / 60
+                    if hour > 0 { self.goalString += "\(hour)시간 " }
+                    self.goalString += "\(minute)분 뛰기"
+                }
+            }
         }
         
         func getRunningResult(emotion: Emotions) -> RunningResult {
@@ -82,6 +93,7 @@ struct RunningFeature {
         case resetRunningData
         case setStartLocation(String)
         case setEndLocation(String)
+        case goalPercentUpdated
         case pushNotification(String)
     }
     
@@ -127,10 +139,7 @@ struct RunningFeature {
                 state.time = time
                 return .run { [state] send in
                     if time % 5 == 0 { await send(.paceUpdated) }
-                    if let goalTime = state.goalTime, let goalType = state.goalType,
-                       goalType == .time, !state.isSuccess, time >= goalTime {
-                        await send(.pushNotification(getPushTitle(challengeTitle: state.challengeTitle, goalType: goalType, goalTime: goalTime)))
-                    }
+                    if state.achievementMode != .normal && state.goalPercent < 1.0 { await send(.goalPercentUpdated) }
                     await send(.kcalUpdated(calculateKcal(pace: state.pace)))
                 }
             case .locationUpdated(let location):
@@ -164,10 +173,7 @@ struct RunningFeature {
             case .distanceUpdated(let distance):
                 state.distance = state.distance + distance
                 return .run { [state] send in
-                    if let goalDistance = state.goalDistance, let goalType = state.goalType,
-                       goalType == .distance, !state.isSuccess, state.distance >= goalDistance {
-                        await send(.pushNotification(getPushTitle(challengeTitle: state.challengeTitle, goalType: goalType, goalDistance: goalDistance)))
-                    }
+                    if state.achievementMode != .normal && state.goalPercent < 1.0 { await send(.goalPercentUpdated) }
                 }
             case .kcalUpdated(let kcal):
                 state.kcal = state.kcal + kcal
@@ -196,8 +202,18 @@ struct RunningFeature {
             case .setEndLocation(let address):
                 state.endLocation = address
                 return .none
+            case .goalPercentUpdated:
+                if let goalType = state.goalType, let goalTime = state.goalTime, goalType == .time {
+                    withAnimation(Animation.linear(duration: 1.0)) { state.goalPercent = Double(state.time) / Double(goalTime) }
+                    if state.time >= goalTime { return .send(.pushNotification("\(state.goalString) 성공!")) }
+                }
+                if let goalType = state.goalType, let goalDistance = state.goalDistance, goalType == .distance {
+                    withAnimation(Animation.linear(duration: 1.0)) { state.goalPercent = state.distance / goalDistance }
+                    if state.distance >= goalDistance { return .send(.pushNotification("\(state.goalString) 성공!")) }
+                }
+                return .none
             case .pushNotification(let title):
-                state.isSuccess = true
+                state.goalPercent = 1.0
                 return .run { send in
                     let settings = await UNUserNotificationCenter.current().notificationSettings()
                     if settings.authorizationStatus == .authorized {
@@ -247,16 +263,5 @@ extension RunningFeature {
                 return 317 / 1800
             }
         }
-    }
-    
-    private func getPushTitle(challengeTitle: String?, goalType: GoalTypes, goalDistance: Double? = nil, goalTime: Int? = nil) -> String {
-        if let challengeTitle { return "\(challengeTitle) 성공!" }
-        if let goalDistance { return "\(goalDistance)KM 달성 성공!" }
-        if let goalTime {
-            let hour = goalTime / 3600
-            let minute = goalTime % 3600 / 60
-            return "\(hour)시간 \(minute)분 달성 성공!"
-        }
-        return "목표 달성 성공!"
     }
 }
