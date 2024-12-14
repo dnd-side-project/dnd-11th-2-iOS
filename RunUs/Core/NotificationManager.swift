@@ -29,7 +29,7 @@ actor NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         completionHandler([.banner, .sound])
     }
     
-    private let notificationRequestDescription: String = "\(UserDefaultManager.name ?? "런어스")님이 챌린지 또는 목표를 달성했을 때 런어스가 알려드릴게요!"
+    private let notificationRequestDescription: String = "챌린지, 목표를 달성했을 때 런어스가 알려드릴까요?"
     
     func requestAuthorization() async throws {
         let options: UNAuthorizationOptions = [.alert, .sound]
@@ -45,8 +45,8 @@ actor NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         case .denied:
             AlertManager.shared.showAlert(
                 title: self.notificationRequestDescription,
-                mainButtonText: "설정하러 가기",
-                subButtonText: "다음에 하기",
+                mainButtonText: "네 좋아요",
+                subButtonText: "아니요",
                 mainButtonAction: {
                     SystemManager.shared.openAppSetting()
                     AlertManager.shared.dismiss()
