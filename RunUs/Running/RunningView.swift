@@ -82,15 +82,19 @@ extension RunningView {
     }
     
     private var runningStateTitleView: some View {
-        HStack(spacing: 8) {
-            Image(.Running.shoes)
-                .resizable()
-                .frame(width: 25, height: 25)
-            Text("현재 러닝 현황")
-                .font(Fonts.pretendardSemiBold(size: 20))
-                .foregroundStyle(.white)
-            Spacer()
-        }.padding(.horizontal, Paddings.outsideHorizontalPadding)
+        VStack(spacing: 12) {
+            HStack(spacing: 8) {
+                Image(.Running.shoes)
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                Text(store.achievementMode == .normal ? "현재 러닝 현황" : "\(store.goalString) 달성률")
+                    .font(store.achievementMode == .normal ? Fonts.pretendardSemiBold(size: 20) : Fonts.pretendardMedium(size: 15))
+                    .foregroundStyle(.white)
+                Spacer()
+            }
+            if store.achievementMode != .normal { RUProgress(percent: store.goalPercent, hasPin: false) }
+        }
+        .padding(.horizontal, Paddings.outsideHorizontalPadding)
     }
     
     private var runningStateBodyView: some View {

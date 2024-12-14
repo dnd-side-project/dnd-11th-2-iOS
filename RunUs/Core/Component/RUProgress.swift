@@ -27,12 +27,14 @@ struct RUProgress: View {
         VStack(spacing: 6) {
             GeometryReader { geometry in
                 VStack(alignment: .leading, spacing: 3) {
-                    HStack(spacing: -4) {
-                        Spacer().frame(width: geometry.size.width * CGFloat(percent))
-                        Image(.pin)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 8, height: 17)
+                    if hasPin {
+                        HStack(spacing: -4) {
+                            Spacer().frame(width: geometry.size.width * CGFloat(percent))
+                            Image(.pin)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 8, height: 17)
+                        }
                     }
                     ZStack(alignment: .leading) {
                         RoundedRectangle(cornerRadius: 8)
@@ -45,7 +47,7 @@ struct RUProgress: View {
                     .frame(maxWidth: .infinity)
                 }
             }
-            .frame(height: 27)
+            .frame(height: hasPin ? 27 : 7)
             if let startName = startName, let endName = endName {
                 HStack {
                     Text(startName)
