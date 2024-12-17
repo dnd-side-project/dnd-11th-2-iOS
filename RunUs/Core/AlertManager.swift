@@ -18,6 +18,7 @@ class AlertManager: ObservableObject {
     private var retryAPIs: Array<() -> Void> = []
     
     func showAlert(
+        imageUrl: String? = nil,
         title: String,
         subTitle: String = "",
         mainButtonText: String = "확인",
@@ -29,6 +30,7 @@ class AlertManager: ObservableObject {
     ) {
         DispatchQueue.main.async {
             self.ruAlert = RUAlert(
+                imageUrl: imageUrl,
                 title: title,
                 subTitle: subTitle,
                 mainButtonText: mainButtonText,
@@ -70,5 +72,19 @@ class AlertManager: ObservableObject {
             api()
         }
         retryAPIs.removeAll()
+    }
+    
+    func showBadgeAlert(newBadges: [Badge], goMyBadge: @escaping () -> Void) {
+        if newBadges.count == 0 { return }
+        self.showAlert(
+            imageUrl: newBadges[0].imageUrl,
+            title: "'\(newBadges[0].name)'\n\(newBadges.count > 1 ? "외 \(newBadges.count - 1)개의 " : "")뱃지를 획득했어요!",
+            mainButtonText: "뱃지 보러가기",
+            subButtonText: "닫기",
+            mainButtonAction: {
+                self.dismiss()
+                goMyBadge()
+            }
+        )
     }
 }

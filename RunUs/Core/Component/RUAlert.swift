@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RUAlert: View {
+    var imageUrl: String?
     var title: String
     var subTitle: String
     var mainButtonText: String
@@ -18,15 +19,25 @@ struct RUAlert: View {
     var isSingleButtonAlert: Bool
     
     var body: some View {
+        let hasSubTitle = subTitle.count > 0
         Group {
             VStack(spacing: 0) {
-                Spacer().frame(height: subTitle.count > 0 ? 8 : 18)
+                if let imageUrl = imageUrl {
+                    Spacer().frame(height: 16)
+                    AsyncImage(url: URL(string: imageUrl)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 112, height: 112)
+                }
+                Spacer().frame(height: hasSubTitle ? 8 : 18)
                 Text(title)
                     .lineSpacing(8)
                     .multilineTextAlignment(.center)
                     .font(Fonts.pretendardSemiBold(size: 16))
-                    .frame(minHeight: subTitle.count > 0 ? 0 : 40)
-                Spacer().frame(height: subTitle.count > 0 ? 12 : 0)
+                    .frame(minHeight: hasSubTitle ? 0 : 40)
+                Spacer().frame(height: hasSubTitle ? 12 : 0)
                 Text(subTitle)
                     .lineSpacing(4)
                     .multilineTextAlignment(.center)

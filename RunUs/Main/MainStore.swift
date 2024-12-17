@@ -17,11 +17,12 @@ struct MainStore {
         var myRecordState = MyRecordStore.State()
         
         var showLocationPermissionAlert: Bool = false
+        var viewEnvironment: ViewEnvironment = ViewEnvironment()
     }
     
     enum Action {   // MARK: Action
         // MARK: and so on
-        case onAppear
+        case onAppear(ViewEnvironment)
         case checkLocationPermission
         case requestLocationPermission
         case showLocationPermissionAlert
@@ -67,7 +68,8 @@ struct MainStore {
         Reduce { state, action in
             switch action {
                 // MARK: and so on
-            case .onAppear:
+            case let .onAppear(viewEnvironment):
+                state.viewEnvironment = viewEnvironment
                 return .run { send in
                     await send(.checkLocationPermission)
                     locationManager.sendGetWeatherPublisher()
@@ -150,8 +152,18 @@ struct MainStore {
                 state.myRecordState.profile = profile
                 return .none
             case let .setBadges(badges):
+                let oldBadges = state.myRecordState.badges
                 state.myRecordState.badges = badges
-                return .none
+                return .run { [state] send in
+                    // MARK: '시작이 반이다' 뱃지가 있기 때문에, before == 0 케이스를 앱 첫 실행 케이스로 분류가 가능 추후 뱃지가 없는 케이스가 생긴다면 badges를 nullable로 수정 필요
+                    if oldBadges.count > 0 && oldBadges.count < badges.count {
+                        let newBadges = badges.filter { !oldBadges.contains($0) }
+                        AlertManager.shared.showBadgeAlert(newBadges: newBadges, goMyBadge: {
+                            let navigationObject = NavigationObject(viewType: .myBadge)
+                            state.viewEnvironment.navigate(navigationObject)
+                        })
+                    }
+                }
                 
                 // MARK: refresh
             case .homeRefresh:
