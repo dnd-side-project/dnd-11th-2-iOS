@@ -26,6 +26,7 @@ struct MainStore {
         case checkLocationPermission
         case requestLocationPermission
         case showLocationPermissionAlert
+        case navigateMyBadge
         
         // MARK: getter
         case getChallenges
@@ -94,6 +95,10 @@ struct MainStore {
             case .showLocationPermissionAlert:
                 AlertManager.shared.showAlert(title: Bundle.main.locationRequestDescription, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting)
                 return .none
+            case .navigateMyBadge:
+                let navigationObject = NavigationObject(viewType: .myBadge)
+                state.viewEnvironment.navigate(navigationObject)
+                return .none
                 
                 // MARK: getter
             case .getChallenges:
@@ -154,14 +159,11 @@ struct MainStore {
             case let .setBadges(badges):
                 let oldBadges = state.myRecordState.badges
                 state.myRecordState.badges = badges
-                return .run { [state] send in
-                    // MARK: '시작이 반이다' 뱃지가 있기 때문에, before == 0 케이스를 앱 첫 실행 케이스로 분류가 가능 추후 뱃지가 없는 케이스가 생긴다면 badges를 nullable로 수정 필요
+                return .run { send in
+                    // MARK: '시작이 반이다' 뱃지가 있기 때문에 before == 0 케이스를 앱 첫 실행 케이스로 분류가 가능, 추후 뱃지가 없는 케이스가 생긴다면 badges를 nullable로 수정 필요
                     if oldBadges.count > 0 && oldBadges.count < badges.count {
                         let newBadges = badges.filter { !oldBadges.contains($0) }
-                        AlertManager.shared.showBadgeAlert(newBadges: newBadges, goMyBadge: {
-                            let navigationObject = NavigationObject(viewType: .myBadge)
-                            state.viewEnvironment.navigate(navigationObject)
-                        })
+                        AlertManager.shared.showBadgeAlert(newBadges: newBadges, navigateMyBadge: { Task { await send(.navigateMyBadge) } })
                     }
                 }
                 

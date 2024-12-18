@@ -74,7 +74,7 @@ class AlertManager: ObservableObject {
         retryAPIs.removeAll()
     }
     
-    func showBadgeAlert(newBadges: [Badge], goMyBadge: @escaping () -> Void) {
+    func showBadgeAlert(newBadges: [Badge], navigateMyBadge: @escaping () -> Void ) {
         if newBadges.count == 0 { return }
         self.showAlert(
             imageUrl: newBadges[0].imageUrl,
@@ -83,7 +83,7 @@ class AlertManager: ObservableObject {
             subButtonText: "닫기",
             mainButtonAction: {
                 self.dismiss()
-                goMyBadge()
+                navigateMyBadge()
             }
         )
     }
