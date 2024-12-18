@@ -44,7 +44,7 @@ struct MainView: View {
                         RUTabBar(store: store)
                     }
                     .onAppear {
-                        store.send(.onAppear)
+                        store.send(.onAppear(viewEnvironment))
                     }
                     .onChange(of: viewEnvironment.selectedTabItem) { oldValue, newValue in
                         switch newValue {
