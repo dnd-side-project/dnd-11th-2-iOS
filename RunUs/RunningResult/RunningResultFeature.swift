@@ -16,9 +16,8 @@ struct RunningResultFeature {
         var runningResult: RunningResult? = nil
         var date: String = ""
         var emotion: Emotions
-        var hasChallenge: Bool = false
-        var challengeResult: ChallengeResult?
-        var goalResult: GoalResult?
+        var achievementMode: RunningMode = .normal
+        var achievementResult: AchievementResult? = nil
         var averagePace: String = "-’--”"
         var runningTime: String
         var distance: Double
@@ -30,6 +29,7 @@ struct RunningResultFeature {
             let endAt = runningResult.endAt.formatDateHyphen().formatStringDot()
             self.date = "\(startAt) ~ \(endAt)"
             self.emotion = runningResult.emotion.getEmotion()
+            if let achievementMode = RunningMode(rawValue: runningResult.achievementMode) { self.achievementMode = achievementMode }
             self.runningTime = runningResult.runningData.runningTime
             self.distance = Double(runningResult.runningData.distanceMeter) * 0.001
             self.kcal = runningResult.runningData.calorie
@@ -56,20 +56,19 @@ struct RunningResultFeature {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                if state.runningRecordId == nil {
-                    let runningResult = state.runningResult!
+                if let runningRecordId = state.runningRecordId {
                     return .run { send in
                         await RUNetworkManager.task(
-                            action: { try await runningResultAPI.postRunningRecord(result: runningResult) },
+                            action: { try await runningResultAPI.getRunningRecord(runningRecordId: runningRecordId) },
                             successAction: { await send(.setRunningRecord($0)) },
                             retryAction: { await send(.onAppear) }
                         )
                     }
                 } else {
-                    let runningRecordId = state.runningRecordId!
+                    guard let runningResult = state.runningResult else { return .none }
                     return .run { send in
                         await RUNetworkManager.task(
-                            action: { try await runningResultAPI.getRunningRecord(runningRecordId: runningRecordId) },
+                            action: { try await runningResultAPI.postRunningRecord(result: runningResult) },
                             successAction: { await send(.setRunningRecord($0)) },
                             retryAction: { await send(.onAppear) }
                         )
@@ -80,8 +79,8 @@ struct RunningResultFeature {
                 let endAt = record.endAt.formatDateHyphen().formatStringDot()
                 state.date = "\(startAt) ~ \(endAt)"
                 state.emotion = record.emotion.getEmotion()
-                state.challengeResult = record.challenge
-                state.goalResult = record.goal
+                if let achievementMode = RunningMode(rawValue: record.achievementMode) { state.achievementMode = achievementMode }
+                state.achievementResult = record.achievementResult
                 state.averagePace = record.runningData.averagePace
                 state.distance = Double(record.runningData.distanceMeter) * 0.001
                 state.runningTime = record.runningData.runningTime

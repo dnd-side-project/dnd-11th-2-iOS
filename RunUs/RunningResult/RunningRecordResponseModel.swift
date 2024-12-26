@@ -13,9 +13,16 @@ struct RunningRecordResponseModel: Decodable {
     let endAt: String
     let emotion: String
     let achievementMode: String
-    let challenge: ChallengeResult?
-    let goal: GoalResult?
+    let achievementResult: AchievementResult?
     let runningData: RunningResultData
+}
+
+struct AchievementResult: Decodable {
+    let title: String
+    let subTitle: String
+    let iconUrl: String
+    let isSuccess: Bool
+    let percentage: Double
 }
 
 struct RunningResultData: Decodable, Navigatable {
@@ -23,4 +30,5 @@ struct RunningResultData: Decodable, Navigatable {
     let runningTime: String
     let distanceMeter: Int
     let calorie: Int
+    let route: [RURoute]?
 }
