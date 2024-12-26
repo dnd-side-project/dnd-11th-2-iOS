@@ -31,22 +31,11 @@ struct RunningResultView: View {
                     .font(Fonts.pretendardMedium(size: 14))
                 Spacer().frame(height: 15)
                 EmotionView
-                // TODO: 추후(#96) 개선
                 if let achievementResult = store.achievementResult {
                     Spacer().frame(height: 26)
                     RUTitle(text: "\(store.achievementMode == .challenge ? "오늘의 러닝 챌린지" : "오늘의 러닝 목표")", textSize: 20)
                     achievementView(achievementResult)
                 }
-//                if let challengResult = store.challengeResult {
-//                    Spacer().frame(height: 26)
-//                    RUTitle(text: "오늘의 러닝 챌린지", textSize: 20)
-//                    challengeView(challengResult)
-//                }
-//                if let goalResult = store.goalResult {
-//                    Spacer().frame(height: 26)
-//                    RUTitle(text: "오늘의 러닝 목표", textSize: 20)
-//                    goalView(goalResult)
-//                }
                 Spacer().frame(height: 28)
                 RUTitle(text: "오늘의 러닝 페이스", textSize: 20)
                 resultView
@@ -74,70 +63,31 @@ extension RunningResultView {
             Spacer()
         }
     }
-    private func achievementView(_ achievementResult: AchievementResult) -> some View {
-        VStack {
-            Text("@@@new achievementView@@@")
-            Text("title : \(achievementResult.title)")
-            Text("subTitle : \(achievementResult.subTitle)")
-            Text("isSuccess : \(achievementResult.isSuccess)")
-            Text("percentage : \(achievementResult.percentage)")
-            Text("iconUrl : \(achievementResult.iconUrl)")
-        }
-    }
-    private func challengeView(_ challengeResult: ChallengeResult) -> some View {
-        HStack {
-            AsyncImage(url: URL(string: challengeResult.iconUrl)) { image in
-                image
-                    .resizable()
-                    .grayscale(challengeResult.isSuccess ? 0 : 1)
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: 48, height: 48)
-            .padding(.leading, 14)
-            VStack(alignment: .leading, spacing: 8) {
-                Text("\(challengeResult.title)")
-                    .font(Fonts.pretendardSemiBold(size: 16))
-                Text("\(challengeResult.subTitle)")
-                    .font(Fonts.pretendardRegular(size: 12))
-            }
-            .padding(.leading, 10)
-            Spacer()
-            Text(challengeResult.isSuccess ? "도전 성공!" : "도전 실패!")
-                .font(Fonts.pretendardSemiBold(size: 10))
-                .frame(width: 83, height: 26)
-                .foregroundStyle(challengeResult.isSuccess ? .mainDeepDark : .white)
-                .background(challengeResult.isSuccess ? .mainGreen : .gray300)
-                .cornerRadius(6, corners: .allCorners)
-                .padding(.trailing, 11)
-        }
-        .frame(height: 84)
-        .background(.mainDeepDark)
-        .cornerRadius(12, corners: .allCorners)
-    }
     
-    private func goalView(_ goalResult: GoalResult) -> some View {
-        HStack {
-            AsyncImage(url: URL(string: goalResult.iconUrl)) { image in
-                image
-                    .resizable()
-            } placeholder: {
-                ProgressView()
+    private func achievementView(_ achievementResult: AchievementResult) -> some View {
+        VStack(alignment: .leading, spacing: 9) {
+            HStack(spacing: 10) {
+                AsyncImage(url: URL(string: achievementResult.iconUrl)) { image in
+                    image
+                        .resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 48, height: 48)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("\(achievementResult.title)")
+                        .font(Fonts.pretendardSemiBold(size: 16))
+                    Text("\(achievementResult.subTitle)")
+                        .font(Fonts.pretendardRegular(size: 12))
+                }
             }
-            .frame(width: 48, height: 48)
-            .padding(.leading, 14)
-            VStack(alignment: .leading, spacing: 8) {
-                Text("\(goalResult.title)")
-                    .font(Fonts.pretendardSemiBold(size: 16))
-                Text("\(goalResult.subTitle)")
-                    .font(Fonts.pretendardRegular(size: 12))
-            }
-            .padding(.leading, 10)
-            Spacer()
+            RUProgress(percent: achievementResult.percentage)
         }
-        .frame(height: 84)
+        .grayscale(achievementResult.isSuccess ? 0 : 1)
+        .padding(.horizontal, Paddings.outsideHorizontalPadding)
+        .padding(.vertical, 20)
         .background(.mainDeepDark)
-        .cornerRadius(12, corners: .allCorners)
+        .cornerRadius(12)
     }
 
     private var resultView: some View {
