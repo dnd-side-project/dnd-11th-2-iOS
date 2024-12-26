@@ -62,18 +62,32 @@ struct RunningFeature {
         }
         
         func getRunningResult(emotion: Emotions) -> RunningResult {
-            .init(startAt: self.startAt,
-                  endAt: self.endAt,
-                  startLocation: self.startLocation,
-                  endLocation: self.endLocation,
-                  emotion: emotion.entity,
-                  challengeId: self.challengeId,
-                  goalDistance: self.goalDistance.map { Int($0 * 1000) },
-                  goalTime: self.goalTime,
-                  achievementMode: achievementMode.rawValue,
-                  runningData: .init(runningTime: self.time.toTimeString(),
-                                     distanceMeter: Int(self.distance * 1000),  // MARK: km -> m
-                                     calorie: Int(self.kcal)))  // MARK: Float -> Int
+            let isSuccess = self.goalPercent >= 1.0
+            let challengeValues = self.challengeId.map { ChallengeValues(challengeId: $0, isSuccess: isSuccess) }
+            let goalValues = self.goalDistance.map { GoalValues(goalDistance: Int($0 * 1000), isSuccess: isSuccess) }
+                            ?? self.goalTime.map { GoalValues(goalTime: $0, isSuccess: isSuccess) }
+            let route = self.routeSegments.map { route in
+                RURoute(
+                    start: RUCoordinates(latitude: route.start.latitude, longitude: route.start.longitude),
+                    end: RUCoordinates(latitude: route.end.latitude, longitude: route.end.longitude)
+                )
+            }
+            return RunningResult(
+                startAt: self.startAt,
+                endAt: self.endAt,
+                startLocation: self.startLocation,
+                endLocation: self.endLocation,
+                emotion: emotion.entity,
+                achievementMode: achievementMode.rawValue,
+                challengeValues: challengeValues,
+                goalValues: goalValues,
+                runningData: RunningData(
+                    runningTime: self.time.toTimeString(),
+                    distanceMeter: Int(self.distance * 1000),  // MARK: km -> m
+                    calorie: Int(self.kcal),   // MARK: Float -> Int
+                    route: route
+                )
+            )
         }
     }
     

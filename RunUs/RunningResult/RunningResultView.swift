@@ -31,16 +31,22 @@ struct RunningResultView: View {
                     .font(Fonts.pretendardMedium(size: 14))
                 Spacer().frame(height: 15)
                 EmotionView
-                if let challengResult = store.challengeResult {
+                // TODO: 추후(#96) 개선
+                if let achievementResult = store.achievementResult {
                     Spacer().frame(height: 26)
-                    RUTitle(text: "오늘의 러닝 챌린지", textSize: 20)
-                    challengeView(challengResult)
+                    RUTitle(text: "\(store.achievementMode == .challenge ? "오늘의 러닝 챌린지" : "오늘의 러닝 목표")", textSize: 20)
+                    achievementView(achievementResult)
                 }
-                if let goalResult = store.goalResult {
-                    Spacer().frame(height: 26)
-                    RUTitle(text: "오늘의 러닝 목표", textSize: 20)
-                    goalView(goalResult)
-                }
+//                if let challengResult = store.challengeResult {
+//                    Spacer().frame(height: 26)
+//                    RUTitle(text: "오늘의 러닝 챌린지", textSize: 20)
+//                    challengeView(challengResult)
+//                }
+//                if let goalResult = store.goalResult {
+//                    Spacer().frame(height: 26)
+//                    RUTitle(text: "오늘의 러닝 목표", textSize: 20)
+//                    goalView(goalResult)
+//                }
                 Spacer().frame(height: 28)
                 RUTitle(text: "오늘의 러닝 페이스", textSize: 20)
                 resultView
@@ -66,6 +72,16 @@ extension RunningResultView {
                 .font(Fonts.pretendardBold(size: 16))
                 .foregroundStyle(.white)
             Spacer()
+        }
+    }
+    private func achievementView(_ achievementResult: AchievementResult) -> some View {
+        VStack {
+            Text("@@@new achievementView@@@")
+            Text("title : \(achievementResult.title)")
+            Text("subTitle : \(achievementResult.subTitle)")
+            Text("isSuccess : \(achievementResult.isSuccess)")
+            Text("percentage : \(achievementResult.percentage)")
+            Text("iconUrl : \(achievementResult.iconUrl)")
         }
     }
     private func challengeView(_ challengeResult: ChallengeResult) -> some View {
