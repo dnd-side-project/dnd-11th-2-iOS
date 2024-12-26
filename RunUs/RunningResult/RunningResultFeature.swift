@@ -22,6 +22,7 @@ struct RunningResultFeature {
         var runningTime: String
         var distance: Double
         var kcal: Int
+        var routes: [RURoute]? = nil
         
         init(runningResult: RunningResult) {
             self.runningResult = runningResult
@@ -85,6 +86,7 @@ struct RunningResultFeature {
                 state.distance = Double(record.runningData.distanceMeter) * 0.001
                 state.runningTime = record.runningData.runningTime
                 state.kcal = record.runningData.calorie
+                state.routes = record.runningData.route
                 return .none
             }
         }
