@@ -23,18 +23,20 @@ struct RunningResultView: View {
     }
     
     var body: some View {
-        ViewThatFits(in: .vertical) {
-            runningResultView
-            ScrollView {
+        VStack(spacing: .zero) {
+            RUNavigationBar(buttonType: navigationButtonType, title: "러닝결과")
+            ViewThatFits(in: .vertical) {
                 runningResultView
+                ScrollView {
+                    runningResultView
+                }
+                .scrollIndicators(.hidden)
             }
-            .scrollIndicators(.hidden)
         }
-        .padding(.top, 1)   // MARK: SafeArea를 유지하기 위해 필요
         .foregroundStyle(.white)
         .padding(.horizontal, Paddings.outsideHorizontalPadding)
         .background(Color.background)
-        .onAppear{
+        .onAppear {
             store.send(.onAppear)
         }
     }
@@ -42,8 +44,7 @@ struct RunningResultView: View {
 
 extension RunningResultView {
     private var runningResultView: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            RUNavigationBar(buttonType: navigationButtonType, title: "러닝결과")
+        VStack(alignment: .leading, spacing: .zero) {
             Spacer().frame(height: 26)
             Text("\(store.date)")
                 .font(Fonts.pretendardMedium(size: 14))
@@ -60,7 +61,7 @@ extension RunningResultView {
             if let routes = store.routes {
                 Spacer().frame(height: 26)
                 RUTitle(text: "오늘의 러닝 코스", textSize: 20)
-                runningCourseView(routes)
+                RunningCourseView(routes: routes)
             }
             Spacer()
         }
@@ -145,55 +146,15 @@ extension RunningResultView {
             .font(Fonts.pretendardBold(size: 26))
             .foregroundStyle(.white)
     }
-    
-    private func runningCourseView(_ routes: [RURoute]) -> some View {
-        if true {
-            return RunningCourseMapView(routes: routes)
-        } else {
-            Canvas { context, size in
-                // 모든 좌표를 정규화하기 위한 계산
-                let coordinates = routes.flatMap { [$0.start, $0.end] }
-                let latitudes = coordinates.map { $0.latitude }
-                let longitudes = coordinates.map { $0.longitude }
-                
-                let minLat = latitudes.min()!
-                let maxLat = latitudes.max()!
-                let minLong = longitudes.min()!
-                let maxLong = longitudes.max()!
-                
-                // 각 경로를 그리기
-                for route in routes {
-                    let startX = normalize(route.start.longitude, min: minLong, max: maxLong) * size.width
-                    let startY = normalize(route.start.latitude, min: minLat, max: maxLat) * size.height
-                    let endX = normalize(route.end.longitude, min: minLong, max: maxLong) * size.width
-                    let endY = normalize(route.end.latitude, min: minLat, max: maxLat) * size.height
-                    
-                    let path = Path { p in
-                        p.move(to: CGPoint(x: startX, y: startY))
-                        p.addLine(to: CGPoint(x: endX, y: endY))
-                    }
-                    
-                    context.stroke(path, with: .color(.blue), lineWidth: 3)
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 500)
-        }
-    }
-    
-    private func normalize(_ value: Double, min: Double, max: Double) -> Double {
-        return (value - min) / (max - min)
-    }
 }
 
-struct RunningCourseMapView: View {
+struct RunningCourseView: View {
     let routes: [RURoute]
     @State private var region: MapCameraPosition
     
     init(routes: [RURoute]) {
         self.routes = routes
         
-        // 모든 좌표를 포함하는 region 계산
         let coordinates = routes.flatMap { [$0.start, $0.end] }
         let latitudes = coordinates.map { $0.latitude }
         let longitudes = coordinates.map { $0.longitude }
@@ -203,7 +164,6 @@ struct RunningCourseMapView: View {
             longitude: (longitudes.max()! + longitudes.min()!) / 2
         )
         
-        // 모든 포인트를 포함하도록 여유있게 region 설정
         let span = MKCoordinateSpan(
             latitudeDelta: (latitudes.max()! - latitudes.min()!) * 1.5,
             longitudeDelta: (longitudes.max()! - longitudes.min()!) * 1.5
@@ -221,7 +181,7 @@ struct RunningCourseMapView: View {
                     CLLocationCoordinate2D(latitude: route.end.latitude, longitude: route.end.longitude)
                 ]
                 MapPolyline(MKPolyline(coordinates: coordinates, count: 2))
-                    .stroke(.blue, lineWidth: 4)
+                    .stroke(.mainGreen, style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
             }
         }
         .frame(height: 300)
