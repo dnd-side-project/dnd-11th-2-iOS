@@ -97,7 +97,7 @@ extension RunningResultView {
                         .font(Fonts.pretendardRegular(size: 12))
                 }
             }
-            RUProgress(percent: achievementResult.percentage)
+            if let percent = achievementResult.percentage { RUProgress(percent: percent) }
         }
         .grayscale(achievementResult.isSuccess ? 0 : 1)
         .padding(.horizontal, Paddings.outsideHorizontalPadding)

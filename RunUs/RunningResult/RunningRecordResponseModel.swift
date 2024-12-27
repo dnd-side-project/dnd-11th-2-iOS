@@ -22,7 +22,7 @@ struct AchievementResult: Decodable {
     let subTitle: String
     let iconUrl: String
     let isSuccess: Bool
-    let percentage: Double
+    let percentage: Double?
 }
 
 struct RunningResultData: Decodable, Navigatable {
