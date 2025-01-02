@@ -185,5 +185,6 @@ struct RunningCourseView: View {
             }
         }
         .frame(height: 300)
+        .cornerRadius(12)
     }
 }
