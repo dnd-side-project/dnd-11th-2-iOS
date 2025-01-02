@@ -70,7 +70,8 @@ extension RunningRecordView {
                                     averagePace: record.averagePace,
                                     runningTime: record.duration,
                                     distanceMeter: record.distanceMeter,
-                                    calorie: record.calorie
+                                    calorie: record.calorie,
+                                    route: nil
                                 )
                             )
                         )

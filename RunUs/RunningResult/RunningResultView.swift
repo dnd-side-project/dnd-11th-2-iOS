@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 import ComposableArchitecture
 
 struct RunningResultView: View {
@@ -22,41 +23,51 @@ struct RunningResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
-            VStack(alignment: .leading, spacing: 0) {
-                RUNavigationBar(buttonType: navigationButtonType, title: "러닝결과")
-                Spacer().frame(height: 26)
-                Text("\(store.date)")
-                    .font(Fonts.pretendardMedium(size: 14))
-                Spacer().frame(height: 15)
-                EmotionView
-                if let challengResult = store.challengeResult {
-                    Spacer().frame(height: 26)
-                    RUTitle(text: "오늘의 러닝 챌린지", textSize: 20)
-                    challengeView(challengResult)
+        VStack(spacing: .zero) {
+            RUNavigationBar(buttonType: navigationButtonType, title: "러닝결과")
+            ViewThatFits(in: .vertical) {
+                runningResultView
+                ScrollView {
+                    runningResultView
                 }
-                if let goalResult = store.goalResult {
-                    Spacer().frame(height: 26)
-                    RUTitle(text: "오늘의 러닝 목표", textSize: 20)
-                    goalView(goalResult)
-                }
-                Spacer().frame(height: 28)
-                RUTitle(text: "오늘의 러닝 페이스", textSize: 20)
-                resultView
-                Spacer()
+                .scrollIndicators(.hidden)
             }
-            .foregroundStyle(.white)
-            .padding(.horizontal, Paddings.outsideHorizontalPadding)
-            .onAppear{
-                store.send(.onAppear)
-            }
+        }
+        .foregroundStyle(.white)
+        .padding(.horizontal, Paddings.outsideHorizontalPadding)
+        .background(Color.background)
+        .onAppear {
+            store.send(.onAppear)
         }
     }
 }
 
 extension RunningResultView {
-    private var EmotionView: some View {
+    private var runningResultView: some View {
+        VStack(alignment: .leading, spacing: .zero) {
+            Spacer().frame(height: 26)
+            Text("\(store.date)")
+                .font(Fonts.pretendardMedium(size: 14))
+            Spacer().frame(height: 15)
+            emotionView
+            if let achievementResult = store.achievementResult {
+                Spacer().frame(height: 26)
+                RUTitle(text: "\(store.achievementMode == .challenge ? "오늘의 러닝 챌린지" : "오늘의 러닝 목표")", textSize: 20)
+                achievementView(achievementResult)
+            }
+            Spacer().frame(height: 28)
+            RUTitle(text: "오늘의 러닝 페이스", textSize: 20)
+            resultView
+            if let routes = store.routes {
+                Spacer().frame(height: 26)
+                RUTitle(text: "오늘의 러닝 코스", textSize: 20)
+                RunningCourseView(routes: routes)
+            }
+            Spacer()
+        }
+    }
+    
+    private var emotionView: some View {
         HStack(spacing: 16) {
             Image(store.state.emotion.icon)
                 .resizable()
@@ -68,60 +79,31 @@ extension RunningResultView {
             Spacer()
         }
     }
-    private func challengeView(_ challengeResult: ChallengeResult) -> some View {
-        HStack {
-            AsyncImage(url: URL(string: challengeResult.iconUrl)) { image in
-                image
-                    .resizable()
-                    .grayscale(challengeResult.isSuccess ? 0 : 1)
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: 48, height: 48)
-            .padding(.leading, 14)
-            VStack(alignment: .leading, spacing: 8) {
-                Text("\(challengeResult.title)")
-                    .font(Fonts.pretendardSemiBold(size: 16))
-                Text("\(challengeResult.subTitle)")
-                    .font(Fonts.pretendardRegular(size: 12))
-            }
-            .padding(.leading, 10)
-            Spacer()
-            Text(challengeResult.isSuccess ? "도전 성공!" : "도전 실패!")
-                .font(Fonts.pretendardSemiBold(size: 10))
-                .frame(width: 83, height: 26)
-                .foregroundStyle(challengeResult.isSuccess ? .mainDeepDark : .white)
-                .background(challengeResult.isSuccess ? .mainGreen : .gray300)
-                .cornerRadius(6, corners: .allCorners)
-                .padding(.trailing, 11)
-        }
-        .frame(height: 84)
-        .background(.mainDeepDark)
-        .cornerRadius(12, corners: .allCorners)
-    }
     
-    private func goalView(_ goalResult: GoalResult) -> some View {
-        HStack {
-            AsyncImage(url: URL(string: goalResult.iconUrl)) { image in
-                image
-                    .resizable()
-            } placeholder: {
-                ProgressView()
+    private func achievementView(_ achievementResult: AchievementResult) -> some View {
+        VStack(alignment: .leading, spacing: 9) {
+            HStack(spacing: 10) {
+                AsyncImage(url: URL(string: achievementResult.iconUrl)) { image in
+                    image
+                        .resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 48, height: 48)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("\(achievementResult.title)")
+                        .font(Fonts.pretendardSemiBold(size: 16))
+                    Text("\(achievementResult.subTitle)")
+                        .font(Fonts.pretendardRegular(size: 12))
+                }
             }
-            .frame(width: 56, height: 56)
-            .padding(.leading, 14)
-            VStack(alignment: .leading, spacing: 8) {
-                Text("\(goalResult.title)")
-                    .font(Fonts.pretendardSemiBold(size: 16))
-                Text("\(goalResult.subTitle)")
-                    .font(Fonts.pretendardRegular(size: 12))
-            }
-            .padding(.leading, 10)
-            Spacer()
+            if let percent = achievementResult.percentage { RUProgress(percent: percent) }
         }
-        .frame(height: 84)
+        .grayscale(achievementResult.isSuccess ? 0 : 1)
+        .padding(.horizontal, Paddings.outsideHorizontalPadding)
+        .padding(.vertical, 20)
         .background(.mainDeepDark)
-        .cornerRadius(12, corners: .allCorners)
+        .cornerRadius(12)
     }
 
     private var resultView: some View {
@@ -163,5 +145,46 @@ extension RunningResultView {
         Text(string)
             .font(Fonts.pretendardBold(size: 26))
             .foregroundStyle(.white)
+    }
+}
+
+struct RunningCourseView: View {
+    let routes: [RURoute]
+    @State private var region: MapCameraPosition
+    
+    init(routes: [RURoute]) {
+        self.routes = routes
+        
+        let coordinates = routes.flatMap { [$0.start, $0.end] }
+        let latitudes = coordinates.map { $0.latitude }
+        let longitudes = coordinates.map { $0.longitude }
+        
+        let center = CLLocationCoordinate2D(
+            latitude: (latitudes.max()! + latitudes.min()!) / 2,
+            longitude: (longitudes.max()! + longitudes.min()!) / 2
+        )
+        
+        let span = MKCoordinateSpan(
+            latitudeDelta: (latitudes.max()! - latitudes.min()!) * 1.5,
+            longitudeDelta: (longitudes.max()! - longitudes.min()!) * 1.5
+        )
+        
+        self._region = State(initialValue: .region(MKCoordinateRegion(center: center, span: span)))
+    }
+    
+    var body: some View {
+        Map(position: $region) {
+            ForEach(0..<routes.count, id: \.self) { index in
+                let route = routes[index]
+                let coordinates = [
+                    CLLocationCoordinate2D(latitude: route.start.latitude, longitude: route.start.longitude),
+                    CLLocationCoordinate2D(latitude: route.end.latitude, longitude: route.end.longitude)
+                ]
+                MapPolyline(MKPolyline(coordinates: coordinates, count: 2))
+                    .stroke(.mainGreen, style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
+            }
+        }
+        .frame(height: 300)
+        .cornerRadius(12)
     }
 }

@@ -30,7 +30,7 @@ extension RunUsApp {
             if loadingManager.isLoading { LoadingView() }
             if alertManager.isShowAlert { alertManager.ruAlert }
         }
-        .onAppear{
+        .onAppear {
             _ = LocationManager.shared
         }
     }

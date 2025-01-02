@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct RunningData: Encodable, Navigatable {
+struct RunningData: Encodable, Navigatable, Equatable {
     let runningTime: String
     let distanceMeter: Int
     let calorie: Int
+    let route: [RURoute]
 }
