@@ -63,6 +63,9 @@ struct RUAlert: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     .frame(width: 121, height: 40)
+                    .if(isSingleButtonAlert, transform: { view in
+                        view.frame(maxWidth: .infinity)
+                    })
                     .background(mainButtonColor)
                     .cornerRadius(6)
                 }

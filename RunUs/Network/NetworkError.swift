@@ -34,4 +34,13 @@ enum NetworkError: RUError {
             return false
         }
     }
+    
+    var needRevokeError: Bool {
+        switch self {
+        case .server(let error):
+            return error.code == "OAUTH_001" || error.code == "OAUTH_002"
+        default:
+            return false
+        }
+    }
 }
