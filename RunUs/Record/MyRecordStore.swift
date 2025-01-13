@@ -35,7 +35,7 @@ struct MyRecordStore: Reducer {
                     .map { Action.withdraw(withdrawRequest: $0) }
             })
         case .logout:
-            resetUserDefaults()
+            UserDefaultManager.logout()
             return .none
         case .appleLoginForWithdraw:
             state.appleLoginDelegate = AppleLoginDelegate() { result in
@@ -60,17 +60,10 @@ struct MyRecordStore: Reducer {
             return .run { send in
                 await RUNetworkManager.task(
                     action: { try await myRecordAPI.withdraw(withdrawRequest: withdrawRequest) },
-                    successAction: { if $0.isWithdrawSuccess { resetUserDefaults() } },
+                    successAction: { if $0.isWithdrawSuccess { await send(.logout) } },
                     retryAction: { await send(.withdraw(withdrawRequest: withdrawRequest)) }
                 )
             }
         }
-    }
-    
-    private func resetUserDefaults() {
-        UserDefaultManager.isLogin = false
-        UserDefaultManager.name = nil
-        UserDefaultManager.email = nil
-        UserDefaultManager.accessToken = nil
     }
 }

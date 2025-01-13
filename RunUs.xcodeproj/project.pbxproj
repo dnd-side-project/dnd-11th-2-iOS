@@ -29,7 +29,6 @@
 		D9842DE02C84AFE3002B145C /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9842DDF2C84AFE3002B145C /* DateFormatter+extension.swift */; };
 		D9A65D0E2C7CCCE700FA33BF /* RunningResultFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */; };
 		D9A65D102C7CCD9400FA33BF /* Emotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D0F2C7CCD9400FA33BF /* Emotions.swift */; };
-		D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */; };
 		D9A65D142C7F3AF700FA33BF /* SelectRunningEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */; };
 		D9D0B7182C4F553800D13160 /* RUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7172C4F553800D13160 /* RUError.swift */; };
 		D9D0B71A2C4F555500D13160 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0B7192C4F555500D13160 /* NetworkError.swift */; };
@@ -49,6 +48,7 @@
 		F605C0D62CD6683400562EAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605C0D52CD6683400562EAF /* LoadingView.swift */; };
 		F605C0D82CD73C7B00562EAF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605C0D72CD73C7B00562EAF /* AlertManager.swift */; };
 		F605C0DC2CD8ADEC00562EAF /* RUNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605C0DB2CD8ADEC00562EAF /* RUNetworkManager.swift */; };
+		F605C0E42CE4810500562EAF /* RUUserLocationMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605C0E32CE4810500562EAF /* RUUserLocationMark.swift */; };
 		F611B21A2C7CB04100797470 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B2192C7CB04100797470 /* AuthorizationManager.swift */; };
 		F611B21C2C7E1A7300797470 /* HomeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B21B2C7E1A7300797470 /* HomeStore.swift */; };
 		F611B2202C7E1FBE00797470 /* WeatherResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611B21F2C7E1FBE00797470 /* WeatherResponseModel.swift */; };
@@ -93,7 +93,6 @@
 		F65ACDD12CC8D70C00C67DD1 /* MyBadgeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDD02CC8D70C00C67DD1 /* MyBadgeStore.swift */; };
 		F65ACDD32CC8D74200C67DD1 /* MyBadgeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDD22CC8D74200C67DD1 /* MyBadgeAPI.swift */; };
 		F65ACDD52CC8D7D200C67DD1 /* BadgeListsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65ACDD42CC8D7D200C67DD1 /* BadgeListsResponseModel.swift */; };
-		F664670B2CA3F01500508369 /* GoalResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F664670A2CA3F01500508369 /* GoalResult.swift */; };
 		F66467112CA408BA00508369 /* RunningRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467102CA408BA00508369 /* RunningRecordAPI.swift */; };
 		F66467132CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */; };
 		F66467152CA411E200508369 /* RUChallengeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66467142CA411E200508369 /* RUChallengeList.swift */; };
@@ -104,11 +103,12 @@
 		F67484382CAE53D200AA5256 /* MainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67484372CAE53D200AA5256 /* MainStore.swift */; };
 		F674843A2CAE53DA00AA5256 /* MainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67484392CAE53DA00AA5256 /* MainAPI.swift */; };
 		F680B9EA2C8DF51E00478E30 /* RunningRecordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */; };
+		F68B39E42CE9B10700C458B7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68B39E32CE9B10700C458B7 /* NotificationManager.swift */; };
+		F69A845C2D1D6C4700AEBD76 /* RURoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A845B2D1D6C4700AEBD76 /* RURoute.swift */; };
 		F69BFD9E2C8966C70073775C /* AchieveRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */; };
 		F69BFDA22C8967540073775C /* AchieveRecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */; };
 		F69BFDA42C8968030073775C /* CoursesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA32C8968030073775C /* CoursesResponseModel.swift */; };
 		F69BFDA62C89703E0073775C /* RUAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA52C89703E0073775C /* RUAlert.swift */; };
-		F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA72C897DA90073775C /* AlertEnvironment.swift */; };
 		F69BFDAA2C8B64070073775C /* VersionResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDA92C8B64070073775C /* VersionResponseModel.swift */; };
 		F69BFDAC2C8B64DF0073775C /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BFDAB2C8B64DF0073775C /* SystemManager.swift */; };
 		F69D0F192C61E00500A598E1 /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D0F182C61E00500A598E1 /* Paddings.swift */; };
@@ -152,7 +152,6 @@
 		D9842DDF2C84AFE3002B145C /* DateFormatter+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
 		D9A65D0D2C7CCCE700FA33BF /* RunningResultFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningResultFeature.swift; sourceTree = "<group>"; };
 		D9A65D0F2C7CCD9400FA33BF /* Emotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotions.swift; sourceTree = "<group>"; };
-		D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResult.swift; sourceTree = "<group>"; };
 		D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRunningEmotionView.swift; sourceTree = "<group>"; };
 		D9D0B7172C4F553800D13160 /* RUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUError.swift; sourceTree = "<group>"; };
 		D9D0B7192C4F555500D13160 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -172,6 +171,7 @@
 		F605C0D52CD6683400562EAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F605C0D72CD73C7B00562EAF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		F605C0DB2CD8ADEC00562EAF /* RUNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUNetworkManager.swift; sourceTree = "<group>"; };
+		F605C0E32CE4810500562EAF /* RUUserLocationMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUUserLocationMark.swift; sourceTree = "<group>"; };
 		F611B2192C7CB04100797470 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
 		F611B21B2C7E1A7300797470 /* HomeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStore.swift; sourceTree = "<group>"; };
 		F611B21F2C7E1FBE00797470 /* WeatherResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponseModel.swift; sourceTree = "<group>"; };
@@ -216,7 +216,6 @@
 		F65ACDD02CC8D70C00C67DD1 /* MyBadgeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeStore.swift; sourceTree = "<group>"; };
 		F65ACDD22CC8D74200C67DD1 /* MyBadgeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeAPI.swift; sourceTree = "<group>"; };
 		F65ACDD42CC8D7D200C67DD1 /* BadgeListsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeListsResponseModel.swift; sourceTree = "<group>"; };
-		F664670A2CA3F01500508369 /* GoalResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResult.swift; sourceTree = "<group>"; };
 		F66467102CA408BA00508369 /* RunningRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordAPI.swift; sourceTree = "<group>"; };
 		F66467122CA40E9500508369 /* RunningRecordMonthlyResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordMonthlyResponseModel.swift; sourceTree = "<group>"; };
 		F66467142CA411E200508369 /* RUChallengeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUChallengeList.swift; sourceTree = "<group>"; };
@@ -227,11 +226,12 @@
 		F67484372CAE53D200AA5256 /* MainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStore.swift; sourceTree = "<group>"; };
 		F67484392CAE53DA00AA5256 /* MainAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAPI.swift; sourceTree = "<group>"; };
 		F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordResponseModel.swift; sourceTree = "<group>"; };
+		F68B39E32CE9B10700C458B7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		F69A845B2D1D6C4700AEBD76 /* RURoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RURoute.swift; sourceTree = "<group>"; };
 		F69BFD9D2C8966C70073775C /* AchieveRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordStore.swift; sourceTree = "<group>"; };
 		F69BFDA12C8967540073775C /* AchieveRecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRecordAPI.swift; sourceTree = "<group>"; };
 		F69BFDA32C8968030073775C /* CoursesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesResponseModel.swift; sourceTree = "<group>"; };
 		F69BFDA52C89703E0073775C /* RUAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUAlert.swift; sourceTree = "<group>"; };
-		F69BFDA72C897DA90073775C /* AlertEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEnvironment.swift; sourceTree = "<group>"; };
 		F69BFDA92C8B64070073775C /* VersionResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionResponseModel.swift; sourceTree = "<group>"; };
 		F69BFDAB2C8B64DF0073775C /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
 		F69D0F182C61E00500A598E1 /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
@@ -272,6 +272,7 @@
 				D95F830E2C6F5F64000DCAA3 /* RunningStateManager.swift */,
 				D9A65D132C7F3AF700FA33BF /* SelectRunningEmotionView.swift */,
 				F6CE8A2A2CCFA2CA0050A25A /* RouteSegment.swift */,
+				F69A845B2D1D6C4700AEBD76 /* RURoute.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -284,8 +285,6 @@
 				D9417AD62C8C000C008F8075 /* RunningResultAPI.swift */,
 				D9417ACF2C8BFCC2008F8075 /* RunningResult.swift */,
 				D9A65D0F2C7CCD9400FA33BF /* Emotions.swift */,
-				D9A65D112C7CCED900FA33BF /* ChallengeResult.swift */,
-				F664670A2CA3F01500508369 /* GoalResult.swift */,
 				D9417AD32C8BFDD7008F8075 /* RunningData.swift */,
 				F680B9E92C8DF51E00478E30 /* RunningRecordResponseModel.swift */,
 			);
@@ -420,11 +419,11 @@
 				F6AC52DF2C662DEE00654820 /* UserDefaultManager.swift */,
 				D97D9FE32C6078BD00C663BD /* LocationManager.swift */,
 				D95F83162C6FB079000DCAA3 /* LocationManagerDelegate.swift */,
-				F69BFDA72C897DA90073775C /* AlertEnvironment.swift */,
 				F63BAA502C86C8E900DCE9EC /* ViewEnvironment.swift */,
 				F69BFDA92C8B64070073775C /* VersionResponseModel.swift */,
 				F605C0D32CD6644200562EAF /* LoadingManager.swift */,
 				F605C0D72CD73C7B00562EAF /* AlertManager.swift */,
+				F68B39E32CE9B10700C458B7 /* NotificationManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -547,6 +546,7 @@
 				F6DAD3BF2CB38DB400B459E6 /* RUTitle.swift */,
 				F65ACDC92CC752E200C67DD1 /* RUProgress.swift */,
 				F65ACDCE2CC8CF8300C67DD1 /* RUBadgeList.swift */,
+				F605C0E32CE4810500562EAF /* RUUserLocationMark.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -696,15 +696,16 @@
 				F65033D92C75D21800C81DA6 /* WithdrawRequestModel.swift in Sources */,
 				D9D0B7202C4FE67D00D13160 /* ServerResponse.swift in Sources */,
 				F674843A2CAE53DA00AA5256 /* MainAPI.swift in Sources */,
+				F68B39E42CE9B10700C458B7 /* NotificationManager.swift in Sources */,
 				F605C0D42CD6644200562EAF /* LoadingManager.swift in Sources */,
 				D95F83132C6FAC76000DCAA3 /* Int+extension.swift in Sources */,
 				D9D0B71E2C4F570000D13160 /* NetworkEndpoint.swift in Sources */,
-				F664670B2CA3F01500508369 /* GoalResult.swift in Sources */,
 				F611B21A2C7CB04100797470 /* AuthorizationManager.swift in Sources */,
 				F63B816A2C71F50C002F45F4 /* MyRecordView.swift in Sources */,
 				D9417AD92C8C2B6B008F8075 /* Date+extension.swift in Sources */,
 				F6F085732C59FAF700994E34 /* Fonts.swift in Sources */,
 				D9A65D102C7CCD9400FA33BF /* Emotions.swift in Sources */,
+				F605C0E42CE4810500562EAF /* RUUserLocationMark.swift in Sources */,
 				F63BAA512C86C8E900DCE9EC /* ViewEnvironment.swift in Sources */,
 				F605C0DC2CD8ADEC00562EAF /* RUNetworkManager.swift in Sources */,
 				D9D0B7232C50BA7400D13160 /* ServerNetwork.swift in Sources */,
@@ -712,7 +713,6 @@
 				F65ACDD32CC8D74200C67DD1 /* MyBadgeAPI.swift in Sources */,
 				D9417AD02C8BFCC2008F8075 /* RunningResult.swift in Sources */,
 				F63B81672C710573002F45F4 /* String+extension.swift in Sources */,
-				D9A65D122C7CCED900FA33BF /* ChallengeResult.swift in Sources */,
 				D9F5B85A2C60EDD0009CEB19 /* RunAloneView.swift in Sources */,
 				F65033DF2C7856AA00C81DA6 /* SignUpRequestModel.swift in Sources */,
 				F66467152CA411E200508369 /* RUChallengeList.swift in Sources */,
@@ -720,7 +720,6 @@
 				D95F830F2C6F5F64000DCAA3 /* RunningStateManager.swift in Sources */,
 				F634D2D42CBF6A2C0014EDB6 /* Double+extension.swift in Sources */,
 				F634D2CA2CB784EE0014EDB6 /* SummaryTypes.swift in Sources */,
-				F69BFDA82C897DA90073775C /* AlertEnvironment.swift in Sources */,
 				F65033E12C7856B300C81DA6 /* SignInRequestModel.swift in Sources */,
 				D97950A62C62917400BDCD44 /* View+extension.swift in Sources */,
 				F611B2202C7E1FBE00797470 /* WeatherResponseModel.swift in Sources */,
@@ -731,6 +730,7 @@
 				D9842DE02C84AFE3002B145C /* DateFormatter+extension.swift in Sources */,
 				D95F83172C6FB079000DCAA3 /* LocationManagerDelegate.swift in Sources */,
 				F65ACDCD2CC8C76600C67DD1 /* MyBadgeView.swift in Sources */,
+				F69A845C2D1D6C4700AEBD76 /* RURoute.swift in Sources */,
 				D97950A42C62831B00BDCD44 /* RUNavigationBar.swift in Sources */,
 				F6CE8A1C2CCF51EE0050A25A /* UINavigationController+extension.swift in Sources */,
 				D93975912C78D33B00507BAF /* RunningResultView.swift in Sources */,
@@ -921,7 +921,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = site.runus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -960,7 +960,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = site.runus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

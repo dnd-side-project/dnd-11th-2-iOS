@@ -46,28 +46,42 @@ struct RunAloneFeature {
                 return .none
             case .checkLocationPermission:
                 return .none
-            case .startButtonTapped:
-                if locationManager.authorizationStatus == .agree {
-                    let runningStartInfo = RunningStartInfo(
-                        challengeId: state.viewEnvironment.selectedRunningMode == .normal ? nil : state.challenges[state.selectedChallengeIndex].id,
-                        goalDistance: nil,
-                        goalTime: nil,
-                        achievementMode: state.viewEnvironment.selectedRunningMode
-                    )
-                    let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
-                    state.viewEnvironment.navigate(navigationObject)
-                    return .none
-                } else {
-                    return .send(.checkLocationPermission)
-                }
             case .selectGoal(let goal):
                 state.selectedGoalType = goal
                 return .none
+            case .startButtonTapped:
+                if locationManager.authorizationStatus == .agree {
+                    return .run { [state] send in
+                        try await NotificationManager.shared.checkNotificationPermission { runningStart(state: state) }
+                    }
+                } else {
+                    return .send(.checkLocationPermission)
+                }
                 
             case let .selectChallenge(selectedChallengeIndex):
                 state.selectedChallengeIndex = selectedChallengeIndex
                 return .none
             }
         }
+    }
+    
+    private func runningStart(state: State) {
+        var runningStartInfo = RunningStartInfo(
+            challengeId: nil,
+            goalType: nil,
+            goalDistance: nil,
+            goalTime: nil,
+            achievementMode: state.viewEnvironment.selectedRunningMode
+        )
+        if state.viewEnvironment.selectedRunningMode == .challenge {
+            let challenge = state.challenges[state.selectedChallengeIndex]
+            runningStartInfo.challengeId = challenge.id
+            runningStartInfo.challengeTitle = challenge.title
+            runningStartInfo.goalType = challenge.type
+            runningStartInfo.goalDistance = challenge.goalDistance
+            runningStartInfo.goalTime = challenge.goalTime
+        }
+        let navigationObject = NavigationObject(viewType: .running, data: runningStartInfo)
+        state.viewEnvironment.navigate(navigationObject)
     }
 }

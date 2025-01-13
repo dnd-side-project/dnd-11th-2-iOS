@@ -21,7 +21,7 @@ struct CountDownView: View {
                 .font(Fonts.pretendardMedium(size: 18))
                 .foregroundStyle(.white)
         }
-        .onAppear{
+        .onAppear {
             startCountdown()
     }
 }

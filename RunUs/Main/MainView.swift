@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct MainView: View {
-    @EnvironmentObject var alertEnvironment: AlertEnvironment
     @EnvironmentObject var viewEnvironment: ViewEnvironment
     @AppStorage(UserDefaultKey.isLogin.rawValue) var isLogin: Bool = false
     @State var store: StoreOf<MainStore> = Store(
@@ -45,7 +44,7 @@ struct MainView: View {
                         RUTabBar(store: store)
                     }
                     .onAppear {
-                        store.send(.onAppear)
+                        store.send(.onAppear(viewEnvironment))
                     }
                     .onChange(of: viewEnvironment.selectedTabItem) { oldValue, newValue in
                         switch newValue {
@@ -55,11 +54,6 @@ struct MainView: View {
                             store.send(.runAloneRefresh)
                         case .myRecord:
                             store.send(.myRecordRefresh)
-                        }
-                    }
-                    .onChange(of: store.showLocationPermissionAlert) { oldValue, newValue in
-                        if newValue {
-                            alertEnvironment.showAlert(title: Bundle.main.locationString, mainButtonText: "설정", subButtonText: "취소", mainButtonAction: SystemManager.shared.openAppSetting, subButtonAction: self.subButtonAction)
                         }
                     }
                 } else { LoginView() }
@@ -103,11 +97,6 @@ struct MainView: View {
                 }
             }
         }
-    }
-    
-    private func subButtonAction() {
-        store.send(.locationPermissionAlertChanged(false))
-        alertEnvironment.dismiss()
     }
 }
 

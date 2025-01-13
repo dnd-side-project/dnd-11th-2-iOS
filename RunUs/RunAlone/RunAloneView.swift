@@ -22,7 +22,7 @@ struct RunAloneView: View {
             ZStack {
                 Map(position: $store.userLocation) {
                     UserAnnotation {
-                        Image(.userLocationMark)
+                        RUUserLocationMark()
                     }
                 }
                 .mapControls {

@@ -47,9 +47,9 @@ enum ServerEndpoint: NetworkEndpoint {
         case .getBadges:
             return APIversion.v1 + "/badges/me"
         case .postRunningRecord:
-            return APIversion.v1 + "/running-records"
+            return APIversion.v2 + "/running-records"
         case .getRunningRecord(let runningRecordId):
-            return APIversion.v1 + "/running-records/\(runningRecordId)"
+            return APIversion.v2 + "/running-records/\(runningRecordId)"
         case .getMonthly:
             return APIversion.v1 + "/running-records/monthly-dates"
         case .getDaily:
@@ -63,7 +63,7 @@ enum ServerEndpoint: NetworkEndpoint {
         case .getWeeklySummary:
             return APIversion.v1 + "/running-records/weekly-summary"
         case .getCourses:
-            return APIversion.v1 + "/scale/courses"
+            return APIversion.v2 + "/scale/courses"
         case .getBadgeLists:
             return APIversion.v1 + "/badges/me/lists"
         }

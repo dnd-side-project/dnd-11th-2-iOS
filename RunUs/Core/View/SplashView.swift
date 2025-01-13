@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SplashView: View {
-    @EnvironmentObject var alertEnvironment: AlertEnvironment
     @Binding var isLoading: Bool
     
     var body: some View {
@@ -36,7 +35,7 @@ struct SplashView: View {
     
     private func action(isUpdateRequired: Bool) {
         if isUpdateRequired {
-            alertEnvironment.showAlert(
+            AlertManager.shared.showAlert(
                 title: "런어스가 업데이트 되었어요!",
                 subTitle: "안정적인 사용을 위해\n최신버전으로 업데이트해주세요.",
                 mainButtonText: "업데이트",

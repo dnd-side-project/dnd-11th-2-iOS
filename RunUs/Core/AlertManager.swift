@@ -13,28 +13,32 @@ class AlertManager: ObservableObject {
     private init() { }
     
     @Published private(set) var isShowAlert = false
-    @Published var ruAlert: RUAlert = RUAlert(title: "", subTitle: "", mainButtonText: "확인", subButtonText: "취소", mainButtonColor: .mainGreen, mainButtonAction: {}, subButtonAction: {})
+    @Published var ruAlert: RUAlert = RUAlert(title: "", subTitle: "", mainButtonText: "확인", subButtonText: "취소", mainButtonColor: .mainGreen, mainButtonAction: {}, subButtonAction: {}, isSingleButtonAlert: false)
     
     private var retryAPIs: Array<() -> Void> = []
     
     func showAlert(
+        imageUrl: String? = nil,
         title: String,
         subTitle: String = "",
         mainButtonText: String = "확인",
         subButtonText: String = "취소",
         mainButtonColor: Color = .mainGreen,
         mainButtonAction: (() -> Void)? = nil,
-        subButtonAction: (() -> Void)? = nil
+        subButtonAction: (() -> Void)? = nil,
+        isSingleButtonAlert: Bool = false
     ) {
         DispatchQueue.main.async {
             self.ruAlert = RUAlert(
+                imageUrl: imageUrl,
                 title: title,
                 subTitle: subTitle,
                 mainButtonText: mainButtonText,
                 subButtonText: subButtonText,
                 mainButtonColor: mainButtonColor,
                 mainButtonAction: mainButtonAction ?? self.dismiss,
-                subButtonAction: subButtonAction ?? self.dismiss
+                subButtonAction: subButtonAction ?? self.dismiss,
+                isSingleButtonAlert: isSingleButtonAlert
             )
             self.isShowAlert = true
         }
@@ -68,5 +72,19 @@ class AlertManager: ObservableObject {
             api()
         }
         retryAPIs.removeAll()
+    }
+    
+    func showBadgeAlert(newBadges: [Badge], navigateMyBadge: @escaping () -> Void ) {
+        if newBadges.count == 0 { return }
+        self.showAlert(
+            imageUrl: newBadges[0].imageUrl,
+            title: "'\(newBadges[0].name)'\n\(newBadges.count > 1 ? "외 \(newBadges.count - 1)개의 " : "")뱃지를 획득했어요!",
+            mainButtonText: "뱃지 보러가기",
+            subButtonText: "닫기",
+            mainButtonAction: {
+                self.dismiss()
+                navigateMyBadge()
+            }
+        )
     }
 }
